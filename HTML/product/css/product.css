@@ -1,0 +1,232 @@
+        /* main */
+        main {
+            width: 1200px;
+            height: auto;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        /* main aside */
+        main > aside {
+            float: left;
+            width: 215px;
+            height: 100%;
+        }
+        main > aside > .category {
+            position: relative;
+            width: 100%;
+            height: 425px;
+            background: #333949;
+        }
+        main > aside > .category > li {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            color: #ccc;
+            font-size: 13px;
+            font-weight: bold;
+            border-bottom: 1px solid #2b313f;
+        }
+        main > aside > .category > li:first-child {
+            padding: 0 20px;
+            color: #fff;
+            line-height: 40px;
+        }
+        main > aside > .category i {
+            width: 22px;
+            font-size: 16px;
+            margin-right: 12px;
+        }
+        main > aside > .category > li > a {
+            display: block;
+            padding: 0 20px;
+            line-height: 40px;
+            color: #ccc;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        main > aside > .category ol {
+            position: absolute;
+            left: 215px;
+            top: 0;
+            display: none;
+            width: 215px;
+            height: 100%;
+            border: 1px solid #787f89;
+            background: #fff;
+            z-index: 10000;
+        }
+        main > aside > .category ol > li {
+            width: 100%;
+            height: 24px;
+            padding: 10px;
+        }
+        /* main section */
+        main > section {
+            float: right;
+            width: 985px;
+            height: auto;
+        }
+        #product > section {
+            padding: 16px;
+        }
+        #product > section > nav {
+            width: 100%;
+            height: 36px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgb(0, 0, 0);
+        }
+        #product > section > nav > h1 {
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.5em;
+            padding: 0px 0px 7px;
+            line-height: 1em;
+        }
+        #product > section > nav > p {
+            float: right;
+            margin-top: 10px;
+        }
+        #product > .list > .sort {
+            margin: 0px 0px 20px;
+            border-top: 2px solid rgb(17, 17, 17);
+            border-bottom: 1px solid rgb(223, 223, 223);
+            overflow: hidden;
+        }
+        #product > .list > .sort > li {
+            float: left;
+            position: relative;
+            padding: 15px 0px;
+            line-height: 15px;
+        }
+        #product > .list > .sort > li > a {
+            display: block;
+            padding: 0px 10px;
+            border-right: 1px solid rgb(221, 221, 221);
+        }
+        #product > .list > .sort > li > a.on {
+            font-weight: bold;
+        }
+        #product > .list > table {
+            width: 100%;
+            height: auto;
+            border-collapse: collapse;
+        }
+        #product > .list > table tr {
+            border-bottom: 1px solid rgb(236, 236, 236);
+        }
+        #product > .list > table tr > td {
+            vertical-align: top;
+            padding-top: 20px;
+            padding-left: 16px;
+            box-sizing: border-box;
+        }
+        #product > .list > table tr > td:nth-child(1) {width: 20%; padding: 0px;}
+        #product > .list > table tr > td:nth-child(2) {width: 40%;}
+        #product > .list > table tr > td:nth-child(3) {width: 20%;}
+        #product > .list > table tr > td:nth-child(4) {width: 20%;}
+        #product > .list > table .thumb {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        #product > .list > table .thumb > img {
+            width: 120px;
+        }
+        #product > .list > table .name {
+            font-size: 16px;
+            font-weight: bold;
+            color: rgb(17, 17, 17);
+            margin-bottom: 6px;
+        }
+        #product > .list > table .desc {
+            font-size: 12px;
+            color: rgb(51, 51, 51);
+        }
+        #product > .list > table .dis-price {
+            font-size: 16px;
+            text-decoration: none;
+        }
+        #product > .list > table .dis-price::after {
+            content: "원";
+        }
+        #product > .list > table .org-price {
+            font-size: 12px;
+            color: rgb(170, 170, 170);
+        }
+        #product > .list > table .org-price::after {content: "원";}
+        #product > .list > table .discount {
+            color: #eb000a;
+            font-size: 10px;
+        }
+        #product > .list > table .discount::after {
+            content: "↓";
+        }
+        #product > .list > table .free-delivery {
+            display: inline-block;
+            font-size: 0px;
+            vertical-align: text-bottom;
+            width: 55px;
+            height: 13px;
+            background: url(../img/ico_free_delivery.gif) no-repeat;
+            margin-top: 4px;
+        }
+        #product > .list > table .seller {
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+        #product .badge.power {background-image: url(../img/ico_power_dealer.gif);}
+        #product .badge {
+            font-size: 0px;
+            width: 80px;
+            height: 19px;
+            background-repeat: no-repeat;
+        }
+        #product > .list > table .rating {
+            margin-top: 12px;
+        }
+        #product h6.rating {
+            font-size: 11px;
+            background-image: url(../img/rating_star.png);
+            background-repeat: no-repeat;
+            background-position: 36px 0px;
+            background-size: auto 100%;
+        }
+        #product h6.rating.star1 {width: 55px;}
+        #product h6.rating.star2 {width: 70px;}
+        #product h6.rating.star3 {width: 85px;}
+        #product h6.rating.star4 {width: 100px;}
+        #product h6.rating.star5 {width: 120px;}
+
+        /* 상품목록 페이지 번호 */
+        #product > .list > .paging {
+            width: 100%;
+            padding: 30px 0px;
+            text-align: center;
+        }
+        #product > .list > .paging > span > a {
+            color: rgb(119, 119, 119);
+            font-size: 11px;
+            letter-spacing: -1px;
+        }
+        #product > .list > .paging > .num > a.on {
+            color: rgb(254, 67, 76);
+            font-weight: bold;
+        }
+        #product > .list > .paging > .num > a {
+            display: inline-block;
+            min-width: 14px;
+            margin: 0px 2px;
+            padding: 8px 9px;
+            border: 1px solid rgb(196, 196, 196);
+            background: url(product.css) 0px 0px repeat-x;
+            color: rgb(0, 0, 0);
+            font-size: 12px;
+            text-align: center;
+            text-decoration: none;
+        }
+        #product > .list > .paging > span > a {
+            color: rgb(119, 119, 119);
+            font-size: 11px;
+            letter-spacing: -1px;
+        }
