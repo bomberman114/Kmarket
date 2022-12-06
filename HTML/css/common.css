@@ -1,4 +1,4 @@
-/* ì´ˆê¸°í™” */
+/* 초기화  */
 * {
     margin: 0;
     padding: 0;
@@ -22,7 +22,7 @@
     width: 100%;
   }
   
-  /* í—¤ë”ì˜ì—­ */
+  /* 헤더영역 */
   header {
     width: 100%;
     height: 197px;
@@ -142,7 +142,7 @@
     border-right: 1px solid #e9e9e9;
   }
   
-  /* ë©”ì¸ì˜ì—­ */
+  /* ­메인영역 */
   main {
     width: 1200px;
     height: auto;
@@ -150,7 +150,7 @@
     overflow: hidden;
   }
   
-  /* ì™¼ìª½ ì¹´í…Œê³ ë¦¬ ë©”ë‰´ */
+  /* 왼쪽 케테고리 메뉴 */
   main > aside {
     float: left;
     width: 215px;
@@ -191,11 +191,11 @@
     color: #fff;
   }
   
-  /* ë§ˆìš°ìŠ¤ë¥¼ ì˜¬ë¦¬ëŠ” ì¹´í…Œê³ ë¦¬ ë©”ë‰´ì˜ ì„œë¸Œë©”ë‰´ ì¶œí˜„ */
+  /*  마우스를 올리는 카테고리 메뉴의 서브메뉴 출현 */
   main > aside > .category > li > a:hover + ol {
     display: block;
   }
-  /* ì„œë¸Œë©”ë‰´ì— ë§ˆìš°ìŠ¤ê°€ ì˜¬ë¼ê°€ë©´ ê³„ì† ë…¸ì¶œ */
+  /* 서브메뉴 마우스가 올라가면 계속 노출 */
   main > aside > .category ol:hover {
     display: block;
   }
@@ -237,7 +237,7 @@
     text-decoration: underline;
   }
   
-  /* ë² ìŠ¤íŠ¸ ë°°ë„ˆ */
+  /* 베스트 배너 */
   main > aside > .best {
     width: 215px;
     height: auto;
@@ -337,10 +337,10 @@
   main > aside > .best > ol > li > a .org_price {
   }
   main > aside > .best > ol > li > a .org_price > del::after {
-    content: "ì›";
+    content: "ì›원";
   }
   main > aside > .best > ol > li > a .org_price > ins::after {
-    content: "ì›";
+    content: "ì›원";
   }
   main > aside > .best > ol > li > a .org_price > del {
     font-size: 10px;
@@ -351,7 +351,7 @@
     font-size: 10px;
   }
   main > aside > .best > ol > li > a .org_price > span::after {
-    content: "â†“";
+    content: "↓";
   }
   main > aside > .best > ol > li > a .dis_price {
   }
@@ -360,7 +360,7 @@
     text-decoration: none;
   }
   main > aside > .best > ol > li > a .dis_price > ins::after {
-    content: "ì›";
+    content: "원";
   }
   main > aside > .best > ol > li > a .dis_price > span {
     display: inline-block;
@@ -371,7 +371,7 @@
     background: url("../img/ico_freeshipping.gif") no-repeat;
   }
   
-  /* ë©”ì¸ ì²«ë²ˆì§¸ ì„¹ì…˜ */
+  /* 메인 첫번째 섹션 */
   main > section {
     float: right;
     width: 985px;
@@ -436,10 +436,10 @@
   }
   
   main > section > section > article del::after {
-    content: "ì›";
+    content: "ì›원";
   }
   main > section > section > article ins::after {
-    content: "ì›";
+    content: "ì›원";
   }
   main > section > section > article .org_price > del {
     color: #aaa;
@@ -448,7 +448,7 @@
     color: #eb000a;
   }
   main > section > section > article .org_price > span::after {
-    content: "â†“";
+    content: "↓";
   }
   main > section > section > article .dis_price {
     margin-top: 4px;
@@ -466,7 +466,7 @@
     background: url("../img/ico_freeshipping.gif") no-repeat;
   }
   
-  /* ìŠ¬ë¼ì´ë” ì˜ì—­ */
+  /* 슬라이더 영역 */
   main > section > .slider {
     width: 100%;
     height: 425px;
@@ -489,7 +489,7 @@
   main > section > .discount {
   }
   
-  /* í‘¸í„°ì˜ì—­ */
+  /* ­푸터영역 */
   footer {
     width: 100%;
     height: 192px;
@@ -545,7 +545,7 @@
     font-weight: bold;
   }
   
-  /* ì˜¤ë¥¸ìª½ í•˜ë‹¨ ìƒë‹¨ ì´ë™ë²„íŠ¼ */
+  /* 오른쪽 하단 상단 이동버튼 */
   #top {
     position: fixed;
     left: 50%;
