@@ -20,7 +20,7 @@
 #member > div > form > table tr {}
 
 #member > div > form > table tr > td {padding: 2px;}
-#memeber > div > form > table tr > td:nth-child(1) {
+#member > div > form > table tr > td:nth-child(1) {
     font-size: 14px;
     font-weight: bold;
 }
@@ -86,7 +86,7 @@
     float: left;
     width: 97px;
     height: 71px;
-    background-image: url("./img/member_btn_login.gif");
+    background-image: url("../img/member_btn_login.gif");
     font-size: 0;
     border: none;
 }
@@ -163,6 +163,8 @@ margin: 10px auto;
 }
 
 #member > .join > .type {
+position: relative;
+left: -30px;
 width: 100%;
 height: 200px;
 margin: 60px auto;
