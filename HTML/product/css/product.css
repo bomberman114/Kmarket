@@ -1,4 +1,7 @@
-        /* main */
+        /* product 공통 css */
+        * {
+            box-sizing: border-box;
+        }
         main {
             width: 1200px;
             height: auto;
@@ -87,6 +90,9 @@
             float: right;
             margin-top: 10px;
         }
+        /* 여기까지 product 공통 css */
+
+        /* productList main */
         #product > .list > .sort {
             margin: 0px 0px 20px;
             border-top: 2px solid rgb(17, 17, 17);
@@ -229,4 +235,331 @@
             color: rgb(119, 119, 119);
             font-size: 11px;
             letter-spacing: -1px;
+        }
+
+        /* productView main */
+        /* 상품 전체 정보 내용 */
+        #product > .view > article {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+        #product > .view > .info > div {
+            float: left;
+            width: 50%;
+            height: 100%;
+            padding: 10px;
+        }
+        #product > .view > .info > .image > img {
+            width: 100%;
+        }
+        #product > .view > .info > .summary > nav {
+            border-bottom: 1px solid rgb(234, 234, 234);
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        #product > .view > .info > .summary > nav > h1 {
+            float: left;
+            color: rgb(2, 49, 166);
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        #product > .view > .info > .summary > nav > h2 {
+            float: right;
+            color: rgb(119, 119, 119);
+            margin-top: 8px;
+        }
+        #product > .view > .info > .summary > nav > h3 {
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(30, 39, 50);
+        }
+        #product > .view > .info > .summary > nav > p {
+            font-size: 14px;
+            color: rgb(71, 71, 71);
+            line-height: 36px;
+            letter-spacing: -1px;
+        }
+        /* product의 rating들 */
+        #product h5.rating {
+            width: 150px;
+            height: 20px;
+            font-size: 0px;
+            background-image: url(../img/ico_rating_star.png);
+            background-repeat: no-repeat;
+            background-position: 36px 0px;
+            text-indent: 86px;
+        }
+        #product h5.rating.star4 {
+            background-position: 0px -160px;
+        }
+        #product > .view > .info > .summary .rating > a {
+            color: rgb(52, 106, 255);
+            text-decoration: underline;
+        }
+        #product > .view > .info > .summary .org_price > del {
+            font-size: 18px;
+            color: rgb(170, 170, 170);
+        }
+        #product > .view > .info > .summary .org_price > del::after {
+            content: "원";
+        }
+        #product > .view > .info > .summary .org_price > span {
+            color: rgb(235, 0, 10);
+            font-size: 16px;
+            margin-left: 6px;
+        }
+        #product > .view > .info > .summary .org_price > span::after {
+            content: "↓";
+        }
+        #product > .view > .info > .summary .dis_price > ins {
+            font-size: 26px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        #product > .view > .info > .summary .dis_price > ins::after {
+            content: "원";
+        }
+        #product > .view > .info > .summary .delivery {
+            font-size: 16px;
+            color: rgb(46, 141, 229);
+        }
+        #product > .view > .info > .summary .arrival {
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        #product > .view > .info > .summary .desc {
+            display: block;
+            color: rgb(170, 170, 170);
+        }
+        #product > .view > .info > .summary .card > i {
+            display: inline-block;
+            width: 30px;
+            height: 18px;
+            top: 4px;
+            background-image: url(../img/sp_icon.png);
+            font-size: 0px;
+            vertical-align: text-top;
+            margin-right: 2px;
+        }
+        #product > .view > .info > .summary .cardfree > i {
+            background-position: -126px 0px;
+        }
+        #product > .view > .info > .summary .cardadd > i {
+            background-position: -51px -21px;
+        }
+        #product > .view > .info > .summary .banner {
+            width: 100%;
+        }
+        #product > .view > .info > .summary .origin {
+            font-size: 16px;
+        }
+        #product > .view > .info > .summary .count {
+            position: relative;
+            width: 100px;
+            height: 40px;
+        }
+        #product > .view > .info > .summary .count > button {
+            position: absolute;
+            width: 21px;
+            height: 21px;
+            background-image: url(../img/ico_sprites.png);
+            font-size: 0px;
+            background-color: transparent;
+            border: none;
+        }
+        #product > .view > .info > .summary .count > .decrease {
+            left: 0px;
+            top: 0px;
+            background-position: 0px -74px;
+        }
+        #product > .view > .info > .summary .count > input[name="num"] {
+            position: absolute;
+            left: 30px;
+            top: 0px;
+            width: 30px;
+            height: 21px;
+            border: 1px solid rgb(236, 236, 236);
+            font-size: 14px;
+            text-align: center;
+        }
+        #product > .view > .info > .summary .count > .increase {
+            left: 70px;
+            top: 0px;
+            background-position: -48px -74px;
+        }
+        #product > .view > .info > .summary .total {
+            overflow: hidden;
+            margin-top: 16px;
+        }
+        #product > .view > .info > .summary > .total > span {
+            float: right;
+            display: inline-block;
+            line-height: 38px;
+            font-size: 24px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            text-align: right;
+            letter-spacing: -0.5px;
+        }
+        #product > .view > .info > .summary .total > span::after {
+            content: "원";
+        }
+        #product > .view > .info > .summary .total > em {
+            float: right;
+            display: block;
+            width: 100px;
+            height: 22px;
+            padding: 10px 0px 0px;
+            font-size: 16px;
+            line-height: 22px;
+            color: rgb(94, 99, 109);
+            letter-spacing: -1px;
+        }
+        #product > .view > .info > .summary > .button {
+            overflow: hidden;
+            margin-top: 16px;
+        }
+        #product > .view > .info > .summary > .button > input {
+            float: left;
+            width: 49%;
+            height: 50px;
+            margin: 2px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        #product > .view > .info > .summary > .button > .cart {
+            background: rgb(255, 255, 255);
+            border: 1px solid rgb(217, 217, 217);
+            color: rgb(35, 53, 73);
+        }
+        #product > .view > .info > .summary > .button > .order {
+            background: rgb(46, 141, 229);
+            border: 1px solid rgb(33, 127, 215);
+            color: rgb(255, 255, 255);
+        }
+        /* 상품 정보 내용 */
+        #product > .view > article > nav {
+            border-bottom: 1px solid rgb(164, 169, 176);
+            padding: 6px 0px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        #product > .view > article > nav > h1 {
+            float: left;
+            color: rgb(30, 39, 50);
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        /* 상품 정보 제공 고시 내용 */
+        #product > .view > article > nav {
+            border-bottom: 1px solid rgb(164, 169, 176);
+            padding: 6px 0px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        #product > .view > article > nav > h1 {
+            float: left;
+            color: rgb(30, 39, 50);
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        #product > .view > article > nav > p {
+            float: left;
+            color: rgb(119, 119, 119);
+            margin-top: 6px;
+            margin-left: 6px;
+        }
+        #product > .view > .notice > table {
+            width: 100%;
+        }
+        #product > .view > .notice > table tr > td {
+            padding: 5px 0px 6px 21px;
+            font-size: 14px;
+            color: rgb(119, 119, 119);
+        }
+        #product > .view > .notice > table tr > td:nth-child(1) {
+            width: 20%;
+            color: rgb(34, 34, 34);
+        }
+        #product > .view > .notice > table:nth-of-type(2) {
+            border-top: 1px solid rgb(236, 236, 236);
+        }
+        #product > .view > .notice > .notice {
+            margin: 20px 0px;
+            padding: 21px 26px 20px 19px;
+            line-height: 20px;
+            font-size: 14px;
+            color: rgb(117, 124, 138);
+            background: rgb(250, 250, 250);
+            border-radius: 2px;
+            white-space: normal;
+        }
+
+        /* 상품 리뷰 내용 */
+        #product > .view > article > nav {
+            border-bottom: 1px solid rgb(164, 169, 176);
+            padding: 6px 0px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        #product > .view > article > nav > h1 {
+            float: left;
+            color: rgb(30, 39, 50);
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        #product > .view > .review > ul {padding: 10px;}
+        #product > .view > .review > ul > li {
+            padding-top: 16px;
+            border-bottom: 1px solid rgb(236, 236, 236);
+        }
+        #product > .view > .review > ul > li > div {overflow: hidden;}
+        #product > .view > .review > ul > li > div > h5 {float: left;}
+        #product > .view > .review > ul > li > div > span {
+            float: right;
+            color: rgb(85, 85, 85);
+        }
+        #product > .view > .review > ul > li > h3 {
+            color: rgb(85, 85, 85);
+            margin-top: 6px;
+        }
+        #product > .view > .review > ul > li > p {
+            width: 100%;
+            height: 60px;
+            color: rgb(85, 85, 85);
+            font-size: 14px;
+            line-height: 19px;
+            word-break: break-all;
+            overflow-wrap: break-word;
+            margin-top: 10px;
+        }
+        #product > .view > .review > .paging {
+            width: 100%;
+            padding: 30px 0px;
+            text-align: center;
+        }
+        #product > .view > .review > .paging > span > a {
+            color: rgb(119, 119, 119);
+            font-size: 11px;
+            letter-spacing: -1px;
+        }
+        #product > .view > .review > .paging > .num > a {
+            display: inline-block;
+            min-width: 14px;
+            margin: 0px 2px;
+            padding: 8px 9px;
+            border: 1px solid rgb(196, 196, 196);
+            background: url(product.css) 0px 0px repeat-x;
+            color: rgb(0, 0, 0);
+            font-size: 12px;
+            text-align: center;
+            text-decoration: none;
+        }
+        #product > .view > .review > .paging > .num > a.on {
+            color: rgb(254, 67, 76);
+            font-weight: bold;
         }
