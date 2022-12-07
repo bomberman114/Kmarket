@@ -253,20 +253,20 @@ cursor: pointer;
 }
 
 /* member > .register */
-#member >.register {
+#member > .register {
     width: 900px;
     margin: 0 auto;
     box-sizing: border-box;
 }
 
-#member >.register > nav {border-bottom: 2px solid #0e6ad3;}
+#member > .register > nav {border-bottom: 2px solid #0e6ad3;}
 
-#member >.register > nav > h1 {
+#member > .register > nav > h1 {
     font-size: 24px;
     margin-bottom: 6px;
 }
 
-#member >.register table {
+#member > .register table {
     position: relative;
     width: 100%;
     table-layout: fixed;
@@ -275,26 +275,175 @@ cursor: pointer;
     border-spacing: 0;
 }
 
-#member >.register table * {}
+#member > .register table caption {
+    text-align: left;
+    font-size: 16px;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
 
-#member >.register table caption {}
+#member > .register table th {
+    width: 200px;
+    padding: 20px 20px;
+    vertical-align: top;
+    background: #f4f6f9;
+    font-weight: 500;
+    text-align: left;
+    line-height: 1.4;
+    border-bottom: 1px solid #dfe5ed;
+    word-break: break-word;
+    font-size: 14px;
+}
 
-#member >.register table th {}
+#member > .register table td {
+    position: relative;
+    vertical-align: middle;
+    padding: 10px 20px;
+    text-align: left;
+    line-height: 1.4;
+    border-bottom: 1px solid #dfe5ed;
+    word-break: break-word;
+    font-size: 14px;
+    font-weight: 500;
+}
 
-#member >.register table td {}
+#member > .register table input {
+    padding: 0 8px;
+    height: 31px;
+    font-size: 14px;
+    border: 1px solid #dfe5ed;
+    vertical-align: middle;
+}
 
-#member >.register table input {}
+#member > .register table label {
+    display: inline-block;
+    width: 60px;
+    font-size: 17px;
+}
 
-#member >.register table label {}
+#member > .register table .addr input {
+    margin-top: 6px;
+}
 
-#member >.register table .addr input {}
+#member > .register table .addr th {
+    padding-left: 30px;
+}
 
-#member >.register table .addr th {}
 
-#member >.register table .essential {}
+#member > .register table .essential {
+    color: #ef3f43;
+    vertical-align: middle;
+    margin-right: 5px;
+}
 
-#member >.register form input[type="submit"] {}
+#member > .register form input[type="submit"] {
+    display: block;
+    background: #ef3f43;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 72px;
+    margin: 40px auto;
+    border: 0;
+    outline: 0;
+    border-radius: 2px;
+    cursor: pointer;
+}
 
+/* member > .registerSeller */
+
+#member > .registerSeller {
+    width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#member > .registerSeller > nav {border-bottom: 2px solid #0e6ad3;}
+
+#member > .registerSeller > nav > h1 {
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+#member > .registerSeller table {
+    position: relative;
+    width: 100%;
+    table-layout: fixed;
+    border-top: 1px solid #b6bdc7;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#member > .registerSeller table caption {
+    text-align: left;
+    font-size: 16px;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+#member > .registerSeller table th {
+    width: 200px;
+    padding: 20px 20px;
+    vertical-align: top;
+    background: #f4f6f9;
+    font-weight: 500;
+    text-align: left;
+    line-height: 1.4;
+    border-bottom: 1px solid #dfe5ed;
+    word-break: break-word;
+    font-size: 14px;
+}
+
+#member > .registerSeller table td {
+    position: relative;
+    vertical-align: middle;
+    padding: 10px 20px;
+    text-align: left;
+    line-height: 1.4;
+    border-bottom: 1px solid #dfe5ed;
+    word-break: break-word;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#member > .registerSeller table input {
+    padding: 0 8px;
+    height: 31px;
+    font-size: 14px;
+    border: 1px solid #dfe5ed;
+    vertical-align: middle;
+}
+
+#member > .registerSeller table label {
+    display: inline-block;
+    width: 60px;
+    font-size: 17px;
+}
+
+#member > .registerSeller table .addr input {margin-top: 6px;}
+#member > .registerSeller table .addr th {padding-left: 30px;}
+
+#member > .registerSeller table .essential {
+    color: #ef3f43;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+#member > .registerSeller form input[type="submit"] {
+    display: block;
+    background: #ef3f43;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 72px;
+    margin: 40px auto;
+    border: 0;
+    outline: 0;
+    border-radius: 2px;
+    cursor: pointer;
+}
 
 /* 버튼 */
 .btnConfirm {
