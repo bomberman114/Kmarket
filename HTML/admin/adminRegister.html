@@ -9,13 +9,13 @@
     <script src="../js/gnb.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="./css/admin.css">
 </head>
 <body>
     <div id="admin-wrapper">
         <header>
             <div>
-                <a href="../index.html" class="logo"><img src="../img/admin_logo.png" alt="admin_logo"/></a>
+                <a href="../index.html" class="logo"><img src="./img/admin_logo.png" alt="admin_logo"/></a>
                 <p>
                     <span>홍길동님 반갑습니다.</span>
                     <a href="#">HOME |</a>
@@ -204,73 +204,25 @@
                             </p>
                             <table>
                                 <tr>
-                                    <td>상품번호</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
-                                <tr>
                                     <td>상품상태</td>
-                                    <td><input type="text" name=""/></td>
+                                    <td><input type="text" name="" value="새상품"/></td>
                                 </tr>
                                 <tr>
                                     <td>부가세 면세여부</td>
-                                    <td><input type="text" name=""/></td>
+                                    <td><input type="text" name="" value="과세상품"/></td>
                                 </tr>
                                 <tr>
                                     <td>영수증발행</td>
-                                    <td><input type="text" name=""/></td>
+                                    <td><input type="text" name="" value="발행가능 - 신용카드 전표, 온라인 현금영수증"/></td>
                                 </tr>
                                 <tr>
                                     <td>사업자구분</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
-                                <tr>
-                                    <td>브랜드</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
+                                    <td><input type="text" name="" value="사업자 판매자"/></td>
+                                </tr>                                
                                 <tr>
                                     <td>원산지</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
-                                <tr>
-                                    <td>제품소재</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
-                                <tr>
-                                    <td>색상</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
-                                <tr>
-                                    <td>치수</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
-                                <tr>
-                                    <td>제조자/수입국</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
-                                <tr>
-                                    <td>제조국</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
-                                <tr>
-                                    <td>취급시 주의사항</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
-                                <tr>
-                                    <td>제조연월</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
-                                <tr>
-                                    <td>품질보증기준</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
-                                <tr>
-                                    <td>A/S 책임자와 전화번호</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
-                                <tr>
-                                    <td>주문후 예상 배송기간</td>
-                                    <td><input type="text" name=""/></td>
-                                </tr>
+                                    <td><input type="text" name="" value="국내산"/></td>
+                                </tr>                                
                             </table>                                
                         </section>
                         
@@ -291,5 +243,43 @@
             </div>
         </footer>
     </div>    
-</body>
-</html>
+    <!-- Code injected by live-server -->
+    <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        }
+        else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
+    </body>
+    </html>
