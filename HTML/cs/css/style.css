@@ -310,6 +310,7 @@ footer > ul {
 }
 footer > ul > li {
   display: inline-block;
+  font-weight: bold;
   border-right: 1px solid #d7d7d7;
   padding: 0 10px;
 }
@@ -328,8 +329,8 @@ footer > div {
 footer p {
   float: left;
   height: 100%;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 11px;
+  line-height: 15px;
   color: #676767;
 }
 footer p:nth-of-type(2) {
@@ -342,7 +343,7 @@ footer p > strong {
   display: inline-block;
   padding: 6px 15px 7px 0;
   color: #464646;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
 }
 
