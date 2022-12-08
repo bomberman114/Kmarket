@@ -19,7 +19,7 @@ public class IndexController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		// 관리자메인
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/index.jsp");
 		dispatcher.forward(req, resp);
 	}
