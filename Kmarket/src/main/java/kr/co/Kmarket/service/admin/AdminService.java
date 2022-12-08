@@ -1,5 +1,16 @@
 package kr.co.Kmarket.service.admin;
 
-public class AdminService {
+import kr.co.Kmarket.dao.admin.AdminDao;
+
+public enum AdminService {
+	
+	INSTANCE;
+	private  AdminDao dao;
+	
+	private AdminService() {
+		dao = new AdminDao();
+	}
+		
+		
 
 }

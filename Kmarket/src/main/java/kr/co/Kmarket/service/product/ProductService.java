@@ -1,5 +1,16 @@
 package kr.co.Kmarket.service.product;
 
-public class ProductService {
+import kr.co.Kmarket.dao.product.ProductDao;
+
+public enum ProductService {
+
+	INSTANCE;
+
+	private ProductDao dao;
+
+	private ProductService() {
+
+		dao = new ProductDao();
+	}
 
 }

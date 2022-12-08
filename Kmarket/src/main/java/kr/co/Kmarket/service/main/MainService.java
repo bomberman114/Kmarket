@@ -1,5 +1,15 @@
 package kr.co.Kmarket.service.main;
 
-public class MainService {
+import kr.co.Kmarket.dao.main.MainDao;
+
+public enum MainService {
+
+	INSTANCE;
+
+	private MainDao dao;
+
+	private MainService() {
+		dao = new MainDao();
+	}
 
 }
