@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="./_header.jsp"></jsp:include>
+<jsp:include page="../_header.jsp"></jsp:include>
         <main>
             <aside>
                 <!-- Global Navigation Bar -->
@@ -88,7 +88,7 @@
 
                         <tr>
                             <td><input type="checkbox" name="상품코드"/></td>
-                            <td><img src="./img/sample_thumb.jpg" class="thumb"></td>
+                            <td><img src="/Kmarket/admin/img/sample_thumb.jpg" class="thumb"></td>
                             <td>201603292</td>
                             <td>FreeMovement BLUEFORCE</td>
                             <td>36,000</td>
@@ -104,7 +104,7 @@
                         </tr>
                         <tr>
                             <td><input type="checkbox" name="상품코드"/></td>
-                            <td><img src="./img/sample_thumb.jpg" class="thumb"></td>
+                            <td><img src="/Kmarket/admin/img/sample_thumb.jpg" class="thumb"></td>
                             <td>201603292</td>
                             <td>FreeMovement BLUEFORCE</td>
                             <td>36,000</td>
@@ -120,7 +120,7 @@
                         </tr>
                         <tr>
                             <td><input type="checkbox" name="상품코드"/></td>
-                            <td><img src="./img/sample_thumb.jpg" class="thumb"></td>
+                            <td><img src="/Kmarket/admin/img/sample_thumb.jpg" class="thumb"></td>
                             <td>201603292</td>
                             <td>FreeMovement BLUEFORCE</td>
                             <td>36,000</td>
@@ -172,4 +172,4 @@
                 <!-- 상품목록 컨텐츠 끝 -->
             </section>
         </main>
-       <jsp:include page="./_footer.jsp"></jsp:include>
+       <jsp:include page="../_footer.jsp"></jsp:include>
