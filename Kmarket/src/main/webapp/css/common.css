@@ -204,6 +204,7 @@
     width: 22px;
     font-size: 16px;
     margin-right: 12px;
+    text-align: center;
   }
   
   main > aside > .category > li i.fa-angle-right {

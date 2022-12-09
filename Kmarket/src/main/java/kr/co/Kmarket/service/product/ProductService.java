@@ -9,8 +9,9 @@ public enum ProductService {
 	private ProductDao dao;
 
 	private ProductService() {
-
+		
 		dao = new ProductDao();
+	
 	}
 
 }
