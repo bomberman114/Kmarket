@@ -1,4 +1,4 @@
-package kr.co.Kmarket.controller.cs;
+package kr.co.Kmarket.controller.admin.product;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/cs/noticeView.do")
-public class NoticeViewController extends HttpServlet {
+@WebServlet("/admin/product/list.do")
+public class ListController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -20,7 +20,7 @@ public class NoticeViewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/noticeView.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/list.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

@@ -1,4 +1,4 @@
-package kr.co.Kmarket.controller.cs;
+package kr.co.Kmarket.controller.cs.notice;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/cs/noticeList.do")
-public class NoticeListController extends HttpServlet {
+@WebServlet("/cs/notice/list.do")
+public class ListController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -20,7 +20,7 @@ public class NoticeListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/noticeList.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/notice/list.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

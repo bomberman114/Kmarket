@@ -1,4 +1,4 @@
-package kr.co.Kmarket.controller.cs;
+package kr.co.Kmarket.controller.cs.qna;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/cs/faqList.do")
-public class FaqListController extends HttpServlet {
+@WebServlet("/cs/qna/write.do")
+public class WriteController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -20,7 +20,7 @@ public class FaqListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/faqList.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/qna/write.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
