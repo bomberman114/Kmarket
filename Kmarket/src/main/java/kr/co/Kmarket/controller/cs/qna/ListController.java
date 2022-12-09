@@ -1,4 +1,4 @@
-package kr.co.Kmarket.controller.admin;
+package kr.co.Kmarket.controller.cs.qna;
 
 import java.io.IOException;
 
@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/register.do")
-public class RegisterController extends HttpServlet {
- 
+@WebServlet("/cs/qna/list.do")
+public class ListController extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 	
 	@Override
@@ -20,7 +20,7 @@ public class RegisterController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/register.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/qna/list.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
