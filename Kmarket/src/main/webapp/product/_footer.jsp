@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-
-      <footer>
+<footer>
         <ul>
           <li><a href="#">회사소개</a></li>
           <li><a href="#">서비스이용약관</a></li>
@@ -25,6 +24,7 @@
           </p>
         </div>
       </footer>
+      <button type="button" id="top">상단이동</button>
     </div>
   </body>
 </html>
