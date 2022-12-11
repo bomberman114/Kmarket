@@ -30,10 +30,10 @@
   </security-constraint>
 
   <!-- 필터 설정 -->
-  <!--  
+  
   <filter>
   	<filter-name>AutoLoginFilter</filter-name>
-  	<filter-class>kr.co.jboard2.filter.AutoLoginFilter</filter-class>
+  	<filter-class>kr.co.Kmarket.filter.AutoLoginFilter</filter-class>
   </filter>
   <filter-mapping>
   	<filter-name>AutoLoginFilter</filter-name>
@@ -42,7 +42,7 @@
   
   <filter>
   	<filter-name>LoginCheckFilter</filter-name>
-  	<filter-class>kr.co.kmarket.filter.LoginCheckFilter</filter-class>
+  	<filter-class>kr.co.Kmarket.filter.LoginCheckFilter</filter-class>
   </filter>
   <filter-mapping>
   	<filter-name>LoginCheckFilter</filter-name>
@@ -61,7 +61,7 @@
   	<filter-name>SetCharacterEncodingFilter</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
-  -->
+  
   
   
 </web-app>
