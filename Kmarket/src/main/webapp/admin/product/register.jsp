@@ -63,7 +63,11 @@
                 </nav>
                 <!-- 상품등록 컨텐츠 시작 -->
                 <article>
-                    <form action="/admin/product/register.do" method="post" enctype="multipart/form-data">
+
+                   
+
+                    <form action="#">
+
 
                         <!-- 상품분류 -->
                         <section>
