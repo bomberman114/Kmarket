@@ -9,12 +9,12 @@ public class ProductVo {
 	private String descript;
 	private String company;
 	private String seller;
-	private String price;
-	private String discount;
+	private int price;
+	private int discount;
 	private int point;
 	private int stock;
 	private int sold;
-	private int delivery;
+	private int delovery;
 	private int hit;
 	private int score;
 	private int review;
@@ -25,18 +25,18 @@ public class ProductVo {
 	private String status;
 	private String duty;
 	private String receipt;
-	private String bizTyoe;
-	private String oirgin;
+	private String bizType;
+	private String origin;
 	private String ip;
-	private String rdate;
+	private String rate;
 
 	public ProductVo() {
 	}
 
 	public ProductVo(int prodNo, int prodCate1, int prodCate2, String prodName, String descript, String company,
-			String seller, String price, String discount, int point, int stock, int sold, int delivery, int hit,
-			int score, int review, String thumb1, String thumb2, String thumb3, String detail, String status,
-			String duty, String receipt, String bizTyoe, String oirgin, String ip, String rdate) {
+			String seller, int price, int discount, int point, int stock, int sold, int delovery, int hit, int score,
+			int review, String thumb1, String thumb2, String thumb3, String detail, String status, String duty,
+			String receipt, String bizType, String origin, String ip, String rate) {
 		super();
 		this.prodNo = prodNo;
 		this.prodCate1 = prodCate1;
@@ -50,7 +50,7 @@ public class ProductVo {
 		this.point = point;
 		this.stock = stock;
 		this.sold = sold;
-		this.delivery = delivery;
+		this.delovery = delovery;
 		this.hit = hit;
 		this.score = score;
 		this.review = review;
@@ -61,10 +61,10 @@ public class ProductVo {
 		this.status = status;
 		this.duty = duty;
 		this.receipt = receipt;
-		this.bizTyoe = bizTyoe;
-		this.oirgin = oirgin;
+		this.bizType = bizType;
+		this.origin = origin;
 		this.ip = ip;
-		this.rdate = rdate;
+		this.rate = rate;
 	}
 
 	public int getProdNo() {
@@ -123,19 +123,19 @@ public class ProductVo {
 		this.seller = seller;
 	}
 
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
-	public String getDiscount() {
+	public int getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(String discount) {
+	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
 
@@ -163,12 +163,12 @@ public class ProductVo {
 		this.sold = sold;
 	}
 
-	public int getDelivery() {
-		return delivery;
+	public int getDelovery() {
+		return delovery;
 	}
 
-	public void setDelivery(int delivery) {
-		this.delivery = delivery;
+	public void setDelovery(int delovery) {
+		this.delovery = delovery;
 	}
 
 	public int getHit() {
@@ -251,20 +251,20 @@ public class ProductVo {
 		this.receipt = receipt;
 	}
 
-	public String getBizTyoe() {
-		return bizTyoe;
+	public String getBizType() {
+		return bizType;
 	}
 
-	public void setBizTyoe(String bizTyoe) {
-		this.bizTyoe = bizTyoe;
+	public void setBizType(String bizType) {
+		this.bizType = bizType;
 	}
 
-	public String getOirgin() {
-		return oirgin;
+	public String getOrigin() {
+		return origin;
 	}
 
-	public void setOirgin(String oirgin) {
-		this.oirgin = oirgin;
+	public void setOrigin(String origin) {
+		this.origin = origin;
 	}
 
 	public String getIp() {
@@ -275,12 +275,12 @@ public class ProductVo {
 		this.ip = ip;
 	}
 
-	public String getRdate() {
-		return rdate;
+	public String getRate() {
+		return rate;
 	}
 
-	public void setRdate(String rdate) {
-		this.rdate = rdate;
+	public void setRate(String rate) {
+		this.rate = rate;
 	}
 
 	@Override
@@ -288,10 +288,10 @@ public class ProductVo {
 		return "ProductVo [prodNo=" + prodNo + ", prodCate1=" + prodCate1 + ", prodCate2=" + prodCate2 + ", prodName="
 				+ prodName + ", descript=" + descript + ", company=" + company + ", seller=" + seller + ", price="
 				+ price + ", discount=" + discount + ", point=" + point + ", stock=" + stock + ", sold=" + sold
-				+ ", delivery=" + delivery + ", hit=" + hit + ", score=" + score + ", review=" + review + ", thumb1="
+				+ ", delovery=" + delovery + ", hit=" + hit + ", score=" + score + ", review=" + review + ", thumb1="
 				+ thumb1 + ", thumb2=" + thumb2 + ", thumb3=" + thumb3 + ", detail=" + detail + ", status=" + status
-				+ ", duty=" + duty + ", receipt=" + receipt + ", bizTyoe=" + bizTyoe + ", oirgin=" + oirgin + ", ip="
-				+ ip + ", rdate=" + rdate + "]";
+				+ ", duty=" + duty + ", receipt=" + receipt + ", bizType=" + bizType + ", origin=" + origin + ", ip="
+				+ ip + ", rate=" + rate + "]";
 	}
 
 }

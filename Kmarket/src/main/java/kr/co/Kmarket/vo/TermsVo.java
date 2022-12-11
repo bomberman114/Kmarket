@@ -62,7 +62,7 @@ public class TermsVo {
 
 	@Override
 	public String toString() {
-		return "Terms [terms=" + terms + ", privacy=" + privacy + ", location=" + location + ", finance=" + finance
+		return "TermsVo [terms=" + terms + ", privacy=" + privacy + ", location=" + location + ", finance=" + finance
 				+ ", tax=" + tax + "]";
 	}
 

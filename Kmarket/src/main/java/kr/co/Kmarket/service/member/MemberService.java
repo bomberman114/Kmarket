@@ -13,12 +13,26 @@ public enum MemberService {
 		dao = new MemberDao();
 	}
 
-	public void updateMemberForSessLimitDate(String sessId) {
-		
+	public MemberVo selectMemberBySessId(String sessId) {
+		return dao.selectMemberBySessId(sessId);
 	}
 
-	public MemberVo selectMemberBySessId(String sessId) {
-		return null;
+
+	public MemberVo selectMember(String uid, String pass) {
+		
+		return dao.selectMember(uid, pass);
+	}
+
+	public void updateMemberForSessLimitDate(String sessId) {
+		dao.updateMemberForSessLimitDate(sessId);
+	}
+
+	public void updateMemberForSession(String uid, String sessId) {
+		dao.updateMemberForSession(uid, sessId);
+	}
+
+	public void updateMemberForSessionOut(String uid) {
+		dao.updateMemberForSessionOut(uid);
 	}
 	
 	

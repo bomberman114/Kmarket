@@ -1,6 +1,7 @@
 package kr.co.Kmarket.vo;
 
 public class ProductCate2Vo {
+
 	private int cate1;
 	private int cate2;
 	private String c2Name;

@@ -1,26 +1,25 @@
 package kr.co.Kmarket.vo;
 
 public class MemberVo {
-
 	private String uid;
 	private String pass;
 	private String name;
-	private String gender;
+	private int gender;
 	private String hp;
 	private String email;
-	private String type;
+	private int type;
 	private int point;
-	private String level;
+	private int level;
 	private String zip;
 	private String addr1;
 	private String addr2;
 	private String company;
 	private String ceo;
 	private String bizRegNum;
-	private String comREgNum;
+	private String comRegNum;
 	private String tel;
 	private String manager;
-	private String managerHp;
+	private String ManagerHp;
 	private String fax;
 	private String regip;
 	private String wdate;
@@ -29,10 +28,10 @@ public class MemberVo {
 	public MemberVo() {
 	}
 
-	public MemberVo(String uid, String pass, String name, String gender, String hp, String email, String type,
-			int point, String level, String zip, String addr1, String addr2, String company, String ceo,
-			String bizRegNum, String comREgNum, String tel, String manager, String managerHp, String fax, String regip,
-			String wdate, String rdate) {
+	public MemberVo(String uid, String pass, String name, int gender, String hp, String email, int type, int point,
+			int level, String zip, String addr1, String addr2, String company, String ceo, String bizRegNum,
+			String comRegNum, String tel, String manager, String managerHp, String fax, String regip, String wdate,
+			String rdate) {
 		super();
 		this.uid = uid;
 		this.pass = pass;
@@ -49,10 +48,10 @@ public class MemberVo {
 		this.company = company;
 		this.ceo = ceo;
 		this.bizRegNum = bizRegNum;
-		this.comREgNum = comREgNum;
+		this.comRegNum = comRegNum;
 		this.tel = tel;
 		this.manager = manager;
-		this.managerHp = managerHp;
+		ManagerHp = managerHp;
 		this.fax = fax;
 		this.regip = regip;
 		this.wdate = wdate;
@@ -83,11 +82,11 @@ public class MemberVo {
 		this.name = name;
 	}
 
-	public String getGender() {
+	public int getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
 
@@ -107,11 +106,11 @@ public class MemberVo {
 		this.email = email;
 	}
 
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 
@@ -123,11 +122,11 @@ public class MemberVo {
 		this.point = point;
 	}
 
-	public String getLevel() {
+	public int getLevel() {
 		return level;
 	}
 
-	public void setLevel(String level) {
+	public void setLevel(int level) {
 		this.level = level;
 	}
 
@@ -179,12 +178,12 @@ public class MemberVo {
 		this.bizRegNum = bizRegNum;
 	}
 
-	public String getComREgNum() {
-		return comREgNum;
+	public String getComRegNum() {
+		return comRegNum;
 	}
 
-	public void setComREgNum(String comREgNum) {
-		this.comREgNum = comREgNum;
+	public void setComRegNum(String comRegNum) {
+		this.comRegNum = comRegNum;
 	}
 
 	public String getTel() {
@@ -204,11 +203,11 @@ public class MemberVo {
 	}
 
 	public String getManagerHp() {
-		return managerHp;
+		return ManagerHp;
 	}
 
 	public void setManagerHp(String managerHp) {
-		this.managerHp = managerHp;
+		ManagerHp = managerHp;
 	}
 
 	public String getFax() {
@@ -248,8 +247,8 @@ public class MemberVo {
 		return "MemberVo [uid=" + uid + ", pass=" + pass + ", name=" + name + ", gender=" + gender + ", hp=" + hp
 				+ ", email=" + email + ", type=" + type + ", point=" + point + ", level=" + level + ", zip=" + zip
 				+ ", addr1=" + addr1 + ", addr2=" + addr2 + ", company=" + company + ", ceo=" + ceo + ", bizRegNum="
-				+ bizRegNum + ", comREgNum=" + comREgNum + ", tel=" + tel + ", manager=" + manager + ", managerHp="
-				+ managerHp + ", fax=" + fax + ", regip=" + regip + ", wdate=" + wdate + ", rdate=" + rdate + "]";
+				+ bizRegNum + ", comRegNum=" + comRegNum + ", tel=" + tel + ", manager=" + manager + ", ManagerHp="
+				+ ManagerHp + ", fax=" + fax + ", regip=" + regip + ", wdate=" + wdate + ", rdate=" + rdate + "]";
 	}
 
 }
