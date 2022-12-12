@@ -83,7 +83,7 @@
 				<ul class="category">
 		        	<li><i class="fa fa-bars" aria-hidden="true"></i>카테고리</li>
 		            <li>
-		              <a href="#"><i class="fas fa-tshirt"></i>브랜드 패션<i class="fas fa-angle-right"></i></a>
+		              <a href="#"><i class="fas fa-shopping-bag"></i>브랜드 패션<i class="fas fa-angle-right"></i></a>
 		              <ol>
 		                <li><a href="#">브랜드 여성의류</a></li>
 		                <li><a href="#">브랜드 남성의류</a></li>
@@ -94,7 +94,7 @@
 		              </ol>
 		            </li>
 		            <li>
-		              <a href="#"><i class="fas fa-solid fa-briefcase"></i>패션의류·잡화·뷰티<i class="fas fa-angle-right"></i></a>
+		              <a href="#"><i class="fas fa-tshirt"></i>패션의류·잡화·뷰티<i class="fas fa-angle-right"></i></a>
 		              <ol>
 		                <li><a href="#">여성의류</a></li>
 		                <li><a href="#">남성의류</a></li>
@@ -107,7 +107,7 @@
 		              </ol>
 		            </li>
 		            <li>
-		              <a href="#"><i class="fas fa-solid fa-child"></i>유아동<i class="fas fa-angle-right"></i></a>
+		              <a href="#"><i class="fas fa-baby-carriage"></i>유아동<i class="fas fa-angle-right"></i></a>
 		              <ol>
 		                <li><a href="#">출산/육아</a></li>
 		                <li><a href="#">장난감/완구</a></li>
@@ -141,7 +141,7 @@
 		              </ol>
 		            </li>
 		            <li>
-		              <a href="#"><i class="fas fa-laptop"></i>컴퓨터·디지털·가전<i class="fas fa-angle-right"></i></a>
+		              <a href="#"><i class="fas fa-tv"></i>컴퓨터·디지털·가전<i class="fas fa-angle-right"></i></a>
 		              <ol>
 		                <li><a href="#">노트북/PC</a></li>
 		                <li><a href="#">모니터/프린터</a></li>
@@ -158,7 +158,7 @@
 		              </ol>
 		            </li>
 		            <li>
-		              <a href="#"><i class="fas fa-light fa-futbol"></i>스포츠·건강·렌탈<i class="fas fa-angle-right"></i></a>
+		              <a href="#"><i class="fas fa-running"></i>스포츠·건강·렌탈<i class="fas fa-angle-right"></i></a>
 		              <ol>
 		                <li><a href="#">스포츠의류/운동화</a></li>
 		                <li><a href="#">휘트니스/수영</a></li>
@@ -173,14 +173,14 @@
 		              </ol>
 		            </li>
 		            <li>
-		              <a href="#"><i class="fas fa-sharp fa-solid fa-hammer"></i>자동차·공구<i class="fas fa-angle-right"></i></a>
+		              <a href="#"><i class="fas fa-car"></i>자동차·공구<i class="fas fa-angle-right"></i></a>
 		              <ol>
 		                <li><a href="#">자동차용품</a></li>
 		                <li><a href="#">공구/안전/산업용품</a></li>
 		              </ol>
 		            </li>
 		            <li>
-		              <a href="#"><i class="fas fa-solid fa-plane"></i>여행·도서·티켓·e쿠폰<i class="fas fa-angle-right"></i></a>
+		              <a href="#"><i class="fas fa-book"></i>여행·도서·티켓·e쿠폰<i class="fas fa-angle-right"></i></a>
 		              <ol>
 		                <li><a href="#">여행/항공권</a></li>
 		                <li><a href="#">도서/음반/e교육</a></li>
