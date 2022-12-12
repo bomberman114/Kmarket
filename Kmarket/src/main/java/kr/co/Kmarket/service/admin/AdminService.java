@@ -25,6 +25,11 @@ public enum AdminService {
 		dao = new AdminDao();
 	}
 
+<<<<<<< HEAD
+=======
+	public void insertAdminProduct() {}
+	
+>>>>>>> 1e7503bc1aa058a3cab9fb1d3d1486b324447a82
 	
 	public List<ProductVo> selectAdminProducts(int limitStart) {
 	 	return dao.selectAdminProducts(limitStart);
