@@ -48,31 +48,72 @@ public class RegisterController extends HttpServlet {
 		MultipartRequest mr = service.uploadFile(req, path);
 
 		// multipart 폼 데이터 수신
-		String title = mr.getParameter("title");
-		String content = mr.getParameter("content");
-		String uid = mr.getParameter("uid");
-		String fname = mr.getFilesystemName("fname");
-		String regip = req.getRemoteAddr();
+		String prodNo = mr.getParameter("prodNo");
+		String prodCate1 = mr.getParameter("prodCate1");
+		String prodCate2 = mr.getParameter("prodCate2");
+		String prodName = mr.getParameter("prodName");
+		String descript = mr.getParameter("descript");
+		String company = mr.getParameter("company");
+		String seller = mr.getParameter("seller");
+		String price = mr.getParameter("price");
+		String discount = mr.getParameter("discount");
+		String point = mr.getParameter("point");
+		String stock = mr.getParameter("stock");
+		String sold = mr.getParameter("sold");
+		String delivery = mr.getParameter("delivery");
+		String hit = mr.getParameter("hit");
+		String score = mr.getParameter("score");
+		String review = mr.getParameter("review");
+		String thumb1 = mr.getParameter("thumb1");
+		String thumb2 = mr.getParameter("thumb2");
+		String thumb3 = mr.getParameter("thumb3");
+		String detail = mr.getParameter("detail");
+		String status = mr.getParameter("status");
+		String duty = mr.getParameter("duty");
+		String receipt = mr.getParameter("receipt");
+		String bizType = mr.getParameter("bizType");
+		String origin = mr.getParameter("origin");
+		String ip = req.getRemoteAddr();
 
 		ProductVo product = new ProductVo();
-		/*
-		product.setTitle(title);
-		article.setContent(content);
-		article.setUid(uid);
-		article.setFname(fname);
-		article.setRegip(regip);
-		*/
-
+		
+		product.setProdNo(Integer.parseInt(String.valueOf(prodNo)));
+		product.setProdCate1(Integer.parseInt(String.valueOf(prodCate1)));
+		product.setProdCate2(Integer.parseInt(String.valueOf(prodCate2)));
+		product.setProdName(prodName);
+		product.setDescript(descript);
+		product.setCompany(company);
+		product.setSeller(seller);
+		product.setPrice(Integer.parseInt(String.valueOf(price)));
+		product.setDiscount(Integer.parseInt(String.valueOf(discount)));
+		product.setPoint(Integer.parseInt(String.valueOf(point)));
+		product.setStock(Integer.parseInt(String.valueOf(stock)));
+		product.setSold(Integer.parseInt(String.valueOf(sold)));
+		product.setDelivery(Integer.parseInt(String.valueOf(delivery)));
+		product.setHit(Integer.parseInt(String.valueOf(hit)));
+		product.setScore(Integer.parseInt(String.valueOf(score)));
+		product.setReview(Integer.parseInt(String.valueOf(review)));
+		product.setThumb1(thumb1);
+		product.setThumb2(thumb2);
+		product.setThumb3(thumb3);
+		product.setDetail(detail);
+		product.setStatus(status);
+		product.setDuty(duty);
+		product.setReceipt(receipt);
+		product.setBizType(bizType);
+		product.setOrigin(origin);
+		product.setIp(ip);
+		System.out.println("어드민 컨트롤러:"+product);
 		// 글 등록
-		int parent = service.insertArticle(product);
+		int parent = service.insertAdminProduct(product);
 
 		// 파일을 첨부했으면
-		if (fname != null) {
+		if (thumb1 != null && thumb2 != null && thumb3 != null ) {
 			// 파일명 수정
-			String newName = service.renameFile(fname, uid, path);
+			//String newName = service.renameFile(fname, uid, path);
 
 			// 파일 테이블 Insert
-			service.insertFile(parent, newName, fname);
+		//	service.insertFile(parent, newName, fname);
 		}
 
 		resp.sendRedirect("/Jboard2/list.do");

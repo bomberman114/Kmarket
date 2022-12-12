@@ -11,6 +11,16 @@ public class Sql {
 	public static final String UPDATE_MEMBER_FOR_SESSION_OUT = "UPDATE `km_member` SET `sessId`=NULL, `sessLimitDate`=NULL WHERE `uid`=?";
 	
 	public static final String SELECT_ADMIN_PRODUCTS = "select * from `km_product`";
+
+	public static final String INSERT_ADMIN_PRODUCT = "insert into `km_product` set "
+														+ "`title`=?,"
+														+ "`content`=?,"
+														+ "`file`=?,"
+														+ "`uid`=?,"
+														+ "`regip`=?,"
+														+ "`rdate`=NOW()";
+
+	public static final String SELECT_MAX_NO = null;
 	
 	
 }

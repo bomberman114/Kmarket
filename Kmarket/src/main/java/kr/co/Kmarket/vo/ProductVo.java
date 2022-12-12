@@ -14,7 +14,7 @@ public class ProductVo {
 	private int point;
 	private int stock;
 	private int sold;
-	private int delovery;
+	private int delivery;
 	private int hit;
 	private int score;
 	private int review;
@@ -34,7 +34,7 @@ public class ProductVo {
 	}
 
 	public ProductVo(int prodNo, int prodCate1, int prodCate2, String prodName, String descript, String company,
-			String seller, int price, int discount, int point, int stock, int sold, int delovery, int hit, int score,
+			String seller, int price, int discount, int point, int stock, int sold, int delivery, int hit, int score,
 			int review, String thumb1, String thumb2, String thumb3, String detail, String status, String duty,
 			String receipt, String bizType, String origin, String ip, String rate) {
 		super();
@@ -50,7 +50,7 @@ public class ProductVo {
 		this.point = point;
 		this.stock = stock;
 		this.sold = sold;
-		this.delovery = delovery;
+		this.delivery = delivery;
 		this.hit = hit;
 		this.score = score;
 		this.review = review;
@@ -163,12 +163,12 @@ public class ProductVo {
 		this.sold = sold;
 	}
 
-	public int getDelovery() {
-		return delovery;
+	public int getDelivery() {
+		return delivery;
 	}
 
-	public void setDelovery(int delovery) {
-		this.delovery = delovery;
+	public void setDelivery(int delivery) {
+		this.delivery = delivery;
 	}
 
 	public int getHit() {
@@ -288,7 +288,7 @@ public class ProductVo {
 		return "ProductVo [prodNo=" + prodNo + ", prodCate1=" + prodCate1 + ", prodCate2=" + prodCate2 + ", prodName="
 				+ prodName + ", descript=" + descript + ", company=" + company + ", seller=" + seller + ", price="
 				+ price + ", discount=" + discount + ", point=" + point + ", stock=" + stock + ", sold=" + sold
-				+ ", delovery=" + delovery + ", hit=" + hit + ", score=" + score + ", review=" + review + ", thumb1="
+				+ ", delivery=" + delivery + ", hit=" + hit + ", score=" + score + ", review=" + review + ", thumb1="
 				+ thumb1 + ", thumb2=" + thumb2 + ", thumb3=" + thumb3 + ", detail=" + detail + ", status=" + status
 				+ ", duty=" + duty + ", receipt=" + receipt + ", bizType=" + bizType + ", origin=" + origin + ", ip="
 				+ ip + ", rate=" + rate + "]";
