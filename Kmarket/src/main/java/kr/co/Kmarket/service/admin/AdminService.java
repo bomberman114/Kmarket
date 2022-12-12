@@ -1,5 +1,7 @@
 package kr.co.Kmarket.service.admin;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.oreilly.servlet.MultipartRequest;
@@ -15,6 +17,16 @@ public enum AdminService {
 	private AdminService() {
 		dao = new AdminDao();
 	}
+	
+	public void insertAdminProduct() {}
+	public void selectAdminProduct() {}
+	
+	public List<ProductVo> selectAdminProducts() {
+	 	return dao.selectAdminProducts();
+	}
+	
+	public void updateAdminProduct() {}
+	public void deleteAdminProduct() {}
 
 	public MultipartRequest uploadFile(HttpServletRequest req, String path) {
 		// TODO Auto-generated method stub
