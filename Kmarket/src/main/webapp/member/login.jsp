@@ -9,8 +9,7 @@
                     </p>
                 </nav>
 
-                <form action="#">
-
+                <form action="/Kmarket/member/login.do" method="post">
                     <table border="0">
                         <tr>
                             <td>아이디</td>
@@ -30,8 +29,8 @@
                     </span>
 
                     <a href="#" class="banner"><img src="./img/member_login_banner.jpg" alt="1만원 할인 쿠폰 받기"></a>
-
                 </form>
+                
                 <img src="./img/member_certifi_logo.gif" alt="banner">
             </div>
         </main>

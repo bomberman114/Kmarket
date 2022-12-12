@@ -44,6 +44,7 @@ public class LoginController extends HttpServlet {
 		MemberVo vo = service.selectMember(uid, pass);
 
 		if (vo != null) {
+			
 			// 회원이 맞을경우
 			HttpSession sess = req.getSession();
 			sess.setAttribute("sessUser", vo);

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +17,29 @@
     <div id="admin-wrapper">
         <header>
             <div>
-                <a href="../index.html" class="logo"><img src="/Kmarket/admin/img/admin_logo.png" alt="admin_logo"/></a>
+                <a href="/Kmarket/admin/index.do" class="logo"><img src="/Kmarket/admin/img/admin_logo.png" alt="admin_logo"/></a>
                 <p>
-                    <span>홍길동님 반갑습니다.</span>
-                    <a href="#">HOME |</a>
-                    <a href="#">로그아웃 |</a>
-                    <a href="#">고객센터</a>
+                
+                <c:choose>
+	                <c:when test="${sessUser ne null}">
+		                <span>${sessUser.uid}</span>님 반갑습니다.&nbsp;&nbsp;&nbsp;
+	                </c:when>
+                </c:choose>
+                    
+                    <a href="/Kmarket/admin/index.do">HOME |</a>
+                    
+                    <c:choose>
+		                <c:when test="${sessUser eq null}">
+			                <a href="/Kmarket/member/login.do">로그인 |</a>
+			                <a href="/Kmarket/member/register.do">회원가입 |</a>
+		                </c:when>
+		                <c:otherwise>
+		                	<a href="#">로그아웃 |</a>
+		                </c:otherwise>
+                	</c:choose>
+                
+                   	<a href="#">고객센터</a>
+                    
                 </p>
             </div>
         </header>

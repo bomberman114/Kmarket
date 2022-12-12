@@ -30,10 +30,35 @@ public class ListController extends HttpServlet {
 		
 		logger.info("ListController...");
 		
+		String pg = req.getParameter("pg");
+		
+		// 현재 페이지 번호
+		int currentPage = service.getCurrentPage(pg);
+		
+		// 전체 게시물 갯수
+		int total = service.selectCountTotal();
+		
+		// 마지막 페이지 번호
+		int lastPageNum = service.getLastPageNum(total);
+		
+		// 페이지 그룹 start, end 번호
+		int[] result = service.getPageGroupNum(currentPage, lastPageNum);
+		
+		// 페이지 시작번호
+		int pageStartNum = service.getPageStartNum(total, currentPage);
+		
+		// 시작 인덱스
+		int start = service.getStartNum(currentPage);
+		
 		// 상품 불러오기
-		List<ProductVo> products = service.selectAdminProducts();
+		List<ProductVo> products = service.selectAdminProducts(start);
 		
 		req.setAttribute("products", products);
+		req.setAttribute("currentPage", currentPage);
+		req.setAttribute("lastPageNum", lastPageNum);
+		req.setAttribute("pageGroupStart", result[0]);
+		req.setAttribute("pageGroupEnd", result[1]);
+		req.setAttribute("pageStartNum", pageStartNum+1);
 	
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/product/list.jsp");
 		dispatcher.forward(req, resp);

@@ -13,11 +13,13 @@ public class MemberDao extends DBHelper {
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	public MemberVo selectMember(String uid, String pass) {
+		
 		MemberVo vo = null;
+		
 		try {
-			logger.info("selectUser...");
+			logger.info("selectMember...");
 			conn = getConnection();
-			psmt = conn.prepareStatement(Sql.SELECT_USER);
+			psmt = conn.prepareStatement(Sql.SELECT_MEMBER);
 			psmt.setString(1, uid);
 			psmt.setString(2, pass);
 			rs = psmt.executeQuery();
@@ -48,9 +50,9 @@ public class MemberDao extends DBHelper {
 				vo.setWdate(rs.getString(22));
 				vo.setRdate(rs.getString(22));
 			}
+			close();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			close();
 		}
 		return vo;
 	}
@@ -142,17 +144,20 @@ public class MemberDao extends DBHelper {
 	}
 
 	public void updateMemberForSession(String uid, String sessId) {
+		
 		try {
 			logger.info("updateUserForSession...");
+			
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.UPDATE_MEMBER_FOR_SESSION);
 			psmt.setString(1, sessId);
 			psmt.setString(2, uid);
+			
 			psmt.executeUpdate();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			close();
 		}
+		close();
 	}
 
 	public void updateMemberForSessionOut(String uid) {
