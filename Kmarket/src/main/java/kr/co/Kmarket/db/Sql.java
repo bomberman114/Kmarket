@@ -1,8 +1,6 @@
 package kr.co.Kmarket.db;
 
 public class Sql {
-
-	public static final String SELECT_MEMBER_TERMS = "SELECT * FROM `km_member_terms`";
 	
 	public static final String SELECT_MEMBER  = "select * from `km_member` where `uid`=? and `pass`=SHA2(?, 256)";
 	

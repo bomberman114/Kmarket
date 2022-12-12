@@ -5,19 +5,20 @@
 	$(function(){
 		$('.agree').click(function(){
 			
-			console.log('here1');
-			
 			let isCheck1 = $('input[name=agree1]').is(':checked');
 			let isCheck2 = $('input[name=agree2]').is(':checked');
 			let isCheck3 = $('input[name=agree3]').is(':checked');
 			
-			console.log('here2');
 			if(isCheck1 && isCheck2 && isCheck3) {
-				console.log('here3');
-				location.href = "/Kmarket/member/register.do";
+
+				if(${type=='normal'}){
+					location.href = "/Kmarket/member/register.do";
+				}else if(${type=='seller'}){
+					location.href = "/Kmarket/member/registerSeller.do";
+				}
 				return true;				
 			}else{
-				alert('동의 체크를 하셔야 합니다.');
+				alert('필수 이용약관의 동의를 하셔야합니다.');
 				return false;
 			}
 		});
