@@ -26,13 +26,10 @@ public class SignupController extends HttpServlet {
 	
 		String type = req.getParameter("type");
 		
-		TermsVo vo = service.selectTerms();
+		TermsVo vo = service.selectMemberTerms();
 		
-		if(type == "normal") {
-			
-		}else if(type == "seller") {
-			
-		}
+		req.setAttribute("type", type);
+		req.setAttribute("vo", vo);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/member/signup.jsp");
 		dispatcher.forward(req, resp);

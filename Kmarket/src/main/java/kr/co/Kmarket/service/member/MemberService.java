@@ -23,8 +23,8 @@ public enum MemberService {
 		return dao.selectMember(uid, pass);
 	}
 	
-	public TermsVo selectTerms() {
-		return dao.selectTerms();
+	public TermsVo selectMemberTerms() {
+		return dao.selectMemberTerms();
 	}
 
 	public void updateMemberForSessLimitDate(String sessId) {
