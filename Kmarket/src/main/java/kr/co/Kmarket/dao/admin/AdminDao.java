@@ -17,18 +17,22 @@ public class AdminDao extends DBHelper{
 	public void insertAdminProduct() {}
 	public void selectAdminProduct() {}
 	
-	public List<ProductVo> selectAdminProducts() {
+	public List<ProductVo> selectAdminProducts(int limitStart) {
 		
 		List<ProductVo> products = new ArrayList<>();
+		
 		try {
 			
 			logger.info("selectAdminProducts...");
 			conn = getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(Sql.SELECT_ADMIN_PRODUCTS);
+			psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCTS);
+			psmt.setInt(1, limitStart);
+			
+			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				ProductVo vo = new ProductVo();
+				
 				vo.setThumb1(rs.getString(1));
 				vo.setProdNo(rs.getInt(2));
 				vo.setProdName(rs.getString(3));
@@ -42,14 +46,33 @@ public class AdminDao extends DBHelper{
 				products.add(vo);
 			}
 			close();
-			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 		return products;
 	}
 	
+	// 전체 게시물 갯수
+	public int selectCountTotal() {
+		int total = 0;
+		try {
+			logger.info("selectCountTotal...");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_COUNT_TOTAL);
+			
+			if (rs.next()) {
+				total = rs.getInt(1);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return total;
+	}
+	
 	public void updateAdminProduct() {}
 	public void deleteAdminProduct() {}
+	
 	
 }

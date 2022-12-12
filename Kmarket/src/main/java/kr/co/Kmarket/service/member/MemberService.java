@@ -19,7 +19,6 @@ public enum MemberService {
 	}
 
 	public MemberVo selectMember(String uid, String pass) {
-		
 		return dao.selectMember(uid, pass);
 	}
 	
