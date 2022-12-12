@@ -20,9 +20,8 @@ public class AdminDao extends DBHelper {
 
 
 	public void insertAdminProduct() {}
-	public void selectAdminProduct() {}
 	
-	public List<ProductVo> selectAdminProducts(int limitStart) {
+	
 
 	public int insertAdminProduct(ProductVo product) {
 
@@ -90,7 +89,7 @@ public class AdminDao extends DBHelper {
 	public void selectAdminProduct() {
 	}
 
-	public List<ProductVo> selectAdminProducts() {
+	public List<ProductVo> selectAdminProducts(int limitStart) {
 
 		List<ProductVo> products = new ArrayList<>();
 		
@@ -103,11 +102,6 @@ public class AdminDao extends DBHelper {
 			psmt.setInt(1, limitStart);
 			
 			rs = psmt.executeQuery();
-			
-			while(rs.next()) {
-
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(Sql.SELECT_ADMIN_PRODUCTS);
 
 			while (rs.next()) {
 
@@ -126,9 +120,6 @@ public class AdminDao extends DBHelper {
 				products.add(vo);
 			}
 			close();
-
-
-
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -156,17 +147,6 @@ public class AdminDao extends DBHelper {
 		return total;
 	}
 	
-	public void updateAdminProduct() {}
-	public void deleteAdminProduct() {}
-	
-	
-
-
-	public void updateAdminProduct() {
-	}
-
-	public void deleteAdminProduct() {
-	}
 
 
 }
