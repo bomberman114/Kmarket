@@ -13,9 +13,22 @@ public class Sql {
 	
 	// admin
 	public static final String SELECT_ADMIN_PRODUCTS = "select * from `km_product`";
+
 	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`prodNo`) FROM `km_product` limit ?, 10";
 	
 	
+
+
+	public static final String INSERT_ADMIN_PRODUCT = "insert into `km_product` set "
+														+ "`title`=?,"
+														+ "`content`=?,"
+														+ "`file`=?,"
+														+ "`uid`=?,"
+														+ "`regip`=?,"
+														+ "`rdate`=NOW()";
+
+	public static final String SELECT_MAX_NO = null;
+
 	
 	
 }
