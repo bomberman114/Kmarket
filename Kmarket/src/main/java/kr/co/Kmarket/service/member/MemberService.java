@@ -2,6 +2,7 @@ package kr.co.Kmarket.service.member;
 
 import kr.co.Kmarket.dao.member.MemberDao;
 import kr.co.Kmarket.vo.MemberVo;
+import kr.co.Kmarket.vo.TermsVo;
 
 public enum MemberService {
 
@@ -17,10 +18,13 @@ public enum MemberService {
 		return dao.selectMemberBySessId(sessId);
 	}
 
-
 	public MemberVo selectMember(String uid, String pass) {
 		
 		return dao.selectMember(uid, pass);
+	}
+	
+	public TermsVo selectMemberTerms() {
+		return dao.selectMemberTerms();
 	}
 
 	public void updateMemberForSessLimitDate(String sessId) {

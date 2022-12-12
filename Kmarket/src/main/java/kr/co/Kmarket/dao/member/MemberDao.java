@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import kr.co.Kmarket.db.DBHelper;
 import kr.co.Kmarket.db.Sql;
 import kr.co.Kmarket.vo.MemberVo;
+import kr.co.Kmarket.vo.TermsVo;
 
 public class MemberDao extends DBHelper {
 
@@ -51,6 +52,32 @@ public class MemberDao extends DBHelper {
 			logger.error(e.getMessage());
 			close();
 		}
+		return vo;
+	}
+	
+	public TermsVo selectMemberTerms() {
+		
+		TermsVo vo = null;
+		
+		try {
+			logger.info("selectMemberTerms...");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_MEMBER_TERMS);
+			
+			if(rs.next()) {
+				vo = new TermsVo();
+				vo.setTerms(rs.getString(1));
+				vo.setPrivacy(rs.getString(2));
+				vo.setLocation(rs.getString(3));
+				vo.setFinance(rs.getString(4));
+				vo.setTax(rs.getString(5));
+			}
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
 		return vo;
 	}
 
