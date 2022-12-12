@@ -48,10 +48,10 @@ public class ListController extends HttpServlet {
 		int pageStartNum = service.getPageStartNum(total, currentPage);
 		
 		// 시작 인덱스
-		int start = service.getStartNum(currentPage);
+		int limitStart = service.getStartNum(currentPage);
 		
 		// 상품 불러오기
-		List<ProductVo> products = service.selectAdminProducts(start);
+		List<ProductVo> products = service.selectAdminProducts(limitStart);
 		
 		req.setAttribute("products", products);
 		req.setAttribute("currentPage", currentPage);
