@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.Kmarket.db.DBHelper;
+import kr.co.Kmarket.db.MemberSql;
 import kr.co.Kmarket.db.Sql;
 import kr.co.Kmarket.vo.MemberVo;
 import kr.co.Kmarket.vo.TermsVo;
@@ -55,15 +56,15 @@ public class MemberDao extends DBHelper {
 		return vo;
 	}
 	
-	public TermsVo selectMemberTerms() {
+	public TermsVo selectTerms() {
 		
 		TermsVo vo = null;
 		
 		try {
-			logger.info("selectMemberTerms...");
+			logger.info("selectTerms...");
 			conn = getConnection();
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery(Sql.SELECT_MEMBER_TERMS);
+			rs = stmt.executeQuery(MemberSql.SELECT_TERMS);
 			
 			if(rs.next()) {
 				vo = new TermsVo();
@@ -79,6 +80,30 @@ public class MemberDao extends DBHelper {
 		}
 		
 		return vo;
+	}
+	
+	
+	public int selectCountUid(String uid) {
+		
+		int result = 0;
+		
+		try {
+			logger.info("selectCountUid...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(MemberSql.SELECT_COUNT_UID);
+			psmt.setString(1, uid);
+			
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
 	}
 
 	public MemberVo selectMemberBySessId(String sessId) {
