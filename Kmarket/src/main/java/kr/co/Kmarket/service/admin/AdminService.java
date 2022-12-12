@@ -21,17 +21,12 @@ public enum AdminService {
 		dao = new AdminDao();
 	}
 
-	
 	public void insertAdminProduct() {}
-	public void selectAdminProduct() {}
+	
 	
 	public List<ProductVo> selectAdminProducts(int limitStart) {
 	 	return dao.selectAdminProducts(limitStart);
 	}
-	
-	public void updateAdminProduct() {}
-	public void deleteAdminProduct() {}
-	
 	
 	// paging
 	
@@ -103,11 +98,6 @@ public enum AdminService {
 
 	public void selectAdminProduct() {
 	}
-
-	public List<ProductVo> selectAdminProducts() {
-		return dao.selectAdminProducts();
-	}
-
 
 	public void updateAdminProduct() {
 	}
