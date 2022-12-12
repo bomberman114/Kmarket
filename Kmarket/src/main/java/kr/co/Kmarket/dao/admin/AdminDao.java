@@ -19,14 +19,6 @@ public class AdminDao extends DBHelper {
 
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 
-<<<<<<< HEAD
-=======
-
-	public void insertAdminProduct() {}
-	
-	
-
->>>>>>> 1e7503bc1aa058a3cab9fb1d3d1486b324447a82
 	public int insertAdminProduct(ProductVo product) {
 
 		int parent = 0;
@@ -103,11 +95,7 @@ public class AdminDao extends DBHelper {
 
 			psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCTS);
 			psmt.setInt(1, limitStart);
-<<<<<<< HEAD
 
-=======
-			
->>>>>>> 1e7503bc1aa058a3cab9fb1d3d1486b324447a82
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
@@ -152,7 +140,7 @@ public class AdminDao extends DBHelper {
 		}
 		return total;
 	}
-<<<<<<< HEAD
+
 
 	public void insertFile(int parent, String newName, UUID thumb1, UUID thumb2, UUID thumb3) {
 		try {
@@ -173,9 +161,6 @@ public class AdminDao extends DBHelper {
 			logger.error(e.getMessage());
 		}
 	}
-=======
-	
 
->>>>>>> 1e7503bc1aa058a3cab9fb1d3d1486b324447a82
 
 }
