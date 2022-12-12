@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import kr.co.Kmarket.db.DBHelper;
 import kr.co.Kmarket.db.Sql;
 import kr.co.Kmarket.vo.MemberVo;
+import kr.co.Kmarket.vo.TermsVo;
 
 public class MemberDao extends DBHelper {
 
@@ -51,6 +52,20 @@ public class MemberDao extends DBHelper {
 			logger.error(e.getMessage());
 			close();
 		}
+		return vo;
+	}
+	
+	public TermsVo selectTerms() {
+		
+		TermsVo vo = null;
+		
+		try {
+			logger.info("selectTerms...");
+			
+		}catch(Exception e) {
+			error.
+		}
+		
 		return vo;
 	}
 
