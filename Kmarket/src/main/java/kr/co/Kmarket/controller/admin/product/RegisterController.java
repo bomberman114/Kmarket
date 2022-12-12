@@ -1,6 +1,7 @@
 package kr.co.Kmarket.controller.admin.product;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 

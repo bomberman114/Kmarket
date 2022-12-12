@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.Kmarket.vo.MemberVo;
+
 @WebServlet("/member/register.do")
 public class RegisterController extends HttpServlet {
 
@@ -21,15 +23,30 @@ public class RegisterController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		String uid = req.getParameter("km_uid");
-		String pass = req.getParameter("km_uid");
-		String name = req.getParameter("km_uid");
-		String gender = req.getParameter("km_uid");
-		String hp = req.getParameter("km_uid");
-		String email = req.getParameter("km_uid");
-		String type = req.getParameter("km_uid");
-
+		String pass = req.getParameter("km_pass1");
+		String name = req.getParameter("km_name");
+		String gender = req.getParameter("km_gender");
+		String hp = req.getParameter("km_hp");
+		String email = req.getParameter("km_email");
+		int type = 1;
+		String zip = req.getParameter("km_zip");
+		String addr1 = req.getParameter("km_addr1");
+		String addr2 = req.getParameter("km_addr2");
+		String regip = req.getRemoteAddr();
 		
+		MemberVo member = new MemberVo();
 		
+		member.setUid(uid);
+		member.setPass(pass);
+		member.setName(name);
+		member.setGender(Integer.parseInt(gender));
+		member.setHp(hp);
+		member.setEmail(email);
+		member.setType(type);
+		member.setZip(zip);
+		member.setAddr1(addr1);
+		member.setAddr2(addr2);
+		member.setRegip(regip);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/member/register.jsp");
 		dispatcher.forward(req, resp);

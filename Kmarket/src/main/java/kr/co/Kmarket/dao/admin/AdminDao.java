@@ -22,7 +22,7 @@ public class AdminDao extends DBHelper {
 	public void insertAdminProduct() {}
 	public void selectAdminProduct() {}
 	
-	public List<ProductVo> selectAdminProducts(int limitStart) {
+	public List<ProductVo> selectAdminProducts(int limitStart) {}
 
 	public int insertAdminProduct(ProductVo product) {
 
