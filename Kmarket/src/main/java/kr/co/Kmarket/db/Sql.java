@@ -13,19 +13,40 @@ public class Sql {
 	public static final String SELECT_ADMIN_PRODUCTS = "select * from `km_product`";
 
 	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`prodNo`) FROM `km_product` limit ?, 10";
-	
-	
-
 
 	public static final String INSERT_ADMIN_PRODUCT = "insert into `km_product` set "
-														+ "`title`=?,"
-														+ "`content`=?,"
-														+ "`file`=?,"
-														+ "`uid`=?,"
-														+ "`regip`=?,"
-														+ "`rdate`=NOW()";
+														+ "`prodNo`=?,"
+														+ "`prodCate1`=?,"
+														+ "`prodCate2`=?,"
+														+ "`prodname`=?,"
+														+ "`descript`=?,"
+														+ "`company`=?,"
+														+ "`seller`=?,"
+														+ "`price`=?,"
+														+ "`discount`=?,"
+														+ "`point`=?,"
+														+ "`stock`=?,"
+														+ "`sold`=?,"
+														+ "`delivery`=?,"
+														+ "`hit`=?,"
+														+ "`score`=?,"
+														+ "`review`=?,"
+														+ "`detail`=?,"
+														+ "`status`=?,"
+														+ "`duty`=?,"
+														+ "`receipt`=?,"
+														+ "`bizType`=?,"
+														+ "`origin`=?,"
+														+ "`ip`=?,"
+														+ "`rate`=NOW()";
 
-	public static final String SELECT_MAX_NO = null;
+	public static final String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `km_product`";
+
+	public static final String INSERT_ADMIN_FILE = "insert into `board_file` set "
+													+ "`parent`=?,"
+													+ "`newName`=?,"
+													+ "`oriName`=?";
+										
 
 	
 	

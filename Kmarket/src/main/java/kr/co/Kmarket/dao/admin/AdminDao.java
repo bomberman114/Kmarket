@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,24 +20,18 @@ public class AdminDao extends DBHelper {
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
-	public void insertAdminProduct() {}
-	
-
-
-
 	public int insertAdminProduct(ProductVo product) {
 
-		
 		int parent = 0;
-		
-		try{
+
+		try {
 			Connection conn = getConnection();
 			// 트랜젝션 시작
 			conn.setAutoCommit(false);
-			
+
 			PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_ADMIN_PRODUCT);
 			Statement stmt = conn.createStatement();
-			
+
 			psmt.setInt(1, product.getProdNo());
 			psmt.setInt(2, product.getProdCate1());
 			psmt.setInt(3, product.getProdCate2());
@@ -64,23 +59,23 @@ public class AdminDao extends DBHelper {
 			psmt.setString(25, product.getOrigin());
 			psmt.setString(26, product.getIp());
 			psmt.setString(27, product.getRate());
-			
+
 			psmt.executeUpdate();
 			ResultSet rs = stmt.executeQuery(Sql.SELECT_MAX_NO);
-			
+
 			// 작업확정
 			conn.commit();
-			
-			if(rs.next()){
+
+			if (rs.next()) {
 				parent = rs.getInt(1);
 			}
-			
+
 			rs.close();
 			stmt.close();
 			psmt.close();
 			conn.close();
-			
-		}catch(Exception e){
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
@@ -93,7 +88,7 @@ public class AdminDao extends DBHelper {
 	public List<ProductVo> selectAdminProducts(int limitStart) {
 
 		List<ProductVo> products = new ArrayList<>();
-		
+
 		try {
 
 			logger.info("selectAdminProducts...");
@@ -101,13 +96,13 @@ public class AdminDao extends DBHelper {
 
 			psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCTS);
 			psmt.setInt(1, limitStart);
-			
+
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
 
 				ProductVo vo = new ProductVo();
-				
+
 				vo.setThumb1(rs.getString(1));
 				vo.setProdNo(rs.getInt(2));
 				vo.setProdName(rs.getString(3));
@@ -128,7 +123,6 @@ public class AdminDao extends DBHelper {
 		return products;
 	}
 
-	
 	// 전체 게시물 갯수
 	public int selectCountTotal() {
 		int total = 0;
@@ -137,7 +131,7 @@ public class AdminDao extends DBHelper {
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_COUNT_TOTAL);
-			
+
 			if (rs.next()) {
 				total = rs.getInt(1);
 			}
@@ -147,7 +141,27 @@ public class AdminDao extends DBHelper {
 		}
 		return total;
 	}
-	
+
+
+	public void insertFile(int parent, String newName, UUID thumb1, UUID thumb2, UUID thumb3) {
+		try {
+			Connection conn = getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_ADMIN_FILE);
+			psmt.setInt(1, parent);
+			psmt.setString(2, newName);
+			psmt.setString(3, String.valueOf(thumb1));
+			psmt.setString(4, String.valueOf(thumb2));
+			psmt.setString(5, String.valueOf(thumb3));
+
+			psmt.executeUpdate();
+
+			psmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		}
+	}
 
 
 }

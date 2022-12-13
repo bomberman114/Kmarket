@@ -1,7 +1,11 @@
 package kr.co.Kmarket.service.admin;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,8 +25,7 @@ public enum AdminService {
 		dao = new AdminDao();
 	}
 
-	public void insertAdminProduct() {}
-	
+
 	
 	public List<ProductVo> selectAdminProducts(int limitStart) {
 	 	return dao.selectAdminProducts(limitStart);
@@ -110,19 +113,29 @@ public enum AdminService {
 		return new MultipartRequest(req, path, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 	}
 
-	public String renameFile(String fname, String uid, String path) {
-		// TODO Auto-generated method stub
-		return null;
+
+	public String renameFile(UUID thumb1, UUID thumb2, UUID thumb3, String uid, String path) {
+		int i = String.valueOf(thumb1).lastIndexOf(".");
+		String ext = String.valueOf(thumb1).substring(i);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss_");
+		String now = sdf.format(new Date());
+		String newName = now+uid+ext; // 20221026160417_chhak0503.txt
+		
+		File f1 = new File(path+"/"+thumb1);
+		File f2 = new File(path+"/"+thumb2);
+		File f3 = new File(path+"/"+thumb3);
+		File f4 = new File(path+"/"+newName);
+		
+		f1.renameTo(f4);
+		f2.renameTo(f4);
+		f3.renameTo(f4);
+		
+		return newName;
 	}
 
-	public int insertArticle(ProductVo product) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public void insertFile(int parent, String newName, String fname) {
-		// TODO Auto-generated method stub
-
+	public void insertFile(int parent, String newName, UUID thumb1, UUID thumb2, UUID thumb3) {
+		dao.insertFile(parent, newName, thumb1, thumb2, thumb3);
 	}
 
 }
