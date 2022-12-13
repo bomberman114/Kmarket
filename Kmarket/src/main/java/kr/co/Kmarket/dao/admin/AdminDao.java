@@ -85,7 +85,7 @@ public class AdminDao extends DBHelper {
 	public void selectAdminProduct() {
 	}
 
-	public List<ProductVo> selectAdminProducts(int limitStart) {
+	public List<ProductVo> selectAdminProducts(String uid, int limitStart) {
 
 		List<ProductVo> products = new ArrayList<>();
 
@@ -95,7 +95,8 @@ public class AdminDao extends DBHelper {
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCTS);
-			psmt.setInt(1, limitStart);
+			psmt.setString(1, uid);
+			psmt.setInt(2, limitStart);
 
 			rs = psmt.executeQuery();
 

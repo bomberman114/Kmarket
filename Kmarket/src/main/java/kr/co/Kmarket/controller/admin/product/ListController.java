@@ -31,6 +31,7 @@ public class ListController extends HttpServlet {
 		logger.info("ListController...");
 		
 		String pg = req.getParameter("pg");
+		String uid = req.getParameter("uid");
 		
 		// 현재 페이지 번호
 		int currentPage = service.getCurrentPage(pg);
@@ -51,7 +52,7 @@ public class ListController extends HttpServlet {
 		int limitStart = service.getStartNum(currentPage);
 		
 		// 상품 불러오기
-		List<ProductVo> products = service.selectAdminProducts(limitStart);
+		List<ProductVo> products = service.selectAdminProducts(uid, limitStart);
 		
 		req.setAttribute("products", products);
 		req.setAttribute("currentPage", currentPage);
@@ -59,6 +60,7 @@ public class ListController extends HttpServlet {
 		req.setAttribute("pageGroupStart", result[0]);
 		req.setAttribute("pageGroupEnd", result[1]);
 		req.setAttribute("pageStartNum", pageStartNum+1);
+		req.setAttribute("uid", uid);
 	
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/product/list.jsp");
 		dispatcher.forward(req, resp);
