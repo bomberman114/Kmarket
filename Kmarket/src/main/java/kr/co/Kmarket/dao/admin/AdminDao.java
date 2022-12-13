@@ -21,10 +21,10 @@ public class AdminDao extends DBHelper {
 
 
 
-	public void insertAdminProduct(ProductVo product) {
+	public int insertAdminProduct(ProductVo product) {
 
 
-		int parent = 0;
+		int result = 0;
 
 		try {
 			Connection conn = getConnection();
@@ -69,7 +69,7 @@ public class AdminDao extends DBHelper {
 			conn.commit();
 
 			if (rs.next()) {
-				parent = rs.getInt(1);
+				result = rs.getInt(1);
 			}
 
 			rs.close();
@@ -81,6 +81,7 @@ public class AdminDao extends DBHelper {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
+		return result;
 	}
 
 	public void selectAdminProduct() {

@@ -12,7 +12,7 @@
                 <article>
                     <form action="/Kmarket/admin/product/register.do" method="POST" enctype="multipart/form-data">
                         <!-- 상품분류 -->
-                        <input type="hidden" name="uid" value="${sessUser.uid}"/>
+                        <input type="hidden" name="seller" id="seller" value="${sessUser.name}"/>
                         <section>
                             <h4>상품분류</h4>
                             <p>
@@ -24,10 +24,10 @@
                                     <td>
                                         <select name="prodCate1" onchange="this.form.submit">
                                             <option value="cate0">1차 분류 선택</option>
-                                            <option value="cate11">패션·의류·뷰티</option>
-                                            <option value="cate12">가전·디지털</option>
-                                            <option value="cate13">식품·생필품</option>
-                                            <option value="cate14">홈·문구·취미</option>                                                
+                                            <option value="11">패션·의류·뷰티</option>
+                                            <option value="15">가전·디지털</option>
+                                            <option value="13">식품·생필품</option>
+                                            <option value="14">홈·문구·취미</option>                                                
                                         </select>
                                     </td>
                                 </tr>
@@ -36,10 +36,10 @@
                                     <td>
                                         <select name="prodCate2" onchange="this.form.submit">
                                             <option value="cate0">2차 분류 선택</option>
-                                            <option value="cate21">남성의류</option>
-                                            <option value="cate22">여성의류</option>
-                                            <option value="cate23">잡화</option>
-                                            <option value="cate24">뷰티</option>                                                
+                                            <option value="11">남성의류</option>
+                                            <option value="10">여성의류</option>
+                                            <option value="14">잡화</option>
+                                            <option value="15">쥬얼리</option>                                                
                                         </select>
                                     </td>
                                 </tr>
