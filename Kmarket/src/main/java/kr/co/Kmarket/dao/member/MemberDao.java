@@ -12,6 +12,64 @@ import kr.co.Kmarket.vo.TermsVo;
 public class MemberDao extends DBHelper {
 
 	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	public void insertMember(MemberVo member) {
+		
+		try {
+			logger.info("insertMember...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(MemberSql.INSERT_MEMBER);
+			psmt.setString(1, member.getUid());
+			psmt.setString(2, member.getPass());
+			psmt.setString(3, member.getName());
+			psmt.setInt(4, member.getGender());
+			psmt.setString(5, member.getHp());
+			psmt.setString(6, member.getEmail());
+			psmt.setString(7, member.getZip());
+			psmt.setString(8, member.getAddr1());
+			psmt.setString(9, member.getAddr2());
+			psmt.setString(10, member.getRegip());
+			
+			psmt.executeUpdate();
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+	}
+	
+	public void insertSeller(MemberVo member) {
+		
+		try {
+			logger.info("insertSeller...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(MemberSql.INSERT_SELLER);
+			psmt.setString(1, member.getUid());
+			psmt.setString(2, member.getPass());
+			psmt.setString(3, member.getCompany());
+			psmt.setString(4, member.getCeo());
+			psmt.setString(5, member.getBizRegNum());
+			psmt.setString(6, member.getComRegNum());
+			psmt.setString(7, member.getTel());
+			psmt.setString(8, member.getFax());
+			psmt.setString(9, member.getEmail());
+			psmt.setString(10, member.getZip());
+			psmt.setString(11, member.getAddr1());
+			psmt.setString(12, member.getAddr2());
+			psmt.setString(13, member.getName());
+			psmt.setInt(14, member.getGender());
+			psmt.setString(15, member.getHp());
+			psmt.setString(16, member.getRegip());
+			
+			psmt.executeUpdate();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+	}
 
 	public MemberVo selectMember(String uid, String pass) {
 		
