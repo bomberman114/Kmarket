@@ -32,13 +32,13 @@ public class RegisterController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/register.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/Kmarket/admin/register.jsp");
 		dispatcher.forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		System.out.println("상품등록 도착");
 		// 파일 업로드
 		ServletContext ctx = req.getServletContext();
 		String path = ctx.getRealPath("/file");
@@ -68,7 +68,7 @@ public class RegisterController extends HttpServlet {
 		String receipt = mr.getParameter("receipt"); // 영수증 발행
 		String bizType = mr.getParameter("bizType"); // 사업자 구분
 		String origin = mr.getParameter("origin"); // 원산지
-		String ip = req.getRemoteAddr(); // 상품등로 ip
+		String ip = req.getRemoteAddr(); // 상품등록 ip
 
 		ProductVo product = new ProductVo();
 		if (thumb11 != null && thumb22 != null && thumb33 != null) {
@@ -105,12 +105,8 @@ public class RegisterController extends HttpServlet {
 
 			// 파일을 첨부했으면
 
-		} else if (thumb11 == null || thumb22 == null || thumb33 == null) {
-			resp.sendRedirect("kmarket/admin/product/register.do");
+			resp.sendRedirect("/Kmarket/admin/product/register.jsp?success");
+
 		}
-
-		resp.sendRedirect("kmarket/admin/product/register.do");
-
 	}
-
 }
