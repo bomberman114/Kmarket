@@ -42,7 +42,7 @@ public class LogoutController extends HttpServlet {
 		// 데이터베이스 사용자 sessId update
 		service.updateMemberForSessionOut(uid);
 		
-		resp.sendRedirect("/Kamrket/member/login.do?success=200");
+		resp.sendRedirect("/Kmarket/member/login.do?success=200");
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

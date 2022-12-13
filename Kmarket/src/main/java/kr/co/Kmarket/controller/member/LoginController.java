@@ -66,7 +66,7 @@ public class LoginController extends HttpServlet {
 
 		} else {
 			// 회원이 아닌경우
-			resp.sendRedirect("/Kamrket/member/login.do?success=100");
+			resp.sendRedirect("/Kmarket/member/login.do?success=100");
 		}
 	}
 

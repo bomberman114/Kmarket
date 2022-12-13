@@ -5,6 +5,7 @@
             <section id="admin-product-list">
                 <nav>
                     <h3>상품목록</h3>
+	                    
                     <p>
                         HOME > 상품관리 > <strong>상품목록</strong>
                     </p>
@@ -12,14 +13,21 @@
                 <!-- 상품목록 컨텐츠 시작 -->                                
                 <section>
                     <div>
-                        <select name="search">
-                            <option value="search1">상품명</option>
-                            <option value="search1">상품코드</option>
-                            <option value="search1">제조사</option>
-                            <option value="search1">판매자</option>                                    
-                        </select>
-                        <input type="text" name="search">
+                    	<form action="/Kmarket/admin/product/list.do">
+	                        <select name="search">
+	                            <option value="search1">상품명</option>
+	                            <option value="search1">상품코드</option>
+	                            <option value="search1">제조사</option>
+	                            <option value="search1">판매자</option>                                    
+	                        </select>
+	                        <input type="text" name="search" placeholder="키워드 검색">
+	                        <input type="submit" value="검색">
+                        </form>
                     </div>
+                    
+                    <form action="/Kmarket/admin/product/list.do" method="post" enctype="multipart/form-data">
+                    	<input type="text" name="uid" value="${sessUser.uid}">
+	                </form>
                     
                     <table>
                         <tr>

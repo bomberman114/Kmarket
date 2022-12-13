@@ -22,7 +22,7 @@
                 
                 <c:choose>
 	                <c:when test="${sessUser ne null}">
-		                <span>${sessUser.uid}</span>님 반갑습니다.&nbsp;&nbsp;&nbsp;
+		                <span>${sessUser.name}님 반갑습니다.</span>
 	                </c:when>
                 </c:choose>
                     
@@ -30,11 +30,12 @@
                     
                     <c:choose>
 		                <c:when test="${sessUser eq null}">
+		                	<!-- <a href="/Kmarket/admin/index.do">관리자 |</a> 관리자면 관리자만 들어올 수 있도록 -->
 			                <a href="/Kmarket/member/login.do">로그인 |</a>
 			                <a href="/Kmarket/member/register.do">회원가입 |</a>
 		                </c:when>
 		                <c:otherwise>
-		                	<a href="#">로그아웃 |</a>
+		                	<a href="/Kmarket/member/logout.do">로그아웃 |</a>
 		                </c:otherwise>
                 	</c:choose>
                 

@@ -24,7 +24,7 @@
                                 <th><span class="essential">*</span>비밀번호</th>
                                 <td>
                                     <input type="password" name="km_pass1" placeholder="비밀번호 입력" required>
-                                    <span class="msgPass1">영문, 숫자, 특수문자를 조합하여 8~12자까지 설정해 주세요.</span>
+                                    <span class="msgPass1">영문, 숫자, 특수문자를 조합하여 8~16자까지 설정해 주세요.</span>
                                 </td>
                             </tr>
                             <tr>

@@ -426,7 +426,7 @@ cursor: pointer;
 }
 
 #member > .registerSeller table .addr input {margin-top: 6px;}
-#member > .registerSeller table .addr th {padding-left: 30px;}
+#member > .registerSeller table .addr th {padding-left: 20px;}
 
 #member > .registerSeller table .essential {
     color: #ef3f43;
