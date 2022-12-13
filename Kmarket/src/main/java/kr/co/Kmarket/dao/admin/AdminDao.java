@@ -86,7 +86,7 @@ public class AdminDao extends DBHelper {
 	public void selectAdminProduct() {
 	}
 
-	public List<ProductVo> selectAdminProducts(String uid, int limitStart) {
+	public List<ProductVo> selectAdminProducts(int limitStart) {
 
 		List<ProductVo> products = new ArrayList<>();
 
@@ -96,8 +96,7 @@ public class AdminDao extends DBHelper {
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCTS);
-			psmt.setString(1, uid);
-			psmt.setInt(2, limitStart);
+			psmt.setInt(1, limitStart);
 
 			rs = psmt.executeQuery();
 
@@ -119,6 +118,51 @@ public class AdminDao extends DBHelper {
 			}
 			close();
 
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return products;
+	}
+	
+	public List<ProductVo> selectAdminProductsByKeyword(String category, String keyword, int limitStart) {
+		
+		List<ProductVo> products = new ArrayList<>();
+		
+		try {
+			logger.info("selectAdminProductsByKeyword...");
+			conn = getConnection();
+			
+			if(category.equals("prodName")) {
+				psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCTS_BY_PRODNAME);	
+			}else if(category.equals("prodNo")) {
+				psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCTS_BY_PRODNO);
+			}else if(category.equals("company")) {
+				psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCTS_BY_COMPANY);
+			}else if(category.equals("seller")) {
+				psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCTS_BY_SELLER);
+			}
+			psmt.setString(1, "%"+keyword+"%");
+			psmt.setInt(2, limitStart);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductVo vo = new ProductVo();
+				
+				vo.setThumb1(rs.getString(1));
+				vo.setProdNo(rs.getInt(2));
+				vo.setProdName(rs.getString(3));
+				vo.setPrice(rs.getInt(4));
+				vo.setDiscount(rs.getInt(5));
+				vo.setPoint(rs.getInt(6));
+				vo.setStock(rs.getInt(7));
+				vo.setSeller(rs.getString(8));
+				vo.setHit(rs.getInt(9));
+				
+				products.add(vo);
+			}
+			
+			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}

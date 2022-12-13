@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page session="false" %>
 <jsp:include page="./_header.jsp"></jsp:include>
         <main id="member">
             <div class="login">

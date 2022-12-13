@@ -25,10 +25,12 @@ public enum AdminService {
 		dao = new AdminDao();
 	}
 
-
+	public List<ProductVo> selectAdminProducts(int limitStart) {
+	 	return dao.selectAdminProducts(limitStart);
+	}
 	
-	public List<ProductVo> selectAdminProducts(String uid, int limitStart) {
-	 	return dao.selectAdminProducts(uid, limitStart);
+	public List<ProductVo> selectAdminProductsByKeyword(String category, String keyword, int limitStart) {
+		return dao.selectAdminProductsByKeyword(category, keyword, limitStart);
 	}
 	
 	// paging

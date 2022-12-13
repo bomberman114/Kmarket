@@ -31,7 +31,8 @@ public class ListController extends HttpServlet {
 		logger.info("ListController...");
 		
 		String pg = req.getParameter("pg");
-		String uid = req.getParameter("uid");
+		String keyword = req.getParameter("keyword");
+		String category = req.getParameter("category");
 		
 		// 현재 페이지 번호
 		int currentPage = service.getCurrentPage(pg);
@@ -52,7 +53,15 @@ public class ListController extends HttpServlet {
 		int limitStart = service.getStartNum(currentPage);
 		
 		// 상품 불러오기
-		List<ProductVo> products = service.selectAdminProducts(uid, limitStart);
+		List<ProductVo> products = null;
+		
+		if(keyword==null) {
+			// 키워드 전송을 하지 않았을 경우
+			products = service.selectAdminProducts(limitStart);
+		}else {
+			// 키워드가 전송되었을 경우
+			products = service.selectAdminProductsByKeyword(category, keyword, limitStart);
+		}
 		
 		req.setAttribute("products", products);
 		req.setAttribute("currentPage", currentPage);
@@ -60,7 +69,6 @@ public class ListController extends HttpServlet {
 		req.setAttribute("pageGroupStart", result[0]);
 		req.setAttribute("pageGroupEnd", result[1]);
 		req.setAttribute("pageStartNum", pageStartNum+1);
-		req.setAttribute("uid", uid);
 	
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/product/list.jsp");
 		dispatcher.forward(req, resp);
@@ -68,6 +76,7 @@ public class ListController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 	}
 	
 }
