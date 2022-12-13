@@ -95,8 +95,8 @@ public enum AdminService {
 	
 
 
-	public int insertAdminProduct(ProductVo product) {
-		return dao.insertAdminProduct(product);
+	public void insertAdminProduct(ProductVo product) {
+		dao.insertAdminProduct(product);
 	}
 
 	public void selectAdminProduct() {
@@ -134,8 +134,6 @@ public enum AdminService {
 		return newName;
 	}
 
-	public void insertFile(int parent, String newName, UUID thumb1, UUID thumb2, UUID thumb3) {
-		dao.insertFile(parent, newName, thumb1, thumb2, thumb3);
-	}
+
 
 }

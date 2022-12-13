@@ -42,10 +42,7 @@ public class Sql {
 
 	public static final String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `km_product`";
 
-	public static final String INSERT_ADMIN_FILE = "insert into `board_file` set "
-													+ "`parent`=?,"
-													+ "`newName`=?,"
-													+ "`oriName`=?";
+	
 										
 
 	
