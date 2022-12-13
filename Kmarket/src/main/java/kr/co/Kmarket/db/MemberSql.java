@@ -33,6 +33,7 @@ public class MemberSql {
 												+ "`managerHp`=?,"
 												+ "`regip`=?,"
 												+ "`type`=2,"
+												+ "`level`=5,"												
 												+ "`rdate`=NOW()";
 	
 	public static final String SELECT_TERMS = "SELECT * FROM `km_member_terms`";
