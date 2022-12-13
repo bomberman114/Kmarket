@@ -485,4 +485,20 @@ cursor: pointer;
     box-sizing: border-box;
 }
 
-.btnNext:hover {background-color: #036dde;}
+.btnNext:hover {background-color: #036dde;} 
+
+/* 회원등록 관련 버튼 스타일 */
+#member .btnCommon {
+	padding: 0 8px;
+    background-color: #f4f6f9;
+    height: 31px;
+    font-size: 14px;
+    border: 1px solid #dfe5ed;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+#member .zip {
+	position:relative;
+	bottom: -3px;
+}
