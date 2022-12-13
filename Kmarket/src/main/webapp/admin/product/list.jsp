@@ -13,22 +13,18 @@
                 <!-- 상품목록 컨텐츠 시작 -->                                
                 <section>
                     <div>
-                    	<form action="/Kmarket/admin/product/list.do">
-	                        <select name="search">
-	                            <option value="search1">상품명</option>
-	                            <option value="search1">상품코드</option>
-	                            <option value="search1">제조사</option>
-	                            <option value="search1">판매자</option>                                    
+                    	 <form name="keywordForm" action="/Kmarket/admin/product/list.do" method="get">
+	                        <select name="category" id="category">
+	                            <option value="prodName">상품명</option>
+	                            <option value="prodNo">상품코드</option>
+	                            <option value="company">제조사</option>
+	                            <option value="seller">판매자</option>                                    
 	                        </select>
-	                        <input type="text" name="search" placeholder="키워드 검색">
+	                        <input id="keyword" name="keyword" type="text" placeholder="키워드 검색">
 	                        <input type="submit" value="검색">
-                        </form>
+	                        <!-- <input type="text" name="uid" value="${sessUser.uid}"> seller와 uid로 조인 -->
+	                      </form>
                     </div>
-                    
-                    <form action="/Kmarket/admin/product/list.do" method="post" enctype="multipart/form-data">
-                    	<input type="text" name="uid" value="${sessUser.uid}">
-	                </form>
-                    
                     <table>
                         <tr>
                             <th><input type="checkbox" name="all"/></th>

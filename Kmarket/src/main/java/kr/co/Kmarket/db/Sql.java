@@ -10,9 +10,14 @@ public class Sql {
 	public static final String UPDATE_MEMBER_FOR_SESSION_OUT = "UPDATE `km_member` SET `sessId`=NULL, `sessLimitDate`=NULL WHERE `uid`=?";
 	
 	// admin
-	public static final String SELECT_ADMIN_PRODUCTS = "select * from `km_product`";
+	public static final String SELECT_ADMIN_PRODUCTS = "select * from `km_product` limit ?, 10";
+	
+	public static final String SELECT_ADMIN_PRODUCTS_BY_PRODNAME = "select * from `km_product` where `prodName` like ? limit ?, 10";
+	public static final String SELECT_ADMIN_PRODUCTS_BY_PRODNO = "select * from `km_product` where `prodNo` like ? limit ?, 10";
+	public static final String SELECT_ADMIN_PRODUCTS_BY_COMPANY = "select * from `km_product` where `company` like ? limit ?, 10";
+	public static final String SELECT_ADMIN_PRODUCTS_BY_SELLER = "select * from `km_product` where `seller` like ? limit ?, 10";
 
-	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`prodNo`) FROM `km_product` limit ?, 10";
+	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`prodNo`) FROM `km_product`";
 
 	public static final String INSERT_ADMIN_PRODUCT = "insert into `km_product` set "
 														+ "`prodNo`=?,"
