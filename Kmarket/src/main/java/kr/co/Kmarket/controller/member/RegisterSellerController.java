@@ -43,9 +43,8 @@ public class RegisterSellerController extends HttpServlet {
 		String zip = req.getParameter("kms_zip");
 		String addr1 = req.getParameter("kms_addr1");
 		String addr2 = req.getParameter("kms_addr2");
-		String name = req.getParameter("km_name");
-		String gender = req.getParameter("km_gender");
-		String hp = req.getParameter("km_hp");
+		String manager = req.getParameter("km_name");
+		String managerHp = req.getParameter("km_hp");
 		String regip = req.getRemoteAddr();
 	
 		MemberVo member = new MemberVo();
@@ -62,9 +61,8 @@ public class RegisterSellerController extends HttpServlet {
 		member.setZip(zip);
 		member.setAddr1(addr1);
 		member.setAddr2(addr2);
-		member.setName(name);
-		member.setGender(Integer.parseInt(gender));
-		member.setHp(hp);
+		member.setManager(manager);
+		member.setManagerHp(managerHp);
 		member.setRegip(regip);
 		
 		service.insertSeller(member);

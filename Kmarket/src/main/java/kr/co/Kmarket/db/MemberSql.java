@@ -29,9 +29,8 @@ public class MemberSql {
 												+ "`zip`=?,"
 												+ "`addr1`=?,"
 												+ "`addr2`=?,"
-												+ "`name`=?,"
-												+ "`gender`=?,"
-												+ "`hp`=?,"
+												+ "`manager`=?,"
+												+ "`managerHp`=?,"
 												+ "`regip`=?,"
 												+ "`type`=2,"
 												+ "`rdate`=NOW()";

@@ -58,10 +58,9 @@ public class MemberDao extends DBHelper {
 			psmt.setString(10, member.getZip());
 			psmt.setString(11, member.getAddr1());
 			psmt.setString(12, member.getAddr2());
-			psmt.setString(13, member.getName());
-			psmt.setInt(14, member.getGender());
-			psmt.setString(15, member.getHp());
-			psmt.setString(16, member.getRegip());
+			psmt.setString(13, member.getManager());
+			psmt.setString(14, member.getManagerHp());
+			psmt.setString(15, member.getRegip());
 			
 			psmt.executeUpdate();
 			

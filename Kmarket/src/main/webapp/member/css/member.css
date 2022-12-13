@@ -498,7 +498,7 @@ cursor: pointer;
     vertical-align: middle;
 }
 
-#member > .register .zip {
+#member .zip {
 	position:relative;
 	bottom: -3px;
 }
