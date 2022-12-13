@@ -19,6 +19,7 @@ public class AdminDao extends DBHelper {
 
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 
+
 	public int insertAdminProduct(ProductVo product) {
 
 		int parent = 0;
