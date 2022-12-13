@@ -12,6 +12,18 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="/Kmarket/admin/css/admin.css">
+    <script>
+    
+		$(function (){
+			
+    		if(listForm.keyword.length==0){
+    			alert("검색어를 입력해주세요.");
+    			listForm.keyword.focus();
+    			return;
+    		}
+    	});
+
+    </script>
 </head>
 <body>
     <div id="admin-wrapper">
@@ -19,28 +31,10 @@
             <div>
                 <a href="/Kmarket/admin/index.do" class="logo"><img src="/Kmarket/admin/img/admin_logo.png" alt="admin_logo"/></a>
                 <p>
-                
-                <c:choose>
-	                <c:when test="${sessUser ne null}">
-		                <span>${sessUser.name}님 반갑습니다.</span>
-	                </c:when>
-                </c:choose>
-                    
+					<span>${sessUser.ceo}님 반갑습니다.</span>
                     <a href="/Kmarket/admin/index.do">HOME |</a>
-                    
-                    <c:choose>
-		                <c:when test="${sessUser eq null}">
-		                	<!-- <a href="/Kmarket/admin/index.do">관리자 |</a> 관리자면 관리자만 들어올 수 있도록 -->
-			                <a href="/Kmarket/member/login.do">로그인 |</a>
-			                <a href="/Kmarket/member/register.do">회원가입 |</a>
-		                </c:when>
-		                <c:otherwise>
-		                	<a href="/Kmarket/member/logout.do">로그아웃 |</a>
-		                </c:otherwise>
-                	</c:choose>
-                
+		            <a href="/Kmarket/member/logout.do">로그아웃 |</a>
                    	<a href="#">고객센터</a>
-                    
                 </p>
             </div>
         </header>
