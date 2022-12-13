@@ -8,6 +8,8 @@
 	let regName = /^[ㄱ-힣]+$/;
 	let regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	let regHp = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
+	let regCorpNum = /^\d{3}-\d{2}-\d{5}$/;
+	let regTel = /^(0(2|3[1-3]|4[1-4]|5[1-5]|6[1-4]))-(\d{3,4})-(\d{4})$/;
 	
 	// 폼 데이터 검증 결과 상태변수
 	let isUidOk = false;
@@ -17,6 +19,9 @@
 	let isEmailOk = false;
 	let isEmailAuthOk = false;
 	let isHpOk = false;
+	let isCorpNumOk = false;
+	let isTelOk = false;
+	let isCeoOk = false;
 	
 	// 인증번호 전송 중복클릭 방지
 	let preventDoubleClick = false;
@@ -44,7 +49,7 @@
 			isNameOk = false;
 		});
 		
-		$('input[name=km_email]').keydown(function(){
+		$('input[name=kms_email]').keydown(function(){
 			// 이메일 인증이 완료되었을 경우 초기화x 
 			if(isEmailAuthOk){return;}
 			
@@ -60,6 +65,20 @@
 			isHpOk = false;
 		});
 		
+		$('input[name=kms_corp_reg]').keydown(function(){
+			$('.msgCorp').css('color', 'black').text('- 표시 포함 12자리 입력, 예) 123-45-67890');
+			isCorpNumOk = false;
+		});
+		
+		$('input[name=kms_tel]').keydown(function(){
+			$('.msgTel').css('color', 'black').text('- 표시 포함, 지역번호 포함 입력, 예) 02-234-1234');
+			isTelOk = false;
+		});
+		
+		$('input[name=kms_ceo]').keydown(function(){
+			$('.msgCeo').css('color', 'black').text('');
+			isCeoOk = false;
+		});
 		
 		// 아이디 검사하기
 		$('.btnIdCheck').click(function(){
@@ -165,7 +184,7 @@
 			
 		$('.btnEmailAuth').click(function(){
 			
-			let email = $('input[name=km_email]').val();
+			let email = $('input[name=kms_email]').val();
 			
 			if(email == ''){
 				$('.msgEmail').css('color', 'red').text('이메일을 입력하세요.');
@@ -233,7 +252,7 @@
 			
 			if(code == emailCode){
 				isEmailAuthOk = true;
-				$('input[name=km_email]').attr('readonly', true);
+				$('input[name=kms_email]').attr('readonly', true);
 				$('.msgEmail').css('color', 'green').text('이메일이 인증되었습니다.');
 				$('.auth').hide();
 			}else {
@@ -260,9 +279,61 @@
 			}
 		});
 		
+		// 사업자인증번호 검사
+		$('input[name=kms_corp_reg]').focusout(function() {
+			
+			let corpNum = $('input[name=kms_corp_reg]').val();
+			
+			if(corpNum == ''){
+				return;
+			}
+			
+			if(!corpNum.match(regCorpNum)){
+				isCorpNumOk = false;
+				$('.msgCorp').css('color', 'red').text('유효한 사업자등록번호 형식이 아닙니다.');
+			}else {
+				isCorpNumOk = true;
+			}
+		});
+		
+		// 전화번호 검사
+		$('input[name=kms_tel]').focusout(function() {
+			
+			let tel = $('input[name=kms_tel]').val();
+			
+			if(tel == ''){
+				return;
+			}
+			
+			if(!tel.match(regTel)){
+				isTelOk = false;
+				$('.msgTel').css('color', 'red').text('유효한 전화번호 형식이 아닙니다.');
+			}else {
+				isTelOk = true;
+			}
+		});
+		
+		// 대표자 이름 검사
+		$('input[name=kms_ceo]').focusout(function() {
+			
+			let ceo = $('input[name=kms_ceo]').val();
+			
+			if(ceo == ''){
+				return;
+			}
+			
+			if(!ceo.match(regName)){
+				isCeoOk = false;
+				$('.msgCeo').css('color', 'red').text('유효한 이름이 아닙니다.');
+			}else {
+				isCeoOk = true;
+			}
+		});
+		
+		
 		// 최종 폼 전송
-		$('.register > form').submit(function() {
-
+		$('.registerSeller > form').submit(function() {
+			
 			// 아이디 검증
 			if (!isUidOk) {
 				alert('아이디를 확인하십시오.');
@@ -300,6 +371,32 @@
 			// 휴대폰 검증
 			if (!isHpOk) {
 				alert('휴대폰이 유효하지 않습니다.');
+				return false;
+			}
+			
+			// 사업자등록번호 검증
+			if (!isCorpNumOk) {
+				alert('사업자등록번호가 유효하지 않습니다.');
+				return false;
+			}
+			
+			// 전화번호 검증
+			if (!isTelOk) {
+				alert('전화번호가 유효하지 않습니다.');
+				return false;
+			}
+			
+			// 주소 검증
+			let addr1 = $('input[name=kms_addr1]').val();
+			
+			if (addr1 == ''){
+				alert('주소를 입력하셔야 합니다.');
+				return false;
+			}
+			
+			// 대표자 이름 검증
+			if (!isCeoOk) {
+				alert('대표자 이름이 유효하지 않습니다.');
 				return false;
 			}
 
