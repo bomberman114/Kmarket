@@ -21,16 +21,15 @@ public class Sql {
 														+ "`prodname`=?,"
 														+ "`descript`=?,"
 														+ "`company`=?,"
-														+ "`seller`=?,"
+														+ "`seller`=?," //판매자
 														+ "`price`=?,"
 														+ "`discount`=?,"
 														+ "`point`=?,"
 														+ "`stock`=?,"
-														+ "`sold`=?,"
 														+ "`delivery`=?,"
-														+ "`hit`=?,"
-														+ "`score`=?,"
-														+ "`review`=?,"
+														+ "`thumb1`=?,"
+														+ "`thumb2`=?,"
+														+ "`thumb3`=?,"
 														+ "`detail`=?,"
 														+ "`status`=?,"
 														+ "`duty`=?,"
@@ -42,10 +41,7 @@ public class Sql {
 
 	public static final String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `km_product`";
 
-	public static final String INSERT_ADMIN_FILE = "insert into `board_file` set "
-													+ "`parent`=?,"
-													+ "`newName`=?,"
-													+ "`oriName`=?";
+	
 										
 
 	

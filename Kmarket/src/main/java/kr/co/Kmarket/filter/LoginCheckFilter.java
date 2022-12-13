@@ -28,6 +28,7 @@ public class LoginCheckFilter implements Filter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// 필터를 동작할 요청주소 리스트 구성
+		/*
 		uriList = new ArrayList<>();
 		uriList.add("/Kmarket/admin/index.do");
 		uriList.add("/Kmarket/admin/product/list.do");
@@ -36,6 +37,7 @@ public class LoginCheckFilter implements Filter {
 		uriList.add("/Kmarket/product/order.do");
 		uriList.add("/Kmarket/product/complete.do");
 		uriList.add("/Kmarket/cs/qna/write.do");
+		*/
 	}
 
 	@Override

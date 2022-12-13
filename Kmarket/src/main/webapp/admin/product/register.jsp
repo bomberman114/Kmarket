@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../_header.jsp"></jsp:include>
+<<script src="/Kmarket/admin/js/validation.js"></script>
             <section id="admin-product-register">
                 <nav>
                     <h3>상품등록</h3>
@@ -9,7 +10,7 @@
                 </nav>
                 <!-- 상품등록 컨텐츠 시작 -->
                 <article>
-                    <form action="/Kmarket/admin/product/register.do" method="POST">
+                    <form action="/Kmarket/admin/product/register.do" method="POST" enctype="multipart/form-data">
                         <!-- 상품분류 -->
                         <input type="hidden" name="uid" value="${sessUser.uid}"/>
                         <section>
@@ -54,66 +55,66 @@
                             <table>
                                 <tr>
                                     <td>상품명</td>
-                                    <td><input type="text" name="prodName"/></td>
+                                    <td><input type="text" name="prodName" id="prodName"/></td>
                                 </tr>
                                 <tr>
                                     <td>기본설명</td>
                                     <td>
                                         <span>상품명 하단에 상품에 대한 추가적인 설명이 필요한 경우에 입력</span>
-                                        <input type="text" name="descript"/>
+                                        <input type="text" name="descript" id="descript"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>제조사</td>
-                                    <td><input type="text" name="company"/></td>
+                                    <td><input type="text" name="company" id="company"/></td>
                                 </tr>
                                 <tr>
                                     <td>판매가격</td>
-                                    <td><input type="text" name="price"/>&nbsp;원</td>
+                                    <td><input type="text" name="price" id="price"/>&nbsp;원</td>
                                 </tr>                                    
                                 <tr>
                                     <td>할인율</td>
                                     <td>
                                         <span>0을 입력하면 할인율 없음</span>
-                                        <input type="text" name="discount"/>&nbsp;원
+                                        <input type="text" name="discount" id="discount"/>&nbsp;원
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>포인트</td>
                                     <td>
                                         <span>0을 입력하면 포인트 없음</span>
-                                        <input type="text" name="point"/>&nbsp;점
+                                        <input type="text" name="point" id="point"/>&nbsp;점
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>재고수량</td>
-                                    <td><input type="text" name="stock"/>&nbsp;개</td>
+                                    <td><input type="text" name="stock" id="stock"/>&nbsp;개</td>
                                 </tr>
                                 <tr>
                                     <td>배송비</td>
                                     <td>
                                         <span>0을 입력하면 배송비 무료</span>
-                                        <input type="text" name="delivery"/>&nbsp;원
+                                        <input type="text" name="delivery" id="delivery"/>&nbsp;원
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>상품 썸네일</td>
                                     <td>
                                         <span>크기 190 x 190, 상품 목록에 출력될 이미지 입니다. </span>
-                                        <input type="file" name="thumb1"/>
+                                        <input type="file" name="thumb1" id="thumb1"/>
 
                                         <span>크기 230 x 230, 상품 메인에 출력될 이미지 입니다. </span>
-                                        <input type="file" name="thumb2"/>
+                                        <input type="file" name="thumb2" id="thumb2"/>
 
                                         <span>크기 456 x 456, 상품 상세에 출력될 이미지 입니다. </span>
-                                        <input type="file" name="thumb3"/>
+                                        <input type="file" name="thumb3" id="thumb3"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>상세 상품정보</td>
                                     <td>
                                         <span>크기 가로 940px 높이 제약없음, 크기 최대 1MB, 상세페이지 상품정보에 출력될 이미지 입니다.</span>
-                                        <input type="file" name="detail"/>
+                                        <input type="file" name="detail" id="detail"/>
                                     </td>
                                 </tr>
                             </table>                                
@@ -128,23 +129,23 @@
                             <table>
                                 <tr>
                                     <td>상품상태</td>
-                                    <td><input type="text" name="status" value="새상품"/></td>
+                                    <td><input type="text" name="status" id="status" value="새상품"/></td>
                                 </tr>
                                 <tr>
                                     <td>부가세 면세여부</td>
-                                    <td><input type="text" name="duty" value="과세상품"/></td>
+                                    <td><input type="text" name="duty" id="duty"  value="과세상품"/></td>
                                 </tr>
                                 <tr>
                                     <td>영수증발행</td>
-                                    <td><input type="text" name="receipt" value="발행가능 - 신용카드 전표, 온라인 현금영수증"/></td>
+                                    <td><input type="text" name="receipt" id="receipt" value="발행가능 - 신용카드 전표, 온라인 현금영수증"/></td>
                                 </tr>
                                 <tr>
                                     <td>사업자구분</td>
-                                    <td><input type="text" name="bizType" value="사업자 판매자"/></td>
+                                    <td><input type="text" name="bizType" id="bizType" value="사업자 판매자"/></td>
                                 </tr>                                
                                 <tr>
                                     <td>원산지</td>
-                                    <td><input type="text" name="origin" value="국내산"/></td>
+                                    <td><input type="text" name="origin" id="origin" value="국내산"/></td>
                                 </tr>                                
                             </table>                                
                         </section>
