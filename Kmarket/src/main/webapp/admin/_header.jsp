@@ -31,7 +31,7 @@
             <div>
                 <a href="/Kmarket/admin/index.do" class="logo"><img src="/Kmarket/admin/img/admin_logo.png" alt="admin_logo"/></a>
                 <p>
-					<span>${sessUser.ceo}님 반갑습니다.</span>
+					<span>${sessUser.name}님 반갑습니다.</span>
                     <a href="/Kmarket/admin/index.do">HOME |</a>
 		            <a href="/Kmarket/member/logout.do">로그아웃 |</a>
                    	<a href="#">고객센터</a>

@@ -1,27 +1,26 @@
 package kr.co.Kmarket.controller.admin.product;
 
 import java.io.IOException;
-import java.util.UUID;
-
-import javax.servlet.RequestDispatcher;
-
-import javax.servlet.ServletContext;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.co.Kmarket.service.admin.AdminService;
 import kr.co.Kmarket.vo.ProductVo;
 
 @WebServlet("/admin/product/register.do")
+@MultipartConfig(maxFileSize = 1024 * 1024 * 2, maxRequestSize = 1024 * 1024 * 5)
 public class RegisterController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private AdminService service = AdminService.INSTANCE;
 
@@ -32,81 +31,40 @@ public class RegisterController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/Kmarket/admin/register.jsp");
-		dispatcher.forward(req, resp);
+		// 카테고리1 리스트 불러오기
+		service.selectcate1();
+		req.setAttribute("vos", service.selectcate1());
+		req.getRequestDispatcher("/admin/product/register.jsp").forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("상품등록 도착");
+		req.setCharacterEncoding("UTF-8");
+
+		// 업로드 디렉터리의 물리적 경로 확인
+		String cate1 = req.getParameter("category1");
+		String cate2 = req.getParameter("category2");
+		String saveDirectory = "/home/kmarket/thumb/" + cate1 + "/" + cate2 + "/";
+
+		// 디렉토리 생성
+		service.dirCreate(saveDirectory);
+
+		ProductVo product = service.insertProductVO(req);
+
 		// 파일 업로드
-		ServletContext ctx = req.getServletContext();
-		String path = ctx.getRealPath("/file");
+		product = service.uploadFile2(req, saveDirectory, product);
 
-		MultipartRequest mr = service.uploadFile(req, path);
-		String uid = mr.getParameter("uid");
+		// 데이터 베이스 처리
+		int result = service.insertAdminProduct(product);
 
-		// multipart 폼 데이터 수신
-		String prodCate1 = mr.getParameter("prodCate1"); // 1차카테고리
-		String prodCate2 = mr.getParameter("prodCate2"); // 2차 카테고리
-		String prodName = mr.getParameter("prodName"); // 상품명
-		String descript = mr.getParameter("descript"); // 기본설명
-		String company = mr.getParameter("company"); // 제조회사
-		String seller = mr.getParameter("uid"); // 판매자
-		String price = mr.getParameter("price"); // 판매가격
-		String discount = mr.getParameter("discount"); // 할인율
-		String point = mr.getParameter("point"); // 포인트
-		String stock = mr.getParameter("stock"); // 재고수량
-		String delivery = mr.getParameter("delivery");// 배송비
-		// UUID로 변환을 위해서 숫자를 더붙임
-		String thumb11 = mr.getParameter("thumb1"); // 썸내일 이미지1
-		String thumb22 = mr.getParameter("thumb2"); // 썸내일 이미지2
-		String thumb33 = mr.getParameter("thumb3"); // 썸내일 이미지3
-		String detail = mr.getParameter("detail"); // 상세페이지 이미지
-		String status = mr.getParameter("status"); // 제품상태
-		String duty = mr.getParameter("duty"); // 부가세 면세여부
-		String receipt = mr.getParameter("receipt"); // 영수증 발행
-		String bizType = mr.getParameter("bizType"); // 사업자 구분
-		String origin = mr.getParameter("origin"); // 원산지
-		String ip = req.getRemoteAddr(); // 상품등록 ip
+		// 이동
+		if (result == 0) {
+			logger.debug("실패"); // 실패시
+		} else {
+			logger.debug("성공");
 
-		ProductVo product = new ProductVo();
-		if (thumb11 != null && thumb22 != null && thumb33 != null) {
-
-			product.setProdCate1(Integer.parseInt(String.valueOf(prodCate1)));
-			product.setProdCate2(Integer.parseInt(String.valueOf(prodCate2)));
-			product.setProdName(prodName);
-			product.setDescript(descript);
-			product.setCompany(company);
-			product.setSeller(seller);
-			product.setPrice(Integer.parseInt(String.valueOf(price)));
-			product.setDiscount(Integer.parseInt(String.valueOf(discount)));
-			product.setPoint(Integer.parseInt(String.valueOf(point)));
-			product.setStock(Integer.parseInt(String.valueOf(stock)));
-			product.setDelivery(Integer.parseInt(String.valueOf(delivery)));
-			UUID thumb1 = UUID.fromString(thumb11);
-			UUID thumb2 = UUID.fromString(thumb22);
-			UUID thumb3 = UUID.fromString(thumb33);
-
-			product.setThumb1(String.valueOf(thumb1));
-			product.setThumb2(String.valueOf(thumb2));
-			product.setThumb3(String.valueOf(thumb3));
-			product.setDetail(detail);
-			product.setStatus(status);
-			product.setDuty(duty);
-			product.setReceipt(receipt);
-			product.setBizType(bizType);
-			product.setOrigin(origin);
-			product.setIp(ip);
-
-			System.out.println("어드민 컨트롤러:" + product);
-			// 글 등록
-			service.insertAdminProduct(product);
-
-			// 파일을 첨부했으면
-
-			resp.sendRedirect("/Kmarket/admin/product/register.jsp?success");
-
-		}
+		} // 성공시
+		System.out.println("성공?");
+		resp.sendRedirect("/Kmarket/admin/product/register.do");
 	}
 }

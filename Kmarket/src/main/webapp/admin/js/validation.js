@@ -1,6 +1,30 @@
 /**
  * 
  */
+
+/* 
+$(function(){
+	// 카테고리1값 변경시
+	$('select[name=prodCate1]').change(()=>{
+		const cate1 = $('select[name=prodCate1]').val();
+		
+		$.get('/Kmarket/admin/product/getCate2.do?cate1='+cate1,(data)=>{
+			// 카테고리2값 넣기전 비우기
+			$('select[name=prodCate2]').empty();
+			$('select[name=prodCate2]').append("<option value='cate0'>2차 분류 선택</option>");
+			for(let c of data) {
+				// 카테고리2값 입력
+				$('select[name=prodCate2]').append("<option value='"+c.cate2+"'>"+c.c2Name+"</option>");
+			}
+		});
+	});
+	
+		});	
+	*/	
+	
+
+
+ 
  
  $(document).submit(function(e) {
 		var prodNameEl = document.getElementById('prodName');
@@ -132,4 +156,3 @@
 	        return false;
 	    }
 	})
-	

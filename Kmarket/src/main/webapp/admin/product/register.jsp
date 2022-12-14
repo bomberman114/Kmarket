@@ -1,6 +1,68 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../_header.jsp"></jsp:include>
-<<script src="/Kmarket/admin/js/validation.js"></script>
+<script src="/Kmarket/admin/js/validation.js"></script>
+<script>
+
+	
+$(function(){
+	
+	$('select[name=prodCate1]').change(function(){
+		
+		
+		let cate1 = $(this).val();
+		//alert(cate1);
+		/*var prodCate2El = document.getElementById('prodCate2');
+		var prodName = prodNameEl.value
+		removeAllchild('select[name=prodCate2]');
+		*/
+		$.ajax({
+	        url : '/Kmarket/admin/product/getCate2.do',
+	        method: 'get',
+	        data: { "cate1" : cate1 } ,
+	        dataType : 'json',
+	        success : function ( data ){
+	        	$('select[name=prodCate2]').empty();
+				$('select[name=prodCate2]').append("<option value='cate0'>2차 분류 선택</option>");
+	           var html = "";
+	           $.each(data, function(index, item) {
+		             html  = "<option value='"+item.cate2+"'>"+item.c2Name+"</option>";
+		             $('select[name=prodCate2]').append(html);
+	           });
+	        }
+	      });//$.ajax end
+	});
+});
+	/*
+	   $('#cate1').on('click', 'a', function(e){
+		   
+	      var clickedSaletButton = $('#cate1').text();
+	      data: { cate1 : clickedSaleButton }
+	      alert(clickedSaleButton);
+		
+		  $.ajax({
+	        url : '/Kmarket/admin/product/getCate2.do',
+	        method: 'get',
+	        data: { cate1 : selectbox } ,
+	        dataType : 'String',
+	        success : function ( data ){
+	           var html = "";
+	           $.each(json.items, function(index, item) {
+		      	   	 html  += '<c:forEach var="c" items="${ cate2 }">'; 
+		             html  += '<option value="${ c.cate2 }">${ c.c2Name }</option>';
+		             html  += '</c:forEach>';
+		        
+	           });
+	            $('#cate2').html(html);
+	           }
+	          
+	      });//$.ajax end
+	}); //$function end
+	
+});
+*/
+
+</script>
             <section id="admin-product-register">
                 <nav>
                     <h3>상품등록</h3>
@@ -12,7 +74,7 @@
                 <article>
                     <form action="/Kmarket/admin/product/register.do" method="POST" enctype="multipart/form-data">
                         <!-- 상품분류 -->
-                        <input type="hidden" name="uid" value="${sessUser.uid}"/>
+                        <input type="hidden" name="seller" id="seller" value="${sessUser.uid}"/>
                         <section>
                             <h4>상품분류</h4>
                             <p>
@@ -20,28 +82,23 @@
                             </p>
                             <table>
                                 <tr>
-                                    <td>1차 분류</td>
-                                    <td>
-                                        <select name="prodCate1" onchange="this.form.submit">
-                                            <option value="cate0">1차 분류 선택</option>
-                                            <option value="cate11">패션·의류·뷰티</option>
-                                            <option value="cate12">가전·디지털</option>
-                                            <option value="cate13">식품·생필품</option>
-                                            <option value="cate14">홈·문구·취미</option>                                                
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2차 분류</td>
-                                    <td>
-                                        <select name="prodCate2" onchange="this.form.submit">
-                                            <option value="cate0">2차 분류 선택</option>
-                                            <option value="cate21">남성의류</option>
-                                            <option value="cate22">여성의류</option>
-                                            <option value="cate23">잡화</option>
-                                            <option value="cate24">뷰티</option>                                                
-                                        </select>
-                                    </td>
+                              <td>1차 분류</td>
+                            <td>
+                                <select name="prodCate1">
+                                    <option value="cate0">1차 분류 선택</option>
+                                    <c:forEach var="c" items="${ vos }">
+                                    	<option value="${ c.cate1 }">${ c.c1Name }</option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2차 분류</td>
+                            <td>
+                                <select name="prodCate2">
+                                    <option value="cate0">2차 분류 선택</option>
+                                </select>
+                            </td>
                                 </tr>
                             </table>
                         </section>
@@ -137,7 +194,7 @@
                                 </tr>
                                 <tr>
                                     <td>영수증발행</td>
-                                    <td><input type="text" name="receipt" id="receipt" value="발행가능 - 신용카드 전표, 온라인 현금영수증"/></td>
+                                    <td><input type="text" name="receipt" id="receipt" value="발행가능"/></td>
                                 </tr>
                                 <tr>
                                     <td>사업자구분</td>
