@@ -287,6 +287,7 @@ button[type=submit] {
 }
 
 
+
 /* admin-index */
 #admin-index {}        
 
@@ -434,6 +435,10 @@ button[type=submit] {
     width: 100px;
     margin-top: 10px;
 }
+#admin-product-list > section input[type = submit] {
+	width: 50px;
+	padding: 6px;
+}
 
 #admin-product-list .paging {
     width: 100%;
@@ -473,3 +478,4 @@ button[type=submit] {
     color: #fe434c;
     font-weight: bold;
 }
+
