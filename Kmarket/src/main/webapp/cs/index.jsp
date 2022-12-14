@@ -4,7 +4,7 @@
         <div class="main">
           <h1 class="title"><strong>케이마켓</strong>이 도와드릴게요!</h1>              
           <section class="notice">
-            <h1>공지사항<a href="./notice/list.html">전체보기</a></h1>
+            <h1>공지사항<a href="/Kmarket/cs/notice/list.do">전체보기</a></h1>
             <ul>
               <li>
                 <a href="#" class="title">[안내] 해외결제 사칭 문자 주의</a>
@@ -30,29 +30,29 @@
           </section>
         
           <section class="faq">
-            <h1>자주 묻는 질문<a href="./faq/list.html">전체보기</a>
+            <h1>자주 묻는 질문<a href="/Kmarket/cs/faq/list.do">전체보기</a>
             </h1>
             <ol>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=1"><span>회원</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=1"><span>회원</span></a>
               </li>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=2"><span>쿠폰/이벤트</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=2"><span>쿠폰/이벤트</span></a>
               </li>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=3"><span>주문/결제</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=3"><span>주문/결제</span></a>
               </li>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=4"><span>배송</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=4"><span>배송</span></a>
               </li>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=5"><span>취소/반품/교환</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=5"><span>취소/반품/교환</span></a>
               </li>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=6"><span>여행/숙박/항공</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=6"><span>여행/숙박/항공</span></a>
               </li>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=7"><span>안전거래</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=7"><span>안전거래</span></a>
               </li>
             </ol>
           </section>
@@ -60,11 +60,11 @@
           <section class="qna">
             <h1>
               문의하기
-              <a href="#">전체보기</a>
+              <a href="/Kmarket/cs/qna/list.do?cate1=1">전체보기</a>
             </h1>
             <ul>
               <li>
-                <a href="./qna/list.html" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
+                <a href="#" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
                 <p>
                   <span class="uid">hi0</span>
                   <span class="date">22.10.31</span>
