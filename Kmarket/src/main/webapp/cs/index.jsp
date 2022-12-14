@@ -34,25 +34,25 @@
             </h1>
             <ol>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=1"><span>회원</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=1"><span>회원</span></a>
               </li>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=2"><span>쿠폰/이벤트</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=2"><span>쿠폰/이벤트</span></a>
               </li>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=3"><span>주문/결제</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=3"><span>주문/결제</span></a>
               </li>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=4"><span>배송</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=4"><span>배송</span></a>
               </li>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=5"><span>취소/반품/교환</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=5"><span>취소/반품/교환</span></a>
               </li>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=6"><span>여행/숙박/항공</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=6"><span>여행/숙박/항공</span></a>
               </li>
               <li>
-                <a href="/Kmarket/cs/qna/write.do?cate1=7"><span>안전거래</span></a>
+                <a href="/Kmarket/cs/faq/list.do?cate1=7"><span>안전거래</span></a>
               </li>
             </ol>
           </section>
