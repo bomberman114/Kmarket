@@ -158,7 +158,7 @@ public enum AdminService {
 		//int point = (int) (Integer.parseInt(req.getParameter("price")) * (1 - (discount / 100))) / 100;
 
 		// product.setSeller(req.getParameter("uid"));
-
+		
 		product.setSeller(req.getParameter("seller"));
 		product.setProdName(req.getParameter("prodName"));
 		product.setProdCate1(Integer.parseInt(String.valueOf(req.getParameter("prodCate1"))));
