@@ -86,7 +86,7 @@
                             <a href="#" class="next">다음</a>
                         </div>
 
-                        <a href="./qnaWrite.html" class="btnWrite">문의하기</a>
+                        <a href="/Kmarket/cs/qna/write.do?cate1=1" class="btnWrite">문의하기</a>
 
                     </article>
                 </section>

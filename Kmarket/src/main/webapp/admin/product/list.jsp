@@ -14,14 +14,15 @@
                 <section>
                     <div>
                     	 <form name="keywordForm" action="/Kmarket/admin/product/list.do" method="get">
-	                        <select name="category" id="category">
+	                        <select name="category">
 	                            <option value="prodName">상품명</option>
 	                            <option value="prodNo">상품코드</option>
 	                            <option value="company">제조사</option>
 	                            <option value="seller">판매자</option>                                    
 	                        </select>
-	                        <input id="keyword" name="keyword" type="text" placeholder="키워드 검색">
+	                        <input name="keyword" type="text" placeholder="키워드 검색">
 	                        <input type="submit" value="검색">
+	                        
 	                        <!-- <input type="text" name="uid" value="${sessUser.uid}"> seller와 uid로 조인 -->
 	                      </form>
                     </div>

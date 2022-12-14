@@ -12,18 +12,6 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="/Kmarket/admin/css/admin.css">
-    <script>
-    
-		$(function (){
-			
-    		if(listForm.keyword.length==0){
-    			alert("검색어를 입력해주세요.");
-    			listForm.keyword.focus();
-    			return;
-    		}
-    	});
-
-    </script>
 </head>
 <body>
     <div id="admin-wrapper">
