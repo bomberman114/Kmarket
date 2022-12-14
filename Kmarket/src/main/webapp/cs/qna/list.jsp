@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="../_header.jsp"></jsp:include>
         <section id="cs">
             <div class="qna">
@@ -29,25 +30,43 @@
                         <table>
                         	<c:forEach var="article" items="${articles}">
                             <tr>
-                                <td><a href="./qnaView.html">[가입] ${article.title}</a></td>
-                                <td>${(article.uid).substring(0,2)}**</td>
-                                <td>${article.rdate}</td>
+                                <td><a href="/Kmarket/cs/qna/view.do">[${article.c2Name}] ${article.title}</a></td>
+                                <c:choose>
+                                	<c:when test="${article.comment eq 0}">
+                                		<td style="color:#A0A0A0; font-size:16px">검토중</td>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<td style="color:#0080FF; font-size:16px">답변완료</td>
+                                	</c:otherwise>
+                                </c:choose>
+                                <td>${(article.uid).substring(0,3)}**</td>
+                                <td>
+                                	<fmt:parseDate value="${article.rdate}" var="rdate" pattern="yyyy-MM-dd HH:mm:ss"/>
+									<fmt:formatDate value="${rdate}" pattern="yy.MM.dd"/> 
+                                </td>
                             </tr>
                             </c:forEach>
+                            <c:if test="${total eq 0}">
+                            <tr>
+                                <td colspan="4" align="center" style="font-size:16px">등록된 문의글이 없습니다.</td>
+                            </tr>
+                            </c:if>
                         </table>
 
                         <div class="page">
-                            <a href="#" class="prev">이전</a>
-                            <a href="#" class="num on">1</a>
-                            <a href="#" class="num">2</a>
-                            <a href="#" class="num">3</a>
-                            <a href="#" class="next">다음</a>
+                        	<c:if test="${pageGroupStart > 1}">
+                            <a href="/Kmarket/cs/qna/list.do?cate1=${cate1}&pg=${pageGroupStart-1}" class="prev">이전</a>
+                           	</c:if>
+                           	<c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}">
+                           	<a href="/Kmarket/cs/qna/list.do?cate1=${cate1}&pg=${i}" class="num ${currentPage == i ? 'on':'off'}">${i}</a>
+                           	</c:forEach>
+                           	<c:if test="${pageGroupEnd < lastPageNum}">
+                            <a href="/Kmarket/cs/qna/list.do?cate1=${cate1}&pg=${pageGroupEnd+1}" class="next">다음</a>
+                            </c:if>
                         </div>
-
-
+                        
                         <a href="/Kmarket/cs/qna/write.do?cate1=${cate1}" class="btnWrite">문의하기</a>
-
-
+                   
                     </article>
                 </section>
             </div>

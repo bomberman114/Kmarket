@@ -58,9 +58,9 @@ public enum CsService {
 	
 	public int[] getPageGroupNum(int currentPage, int lastPageNum) {
 		
-		int pageGroupCurrent = (int)Math.ceil(currentPage / 10.0);
-		int pageGroupStart = (pageGroupCurrent -1) * 10 + 1;
-		int pageGroupEnd = pageGroupCurrent * 10;
+		int pageGroupCurrent = (int)Math.ceil(currentPage / 5.0);
+		int pageGroupStart = (pageGroupCurrent -1) * 5 + 1;
+		int pageGroupEnd = pageGroupCurrent * 5;
 		
 		if(pageGroupEnd > lastPageNum) {
 			pageGroupEnd = lastPageNum;
