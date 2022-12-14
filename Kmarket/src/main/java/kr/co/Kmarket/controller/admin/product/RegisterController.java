@@ -53,9 +53,12 @@ public class RegisterController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 
 		// 업로드 디렉터리의 물리적 경로 확인
-		String cate1 = req.getParameter("category1");
-		String cate2 = req.getParameter("category2");
-		String saveDirectory = "/home/kmarket/thumb/" + cate1 + "/" + cate2 + "/";
+		ServletContext ctx = req.getServletContext();
+		String path = ctx.getRealPath("/thumb");
+		
+		String cate1 = req.getParameter("prodCate1");
+		String cate2 = req.getParameter("prodCate2");
+		String saveDirectory = path + "/" + cate1 + "/" + cate2 + "/";
 
 		// 디렉토리 생성
 		service.dirCreate(saveDirectory);
@@ -76,6 +79,7 @@ public class RegisterController extends HttpServlet {
 
 		} // 성공시
 		System.out.println("성공?");
+		System.out.println("product"+product);
 		resp.sendRedirect("/Kmarket/admin/product/register.do");
 
 	}
