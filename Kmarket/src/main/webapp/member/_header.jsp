@@ -36,7 +36,7 @@
             </div>
             <div class="logo">
                 <div>
-                    <a href="../index.html"><img src="/Kmarket/img/header_logo.png" alt="로고"></a>   
+                    <a href="/Kmarket/index.do"><img src="/Kmarket/img/header_logo.png" alt="로고"></a>   
                 </div>
             </div>
         </header>

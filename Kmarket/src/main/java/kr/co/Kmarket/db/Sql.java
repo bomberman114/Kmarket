@@ -19,32 +19,36 @@ public class Sql {
 
 	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`prodNo`) FROM `km_product`";
 
-	public static final String INSERT_ADMIN_PRODUCT = "insert into `km_product` set "
-														+ "`prodNo`=?,"
-														+ "`prodCate1`=?,"
-														+ "`prodCate2`=?,"
-														+ "`prodname`=?,"
-														+ "`descript`=?,"
-														+ "`company`=?,"
-														+ "`seller`=?," //판매자
-														+ "`price`=?,"
-														+ "`discount`=?,"
-														+ "`point`=?,"
-														+ "`stock`=?,"
-														+ "`delivery`=?,"
-														+ "`thumb1`=?,"
-														+ "`thumb2`=?,"
-														+ "`thumb3`=?,"
-														+ "`detail`=?,"
-														+ "`status`=?,"
-														+ "`duty`=?,"
-														+ "`receipt`=?,"
-														+ "`bizType`=?,"
-														+ "`origin`=?,"
-														+ "`ip`=?,"
-														+ "`rate`=NOW()";
+	public static final String INSERT_ADMIN_PRODUCT = 	"INSERT INTO `km_product` SET "
+														+ "`prodCate1`=?, "
+														+ "`prodCate2`=?, "
+														+ "`prodName`=?, "
+														+ "`descript`=?, "
+														+ "`company`=?, "
+														+ "`seller`=?, "
+														+ "`price`=?, "
+														+ "`discount`=?, "
+														+ "`point`=?, "
+														+ "`stock`=?, "
+														+ "`delivery`=?, "
+														+ "`thumb1`=?, "
+														+ "`thumb2`=?, "
+														+ "`thumb3`=?, "
+														+ "`detail`=?, "
+														+ "`status`=?, "
+														+ "`duty`=?, "
+														+ "`receipt`=?, "
+														+ "`bizType`=?, "
+														+ "`origin`=?, "
+														+ "`ip`=?, "
+														+ "`rdate`=NOW()";
+	
 
 	public static final String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `km_product`";
+
+	public static final String SELECT_ADMIN_PRODUCT_CATE1 = "SELECT * FROM `km_product_cate1`";
+
+	public static final String SELECT_ADMIN_PRODUCT_CATE2 = "SELECT * FROM `km_product_cate2` WHERE `cate1`=?";
 
 	
 										

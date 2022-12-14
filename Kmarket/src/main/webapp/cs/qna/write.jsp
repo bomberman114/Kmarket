@@ -12,6 +12,7 @@
                     <aside>
                         <h2>문의하기</h2>
                         <ul>
+
                             <li class="${cate1 eq '1' ? 'on':'off'}"><a href="/Kmarket/cs/qna/write.do?cate1=1">회원</a></li>
                             <li class="${cate1 eq '2' ? 'on':'off'}"><a href="/Kmarket/cs/qna/write.do?cate1=2">쿠폰/이벤트</a></li>
                             <li class="${cate1 eq '3' ? 'on':'off'}"><a href="/Kmarket/cs/qna/write.do?cate1=3">주문/결제</a></li>
@@ -19,6 +20,7 @@
                             <li class="${cate1 eq '5' ? 'on':'off'}"><a href="/Kmarket/cs/qna/write.do?cate1=5">취소/반품/교환</a></li>
                             <li class="${cate1 eq '6' ? 'on':'off'}"><a href="/Kmarket/cs/qna/write.do?cate1=6">여행/숙박/항공</a></li>
                             <li class="${cate1 eq '7' ? 'on':'off'}"><a href="/Kmarket/cs/qna/write.do?cate1=7">안전거래</a></li>
+
                         </ul>
                     </aside>
                     <article>
@@ -27,6 +29,7 @@
                                 <tr>
                                     <td>문의유형</td>
                                     <td>
+
 	                                    <c:if test="${cate1 eq 1}">
 	                                        <select name="type">
 	                                            <option value="0">선택</option>
@@ -72,6 +75,7 @@
 	                                            <option>로그인</option>
 	                                        </select>
 	                                    </c:if>
+
                                     </td>
                                 </tr>
                                 <tr>
