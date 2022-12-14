@@ -4,6 +4,10 @@ public class CsSql {
 
 	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`no`) FROM `km_cs_qna_board` WHERE `parent` = 0 AND `cate1`=?";
 	
+	public static final String SELECT_ARTICLES = "SELECT a.*, b.c2Name  FROM `km_cs_qna_board` AS a "
+												+ "JOIN `km_cs_qna_cate` AS b "
+												+ "ON a.cate1 = b.cate1 AND a.cate2 = b.cate2 "
+												+ "WHERE `parent`= 0 AND a.`cate1`=? ORDER BY `no` DESC LIMIT ?,10 ";
 
 	
 }

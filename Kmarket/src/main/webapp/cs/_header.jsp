@@ -10,7 +10,7 @@
     <script>
         $(function(){
             $('.more').click(function(e){
-            e.preventDefault();
+           	 e.preventDefault();
             
             /*
             let item = $(this).parent().find('> li:nth-child(n+4)');

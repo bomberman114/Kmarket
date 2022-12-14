@@ -885,12 +885,12 @@ footer p > strong {
 }
 #cs > .qna > .list > article > .page > .prev {
   font-size: 0;
-  background-image: url('./img/cs_sprites.png');
+  background-image: url('../images/cs_sprites.png');
   background-position: -706px -652px;
 }
 #cs > .qna > .list > article > .page > .next {
   font-size: 0;
-  background-image: url('./img/cs_sprites.png');
+  background-image: url('../images/cs_sprites.png');
   background-position: -628px -652px;
 }
 #cs > .qna > .list > article > .page > .num {}
