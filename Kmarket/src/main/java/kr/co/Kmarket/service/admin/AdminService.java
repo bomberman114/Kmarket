@@ -155,7 +155,7 @@ public enum AdminService {
 	public ProductVo insertProductVO(HttpServletRequest req) {
 		ProductVo product = new ProductVo();
 		double discount = Integer.parseInt(req.getParameter("discount"));
-		int point = (int) (Integer.parseInt(req.getParameter("price")) * (1 - (discount / 100))) / 100;
+		//int point = (int) (Integer.parseInt(req.getParameter("price")) * (1 - (discount / 100))) / 100;
 
 		// product.setSeller(req.getParameter("uid"));
 
@@ -167,7 +167,7 @@ public enum AdminService {
 		product.setCompany(req.getParameter("company"));
 		product.setPrice(Integer.parseInt(String.valueOf(req.getParameter("price"))));
 		product.setDiscount(Integer.parseInt(String.valueOf(req.getParameter("discount"))));
-		product.setPoint(point);
+		product.setPoint(Integer.parseInt(String.valueOf(req.getParameter("point"))));
 		product.setStock(Integer.parseInt(String.valueOf(req.getParameter("stock"))));
 		product.setDelivery(Integer.parseInt(String.valueOf(req.getParameter("delivery"))));
 		product.setIp(req.getRemoteAddr());
