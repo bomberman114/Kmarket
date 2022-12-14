@@ -18,6 +18,7 @@ public class AdminDao extends DBHelper {
 
 	public int insertAdminProduct(ProductVo product) {
 
+
 		int result = 0;
 
 		try {
@@ -26,6 +27,7 @@ public class AdminDao extends DBHelper {
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.INSERT_ADMIN_PRODUCT);
+
 
 			psmt.setInt(1, product.getProdCate1());
 			psmt.setInt(2, product.getProdCate2());
@@ -48,6 +50,7 @@ public class AdminDao extends DBHelper {
 			psmt.setString(19, product.getBizType());
 			psmt.setString(20, product.getOrigin());
 			psmt.setString(21, product.getIp());
+
 
 			result = psmt.executeUpdate();
 			close();

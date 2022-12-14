@@ -74,7 +74,9 @@ $(function(){
                 <article>
                     <form action="/Kmarket/admin/product/register.do" method="POST" enctype="multipart/form-data">
                         <!-- 상품분류 -->
+
                         <input type="hidden" name="seller" id="seller" value="${sessUser.uid}"/>
+
                         <section>
                             <h4>상품분류</h4>
                             <p>
@@ -82,7 +84,8 @@ $(function(){
                             </p>
                             <table>
                                 <tr>
-                              <td>1차 분류</td>
+
+							<td>1차 분류</td>
                             <td>
                                 <select name="prodCate1">
                                     <option value="cate0">1차 분류 선택</option>
@@ -99,7 +102,7 @@ $(function(){
                                     <option value="cate0">2차 분류 선택</option>
                                 </select>
                             </td>
-                                </tr>
+							</tr>
                             </table>
                         </section>
 

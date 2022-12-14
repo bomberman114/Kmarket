@@ -1,6 +1,16 @@
 package kr.co.Kmarket.controller.admin.product;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+
+import java.io.InputStream;
+import java.io.ObjectInputStream.GetField;
+import java.util.UUID;
+
+import javax.servlet.RequestDispatcher;
+
+import javax.servlet.ServletContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -39,6 +49,7 @@ public class RegisterController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		req.setCharacterEncoding("UTF-8");
 
 		// 업로드 디렉터리의 물리적 경로 확인
@@ -66,5 +77,6 @@ public class RegisterController extends HttpServlet {
 		} // 성공시
 		System.out.println("성공?");
 		resp.sendRedirect("/Kmarket/admin/product/register.do");
+
 	}
 }

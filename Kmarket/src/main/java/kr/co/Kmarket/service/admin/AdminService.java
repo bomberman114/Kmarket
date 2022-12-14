@@ -142,10 +142,14 @@ public enum AdminService {
 		return newName;
 	}
 
-	public void dirCreate(String targetDir) {
-		File Directory = new File(targetDir);
-		if (!Directory.exists())
-			Directory.mkdirs();
+	public ProductVo renameFile(HttpServletRequest req, ProductVo product, String path, MultipartRequest mr) {
+		try {
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return product;
+
 	}
 
 	public ProductVo insertProductVO(HttpServletRequest req) {
@@ -153,8 +157,8 @@ public enum AdminService {
 		double discount = Integer.parseInt(req.getParameter("discount"));
 		int point = (int) (Integer.parseInt(req.getParameter("price")) * (1 - (discount / 100))) / 100;
 
-		//product.setSeller(req.getParameter("uid"));
-	
+		// product.setSeller(req.getParameter("uid"));
+
 		product.setSeller(req.getParameter("seller"));
 		product.setProdName(req.getParameter("prodName"));
 		product.setProdCate1(Integer.parseInt(String.valueOf(req.getParameter("prodCate1"))));
@@ -173,7 +177,7 @@ public enum AdminService {
 		product.setReceipt(req.getParameter("receipt"));
 		product.setBizType(req.getParameter("bizType"));
 		product.setOrigin(req.getParameter("origin"));
-		System.out.println("컨트롤러 서비스:"+product);
+		System.out.println("컨트롤러 서비스:" + product);
 		return product;
 	}
 
@@ -204,7 +208,8 @@ public enum AdminService {
 			product.setThumb2(thumb2FileName);
 			product.setThumb3(thumb3FileName);
 			product.setDetail(detailFileName);
-			System.out.println("사진1:"+product.getThumb1()+"사진2:"+product.getThumb2()+"사진3:"+product.getThumb3()+"사진4:"+product.getDetail());
+			System.out.println("사진1:" + product.getThumb1() + "사진2:" + product.getThumb2() + "사진3:"
+					+ product.getThumb3() + "사진4:" + product.getDetail());
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -266,6 +271,48 @@ public enum AdminService {
 
 	public List<ProductCate2Vo> selectcate2(String cate1) {
 		return dao.selectcate2(cate1);
+	}
+
+	public void dirCreate(String targetDir) {
+		File Directory = new File(targetDir);
+		if (!Directory.exists())
+			Directory.mkdirs();
+	}
+
+	public ProductVo uploadFile2(HttpServletRequest req, String saveDirectory, ProductVo product, String path) {
+
+		try {
+			logger.info("AdminService uploadFile2...");
+
+			// 이미지 파일 불러오기
+			Part thumb1 = req.getPart("thumb1");
+			Part thumb2 = req.getPart("thumb2");
+			Part thumb3 = req.getPart("thumb3");
+			Part detail = req.getPart("detail");
+
+			// 이미지 파일 이름 변경
+			String thumb1FileName = fileReName(getFileName(thumb1));
+			String thumb2FileName = fileReName(getFileName(thumb2));
+			String thumb3FileName = fileReName(getFileName(thumb3));
+			String detailFileName = fileReName(getFileName(detail));
+
+			// 이미지 파일 출력(저장)
+			fileOutPut(thumb1FileName, thumb1, path);
+			fileOutPut(thumb2FileName, thumb2, path);
+			fileOutPut(thumb3FileName, thumb3, path);
+			fileOutPut(detailFileName, detail, path);
+
+			// vo에 저장
+			product.setThumb1(thumb1FileName);
+			product.setThumb2(thumb2FileName);
+			product.setThumb3(thumb3FileName);
+			product.setDetail(detailFileName);
+
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+
+		return product;
 	}
 
 }
