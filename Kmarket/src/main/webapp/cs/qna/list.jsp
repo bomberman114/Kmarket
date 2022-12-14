@@ -44,7 +44,9 @@
                             <a href="#" class="next">다음</a>
                         </div>
 
+
                         <a href="/Kmarket/cs/qna/write.do?cate1=${cate1}" class="btnWrite">문의하기</a>
+
 
                     </article>
                 </section>

@@ -60,7 +60,7 @@
         </div>
         <div class="logo">
           <div>
-            <a href="#"><img src="./img/header_logo.png" alt="로고" /></a>
+            <a href="/Kmarket/"><img src="./img/header_logo.png" alt="로고" /></a>
             <form action="#">
               <input type="text" name="search" />
               <button><i class="fa fa-search"></i></button>
@@ -79,8 +79,8 @@
             <ul>
               <li><a href="#">공지사항</a></li>
               <li><a href="#">자주묻는질문</a></li>
-              <li><a href="#">문의하기</a></li>
-              <li><a href="#">고객센터</a></li>
+              <li><a href="/Kmarket/cs/qna/list.do?cate=1">문의하기</a></li>
+              <li><a href="/Kmarket/cs/index.do">고객센터</a></li>
             </ul>
           </div>
         </div>
