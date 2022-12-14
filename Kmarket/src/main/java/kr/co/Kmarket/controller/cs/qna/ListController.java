@@ -27,9 +27,7 @@ public class ListController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		Logger logger = LoggerFactory.getLogger(this.getClass());
-		
+				
 		// 자주묻는 질문 그룹 
 		int cate1 = Integer.parseInt(req.getParameter("cate1"));
 		String pg = req.getParameter("pg");
@@ -56,9 +54,6 @@ public class ListController extends HttpServlet {
 		// 시작 인덱스
 		int start = service.getStartNum(currentPage);
 		
-		// 페이지 시작 번호
-		int pageStartNum = total - start;
-		
 		// 현재 페이지 게시물 가져오기
 		List<QnaArticleVo> articles  = null;
 		
@@ -70,16 +65,7 @@ public class ListController extends HttpServlet {
 		req.setAttribute("lastPageNum", lastPageNum);
 		req.setAttribute("pageGroupStart", pageGroup[0]);
 		req.setAttribute("pageGroupEnd", pageGroup[1]);
-		req.setAttribute("pageStartNum", pageStartNum+1);
 		req.setAttribute("total", total);
-		
-		
-		logger.debug("currnetPage: "+currentPage);
-		logger.debug("lastPageNum: "+lastPageNum);
-		logger.debug("pageGroupStart: "+pageGroup[0]);
-		logger.debug("pageGroupEnd: "+pageGroup[1]);
-		logger.debug("pageStartNum : "+pageStartNum);
-		logger.debug("total: "+total);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/qna/list.jsp");
 		dispatcher.forward(req, resp);

@@ -26,14 +26,31 @@ public class CsDao extends DBHelper {
 		
 		try {
 			logger.info("selectArticles");
-			/*
+			
 			conn = getConnection();
 			psmt = conn.prepareStatement(CsSql.SELECT_ARTICLES);
 			psmt.setInt(1, cate1);
 			psmt.setInt(2, start);
 			rs = psmt.executeQuery();
-			*/
 			
+			while(rs.next()) {
+				QnaArticleVo article = new QnaArticleVo();
+				article.setNo(rs.getInt(1));
+				article.setParent(rs.getInt(2));
+				article.setComment(rs.getInt(3));
+				article.setCate1(rs.getInt(4));
+				article.setCate2(rs.getInt(5));
+				article.setTitle(rs.getString(6));
+				article.setContent(rs.getString(7));
+				article.setUid(rs.getString(8));
+				article.setRegip(rs.getString(9));
+				article.setRdate(rs.getString(10));
+				article.setC2Name(rs.getString(11));
+				
+				articles.add(article);
+			}
+			
+			close();
 			
 		}catch(Exception e) {
 			logger.error(e.getMessage());
