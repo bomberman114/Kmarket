@@ -33,35 +33,13 @@ $(function(){
 	      });//$.ajax end
 	});
 });
-	/*
-	   $('#cate1').on('click', 'a', function(e){
-		   
-	      var clickedSaletButton = $('#cate1').text();
-	      data: { cate1 : clickedSaleButton }
-	      alert(clickedSaleButton);
-		
-		  $.ajax({
-	        url : '/Kmarket/admin/product/getCate2.do',
-	        method: 'get',
-	        data: { cate1 : selectbox } ,
-	        dataType : 'String',
-	        success : function ( data ){
-	           var html = "";
-	           $.each(json.items, function(index, item) {
-		      	   	 html  += '<c:forEach var="c" items="${ cate2 }">'; 
-		             html  += '<option value="${ c.cate2 }">${ c.c2Name }</option>';
-		             html  += '</c:forEach>';
-		        
-	           });
-	            $('#cate2').html(html);
-	           }
-	          
-	      });//$.ajax end
-	}); //$function end
 	
-});
-*/
 
+	function printName()  {
+		  const price = document.getElementById('price').value;
+		  const point = Math.floor((price/100));
+		  $('input[name=point]').attr('value',point);
+		}
 </script>
             <section id="admin-product-register">
                 <nav>
@@ -130,20 +108,20 @@ $(function(){
                                 </tr>
                                 <tr>
                                     <td>판매가격</td>
-                                    <td><input type="text" name="price" id="price"/>&nbsp;원</td>
+                                    <td><input type="number" name="price" id="price" onkeyup='printName()'/>&nbsp;원</td>
                                 </tr>                                    
                                 <tr>
                                     <td>할인율</td>
                                     <td>
                                         <span>0을 입력하면 할인율 없음</span>
-                                        <input type="text" name="discount" id="discount"/>&nbsp;원
+                                        <input type="number" name="discount" id="discount" onkeyup='printName()'/>&nbsp;원
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>포인트</td>
                                     <td>
                                         <span>0을 입력하면 포인트 없음</span>
-                                        <input type="text" name="point" id="point"/>&nbsp;점
+                                        <input type="number" name="point" id="point" value=""/>&nbsp;점
                                     </td>
                                 </tr>
                                 <tr>
