@@ -31,48 +31,70 @@
                                     <td>
 
 	                                    <c:if test="${cate1 eq 1}">
-	                                        <select name="type">
+	                                        <select name="${cate1}">
 	                                            <option value="0">선택</option>
-	                                            <option>가입</option>
-	                                            <option>탈퇴</option>
-	                                            <option>회원정보</option>
-	                                            <option>로그인</option>
+	                                            <option value="1">가입</option>
+	                                            <option value="2">탈퇴</option>
+	                                            <option value="3">회원정보</option>
+	                                            <option value="4">로그인</option>
 	                                        </select>
 	                                    </c:if>
 	                                    <c:if test="${cate1 eq 2}">
-	                                        <select name="type">
+	                                        <select name="${cate1}">
 	                                            <option value="0">선택</option>
-	                                            <option>가입</option>
-	                                            <option>탈퇴</option>
-	                                            <option>회원정보</option>
-	                                            <option>로그인</option>
+	                                            <option value="1">쿠폰/할인혜택</option>
+	                                            <option value="2">포인트</option>
+	                                            <option value="3">제휴</option>
+	                                            <option value="4">이벤트</option>
 	                                        </select>
 	                                    </c:if>
 	                                    <c:if test="${cate1 eq 3}">
-	                                        <select name="type">
+	                                        <select name="${cate1}">
 	                                            <option value="0">선택</option>
-	                                            <option>가입</option>
-	                                            <option>탈퇴</option>
-	                                            <option>회원정보</option>
-	                                            <option>로그인</option>
+	                                            <option value="1">상품</option>
+	                                            <option value="2">결제</option>
+	                                            <option value="3">구매내역</option>
+	                                            <option value="4">영수증/증빙</option>
 	                                        </select>
 	                                    </c:if>
 	                                    <c:if test="${cate1 eq 4}">
-	                                        <select name="type">
+	                                        <select name="${cate1}">
 	                                            <option value="0">선택</option>
-	                                            <option>가입</option>
-	                                            <option>탈퇴</option>
-	                                            <option>회원정보</option>
-	                                            <option>로그인</option>
+	                                            <option value="1">배송상태/기간</option>
+	                                            <option value="2">배송정보확인/변경</option>
+	                                            <option value="3">해외배송</option>
+	                                            <option value="4">당일배송</option>
+	                                            <option value="5">해외직구</option>
 	                                        </select>
 	                                    </c:if>
 	                                    <c:if test="${cate1 eq 5}">
-	                                        <select name="type">
+	                                        <select name="${cate1}">
 	                                            <option value="0">선택</option>
-	                                            <option>가입</option>
-	                                            <option>탈퇴</option>
-	                                            <option>회원정보</option>
-	                                            <option>로그인</option>
+	                                            <option value="1">반품신청/철회</option>
+	                                            <option value="2">반품정보확인/변경</option>
+	                                            <option value="3">교환 AS신청/철회</option>
+	                                            <option value="4">교환정보확인/변경</option>
+	                                            <option value="5">취소신청/철회</option>
+	                                            <option value="6">취소확인/환불정보</option>
+	                                        </select>
+	                                    </c:if>
+	                                    <c:if test="${cate1 eq 6}">
+	                                        <select name="${cate1}">
+	                                            <option value="0">선택</option>
+	                                            <option value="1">여행/숙박</option>
+	                                            <option value="2">항공</option>
+	                                        </select>
+	                                    </c:if>
+	                                    <c:if test="${cate1 eq 7}">
+	                                        <select name="${cate1}">
+	                                            <option value="0">선택</option>
+	                                            <option value="1">서비스 이용규칙 위반</option>
+	                                            <option value="2">지식재산권침해</option>
+	                                            <option value="3">법령 및 정책위반 상품</option>
+	                                            <option value="4">게시물 정책위반</option>
+	                                            <option value="5">직거래/외부거래유도</option>
+	                                            <option value="6">표시광고</option>
+	                                            <option value="7">청소년 위해상품/이미지</option>
 	                                        </select>
 	                                    </c:if>
 
