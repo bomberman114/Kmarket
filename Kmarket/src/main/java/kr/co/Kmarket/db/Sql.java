@@ -95,7 +95,7 @@ public class Sql {
 
 	public static final String SELECT_ADMIN_PRODUCT_CATE2 = "SELECT * FROM `km_product_cate2` WHERE `cate1`=?";
 
-	public static final String SELECT_ORDER_COUNT = "SELECT COUNT(`orddNo`) FROM `km_product_order`";
+	public static final String SELECT_ORDER_COUNT = "SELECT COUNT(`ordNo`) FROM `km_product_order`";
 
 	public static final String SELECT_ORDER_COUNT_Y =  "SELECT DATE_FORMAT(rdate, 	NOW()-1 ) AS date, count(`orderNo`) AS cnt " 
 														+"FROM `km_product_order`"
@@ -142,6 +142,9 @@ public class Sql {
 
 	public static final String SELECT_PRODUCT_COUNT =  "SELECT COUNT(`prodNo`) FROM `km_product`";
 
+
+
+
 	public static final String SELECT_PRODUCT_Y = "SELECT DATE_FORMAT(rdate, 	NOW()-1 ) AS date, count(`prodNo`) AS cnt " 
 													+"FROM `km_product` "
 													+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
@@ -158,6 +161,7 @@ public class Sql {
 													
 
 
+	public static final String DELETE_PRODUCT = "DELETE * FROM `km_product` WHERE `prodNo`=?";
 
 
 

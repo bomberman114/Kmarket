@@ -122,7 +122,9 @@ public enum AdminService {
 	public void updateAdminProduct() {
 	}
 
-	public void deleteAdminProduct() {
+	public int deleteAdminProduct(String prodNo) {
+		int result = dao.deleteAdminProduct(prodNo);
+		return result;
 	}
 
 	public MultipartRequest uploadFile(HttpServletRequest req, String path) throws IOException {

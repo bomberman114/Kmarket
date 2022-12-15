@@ -77,6 +77,10 @@ public class ProductVo {
 		this.prodNo = prodNo;
 	}
 
+	public void setProdNo(String prodNo) {
+		this.prodNo = Integer.parseInt(prodNo);
+	}
+	
 	public int getProdCate1() {
 		return prodCate1;
 	}

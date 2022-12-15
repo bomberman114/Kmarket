@@ -24,14 +24,14 @@
                         </ul>
                     </aside>
                     <article>
-                        <form action="#">
+                        <form action="/Kmarket/cs/qna/write.do" method="post">
+                        <input type="text" name="uid" value="${sessUser.uid}"/>
                             <table>
                                 <tr>
                                     <td>문의유형</td>
                                     <td>
-
 	                                    <c:if test="${cate1 eq 1}">
-	                                        <select name="${cate1}">
+	                                        <select name="cate2">
 	                                            <option value="0">선택</option>
 	                                            <option value="1">가입</option>
 	                                            <option value="2">탈퇴</option>
@@ -40,7 +40,7 @@
 	                                        </select>
 	                                    </c:if>
 	                                    <c:if test="${cate1 eq 2}">
-	                                        <select name="${cate1}">
+	                                        <select name="cate2">
 	                                            <option value="0">선택</option>
 	                                            <option value="1">쿠폰/할인혜택</option>
 	                                            <option value="2">포인트</option>
@@ -49,7 +49,7 @@
 	                                        </select>
 	                                    </c:if>
 	                                    <c:if test="${cate1 eq 3}">
-	                                        <select name="${cate1}">
+	                                        <select name="cate2">
 	                                            <option value="0">선택</option>
 	                                            <option value="1">상품</option>
 	                                            <option value="2">결제</option>
@@ -58,7 +58,7 @@
 	                                        </select>
 	                                    </c:if>
 	                                    <c:if test="${cate1 eq 4}">
-	                                        <select name="${cate1}">
+	                                        <select name="cate2">
 	                                            <option value="0">선택</option>
 	                                            <option value="1">배송상태/기간</option>
 	                                            <option value="2">배송정보확인/변경</option>
@@ -68,7 +68,7 @@
 	                                        </select>
 	                                    </c:if>
 	                                    <c:if test="${cate1 eq 5}">
-	                                        <select name="${cate1}">
+	                                        <select name="cate2">
 	                                            <option value="0">선택</option>
 	                                            <option value="1">반품신청/철회</option>
 	                                            <option value="2">반품정보확인/변경</option>
@@ -79,14 +79,14 @@
 	                                        </select>
 	                                    </c:if>
 	                                    <c:if test="${cate1 eq 6}">
-	                                        <select name="${cate1}">
+	                                        <select name="cate2">
 	                                            <option value="0">선택</option>
 	                                            <option value="1">여행/숙박</option>
 	                                            <option value="2">항공</option>
 	                                        </select>
 	                                    </c:if>
 	                                    <c:if test="${cate1 eq 7}">
-	                                        <select name="${cate1}">
+	                                        <select name="cate2">
 	                                            <option value="0">선택</option>
 	                                            <option value="1">서비스 이용규칙 위반</option>
 	                                            <option value="2">지식재산권침해</option>
@@ -114,7 +114,7 @@
                                 </tr>
                             </table>
                             <div>
-                                <a href="./qnaList.html" class="btnList">취소하기</a>
+                                <a href="/Kmarket/cs/qna/list.do" class="btnList">취소하기</a>
                                 <input type="submit" class="btnSubmit" value="등록하기">
                             </div>
                         </form>

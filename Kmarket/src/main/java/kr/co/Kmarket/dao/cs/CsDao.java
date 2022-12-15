@@ -15,7 +15,15 @@ public class CsDao extends DBHelper {
 	
 	
 	// 진우
-	
+	public void insertQnaArticle(QnaArticleVo vo) {
+		try {
+			logger.info("insertQnaArticle...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(CsSql.INSERT_QNA_ARTICLE);
+		} catch (Exception e) {
+
+		}
+	}
 	
 	
 	// 해빈
