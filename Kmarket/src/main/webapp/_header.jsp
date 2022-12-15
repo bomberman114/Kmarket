@@ -54,6 +54,10 @@
 	            	<a href="/Kmarket/member/logout.do">로그아웃</a>
 	            </c:otherwise>
             </c:choose>
+              <c:if test="${ sessUser.type == 2}">
+	            	<a href="/Kmarket/admin/index.do?${sessUser}">관리자</a>
+	            	
+	            </c:if>
             <a href="#">마이페이지</a>
             <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
           </div>
