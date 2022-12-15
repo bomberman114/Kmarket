@@ -15,15 +15,15 @@
                         <tr>
                             <td>
                                 <strong>주문건수(건)</strong>
-                                <span>131</span>
+                                <span>${orderCount}</span>
                             </td>
                             <td>
                                 <strong>주문금액(원)</strong>
-                                <span>1,130,000</span>
+                                <span>${orderPrice}원</span>
                             </td>
                             <td>
                                 <strong>회원가입(명)</strong>
-                                <span>1014</span>
+                                <span>${memberCount}명</span>
                             </td>
                             <td>
                                 <strong>쇼핑몰 방문(명)</strong>
@@ -31,7 +31,7 @@
                             </td>
                             <td>
                                 <strong>신규게시물(건)</strong>
-                                <span>100</span>
+                                <span>${productNew}</span>
                             </td>
                         </tr>
                         <tr>

@@ -377,4 +377,110 @@ public class AdminDao extends DBHelper {
 		return vos;
 	}
 
+	public int orderCount() {
+		int orderCount = 0;
+		try {
+			logger.info("orderCount..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_ORDER_COUNT);
+
+			if (rs.next()) {
+				orderCount = rs.getInt(1);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return orderCount;
+	}
+	public int orderCountY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int orderCountw() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int orderCountm() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+
+	public int orderPrice() {
+		int orderPrice = 0;
+		try {
+			logger.info("orderPrice..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_ORDER_PRICE);
+
+			if (rs.next()) {
+				orderPrice = rs.getInt(1);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return orderPrice;
+	}
+	public int memberCount() {
+		int memberCount = 0;
+		try {
+			logger.info("MemberCount..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_MEMBER_COUNT);
+			
+			if (rs.next()) {
+				memberCount = rs.getInt(1);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return memberCount;
+	}
+
+	public int productY() {
+		int productY = 0;
+		try {
+			logger.info("productY..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_PRODUCT_Y);
+			
+			if (rs.next()) {
+				productY = rs.getInt(1);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return productY;
+	}
+
+	public int productCount() {
+		int productCount = 0;
+		try {
+			logger.info("productNew..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_PRODUCT_COUNT);
+			
+			if (rs.next()) {
+				productCount = rs.getInt(1);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return productCount;
+	}
+
+
 }

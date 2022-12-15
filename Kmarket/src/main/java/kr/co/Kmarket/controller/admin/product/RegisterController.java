@@ -1,14 +1,8 @@
 package kr.co.Kmarket.controller.admin.product;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
-import java.io.InputStream;
-import java.io.ObjectInputStream.GetField;
-import java.util.UUID;
 
-import javax.servlet.RequestDispatcher;
 
 import javax.servlet.ServletContext;
 
@@ -51,11 +45,11 @@ public class RegisterController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		req.setCharacterEncoding("UTF-8");
-
-		// 업로드 디렉터리의 물리적 경로 확인
 		ServletContext ctx = req.getServletContext();
 		String path = ctx.getRealPath("/thumb");
 		
+		// 업로드 디렉터리의 물리적 경로 확인
+
 		String cate1 = req.getParameter("prodCate1");
 		String cate2 = req.getParameter("prodCate2");
 		String saveDirectory = path + "/" + cate1 + "/" + cate2 + "/";

@@ -42,9 +42,11 @@
 						<c:forEach var="product" items="${products}">
 	                        <tr>
 	                            <td><input type="checkbox" name="상품코드"/></td>
+
 	                            <td>
 	                            	<img src="<c:url value='${product.thumb1}'/>" class="thumb">
 	                            </td>
+
 	                            <td>${product.prodNo}</td>
 	                            <td>${product.prodName}</td>
 	                            <td>${product.price}</td>

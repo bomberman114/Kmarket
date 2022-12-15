@@ -114,7 +114,7 @@ $(function(){
                                     <td>할인율</td>
                                     <td>
                                         <span>0을 입력하면 할인율 없음</span>
-                                        <input type="number" name="discount" id="discount" onkeyup='printName()'/>&nbsp;원
+                                        <input type="number" name="discount" id="discount" onkeyup='printName()'/>&nbsp;%
                                     </td>
                                 </tr>
                                 <tr>

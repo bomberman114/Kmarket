@@ -323,4 +323,73 @@ public enum AdminService {
 		return product;
 	}
 
+	public int orderCount() {
+		return dao.orderCount();
+	}
+
+	public int orderPrice() {
+		return dao.orderPrice();
+	}
+
+	public int memberCount() {
+		return dao.memberCount();
+	}
+
+	
+	public int productCount() {
+		return dao.productCount();
+	}
+
+	public int orderCountY() {
+	
+		return dao.orderCountY();
+	}
+
+	public int orderCountW() {
+	
+		return 0;
+	}
+
+	public int orderCountM() {
+	
+		return 0;
+	}
+
+	public int orderPriceY() {
+	
+		return 0;
+	}
+	
+	public int orderPriceW() {
+	
+		return 0;
+	}
+	
+	public int orderPriceM() {
+	
+		return 0;
+	}
+
+	public int memberCountY() {
+	
+		return 0;
+	}
+	public int memberCountW() {
+	
+		return 0;
+	}
+	public int memberCountM() {
+	
+		return 0;
+	}
+	public int productY() {
+		return dao.productY();
+	}
+	public int productW() {
+		return dao.productY();
+	}
+	public int productM() {
+		return dao.productY();
+	}
+
 }
