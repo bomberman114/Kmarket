@@ -27,20 +27,20 @@
                             <h1>${c1name}</h1>
                             <h2>${c1name} 문의 내용입니다.</h2>
                         </nav>
-                        <table>
+                        <table style="table-layout: fixed">
                         	<c:forEach var="article" items="${articles}">
                             <tr>
                                 <td><a href="/Kmarket/cs/qna/view.do">[${article.c2Name}] ${article.title}</a></td>
                                 <c:choose>
                                 	<c:when test="${article.comment eq 0}">
-                                		<td style="color:#A0A0A0; font-size:16px">검토중</td>
+                                		<td width="130px" style="color:#A0A0A0; font-size:16px">검토중</td>
                                 	</c:when>
                                 	<c:otherwise>
-                                		<td style="color:#0080FF; font-size:16px">답변완료</td>
+                                		<td width="130px" style="color:#0080FF; font-size:16px">답변완료</td>
                                 	</c:otherwise>
                                 </c:choose>
-                                <td>${(article.uid).substring(0,3)}**</td>
-                                <td>
+                                <td width="110px">${(article.uid).substring(0,3)}**</td>
+                                <td width="110px">
                                 	<fmt:parseDate value="${article.rdate}" var="rdate" pattern="yyyy-MM-dd HH:mm:ss"/>
 									<fmt:formatDate value="${rdate}" pattern="yy.MM.dd"/> 
                                 </td>
