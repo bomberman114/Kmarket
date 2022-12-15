@@ -38,7 +38,7 @@ public enum AdminService {
 	public List<ProductVo> selectAdminProducts(String uid, int limitStart) {
 		return dao.selectAdminProducts(uid, limitStart);
 	}
-	
+
 	public List<ProductVo> selectAdminProducts7(int limitStart) {
 		return dao.selectAdminProducts7(limitStart);
 	}
@@ -46,11 +46,11 @@ public enum AdminService {
 	public List<ProductVo> selectAdminProductsByKeyword7(String category, String keyword, int limitStart) {
 		return dao.selectAdminProductsByKeyword7(category, keyword, limitStart);
 	}
-	
+
 	public List<ProductVo> selectAdminProductsByKeyword(String uid, String category, String keyword, int limitStart) {
 		return dao.selectAdminProductsByKeyword(uid, category, keyword, limitStart);
 	}
-	
+
 	// paging
 
 	// 현재 페이지 번호
@@ -165,10 +165,11 @@ public enum AdminService {
 	public ProductVo insertProductVO(HttpServletRequest req) {
 		ProductVo product = new ProductVo();
 		double discount = Integer.parseInt(req.getParameter("discount"));
-		//int point = (int) (Integer.parseInt(req.getParameter("price")) * (1 - (discount / 100))) / 100;
+		// int point = (int) (Integer.parseInt(req.getParameter("price")) * (1 -
+		// (discount / 100))) / 100;
 
 		// product.setSeller(req.getParameter("uid"));
-		
+
 		product.setSeller(req.getParameter("seller"));
 		product.setProdName(req.getParameter("prodName"));
 		product.setProdCate1(Integer.parseInt(String.valueOf(req.getParameter("prodCate1"))));
@@ -329,69 +330,73 @@ public enum AdminService {
 		return dao.orderCount();
 	}
 
+	public int orderCountY() {
+
+		return dao.orderCountY();
+	}
+
+	public int orderCountW() {
+
+		return dao.orderCountY();
+	}
+
+	public int orderCountM() {
+
+		return dao.orderCountY();
+	}
+
 	public int orderPrice() {
 		return dao.orderPrice();
+	}
+
+	public int orderPriceY() {
+
+		return dao.orderPriceY();
+	}
+
+	public int orderPriceW() {
+
+		return dao.orderPriceW();
+	}
+
+	public int orderPriceM() {
+
+		return dao.orderPriceM();
 	}
 
 	public int memberCount() {
 		return dao.memberCount();
 	}
 
-	
+	public int memberCountY() {
+
+		return  dao.memberCountY();
+	}
+
+	public int memberCountW() {
+
+		return  dao.memberCountW();
+	}
+
+	public int memberCountM() {
+
+		return  dao.memberCountM();
+	}
+
 	public int productCount() {
 		return dao.productCount();
 	}
 
-	public int orderCountY() {
-	
-		return dao.orderCountY();
-	}
-
-	public int orderCountW() {
-	
-		return 0;
-	}
-
-	public int orderCountM() {
-	
-		return 0;
-	}
-
-	public int orderPriceY() {
-	
-		return 0;
-	}
-	
-	public int orderPriceW() {
-	
-		return 0;
-	}
-	
-	public int orderPriceM() {
-	
-		return 0;
-	}
-
-	public int memberCountY() {
-	
-		return 0;
-	}
-	public int memberCountW() {
-	
-		return 0;
-	}
-	public int memberCountM() {
-	
-		return 0;
-	}
 	public int productY() {
 		return dao.productY();
 	}
+
 	public int productW() {
-		return dao.productY();
+		return dao.productW();
 	}
+
 	public int productM() {
-		return dao.productY();
+		return dao.productM();
 	}
 
 }

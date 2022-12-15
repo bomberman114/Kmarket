@@ -40,65 +40,49 @@
                                     <span>PC</span>
                                     <span>60</span>
                                 </p>
+                                
+                            <td>
                                 <p>
-                                    <span>Mobile</span>
-                                    <span>71</span>
+                                    <span>PC</span>
+                                    <span>60</span>
                                 </p>
+                                
                             </td>
                             <td>
                                 <p>
                                     <span>PC</span>
                                     <span>60</span>
                                 </p>
-                                <p>
-                                    <span>Mobile</span>
-                                    <span>71</span>
-                                </p>
+                              
                             </td>
                             <td>
                                 <p>
                                     <span>PC</span>
                                     <span>60</span>
                                 </p>
-                                <p>
-                                    <span>Mobile</span>
-                                    <span>71</span>
-                                </p>
+                               
                             </td>
                             <td>
                                 <p>
                                     <span>PC</span>
                                     <span>60</span>
                                 </p>
-                                <p>
-                                    <span>Mobile</span>
-                                    <span>71</span>
-                                </p>
-                            </td>
-                            <td>
-                                <p>
-                                    <span>PC</span>
-                                    <span>60</span>
-                                </p>
-                                <p>
-                                    <span>Mobile</span>
-                                    <span>71</span>
-                                </p>
+                                
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <p>
                                     <span>어제</span>
-                                    <span>4</span>
+                                    <span>${orderCuntY}</span>
                                 </p>
                                 <p>
                                     <span>주간</span>
-                                    <span>10</span>
+                                    <span>${orderCuntW}</span>
                                 </p>
                                 <p>
                                     <span>월간</span>
-                                    <span>30</span>
+                                    <span>${orderCuntM}</span>
                                 </p>
                             </td>
                             <td>

@@ -18,7 +18,6 @@ public class AdminDao extends DBHelper {
 
 	public int insertAdminProduct(ProductVo product) {
 
-
 		int result = 0;
 
 		try {
@@ -27,7 +26,6 @@ public class AdminDao extends DBHelper {
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.INSERT_ADMIN_PRODUCT);
-
 
 			psmt.setInt(1, product.getProdCate1());
 			psmt.setInt(2, product.getProdCate2());
@@ -50,7 +48,6 @@ public class AdminDao extends DBHelper {
 			psmt.setString(19, product.getBizType());
 			psmt.setString(20, product.getOrigin());
 			psmt.setString(21, product.getIp());
-
 
 			result = psmt.executeUpdate();
 			close();
@@ -123,7 +120,7 @@ public class AdminDao extends DBHelper {
 		}
 		return products;
 	}
-	
+
 	public List<ProductVo> selectAdminProductsByKeyword(String uid, String category, String keyword, int limitStart) {
 
 		List<ProductVo> products = new ArrayList<>();
@@ -189,10 +186,9 @@ public class AdminDao extends DBHelper {
 		return products;
 	}
 
-	
 	// 최고 관리자일 때
 	public List<ProductVo> selectAdminProducts7(int limitStart) {
-		
+
 		List<ProductVo> products = new ArrayList<>();
 
 		try {
@@ -313,6 +309,7 @@ public class AdminDao extends DBHelper {
 		}
 		return products;
 	}
+
 	
 	public int deleteAdminProduct(String prodNo) {
 		
@@ -330,6 +327,11 @@ public class AdminDao extends DBHelper {
 		return result;
 	}
 	
+
+
+	// 일반 판매자일 때
+
+
 	// 전체 게시물 갯수
 	public int selectCountTotal() {
 		int total = 0;
@@ -356,7 +358,7 @@ public class AdminDao extends DBHelper {
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_ADMIN_PRODUCT_CATE1);
-			while(rs.next()) {
+			while (rs.next()) {
 				ProductCate1Vo vo = new ProductCate1Vo();
 				vo.setCate1(rs.getInt(1));
 				vo.setC1Name(rs.getString(2));
@@ -377,7 +379,7 @@ public class AdminDao extends DBHelper {
 			psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCT_CATE2);
 			psmt.setString(1, cate1);
 			rs = psmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				ProductCate2Vo vo = new ProductCate2Vo();
 				vo.setCate1(rs.getInt(1));
 				vo.setCate2(rs.getInt(2));
@@ -408,22 +410,60 @@ public class AdminDao extends DBHelper {
 		}
 		return orderCount;
 	}
+
 	public int orderCountY() {
-		// TODO Auto-generated method stub
-		return 0;
+		int orderCountY = 0;
+		try {
+			logger.info("orderCount..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_ORDER_COUNT_Y);
+
+			if (rs.next()) {
+				orderCountY = rs.getInt(2);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return orderCountY;
 	}
 
-	public int orderCountw() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int orderCountW() {
+		int orderCountW = 0;
+		try {
+			logger.info("orderCount..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_ORDER_COUNT_W);
+
+			if (rs.next()) {
+				orderCountW = rs.getInt(2);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return orderCountW;
 	}
 
-	public int orderCountm() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public int orderCountM() {
+		int orderCountM = 0;
+		try {
+			logger.info("orderCount..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_ORDER_COUNT_M);
 
-	
+			if (rs.next()) {
+				orderCountM = rs.getInt(2);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return orderCountM;
+	}
 
 	public int orderPrice() {
 		int orderPrice = 0;
@@ -442,6 +482,61 @@ public class AdminDao extends DBHelper {
 		}
 		return orderPrice;
 	}
+
+	public int orderPriceY() {
+		int orderPriceY = 0;
+		try {
+			logger.info("orderPrice..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_ORDER_PRICE_Y);
+
+			if (rs.next()) {
+				orderPriceY = rs.getInt(2);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return orderPriceY;
+	}
+
+	public int orderPriceW() {
+		int orderPriceW = 0;
+		try {
+			logger.info("orderPrice..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_ORDER_PRICE_W);
+
+			if (rs.next()) {
+				orderPriceW = rs.getInt(2);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return orderPriceW;
+	}
+
+	public int orderPriceM() {
+		int orderPriceM = 0;
+		try {
+			logger.info("orderPrice..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_ORDER_PRICE_M);
+
+			if (rs.next()) {
+				orderPriceM = rs.getInt(2);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return orderPriceM;
+	}
+
 	public int memberCount() {
 		int memberCount = 0;
 		try {
@@ -449,7 +544,7 @@ public class AdminDao extends DBHelper {
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_MEMBER_COUNT);
-			
+
 			if (rs.next()) {
 				memberCount = rs.getInt(1);
 			}
@@ -460,24 +555,61 @@ public class AdminDao extends DBHelper {
 		return memberCount;
 	}
 
-	public int productY() {
-		int productY = 0;
+	public int memberCountY() {
+		int memberCount = 0;
 		try {
-			logger.info("productY..");
+			logger.info("MemberCount..");
 			conn = getConnection();
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery(Sql.SELECT_PRODUCT_Y);
-			
+			rs = stmt.executeQuery(Sql.SELECT_MEMBER_COUNT_Y);
+
 			if (rs.next()) {
-				productY = rs.getInt(1);
+				memberCount = rs.getInt(2);
 			}
 			close();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-		return productY;
+		return memberCount;
 	}
 
+	public int memberCountW() {
+		int memberCount = 0;
+		try {
+			logger.info("MemberCount..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_MEMBER_COUNT_W);
+
+			if (rs.next()) {
+				memberCount = rs.getInt(2);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return memberCount;
+	}
+
+	public int memberCountM() {
+		int memberCount = 0;
+		try {
+			logger.info("MemberCount..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_MEMBER_COUNT_M);
+
+			if (rs.next()) {
+				memberCount = rs.getInt(2);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return memberCount;
+	}
+
+	
 	public int productCount() {
 		int productCount = 0;
 		try {
@@ -485,7 +617,7 @@ public class AdminDao extends DBHelper {
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_PRODUCT_COUNT);
-			
+
 			if (rs.next()) {
 				productCount = rs.getInt(1);
 			}
@@ -494,6 +626,60 @@ public class AdminDao extends DBHelper {
 			logger.error(e.getMessage());
 		}
 		return productCount;
+	}
+	public int productY() {
+		int productY = 0;
+		try {
+			logger.info("productY..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_PRODUCT_Y);
+
+			if (rs.next()) {
+				productY = rs.getInt(2);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return productY;
+	}
+
+	public int productW() {
+		int productW = 0;
+		try {
+			logger.info("productW..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_PRODUCT_W);
+
+			if (rs.next()) {
+				productW = rs.getInt(2);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return productW;
+	}
+
+
+	public int productM() {
+		int productM = 0;
+		try {
+			logger.info("productM..");
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(Sql.SELECT_PRODUCT_M);
+
+			if (rs.next()) {
+				productM = rs.getInt(2);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return productM;
 	}
 
 

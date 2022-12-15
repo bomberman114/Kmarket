@@ -41,7 +41,7 @@ public class Sql {
 																+ "limit ?, 10";
 	
 	// 최고 관리자
-	public static final String SELECT_ADMIN_PRODUCTS7 = "select * from `km_product`"
+	public static final String SELECT_ADMIN_PRODUCTS7 = "select * from `km_product` "
 														+ "order by `prodNo` desc "
 														+ "limit ?, 10";
 	
@@ -97,17 +97,73 @@ public class Sql {
 
 	public static final String SELECT_ORDER_COUNT = "SELECT COUNT(`ordNo`) FROM `km_product_order`";
 
+	public static final String SELECT_ORDER_COUNT_Y =  "SELECT DATE_FORMAT(rdate, 	NOW()-1 ) AS date, count(`orderNo`) AS cnt " 
+														+"FROM `km_product_order`"
+														+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
+
+	
+	public static final String SELECT_ORDER_COUNT_W =  "SELECT DATE_FORMAT(rdate, 	NOW()-6 ) AS date, count(`orderNo`) AS cnt " 
+														+"FROM `km_product_order` "
+														+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
+
+	
+	public static final String SELECT_ORDER_COUNT_M =  "SELECT DATE_FORMAT(rdate, 	NOW()-30 ) AS date, count(`orderNo`) AS cnt " 
+														+"FROM `km_product_order` "
+														+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
+
 	public static final String SELECT_MEMBER_COUNT = "SELECT COUNT(`uid`) FROM `km_member`";
+	
+	public static final String SELECT_MEMBER_COUNT_Y ="SELECT DATE_FORMAT(rdate, NOW()-1) AS date, COUNT(`uid`) AS cnt " 
+														+"FROM `km_member` "
+														+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
+
+	public static final String SELECT_MEMBER_COUNT_W = "SELECT DATE_FORMAT(rdate, NOW()-6) AS date, COUNT(`uid`) AS cnt " 
+															+"FROM `km_member` "
+															+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
+	
+	public static final String SELECT_MEMBER_COUNT_M = "SELECT DATE_FORMAT(rdate, NOW()-30) AS date, COUNT(`uid`) AS cnt " 
+														+"FROM `km_member` "
+														+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
 
 	public static final String SELECT_ORDER_PRICE = "SELECT SUM(`price`)  FROM  `km_product`" ;
+	
+	public static final String SELECT_ORDER_PRICE_Y = "SELECT DATE_FORMAT(rdate, NOW()-1) AS date, SUM(`price`) AS cnt " 
+														+"FROM `km_product` "
+														+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
+	
+	public static final String SELECT_ORDER_PRICE_W =  "SELECT DATE_FORMAT(rdate, NOW()-6 ) AS date, SUM(`price`) AS cnt " 
+														+"FROM `km_product` "
+														+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
 
-	public static final String SELECT_PRODUCT_Y = "SELECT DATE_FORMAT(rdate, 	NOW()-1 ) AS date, count(`prodNo`) AS cnt" 
-													+"FROM `km_product`"
-													+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
+	public static final String SELECT_ORDER_PRICE_M = "SELECT DATE_FORMAT(rdate, NOW()-30 ) AS date, SUM(`price`) AS cnt " 
+														+"FROM `km_product` "
+														+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
+
 
 	public static final String SELECT_PRODUCT_COUNT =  "SELECT COUNT(`prodNo`) FROM `km_product`";
 
+
+
+
+	public static final String SELECT_PRODUCT_Y = "SELECT DATE_FORMAT(rdate, 	NOW()-1 ) AS date, count(`prodNo`) AS cnt " 
+													+"FROM `km_product` "
+													+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
+	
+	public static final String SELECT_PRODUCT_W =  "SELECT DATE_FORMAT(rdate, 	NOW()-6 ) AS date, count(`prodNo`) AS cnt " 
+														+"FROM `km_product` "
+														+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
+
+	public static final String SELECT_PRODUCT_M =  "SELECT DATE_FORMAT(rdate, 	NOW()-30 ) AS date, count(`prodNo`) AS cnt " 
+														+"FROM `km_product` "
+														+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
+
+	public static final String SELECT_MAIN_PRODUCTS =" SELECT * FROM km_product ORDER BY discount  DESC LIMIT 8 ";
+													
+
+
 	public static final String DELETE_PRODUCT = "DELETE * FROM `km_product` WHERE `prodNo`=?";
+
+
 
 	
 	
