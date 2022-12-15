@@ -69,10 +69,10 @@
               <li><a href="#">할인상품</a></li>
             </ul>
             <ul>
-              <li><a href="#">공지사항</a></li>
+              <li><a href="/Kmarket/cs/notice.do">공지사항</a></li>
               <li><a href="#">자주묻는질문</a></li>
-              <li><a href="#">문의하기</a></li>
-              <li><a href="#">고객센터</a></li>
+              <li><a href="/Kmarket/cs/qna/list.do?cate1=1">문의하기</a></li>
+              <li><a href="/Kmarket/cs/index.do">고객센터</a></li>
             </ul>
           </div>
         </div>
@@ -85,108 +85,108 @@
 		            <li>
 		              <a href="#"><i class="fas fa-shopping-bag"></i>브랜드 패션<i class="fas fa-angle-right"></i></a>
 		              <ol>
-		                <li><a href="#">브랜드 여성의류</a></li>
-		                <li><a href="#">브랜드 남성의류</a></li>
-		                <li><a href="#">브랜드 진/캐쥬얼</a></li>
-		                <li><a href="#">브랜드 신발/가방</a></li>
-		                <li><a href="#">브랜드 쥬얼리/시계</a></li>
-		                <li><a href="#">브랜드 아웃도어</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=10&cate2=10&sort=sold">브랜드 여성의류</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=10&cate2=11&sort=sold">브랜드 남성의류</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=10&cate2=12&sort=sold">브랜드 진/캐쥬얼</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=10&cate2=13&sort=sold">브랜드 신발/가방</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=10&cate2=14&sort=sold">브랜드 쥬얼리/시계</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=10&cate2=15&sort=sold">브랜드 아웃도어</a></li>
 		              </ol>
 		            </li>
 		            <li>
 		              <a href="#"><i class="fas fa-tshirt"></i>패션의류·잡화·뷰티<i class="fas fa-angle-right"></i></a>
 		              <ol>
-		                <li><a href="#">여성의류</a></li>
-		                <li><a href="#">남성의류</a></li>
-		                <li><a href="#">언더웨어</a></li>
-		                <li><a href="#">신발</a></li>
-		                <li><a href="#">가방/잡화</a></li>
-		                <li><a href="#">쥬얼리/시계</a></li>
-		                <li><a href="#">화장품/향수</a></li>
-		                <li><a href="#">바디/헤어</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=11&cate2=10&sort=sold">여성의류</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=11&cate2=11&sort=sold">남성의류</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=11&cate2=12&sort=sold">언더웨어</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=11&cate2=13&sort=sold">신발</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=11&cate2=14&sort=sold">가방/잡화</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=11&cate2=15&sort=sold">쥬얼리/시계</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=11&cate2=16&sort=sold">화장품/향수</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=11&cate2=17&sort=sold">바디/헤어</a></li>
 		              </ol>
 		            </li>
 		            <li>
 		              <a href="#"><i class="fas fa-baby-carriage"></i>유아동<i class="fas fa-angle-right"></i></a>
 		              <ol>
-		                <li><a href="#">출산/육아</a></li>
-		                <li><a href="#">장난감/완구</a></li>
-		                <li><a href="#">유아동 의류</a></li>
-		                <li><a href="#">유아동 신발/잡화</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=12&cate2=10&sort=sold">출산/육아</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=12&cate2=11&sort=sold">장난감/완구</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=12&cate2=12&sort=sold">유아동 의류</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=12&cate2=13&sort=sold">유아동 신발/잡화</a></li>
 		              </ol>
 		            </li>
 		            <li>
 		              <a href="#"><i class="fas fa-utensils"></i>식품·생필품<i class="fas fa-angle-right" ></i></a>
 		              <ol>
-		                <li><a href="#">신선식품</a></li>
-		                <li><a href="#">가공식품</a></li>
-		                <li><a href="#">건강식품</a></li>
-		                <li><a href="#">커피/음료</a></li>
-		                <li><a href="#">생필품</a></li>
-		                <li><a href="#">바디/헤어</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=13&cate2=10&sort=sold">신선식품</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=13&cate2=11&sort=sold">가공식품</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=13&cate2=12&sort=sold">건강식품</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=13&cate2=13&sort=sold">커피/음료</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=13&cate2=14&sort=sold">생필품</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=13&cate2=15&sort=sold">바디/헤어</a></li>
 		              </ol>
 		            </li>
 		            <li>
 		              <a href="#"><i class="fas fa-home"></i>홈데코·문구·취미·반려<i class="fas fa-angle-right"></i></a>
 		              <ol>
-		                <li><a href="#">가구/DIY</a></li>
-		                <li><a href="#">침구/커튼</a></li>
-		                <li><a href="#">조명/인테리어</a></li>
-		                <li><a href="#">생활용품</a></li>
-		                <li><a href="#">주방용품</a></li>
-		                <li><a href="#">문구/사무용품</a></li>
-		                <li><a href="#">사무기기</a></li>
-		                <li><a href="#">악기/취미</a></li>
-		                <li><a href="#">반려동물용품</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=14&cate2=10&sort=sold">가구/DIY</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=14&cate2=11&sort=sold">침구/커튼</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=14&cate2=12&sort=sold">조명/인테리어</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=14&cate2=13&sort=sold">생활용품</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=14&cate2=14&sort=sold">주방용품</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=14&cate2=15&sort=sold">문구/사무용품</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=14&cate2=16&sort=sold">사무기기</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=14&cate2=17&sort=sold">악기/취미</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=14&cate2=18&sort=sold">반려동물용품</a></li>
 		              </ol>
 		            </li>
 		            <li>
 		              <a href="#"><i class="fas fa-tv"></i>컴퓨터·디지털·가전<i class="fas fa-angle-right"></i></a>
 		              <ol>
-		                <li><a href="#">노트북/PC</a></li>
-		                <li><a href="#">모니터/프린터</a></li>
-		                <li><a href="#">PC주변기기</a></li>
-		                <li><a href="#">모바일/태블릿</a></li>
-		                <li><a href="#">카메라</a></li>
-		                <li><a href="#">게임</a></li>
-		                <li><a href="#">영상가전</a></li>
-		                <li><a href="#">주방가전</a></li>
-		                <li><a href="#">계절가전</a></li>
-		                <li><a href="#">생활/미용가전</a></li>
-		                <li><a href="#">음향가전</a></li>
-		                <li><a href="#">건강가전</a></li>
-		              </ol>
+		                <li><a href="/Kmarket/product/list.do?cate1=15&cate2=10&sort=sold">노트북/PC</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=15&cate2=11&sort=sold">모니터/프린터</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=15&cate2=12&sort=sold">PC주변기기</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=15&cate2=13&sort=sold">모바일/태블릿</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=15&cate2=14&sort=sold">카메라</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=15&cate2=15&sort=sold">게임</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=15&cate2=16&sort=sold">영상가전</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=15&cate2=17&sort=sold">주방가전</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=15&cate2=18&sort=sold">계절가전</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=15&cate2=19&sort=sold">생활/미용가전</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=15&cate2=20&sort=sold">음향가전</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=15&cate2=21&sort=sold">건강가전</a></li>
+		              </ol>                                          
 		            </li>
 		            <li>
 		              <a href="#"><i class="fas fa-running"></i>스포츠·건강·렌탈<i class="fas fa-angle-right"></i></a>
 		              <ol>
-		                <li><a href="#">스포츠의류/운동화</a></li>
-		                <li><a href="#">휘트니스/수영</a></li>
-		                <li><a href="#">구기/라켓</a></li>
-		                <li><a href="#">골프</a></li>
-		                <li><a href="#">자전거/보드/기타레저</a></li>
-		                <li><a href="#">캠핑/낚시</a></li>
-		                <li><a href="#">등산/아웃도어</a></li>
-		                <li><a href="#">건강/의료용품</a></li>
-		                <li><a href="#">건강식품</a></li>
-		                <li><a href="#">렌탈서비스</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=16&cate2=10&sort=sold">스포츠의류/운동화</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=16&cate2=11&sort=sold">휘트니스/수영</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=16&cate2=12&sort=sold">구기/라켓</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=16&cate2=13&sort=sold">골프</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=16&cate2=14&sort=sold">자전거/보드/기타레저</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=16&cate2=15&sort=sold">캠핑/낚시</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=16&cate2=16&sort=sold">등산/아웃도어</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=16&cate2=17&sort=sold">건강/의료용품</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=16&cate2=18&sort=sold">건강식품</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=16&cate2=19&sort=sold">렌탈서비스</a></li>
 		              </ol>
 		            </li>
 		            <li>
 		              <a href="#"><i class="fas fa-car"></i>자동차·공구<i class="fas fa-angle-right"></i></a>
 		              <ol>
-		                <li><a href="#">자동차용품</a></li>
-		                <li><a href="#">공구/안전/산업용품</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=17&cate2=10&sort=sold">자동차용품</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=17&cate2=11&sort=sold">공구/안전/산업용품</a></li>
 		              </ol>
 		            </li>
 		            <li>
 		              <a href="#"><i class="fas fa-book"></i>여행·도서·티켓·e쿠폰<i class="fas fa-angle-right"></i></a>
 		              <ol>
-		                <li><a href="#">여행/항공권</a></li>
-		                <li><a href="#">도서/음반/e교육</a></li>
-		                <li><a href="#">공연티켓</a></li>
-		                <li><a href="#">e쿠폰</a></li>
-		                <li><a href="#">상품권</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=18&cate2=10&sort=sold">여행/항공권</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=18&cate2=11&sort=sold">도서/음반/e교육</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=18&cate2=12&sort=sold">공연티켓</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=18&cate2=13&sort=sold">e쿠폰</a></li>
+		                <li><a href="/Kmarket/product/list.do?cate1=18&cate2=14&sort=sold">상품권</a></li>
 		              </ol>
 		            </li>
 		          </ul>

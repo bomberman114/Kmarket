@@ -869,6 +869,8 @@ footer p > strong {
 }
 
 #cs > .qna > .list > article > .page {
+  /* 문의하기 버튼 밀림 수정 */
+  height:34px; 
   text-align: center;
   margin-top: 26px;
 }
