@@ -314,7 +314,21 @@ public class AdminDao extends DBHelper {
 		return products;
 	}
 	
-	// 일반 판매자일 때
+	public int deleteAdminProduct(String prodNo) {
+		
+		int result = 0;
+		try {
+			logger.info("deleteAdminProduct...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.DELETE_PRODUCT);
+			psmt.setString(1, prodNo);
+			result = psmt.executeUpdate();
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+	}
 	
 	// 전체 게시물 갯수
 	public int selectCountTotal() {

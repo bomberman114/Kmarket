@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.JsonObject;
+
 import kr.co.Kmarket.service.admin.AdminService;
 import kr.co.Kmarket.vo.MemberVo;
 import kr.co.Kmarket.vo.ProductVo;
@@ -96,6 +98,13 @@ public class ListController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String prodNo = req.getParameter("prodNo");
+		
+		int result = service.deleteAdminProduct(prodNo);
+		
+		JsonObject json = new JsonObject();
+		json.addProperty("result", result);
 		
 	}
 	

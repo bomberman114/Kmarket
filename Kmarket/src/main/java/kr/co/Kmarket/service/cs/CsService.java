@@ -30,6 +30,10 @@ public enum CsService {
 		return dao.selectCountTotal(cate1);
 	}
 	
+	public void insertQnaArticle(QnaArticleVo vo) {
+		dao.insertQnaArticle(vo);
+	}
+	
 	
 	public int getCurrentPage(String pg) {
 		
