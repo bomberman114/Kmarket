@@ -4,11 +4,15 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.co.Kmarket.service.product.ProductService;
 import kr.co.Kmarket.vo.ProductVo;
@@ -18,6 +22,9 @@ public class ListController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private ProductService service = ProductService.INSTANCE;
+	
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	
 	@Override
 	public void init() throws ServletException {}
@@ -30,6 +37,8 @@ public class ListController extends HttpServlet {
 		String sort = req.getParameter("sort");
 		String pg = req.getParameter("pg");
 		
+		// 카테고리 이름 가져오기
+		String cateName[] = service.getCateName(cate1, cate2);		
 		
 		// 현재 페이지 번호
 		int currentPage = service.getCurrentPage(pg);
@@ -47,20 +56,21 @@ public class ListController extends HttpServlet {
 		int start = service.getStartNum(currentPage);
 		
 		// 현재 페이지 게시물 가져오기
-		List<ProductVo> products  = null;
+		List<ProductVo> products = service.selectProducts(cate1, cate2, sort);
 		
-		products = service.selectProducts(cate1, cate2, sort);
+		req.setAttribute("cate1", cate1);
+		req.setAttribute("cate2", cate2);
+		req.setAttribute("c1Name", cateName[0]);
+		req.setAttribute("c2Name", cateName[1]);
+		req.setAttribute("sort", sort);
+		
 		
 		req.setAttribute("products", products);
-		
 		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("lastPageNum", lastPageNum);
 		req.setAttribute("pageGroupStart", pageGroup[0]);
 		req.setAttribute("pageGroupEnd", pageGroup[1]);
 		req.setAttribute("total", total);
-		
-		
-		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/list.jsp");
 		dispatcher.forward(req, resp);

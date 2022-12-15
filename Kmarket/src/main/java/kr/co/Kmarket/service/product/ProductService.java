@@ -26,6 +26,9 @@ public enum ProductService {
 		return dao.selectProducts(cate1, cate2, sort);
 	}
 	
+	public String[] getCateName(int cate1, int cate2) {
+		return dao.getCateName(cate1, cate2);
+	}
 	
 	
 	/* 서비스 로직 */
@@ -74,7 +77,6 @@ public enum ProductService {
 		
 		return (currentPage -1) * 10;
 	}	
-	
 	
 
 }
