@@ -51,10 +51,21 @@ public class IndexController extends HttpServlet {
 		int productM = service.productM(); //신규게시물 월간
 		int visitCount;
 		req.setAttribute("orderCOunt", orderCount);
+		req.setAttribute("orderCountY", orderCountY);
+		req.setAttribute("orderCountW", orderCountW);
+		req.setAttribute("orderCountM", orderCountM);
 		req.setAttribute("orderPrice", orderPrice);
+		req.setAttribute("orderPriceY", orderPriceY);
+		req.setAttribute("orderPriceW", orderPriceW);
+		req.setAttribute("orderPriceM", orderPriceM);
 		req.setAttribute("memberCount", memberCount);
-		req.setAttribute("productY", productY);
+		req.setAttribute("memberCountY", memberCountY);
+		req.setAttribute("memberCountW", memberCountW);
+		req.setAttribute("memberCountM", memberCountM);
 		req.setAttribute("productCount", productCount);
+		req.setAttribute("productY", productY);
+		req.setAttribute("productW", productW);
+		req.setAttribute("productM", productM);
 		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/index.jsp");

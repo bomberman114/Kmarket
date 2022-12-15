@@ -1,5 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="./_header.jsp"></jsp:include>
+<script>
+
+
+
+</script>
+
       <main>
         <!-- 카테고리/베스트 상품 영역 -->
         <aside>
@@ -657,19 +664,22 @@
             <article>
               <a href="#">
                 <div class="thumb">
-                  <img src="https://via.placeholder.com/230x230" alt="t1" />
+                  <img src="<c:url value='${product.thumb1}'/>"  alt="t1" />
                 </div>
-                <h2>상품명</h2>
-                <p>간단한 상품 설명</p>
+                   <c:forEach var="product" items="${products}">
+	                        
+                <h2>${product.prodName}</h2>
+                <p>${product.descript}</p>
                 <div class="org_price">
-                  <del>30,000</del>
-                  <span>10%</span>
+                  <del>${product.price}</del>
+                  <span>${product.discount}</span>
                 </div>
                 <div class="dis_price">
-                  <ins>27,000</ins>
-                  <span class="free">무료배송</span>
+                  <ins>${product.disprice}</ins>
+                  <span class="free">${product.delivery}</span>
                 </div>
               </a>
+                </c:forEach>
             </article>
             <article>
               <a href="#">

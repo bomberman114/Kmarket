@@ -55,7 +55,7 @@
 	            </c:otherwise>
             </c:choose>
               <c:if test="${ sessUser.type == 2}">
-	            	<a href="/Kmarket/admin/index.do?${sessUser}">관리자</a>
+	            	<a href="/Kmarket/admin/index.do">관리자</a>
 	            	
 	            </c:if>
             <a href="#">마이페이지</a>
