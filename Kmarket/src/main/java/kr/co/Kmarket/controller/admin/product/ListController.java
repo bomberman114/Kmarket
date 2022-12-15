@@ -9,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.LoggerFactory;
 
 import kr.co.Kmarket.service.admin.AdminService;
+import kr.co.Kmarket.vo.MemberVo;
 import kr.co.Kmarket.vo.ProductVo;
 
 @WebServlet("/admin/product/list.do")
@@ -33,6 +35,12 @@ public class ListController extends HttpServlet {
 		String pg = req.getParameter("pg");
 		String keyword = req.getParameter("keyword");
 		String category = req.getParameter("category");
+		
+		// 세션에서 가져오기
+		HttpSession sess = req.getSession();
+		MemberVo sessUser = (MemberVo) sess.getAttribute("sessUser");
+		String uid = sessUser.getUid();
+		int level = sessUser.getLevel();
 		
 		// 현재 페이지 번호
 		int currentPage = service.getCurrentPage(pg);
@@ -55,12 +63,24 @@ public class ListController extends HttpServlet {
 		// 상품 불러오기
 		List<ProductVo> products = null;
 		
-		if(keyword==null) {
-			// 키워드 전송을 하지 않았을 경우
-			products = service.selectAdminProducts(limitStart);
+		if(level == 7) {
+			// 최고 관리자일 경우 모든 상품 출력
+			if(keyword==null) {
+				// 키워드 전송을 하지 않았을 경우
+				products = service.selectAdminProducts7(limitStart);
+			}else {
+				// 키워드가 전송되었을 경우
+				products = service.selectAdminProductsByKeyword7(category, keyword, limitStart);
+			}
 		}else {
-			// 키워드가 전송되었을 경우
-			products = service.selectAdminProductsByKeyword(category, keyword, limitStart);
+			// 일반 판매자일 경우 판매자가 올린 상품만 출력
+			if(keyword==null) {
+				// 키워드 전송을 하지 않았을 경우
+				products = service.selectAdminProducts(uid, limitStart);
+			}else {
+				// 키워드가 전송되었을 경우
+				products = service.selectAdminProductsByKeyword(uid, category, keyword, limitStart);
+			}
 		}
 		
 		req.setAttribute("products", products);

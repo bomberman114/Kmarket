@@ -35,14 +35,22 @@ public enum AdminService {
 		dao = new AdminDao();
 	}
 
-	public List<ProductVo> selectAdminProducts(int limitStart) {
-		return dao.selectAdminProducts(limitStart);
+	public List<ProductVo> selectAdminProducts(String uid, int limitStart) {
+		return dao.selectAdminProducts(uid, limitStart);
+	}
+	
+	public List<ProductVo> selectAdminProducts7(int limitStart) {
+		return dao.selectAdminProducts7(limitStart);
 	}
 
-	public List<ProductVo> selectAdminProductsByKeyword(String category, String keyword, int limitStart) {
-		return dao.selectAdminProductsByKeyword(category, keyword, limitStart);
+	public List<ProductVo> selectAdminProductsByKeyword7(String category, String keyword, int limitStart) {
+		return dao.selectAdminProductsByKeyword7(category, keyword, limitStart);
 	}
-
+	
+	public List<ProductVo> selectAdminProductsByKeyword(String uid, String category, String keyword, int limitStart) {
+		return dao.selectAdminProductsByKeyword(uid, category, keyword, limitStart);
+	}
+	
 	// paging
 
 	// 현재 페이지 번호

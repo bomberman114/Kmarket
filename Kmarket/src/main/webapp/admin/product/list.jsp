@@ -17,13 +17,10 @@
 	                        <select name="category">
 	                            <option value="prodName">상품명</option>
 	                            <option value="prodNo">상품코드</option>
-	                            <option value="company">제조사</option>
 	                            <option value="seller">판매자</option>                                    
 	                        </select>
 	                        <input name="keyword" type="text" placeholder="키워드 검색">
 	                        <input type="submit" value="검색">
-	                        
-	                        <!-- <input type="text" name="uid" value="${sessUser.uid}"> seller와 uid로 조인 -->
 	                      </form>
                     </div>
                     <table>
@@ -45,7 +42,11 @@
 						<c:forEach var="product" items="${products}">
 	                        <tr>
 	                            <td><input type="checkbox" name="상품코드"/></td>
-	                            <td><img src="/Kmarket/thumb/${product.cate1}/${product.cate2}/${product.thumb1}" class="thumb"></td>
+
+	                            <td>
+	                            	<img src="<c:url value='${product.thumb1}'/>" class="thumb">
+	                            </td>
+
 	                            <td>${product.prodNo}</td>
 	                            <td>${product.prodName}</td>
 	                            <td>${product.price}</td>
@@ -76,7 +77,7 @@
 	                    
 	                    <c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}">
 	                        <span class="num">
-	                            <a href="/Kmarket/admin/product/list.do?pg=${i}" class="${currentPage == i ? 'current':'off'}">${i}</a>
+	                            <a href="/Kmarket/admin/product/list.do?pg=${i}" class="${currentPage == i ? 'on':'off'}">${i}</a>
 	                        </span>
 	                    </c:forEach>
 	                    

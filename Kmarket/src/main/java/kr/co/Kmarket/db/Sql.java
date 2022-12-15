@@ -10,12 +10,57 @@ public class Sql {
 	public static final String UPDATE_MEMBER_FOR_SESSION_OUT = "UPDATE `km_member` SET `sessId`=NULL, `sessLimitDate`=NULL WHERE `uid`=?";
 	
 	// admin
-	public static final String SELECT_ADMIN_PRODUCTS = "select `thumb1`, `prodNo`, `prodName`, `price`, `discount`, `point`, `stock`, `seller`, `hit` from `km_product` limit ?, 10";
 	
-	public static final String SELECT_ADMIN_PRODUCTS_BY_PRODNAME = "select `thumb1`, `prodNo`, `prodName`, `price`, `discount`, `point`, `stock`, `seller`, `hit` from `km_product` where `prodName` like ? limit ?, 10";
-	public static final String SELECT_ADMIN_PRODUCTS_BY_PRODNO = "select `thumb1`, `prodNo`, `prodName`, `price`, `discount`, `point`, `stock`, `seller`, `hit` from `km_product` where `prodNo` like ? limit ?, 10";
-	public static final String SELECT_ADMIN_PRODUCTS_BY_COMPANY = "select `thumb1`, `prodNo`, `prodName`, `price`, `discount`, `point`, `stock`, `seller`, `hit` from `km_product` where `company` like ? limit ?, 10";
-	public static final String SELECT_ADMIN_PRODUCTS_BY_SELLER = "select `thumb1`, `prodNo`, `prodName`, `price`, `discount`, `point`, `stock`, `seller`, `hit` from `km_product` where `seller` like ? limit ?, 10";
+	// 일반 판매자
+	public static final String SELECT_ADMIN_PRODUCTS = "select a.* from `km_product` as a "
+														+ "join `km_member` as b "
+														+ "on a.seller = b.uid "
+														+ "where `uid` = ? "
+														+ "order by `prodNo` desc "
+														+ "limit ?, 10";
+	
+	public static final String SELECT_ADMIN_PRODUCTS_BY_PRODNAME = "select a.* from `km_product` as a "
+																+ "join `km_member` as b "
+																+ "on a.seller = b.uid "
+																+ "where `uid` = ? and `prodName` like ? "
+																+ "order by `prodNo` desc "
+																+ "limit ?, 10";
+
+	public static final String SELECT_ADMIN_PRODUCTS_BY_PRODNO = "select a.* from `km_product` as a "
+																+ "join `km_member` as b "
+																+ "on a.seller = b.uid "
+																+ "where `uid` = ? and `prodNo` like ? "
+																+ "order by `prodNo` desc "
+																+ "limit ?, 10";
+
+	public static final String SELECT_ADMIN_PRODUCTS_BY_SELLER = "select a.* from `km_product` as a "
+																+ "join `km_member` as b "
+																+ "on a.seller = b.uid "
+																+ "where `uid` = ? and `seller` like ? "
+																+ "order by `prodNo` desc "
+																+ "limit ?, 10";
+	
+	// 최고 관리자
+	public static final String SELECT_ADMIN_PRODUCTS7 = "select * from `km_product`"
+														+ "order by `prodNo` desc "
+														+ "limit ?, 10";
+	
+	public static final String SELECT_ADMIN_PRODUCTS_BY_PRODNAME7 = "select * from `km_product` "
+			     													+ "where `prodName` like ? "
+			     													+ "order by `prodNo` desc "
+			     													+ "limit ?, 10";
+	
+	public static final String SELECT_ADMIN_PRODUCTS_BY_PRODNO7 = "select * from `km_product` "
+																+ "where `prodNo` like ? "
+																+ "order by `prodNo` desc "
+																+ "limit ?, 10";
+	
+	public static final String SELECT_ADMIN_PRODUCTS_BY_SELLER7 = "select * from `km_product` "
+																+ "where `seller` like ? "
+																+ "order by `prodNo` desc "
+																+ "limit ?, 10";
+	
+	
 
 	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`prodNo`) FROM `km_product`";
 

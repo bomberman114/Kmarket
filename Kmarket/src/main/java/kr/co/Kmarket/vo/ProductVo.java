@@ -28,7 +28,7 @@ public class ProductVo {
 	private String bizType;
 	private String origin;
 	private String ip;
-	private String rate;
+	private String rdate;
 
 	public ProductVo() {
 	}
@@ -36,7 +36,7 @@ public class ProductVo {
 	public ProductVo(int prodNo, int prodCate1, int prodCate2, String prodName, String descript, String company,
 			String seller, int price, int discount, int point, int stock, int sold, int delivery, int hit, int score,
 			int review, String thumb1, String thumb2, String thumb3, String detail, String status, String duty,
-			String receipt, String bizType, String origin, String ip, String rate) {
+			String receipt, String bizType, String origin, String ip, String rdate) {
 		super();
 		this.prodNo = prodNo;
 		this.prodCate1 = prodCate1;
@@ -64,7 +64,7 @@ public class ProductVo {
 		this.bizType = bizType;
 		this.origin = origin;
 		this.ip = ip;
-		this.rate = rate;
+		this.rdate = rdate;
 	}
 
 	public int getProdNo() {
@@ -83,12 +83,20 @@ public class ProductVo {
 		this.prodCate1 = prodCate1;
 	}
 
+	public void setProdCate1(String prodCate1) {
+		this.prodCate1 = Integer.parseInt(prodCate1);
+	}
+	
 	public int getProdCate2() {
 		return prodCate2;
 	}
 
 	public void setProdCate2(int prodCate2) {
 		this.prodCate2 = prodCate2;
+	}
+	
+	public void setProdCate2(String prodCate2) {
+		this.prodCate2 = Integer.parseInt(prodCate2);
 	}
 
 	public String getProdName() {
@@ -275,12 +283,12 @@ public class ProductVo {
 		this.ip = ip;
 	}
 
-	public String getRate() {
-		return rate;
+	public String getRdate() {
+		return rdate;
 	}
 
-	public void setRate(String rate) {
-		this.rate = rate;
+	public void setRdate(String rdate) {
+		this.rdate = rdate;
 	}
 
 	@Override
@@ -291,7 +299,7 @@ public class ProductVo {
 				+ ", delivery=" + delivery + ", hit=" + hit + ", score=" + score + ", review=" + review + ", thumb1="
 				+ thumb1 + ", thumb2=" + thumb2 + ", thumb3=" + thumb3 + ", detail=" + detail + ", status=" + status
 				+ ", duty=" + duty + ", receipt=" + receipt + ", bizType=" + bizType + ", origin=" + origin + ", ip="
-				+ ip + ", rate=" + rate + "]";
+				+ ip + ", rdate=" + rdate + "]";
 	}
 
 }
