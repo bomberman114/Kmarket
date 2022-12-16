@@ -83,6 +83,7 @@ public class ProductDao extends DBHelper {
 			
 			psmt.setInt(1, cate1);			
 			psmt.setInt(2, cate2);	
+			psmt.setInt(3, start);	
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -106,7 +107,7 @@ public class ProductDao extends DBHelper {
 				product.setSold(rs.getInt("sold"));
 				product.setDelivery(rs.getInt("delivery"));
 				product.setHit(rs.getInt("hit"));
-				product.setScore(rs.getInt("score"));
+				product.setScore(37+rs.getInt("score")*16);
 				product.setReview(rs.getInt("review"));
 				product.setThumb1(path + rs.getString("thumb1"));
 				product.setThumb2(path + rs.getString("thumb2"));
@@ -119,6 +120,7 @@ public class ProductDao extends DBHelper {
 				product.setOrigin(rs.getString("origin"));
 				product.setIp(rs.getString("ip"));
 				product.setRdate(rs.getString("rdate"));
+				product.setDisprice(rs.getInt("disPrice"));
 	
 				products.add(product);
 				

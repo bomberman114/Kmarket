@@ -59,9 +59,9 @@ public enum ProductService {
 	
 	public int[] getPageGroupNum(int currentPage, int lastPageNum) {
 		
-		int pageGroupCurrent = (int)Math.ceil(currentPage / 7.0);
-		int pageGroupStart = (pageGroupCurrent -1) * 7 + 1;
-		int pageGroupEnd = pageGroupCurrent * 7;
+		int pageGroupCurrent = (int)Math.ceil(currentPage / 10.0);
+		int pageGroupStart = (pageGroupCurrent -1) * 10 + 1;
+		int pageGroupEnd = pageGroupCurrent * 10;
 		
 		if(pageGroupEnd > lastPageNum) {
 			pageGroupEnd = lastPageNum;
