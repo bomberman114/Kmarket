@@ -13,7 +13,9 @@ import kr.co.Kmarket.vo.ProductVo;
 public class ProductDao extends DBHelper {
 
 	Logger logger = LoggerFactory.getLogger(this.getClass());
-		
+	
+	// 해빈
+	
 	public int selectCountTotal(int cate1, int cate2) {
 		
 		int total = 0;
@@ -38,7 +40,8 @@ public class ProductDao extends DBHelper {
 		return total;
 	}
 	
-	public List<ProductVo> selectProducts(int cate1, int cate2, String sort) {
+	
+	public List<ProductVo> selectProducts(int cate1, int cate2, String sort, int start) {
 		
 		List<ProductVo> products = new ArrayList<>();
 		
@@ -69,7 +72,7 @@ public class ProductDao extends DBHelper {
 				
 			case "review":
 				
-				psmt = conn.prepareStatement(ProductSql.SELECT_PRODUCTS_REVEIW);
+				psmt = conn.prepareStatement(ProductSql.SELECT_PRODUCTS_REVIEW);
 				break;
 				
 			case "rdate":
@@ -128,6 +131,8 @@ public class ProductDao extends DBHelper {
 		return products;
 	}
 	
+	
+	
 	public String[] getCateName(int cate1, int cate2) {
 		
 		String cateName[] = new String[2];
@@ -157,5 +162,8 @@ public class ProductDao extends DBHelper {
 		return cateName;
 	}
 	
+	
+	
+	// 현길
 	
 }

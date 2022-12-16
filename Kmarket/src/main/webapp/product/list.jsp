@@ -13,7 +13,7 @@
                 <ul class="sort">
                     <li><a href="/Kmarket/product/list.do?cate1=${cate1}&cate2=${cate2}&sort=sold" class="${sort eq 'sold'?'on':'off'}">판매많은순</a></li>
                     <li><a href="/Kmarket/product/list.do?cate1=${cate1}&cate2=${cate2}&sort=lowprice" class="${sort eq 'lowprice'?'on':'off'}">낮은가격순</a></li>
-                    <li><a href="/Kmarket/product/list.do?cate1=${cate1}&cate2=${cate2}&sort=highprice" class="${sort eq 'highprice'?'on':'off'}">높은가격순</a></li>
+                    <li><a href="/Kmarket/product/list.do?cate1=${cate1}&cate2=${cate2}&sort=price" class="${sort eq 'price'?'on':'off'}">높은가격순</a></li>
                     <li><a href="/Kmarket/product/list.do?cate1=${cate1}&cate2=${cate2}&sort=score" class="${sort eq 'score'?'on':'off'}">평점높은순</a></li>
                     <li><a href="/Kmarket/product/list.do?cate1=${cate1}&cate2=${cate2}&sort=review" class="${sort eq 'review'?'on':'off'}">후기많은순</a></li>
                     <li><a href="/Kmarket/product/list.do?cate1=${cate1}&cate2=${cate2}&sort=rdate" class="${sort eq 'rdate'?'on':'off'}">최근등록순</a></li>
@@ -30,7 +30,7 @@
                     </td>
                     <td>
                         <ul>
-                        <li><ins class="dis-price">${product.price}</ins></li>
+                        <li><ins class="dis-price">${product.disprice}</ins></li>
                         <li>
                             <del class="org-price">${product.price}</del>
                             <span class="discount">${product.discount}%</span>
