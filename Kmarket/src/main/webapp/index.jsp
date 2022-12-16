@@ -130,7 +130,7 @@
              
               <c:forEach var="product" items="${best}">
               <li>
-           <a href="/Kmarket/product/list.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
+           <a href="/Kmarket/product/view.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                   <div class="thumb">
                   <c:set var="i" value="${i+1}"/>
                     <i>${i}</i>
@@ -181,7 +181,7 @@
             <h3><span>히트상품</span></h3>
              <c:forEach var="product" items="${hitproducts}">
             <article>
-              <a href="/Kmarket/product/list.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
+              <a href="/Kmarket/product/view.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                 <div class="thumb">
                   <img src="<c:url value='${product.thumb2}'/>"  alt="t1" />
                 </div>
@@ -210,7 +210,7 @@
             <h3><span>추천상품</span></h3>
           <c:forEach var="product" items="${scoreproducts}">
             <article>
-              <a href="/Kmarket/product/list.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
+              <a href="/Kmarket/product/view.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                 <div class="thumb">
                   <img src="<c:url value='${product.thumb3}'/>"  alt="t1" />
                 </div>
@@ -239,7 +239,7 @@
             <h3><span>최신상품</span></h3>
            <c:forEach var="product" items="${newproducts}">
             <article>
-              <a href="/Kmarket/product/list.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
+              <a href="/Kmarket/product/view.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                 <div class="thumb">
                   <img src="<c:url value='${product.thumb1}'/>"  alt="t1" />
                 </div>
@@ -268,7 +268,7 @@
             <h3><span>할인상품</span></h3>
                    <c:forEach var="product" items="${disproducts}">
             <article>
-              <a href="/Kmarket/product/list.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
+              <a href="/Kmarket/product/view.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                 <div class="thumb">
                   <img src="<c:url value='${product.thumb1}'/>"  alt="t1" />
                 </div>
