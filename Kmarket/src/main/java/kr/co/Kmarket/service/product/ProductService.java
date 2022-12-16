@@ -22,8 +22,8 @@ public enum ProductService {
 		return dao.selectCountTotal(cate1, cate2);
 	}
 	
-	public List<ProductVo> selectProducts(int cate1, int cate2, String sort) {
-		return dao.selectProducts(cate1, cate2, sort);
+	public List<ProductVo> selectProducts(int cate1, int cate2, String sort, int start) {
+		return dao.selectProducts(cate1, cate2, sort, start);
 	}
 	
 	public String[] getCateName(int cate1, int cate2) {
@@ -78,5 +78,7 @@ public enum ProductService {
 		return (currentPage -1) * 10;
 	}	
 	
+	
+	// 현길
 
 }
