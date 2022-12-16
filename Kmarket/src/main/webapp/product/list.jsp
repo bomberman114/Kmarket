@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="./_header.jsp"></jsp:include>
             
             <section class="list">              
@@ -23,20 +24,20 @@
                 <table border="0">     
                     <c:forEach var="product" items="${products}">
                     <tr>
-                    <td><a href="/Kmarket/product/view.do" class="thumb"><img src="<c:url value='${product.thumb1}'/>" alt="상품이미지"/></a></td>
+                    <td><a href="/Kmarket/product/view.do?cate1=${cate1}&cate2=${cate2}&prodNo=${product.prodNo}" class="thumb"><img src="<c:url value='${product.thumb1}'/>" alt="상품이미지"/></a></td>
                     <td>
-                        <h3 class="name">${product.prodName}</h3>
-                        <a href="/Kmarket/product/view.do" class="desc">${product.descript}</a>
+                        <h3 class="name"><a href="/Kmarket/product/view.do?cate1=${cate1}&cate2=${cate2}&prodNo=${product.prodNo}" class="name">${product.prodName}</a></h3>
+                        <a href="/Kmarket/product/view.do?cate1=${cate1}&cate2=${cate2}&prodNo=${product.prodNo}" class="desc">${product.descript}</a>
                     </td>
                     <td>
                         <ul>
-                        <li><ins class="dis-price">${product.disprice}</ins></li>
+                        <li><ins class="dis-price"><fmt:formatNumber value="${product.price}" pattern="#,###"/></ins></li>
                         <li>
-                            <del class="org-price">${product.price}</del>
+                            <del class="org-price"><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
                             <span class="discount">${product.discount}%</span>
                         </li>
                         <c:if test="${product.delivery eq 0}"><li><span class="free-delivery">무료배송</span></li></c:if>
-                        <c:if test="${product.delivery ne 0}"><li>배송비&nbsp;${product.delivery}원</span></li></c:if>
+                        <c:if test="${product.delivery ne 0}"><li>배송비&nbsp;<fmt:formatNumber value="${product.delivery}" pattern="#,###"/>원</span></li></c:if>
                         </ul>
                     </td>
                     <td>

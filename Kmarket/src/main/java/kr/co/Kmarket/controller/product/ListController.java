@@ -23,9 +23,6 @@ public class ListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductService service = ProductService.INSTANCE;
 	
-	Logger logger = LoggerFactory.getLogger(this.getClass());
-	
-	
 	@Override
 	public void init() throws ServletException {}
 	

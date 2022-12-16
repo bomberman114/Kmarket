@@ -4,7 +4,9 @@ public class ProductSql {
 
 	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(`prodNo`) FROM `km_product` WHERE `prodCate1`=? AND `prodCate2`=?";
 	
-
+	public static final String SELECT_PRODUCT = "SELECT *, FLOOR(`price` * (1 - `discount` / 100)) AS `disPrice` "
+												+ "FROM `km_product` WHERE `prodNo` = ?";
+	
 	
 	public static final String SELECT_PRODUCTS_SOLD = "SELECT a.*, FLOOR(`price` * (1 - `discount` / 100)) AS `disPrice` "
 														+ "FROM `km_product` AS a WHERE `prodCate1`=? AND `prodCate2`=? "
@@ -29,10 +31,6 @@ public class ProductSql {
 	public static final String SELECT_PRODUCTS_RDATE = "SELECT a.*, FLOOR(`price` * (1 - `discount` / 100)) AS `disPrice` "
 														+ "FROM `km_product` AS a WHERE `prodCate1`=? AND `prodCate2`=? "
 														+ "ORDER BY `rdate` DESC LIMIT ?, 10 ";
-	
-	
-	
-	
 	
 	public static final String SELECT_CATE_NAME = "SELECT a.c1Name, b.c2Name FROM `km_product_cate1` AS a " 
 											  	+"JOIN `km_product_cate2` AS b "
