@@ -413,6 +413,7 @@
     text-align: center;
   }
   
+  /* 메인 thumb 이미지 조정 */
   main > section > section > article .thumb > img {
   	width: 100%;
     height: 100%;
