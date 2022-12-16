@@ -76,6 +76,11 @@ public enum ProductService {
 	public int getStartNum(int currentPage) {
 		
 		return (currentPage -1) * 10;
+	}
+
+
+	public List<ProductVo> cart() {
+		return dao.cart();
 	}	
 	
 

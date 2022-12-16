@@ -37,7 +37,7 @@ public class CartController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-	//	List<ProductVo> cart = service.cart();
+		List<ProductVo> cart = service.cart();
 	}
 
 }
