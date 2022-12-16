@@ -1,6 +1,27 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="./_header.jsp"></jsp:include>
+<script>
 
+	$(document).ready(function(){
+
+		// 배송 날짜 구하기
+		
+		let now = new window.Date();
+		
+		let arrival = $('.arrival');
+		arrival.text(now);
+	
+		
+		
+		
+		
+		// 
+		
+	});
+
+</script>
             <!-- 상품 상세페이지 시작 -->
             <section class="view">
 
@@ -8,36 +29,37 @@
                 <nav>
                     <h1>상품보기</h1>
                     <p>
-                        HOME > <span>패션·의류·뷰티</span> > <strong>남성의류</strong>
+                        HOME > <span>${c1Name}</span> > <strong>${c2Name}</strong>
                     </p>
                 </nav>
 
                 <!-- 상품 전체 정보 내용 -->                
                 <article class="info">
                     <div class="image">
-                        <img src="https://via.placeholder.com/460x460" alt="상품이미지"/>
+                        <img src="<c:url value="${product.thumb3}"></c:url>" alt="상품이미지"/>
                     </div>
                     <div class="summary">
                         <nav>
-                            <h1>(주)판매자명</h1>
-                            <h2>상품번호&nbsp;:&nbsp;<span>10010118412</span></h2>
+                            <h1>${product.company}</h1>
+                            <h2>상품번호&nbsp;&nbsp;<span>${product.prodNo}</span></h2>
                         </nav>                        
                         <nav>
-                            <h3>상품명</h3>
-                            <p>상품설명 출력</p>
-                            <h5 class="rating star4"><a href="#">상품평보기</a></h5>
+                            <h3>${product.prodName}</h3>
+                            <p>${product.descript}</p>
+                            <h5 class="rating star4" style="background-position: 0px -${product.score}px"><a href="#">상품평보기</a></h5>
                         </nav>
                         <nav>
                             <div class="org_price">
-                                <del>30,000</del>
-                                <span>10%</span>
+                                <del><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
+                                <span>${product.discount}%</span>
                             </div>
                             <div class="dis_price">
-                                <ins>27,000</ins>
+                                <ins><fmt:formatNumber value="${product.disprice}" pattern="#,###"/></ins>
                             </div>
                         </nav>
                         <nav>
-                            <span class="delivery">무료배송</span>
+                        	<c:if test="${product.delivery eq 0}"><span class="delivery">무료배송</span></c:if>
+                        	<c:if test="${product.delivery ne 0}"><span style="font-size:16px">배송비 <fmt:formatNumber value="${product.delivery}" pattern="#,###"/>원</span></c:if>
                             <span class="arrival">모레(금) 7/8 도착예정</span>
                             <span class="desc">본 상품은 국내배송만 가능합니다.</span>
                         </nav>
@@ -57,7 +79,7 @@
                         </div>
                         
                         <div class="total">
-                            <span>35,000</span>
+                            <span><fmt:formatNumber value="${product.price}" pattern="#,###"/></span>
                             <em>총 상품금액</em>
                         </div>
 
@@ -74,9 +96,7 @@
                         <h1>상품정보</h1>
                     </nav>
                     <!-- 상품상세페이지 이미지 -->
-                    <img src="https://via.placeholder.com/860x460" alt="상세페이지1">
-                    <img src="https://via.placeholder.com/860x460" alt="상세페이지2">
-                    <img src="https://via.placeholder.com/860x460" alt="상세페이지3">
+                    <img src='<c:url value="${product.detail}"></c:url>' alt="상세페이지1">
                 </article>
 
                 <!-- 상품 정보 제공 고시 내용 -->
@@ -88,23 +108,23 @@
                     <table border="0">
                         <tr>
                             <td>상품번호</td>
-                            <td>10110125435</td>
+                            <td>${product.prodNo}</td>
                         </tr>
                         <tr>
                             <td>상품상태</td>
-                            <td>새상품</td>
+                            <td>${product.status}</td>
                         </tr>
                         <tr>
                             <td>부가세 면세여부</td>
-                            <td>과세상품</td>
+                            <td>${product.duty}</td>
                         </tr>
                         <tr>
                             <td>영수증발행</td>
-                            <td>발행가능 - 신용카드 전표, 온라인 현금영수증</td>
+                            <td>${product.receipt}</td>
                         </tr>
                         <tr>
                             <td>사업자구분</td>
-                            <td>사업자 판매자</td>
+                            <td>${product.bizType}</td>
                         </tr>
                         <tr>
                             <td>브랜드</td>
@@ -112,7 +132,7 @@
                         </tr>
                         <tr>
                             <td>원산지</td>
-                            <td>국내생산</td>
+                            <td>${product.origin}</td>
                         </tr>
                     </table>
                     <table border="0">

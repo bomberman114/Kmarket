@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 
 import kr.co.Kmarket.db.DBHelper;
 import kr.co.Kmarket.db.ProductSql;
-import kr.co.Kmarket.db.Sql;
 import kr.co.Kmarket.vo.ProductVo;
 
 public class ProductDao extends DBHelper {
@@ -40,6 +39,66 @@ public class ProductDao extends DBHelper {
 		
 		return total;
 	}
+	
+	public ProductVo selectProduct(int prodNo) {
+		
+		ProductVo product = null;
+		
+		try {
+			logger.info("selectProduct");
+			conn = getConnection();
+			psmt = conn.prepareStatement(ProductSql.SELECT_PRODUCT);
+			psmt.setInt(1, prodNo);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				product = new ProductVo();
+				int prodCate1 = rs.getInt("prodCate1");
+				int prodCate2 = rs.getInt("prodCate2");
+				String path = "/thumb/" + prodCate1 + "/" + prodCate2 + "/";
+				
+				product.setProdNo(rs.getInt("prodNo"));
+				product.setProdCate1(prodCate1);
+				product.setProdCate2(prodCate2);
+				product.setProdName(rs.getString("prodName"));
+				product.setDescript(rs.getString("descript"));
+				product.setCompany(rs.getString("company"));
+				product.setSeller(rs.getString("seller"));
+				product.setPrice(rs.getInt("price"));
+				product.setDiscount(rs.getInt("discount"));
+				product.setPoint(rs.getInt("point"));
+				product.setStock(rs.getInt("stock"));
+				product.setSold(rs.getInt("sold"));
+				product.setDelivery(rs.getInt("delivery"));
+				product.setHit(rs.getInt("hit"));
+				product.setScore(0+rs.getInt("score")*40);
+				product.setReview(rs.getInt("review"));
+				product.setThumb1(path + rs.getString("thumb1"));
+				product.setThumb2(path + rs.getString("thumb2"));
+				product.setThumb3(path + rs.getString("thumb3"));
+				product.setDetail(path + rs.getString("detail"));
+				product.setStatus(rs.getString("status"));
+				product.setDuty(rs.getString("duty"));
+				product.setReceipt(rs.getString("receipt"));
+				product.setBizType(rs.getString("bizType"));
+				product.setOrigin(rs.getString("origin"));
+				product.setIp(rs.getString("ip"));
+				product.setRdate(rs.getString("rdate"));
+				product.setDisprice(rs.getInt("disPrice"));
+	
+			}
+	
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return product;
+	}
+	
 	
 	
 	public List<ProductVo> selectProducts(int cate1, int cate2, String sort, int start) {
@@ -127,6 +186,8 @@ public class ProductDao extends DBHelper {
 				
 			}
 			
+			close();
+			
 		}catch(Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -160,7 +221,7 @@ public class ProductDao extends DBHelper {
 			close();
 
 		}catch(Exception e) {
-			
+			logger.error(e.getMessage());
 		}
 		return cateName;
 	}
