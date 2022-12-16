@@ -319,6 +319,7 @@ public class AdminDao extends DBHelper {
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.DELETE_PRODUCT);
 			psmt.setString(1, prodNo);
+			rs = psmt.executeQuery();
 			result = psmt.executeUpdate();
 			close();
 		} catch (Exception e) {

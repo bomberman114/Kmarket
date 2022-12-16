@@ -71,10 +71,11 @@
                         </ol>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>게시판관리</a>
+                        <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>고객센터</a>
                         <ol>
-                            <li><a href="#">게시판현황</a></li>
-                            <li><a href="#">고객문의</a></li>
+                            <li><a href="/Kmarket/cs/notice/list.do">공지사항</a></li>
+                            <li><a href="/Kmarket/cs/faq/list.do">자주묻는 질문</a></li>
+                            <li><a href="/Kmarket/cs/index.do">고객센터</a></li>
                         </ol>
                     </li>
                 </ul>

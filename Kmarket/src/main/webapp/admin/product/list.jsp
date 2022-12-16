@@ -1,6 +1,43 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../_header.jsp"></jsp:include>
+
+<script>
+$(document).on('click', '.remove', function(e){
+	e.preventDefault();
+	
+	let isDeleteOk = confirm("정말 삭제하시겠습니까?");
+			
+	if (isDeleteOk){
+		let prodNo = $(this).attr('data-prodNo');
+		//let no = $(this).attr(prodNo);
+		//let prodNo1 = $( '<td>${product.prodNo}</td>').val();
+	
+		//console.log('no : ' + no);
+		console.log('prodNo : ' + prodNo);
+		//console.log('prodNo1 : ' + prodNo1);
+		
+		
+		let jsonData = {"prodNo" : prodNo};
+		//let jsonData1 = {"prodNo1" : prodNo1};
+		
+		$.ajax ({
+			url: '/Kmarket/admin/product/list.do',
+			type: 'POST',
+			data: jsonData,
+			dataType: 'json',
+			success: function(data){
+				if(data.result == 1){
+					alert('상품이 삭제되었습니다.');
+					product.hide();
+				}
+			}
+		});
+	}
+});
+</script>
+
+
             <section id="admin-product-list">
                 <nav>
                     <h3>상품목록</h3>
@@ -55,7 +92,10 @@
 	                            <td>${product.seller}</td>
 	                            <td>${product.hit}</td>
 	                            <td>
+
 	                                <a href="/Kmarket/admin/product/delete.do" class="remove">[삭제]</a>
+
+	
 	                                <a href="#" class="modify">[수정]</a>
 	                            </td>
 	                        </tr>

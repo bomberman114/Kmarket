@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import kr.co.Kmarket.service.admin.AdminService;
@@ -98,7 +99,7 @@ public class ListController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		System.out.println("도착!");
 		String prodNo = req.getParameter("prodNo");
 		
 		logger.debug("prodNo: " + prodNo);
@@ -107,6 +108,10 @@ public class ListController extends HttpServlet {
 		
 		JsonObject json = new JsonObject();
 		json.addProperty("result", result);
+		resp.getWriter().print(new Gson().toJson(json));
+
+		//RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/product/list.jsp");
+		//dispatcher.forward(req, resp);
 		
 	}
 	

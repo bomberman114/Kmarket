@@ -161,7 +161,7 @@ public class Sql {
 													
 
 
-	public static final String DELETE_PRODUCT = "DELETE * FROM `km_product` WHERE `prodNo`=?";
+	public static final String DELETE_PRODUCT = "DELETE * FROM `km_product` WHERE prodNo = ? ";
 
 	public static final String SELECT_MAIN_HIT_PRODUCTS = " SELECT * FROM km_product ORDER BY HIT  DESC LIMIT 8 ";
 

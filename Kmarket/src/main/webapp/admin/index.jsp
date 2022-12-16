@@ -27,7 +27,7 @@
                             </td>
                             <td>
                                 <strong>쇼핑몰 방문(명)</strong>
-                                <span>1014</span>
+                                <span>1014명</span>
                             </td>
                             <td>
                                 <strong>신규게시물(건)</strong>
