@@ -10,12 +10,16 @@ public class CsSql {
 												+ "WHERE `parent`= 0 AND a.`cate1`=? ORDER BY `no` DESC LIMIT ?,10 ";
 	
 	public static final String INSERT_QNA_ARTICLE = "insert into `km_cs_qna_board` set "
-													+ "`uid` = ? "
-													+ "`title` = ? "
-													+ "`content` = ? "
-													+ "`cate1` = ? "
-													+ "`cate2` = ? "
+													+ "`uid` = ?, "
+													+ "`title` = ?, "
+													+ "`content` = ?, "
+													+ "`cate1` = ?, "
+													+ "`cate2` = ?, "
+													+ "`regip` = ?, "
 													+ "`rdate` = NOW()";
 
+	public static final String SELECT_MAX_NO = "select max(`no`) from `km_cs_qna_board`";
+	
+	public static final String SELECT_ARTITCLE = "select * from `km_cs_qna_board` where `no` = ?";
 	
 }

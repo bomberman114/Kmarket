@@ -15,13 +15,53 @@ public class CsDao extends DBHelper {
 	
 	
 	// 진우
-	public void insertQnaArticle(QnaArticleVo vo) {
+	public int insertQnaArticle(QnaArticleVo vo) {
+		
+		int result = 0;
+		
 		try {
 			logger.info("insertQnaArticle...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(CsSql.INSERT_QNA_ARTICLE);
+			stmt = conn.createStatement();
+			psmt.setString(1, vo.getUid());
+			psmt.setString(2, vo.getTitle());
+			psmt.setString(3, vo.getContent());
+			psmt.setInt(4, vo.getCate1());
+			psmt.setInt(5, vo.getCate2());
+			psmt.setString(6, vo.getRegip());
+			
+			psmt.executeUpdate();
+			
+			rs = stmt.executeQuery(CsSql.SELECT_MAX_NO);
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			close();
 		} catch (Exception e) {
-
+			logger.error(e.getMessage());
+		}
+		logger.debug("result : " + result);
+		return result;
+	}
+	
+	public void selectArtlcle(String no) {
+		
+		QnaArticleVo qavo = null;
+		try {
+			logger.info("selectArticle...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(CsSql.SELECT_ARTITCLE);
+			psmt.setString(1, no);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+			}
+			
+		} catch (Exception e) {
+			
 		}
 	}
 	

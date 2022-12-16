@@ -25,7 +25,8 @@
                     </aside>
                     <article>
                         <form action="/Kmarket/cs/qna/write.do" method="post">
-                        <input type="text" name="uid" value="${sessUser.uid}"/>
+                        <input type="hidden" name="uid" value="${sessUser.uid}"/>
+                        <input type="hidden" name="cate1" value="${cate1}"/>
                             <table>
                                 <tr>
                                     <td>문의유형</td>
@@ -114,7 +115,7 @@
                                 </tr>
                             </table>
                             <div>
-                                <a href="/Kmarket/cs/qna/list.do" class="btnList">취소하기</a>
+                                <a href="/Kmarket/cs/qna/list.do?cate1=${cate1}" class="btnList">취소하기</a>
                                 <input type="submit" class="btnSubmit" value="등록하기">
                             </div>
                         </form>
