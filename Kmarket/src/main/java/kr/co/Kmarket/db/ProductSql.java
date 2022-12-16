@@ -37,5 +37,11 @@ public class ProductSql {
 	public static final String SELECT_CATE_NAME = "SELECT a.c1Name, b.c2Name FROM `km_product_cate1` AS a " 
 											  	+"JOIN `km_product_cate2` AS b "
 											  	+"ON a.cate1 = b.cate1 WHERE b.cate1=? AND b.cate2=?";
+	
+	//-----------현길
+	
+	public static final String SELECT_CART_PRODUCTS =" SELECT *  FROM km_product  "
+													+"	LEFT JOIN km_product_cart ON km_product.prodNo=  km_product_cart.prodNo WHERE seller = '?'";
+
 
 }

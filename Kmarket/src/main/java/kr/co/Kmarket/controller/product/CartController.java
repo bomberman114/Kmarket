@@ -36,8 +36,13 @@ public class CartController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		List<ProductVo> cart = service.cart();
+		String uid = req.getParameter("uid");
+		List<ProductVo> cart = service.cart(uid);
+		
+		req.setAttribute("cart", cart);
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/cart.jsp");
+		dispatcher.forward(req, resp);
 	}
 
 }

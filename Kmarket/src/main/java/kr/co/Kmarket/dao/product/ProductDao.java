@@ -163,16 +163,21 @@ public class ProductDao extends DBHelper {
 		return cateName;
 	}
 
-	public List<ProductVo> cart() {
+
+	
+	
+	// 현길
+	
+	public List<ProductVo> cart(String uid) {
 		List<ProductVo> cart = new ArrayList<>();
 
 		try {
 
-			logger.info("MainProducts...");
+			logger.info("cartProducts...");
 			conn = getConnection();
 
-			psmt = conn.prepareStatement(Sql.SELECT_MAIN_SCORE_PRODUCTS);
-			// psmt.setString(1, uid);
+			psmt = conn.prepareStatement(ProductSql.SELECT_CART_PRODUCTS);
+			 psmt.setString(1, uid);
 			// psmt.setInt(2, limitStart);
 
 			rs = psmt.executeQuery();
@@ -211,6 +216,7 @@ public class ProductDao extends DBHelper {
 				vo.setOrigin(rs.getString("origin"));
 				vo.setIp(rs.getString("ip"));
 				vo.setRdate(rs.getString("rdate"));
+				vo.setCount(rs.getInt("count"));
 				int price = vo.getPrice();
 				int discount = vo.getDiscount();
 				int a = 100 - discount;
@@ -228,8 +234,5 @@ public class ProductDao extends DBHelper {
 		}
 		return cart;
 	}
-	
-	
-	// 현길
 	
 }

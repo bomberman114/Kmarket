@@ -78,12 +78,12 @@ public enum ProductService {
 		return (currentPage -1) * 10;
 	}
 
-
-	public List<ProductVo> cart() {
-		return dao.cart();
-	}	
-	
 	
 	// 현길
 
+	
+	public List<ProductVo> cart(String uid) {
+		return dao.cart(uid);
+	}	
+	
 }

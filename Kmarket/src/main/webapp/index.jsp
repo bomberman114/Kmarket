@@ -197,7 +197,7 @@
                   <span class="free">${product.delivery}</span>
                   </c:if>
                   <c:if test="${product.delivery ne 0}">
-                  	<span>배송비 :${product.delivery}</span>
+                  	<span>배송비 ${product.delivery}</span>
                   </c:if>
                 </div>
               </a>
@@ -222,7 +222,12 @@
                 </div>
                 <div class="dis_price">
                   <ins>${product.disprice}</ins>
+                 <c:if test="${ product.delivery eq 0}">
                   <span class="free">${product.delivery}</span>
+                  </c:if>
+                  <c:if test="${product.delivery ne 0}">
+                  	<span>배송비 ${product.delivery}</span>
+                  </c:if>
                 </div>
               </a>
             </article>
@@ -246,7 +251,12 @@
                 </div>
                 <div class="dis_price">
                   <ins>${product.disprice}</ins>
+                 <c:if test="${ product.delivery eq 0}">
                   <span class="free">${product.delivery}</span>
+                  </c:if>
+                  <c:if test="${product.delivery ne 0}">
+                  	<span>배송비 ${product.delivery}</span>
+                  </c:if>
                 </div>
               </a>
             </article>
@@ -270,7 +280,12 @@
                 </div>
                 <div class="dis_price">
                   <ins>${product.disprice}</ins>
+                 <c:if test="${ product.delivery eq 0}">
                   <span class="free">${product.delivery}</span>
+                  </c:if>
+                  <c:if test="${product.delivery ne 0}">
+                  	<span>배송비 ${product.delivery}</span>
+                  </c:if>
                 </div>
               </a>
             </article>
