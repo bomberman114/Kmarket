@@ -101,6 +101,8 @@ public class ListController extends HttpServlet {
 		
 		String prodNo = req.getParameter("prodNo");
 		
+		logger.debug("prodNo: " + prodNo);
+		
 		int result = service.deleteAdminProduct(prodNo);
 		
 		JsonObject json = new JsonObject();
