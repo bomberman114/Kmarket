@@ -157,11 +157,21 @@ public class Sql {
 														+"FROM `km_product` "
 														+"GROUP BY DATE_FORMAT(rdate, NOW()) ORDER BY date DESC";
 
-	public static final String SELECT_MAIN_PRODUCTS =" SELECT * FROM km_product ORDER BY discount  DESC LIMIT 8 ";
+	public static final String SELECT_MAIN_DISCOUNT_PRODUCTS =" SELECT * FROM km_product ORDER BY discount  DESC LIMIT 8 ";
 													
 
 
 	public static final String DELETE_PRODUCT = "DELETE * FROM `km_product` WHERE `prodNo`=?";
+
+	public static final String SELECT_MAIN_HIT_PRODUCTS = " SELECT * FROM km_product ORDER BY HIT  DESC LIMIT 8 ";
+
+	public static final String SELECT_MAIN_NEW_PRODUCTS =" SELECT * FROM km_product ORDER BY rdate  DESC LIMIT 8 ";
+
+	public static final String SELECT_MAIN_SCORE_PRODUCTS =" SELECT * FROM km_product ORDER BY score  DESC LIMIT 8 ";
+
+	public static final String SELECT_MAIN_BEST_PRODUCTS = " SELECT * FROM km_product ORDER BY sold  DESC  LIMIT 1,5 ";
+
+	public static final String SELECT_MAIN_BEST1_PRODUCT = " SELECT * FROM km_product ORDER BY sold  DESC LIMIT 1 ";
 
 
 

@@ -33,10 +33,18 @@ public class IndexController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		// 상품 불러오기
-		List<ProductVo> products = null;
-		products = service.mainProduct();
-		logger.error("도착!");
-		req.setAttribute("products", products);
+		List<ProductVo> hitproducts = service.mainHitProduct(); //히트상품
+		List<ProductVo> scoreproducts = service.mainScoreProduct(); //추천상품
+		List<ProductVo> newproducts = service.mainNewProduct(); //최신상품
+		List<ProductVo> disproducts = service.mainDiscountProduct(); //할인상품
+	//	ProductVo Best1 = service.best1();
+		List<ProductVo> best = service.mainBestProduct(); //할인상품
+	//	req.setAttribute("Best1", Best1);
+		req.setAttribute("best", best);
+		req.setAttribute("hitproducts", hitproducts);
+		req.setAttribute("scoreproducts", scoreproducts);
+		req.setAttribute("newproducts", newproducts);
+		req.setAttribute("disproducts", disproducts);
 		logger.error("값넣는데 성공");
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(req, resp);
