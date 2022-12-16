@@ -12,10 +12,6 @@
 		
 		let arrival = $('.arrival');
 		arrival.text(now);
-	
-		
-		
-		
 		
 		// 
 		

@@ -160,19 +160,19 @@
           <section class="slider">
            <ul>
               <li>
-                <a href="#"><img src="./img/item5.jpg" alt="item1" /></a>
+                <a href="#"><img src="./img/slider_item1.jpg" alt="item1" /></a>
               </li>
               <li>
-                <a href="#" ><img src="./img/item1.jpg" alt="item2"/></a>
+                <a href="#" ><img src="./img/slider_item2.jpg" alt="item2"/></a>
               </li>
               <li>
-                <a href="#" ><img src="./img/item2.jpg" alt="item3" /></a>
+                <a href="#" ><img src="./img/slider_item3.jpg" alt="item3" /></a>
               </li>
               <li>
-                <a href="#"><img src="./img/item3.jpg" alt="item4" /></a>
+                <a href="#"><img src="./img/slider_item4.jpg" alt="item4" /></a>
               </li>
               <li>
-                <a href="#"><img src="./img/item4.jpg"alt="item5" /></a>
+                <a href="#"><img src="./img/slider_item5.jpg" alt="item5" /></a>
               </li>
             </ul>
           </section>
@@ -219,7 +219,7 @@
                 <p>${product.descript}</p>
                 <div class="org_price">
                   <del><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
-                  <span>${product.discount}</span>
+                  <span>${product.discount}%</span>
                 </div>
                 <div class="dis_price">
                   <ins><fmt:formatNumber value="${product.disprice}" pattern="#,###"/></ins>
@@ -248,7 +248,7 @@
                 <p>${product.descript}</p>
                 <div class="org_price">
                   <del><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
-                  <span>${product.discount}</span>
+                  <span>${product.discount}%</span>
                 </div>
                 <div class="dis_price">
                   <ins><fmt:formatNumber value="${product.disprice}" pattern="#,###"/></ins>
@@ -277,7 +277,7 @@
                 <p>${product.descript}</p>
                 <div class="org_price">
                   <del><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
-                  <span>${product.discount}</span>
+                  <span>${product.discount}%</span>
                 </div>
                 <div class="dis_price">
                   <ins><fmt:formatNumber value="${product.disprice}" pattern="#,###"/></ins>
