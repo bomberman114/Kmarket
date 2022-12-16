@@ -99,7 +99,7 @@
                 </p>
               </li>
             </ul>
-            <a href="#" class="ask">문의글 작성 ></a>
+            <a href="/Kmarket/cs/qna/write.do?cate1=1" class="ask">문의글 작성 ></a>
           </section>
 
           <section class="tel">

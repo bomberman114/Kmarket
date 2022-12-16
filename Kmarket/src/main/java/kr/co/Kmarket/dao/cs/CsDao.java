@@ -46,9 +46,10 @@ public class CsDao extends DBHelper {
 		return result;
 	}
 	
-	public void selectArtlcle(String no) {
+	public QnaArticleVo selectArtlcle(String no) {
 		
-		QnaArticleVo qavo = null;
+		QnaArticleVo vo = null;
+		
 		try {
 			logger.info("selectArticle...");
 			conn = getConnection();
@@ -57,12 +58,25 @@ public class CsDao extends DBHelper {
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
-				
+				vo = new QnaArticleVo();
+				vo.setNo(rs.getInt(1));
+				vo.setParent(rs.getInt(2));
+				vo.setComment(rs.getInt(3));
+				vo.setCate1(rs.getInt(4));
+				vo.setCate2(rs.getInt(5));
+				vo.setTitle(rs.getString(6));
+				vo.setContent(rs.getString(7));
+				vo.setUid(rs.getString(8));
+				vo.setRegip(rs.getString(9));
+				vo.setRdate(rs.getString(10));
+				vo.setC2Name(rs.getString(11));
 			}
+			close();
 			
 		} catch (Exception e) {
-			
+			logger.error(e.getMessage());
 		}
+		return vo;
 	}
 	
 	

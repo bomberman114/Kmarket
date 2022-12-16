@@ -21,8 +21,8 @@ public enum CsService {
 		return dao.insertQnaArticle(vo);
 	}
 	
-	public void selectArtlcle(String no) {
-		dao.selectArtlcle(no);
+	public QnaArticleVo selectArtlcle(String no) {
+		return dao.selectArtlcle(no);
 	}
 	
 	

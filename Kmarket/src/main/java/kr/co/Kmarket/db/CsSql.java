@@ -20,6 +20,9 @@ public class CsSql {
 
 	public static final String SELECT_MAX_NO = "select max(`no`) from `km_cs_qna_board`";
 	
-	public static final String SELECT_ARTITCLE = "select * from `km_cs_qna_board` where `no` = ?";
+	public static final String SELECT_ARTITCLE = "select a.*, b.c2Name from `km_cs_qna_board` as a "
+												+ "join `km_cs_qna_cate` as b "
+												+ "on a.cate1 = b.cate1 and a.cate2 = b.cate2 "
+												+ "where `no` = ?";
 	
 }

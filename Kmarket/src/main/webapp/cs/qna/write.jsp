@@ -1,6 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../_header.jsp"></jsp:include>
+<script>
+	// 확인용 콘솔 로그
+	$(function(){
+		$('input[name=title]').focusout(function({
+			let title = $('input[name=title]').val();
+			console.log("title: "+title);
+		})
+	});
+</script>
         <section id="cs">
             <div class="qna">
                 <nav>
@@ -104,13 +113,13 @@
                                 <tr>
                                     <td>문의제목</td>
                                     <td>
-                                        <input type="text" name="title" placeholder="제목을 입력하세요.">
+                                        <input type="text" name="title" placeholder="제목을 입력하세요." required/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>문의내용</td>
                                     <td>
-                                        <textarea name="content" placeholder="내용을 입력하세요."></textarea>
+                                        <textarea name="content" placeholder="내용을 입력하세요." required></textarea>
                                     </td>
                                 </tr>
                             </table>
