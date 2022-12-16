@@ -23,25 +23,26 @@
                 <table border="0">     
                     <c:forEach var="product" items="${products}">
                     <tr>
-                    <td><a href="#" class="thumb"><img src="<c:url value='${product.thumb1}'/>" alt="상품이미지"/></a></td>
+                    <td><a href="/Kmarket/product/view.do" class="thumb"><img src="<c:url value='${product.thumb1}'/>" alt="상품이미지"/></a></td>
                     <td>
                         <h3 class="name">${product.prodName}</h3>
-                        <a href="#" class="desc">${product.descript}</a>
+                        <a href="/Kmarket/product/view.do" class="desc">${product.descript}</a>
                     </td>
                     <td>
                         <ul>
-                        <li><ins class="dis-price">${product.price}</ins></li>
+                        <li><ins class="dis-price">${product.disprice}</ins></li>
                         <li>
                             <del class="org-price">${product.price}</del>
                             <span class="discount">${product.discount}%</span>
                         </li>
-                        <li><span class="free-delivery">무료배송</span></li>
+                        <c:if test="${product.delivery eq 0}"><li><span class="free-delivery">무료배송</span></li></c:if>
+                        <c:if test="${product.delivery ne 0}"><li>배송비&nbsp;${product.delivery}원</span></li></c:if>
                         </ul>
                     </td>
                     <td>
-                        <h4 class="seller"><i class="fas fa-home"></i>&nbsp;판매자</h4>
+                        <h4 class="seller"><i class="fas fa-home"></i>&nbsp;${product.company}</h4>
                         <h5 class="badge power">판매자등급</h5>
-                        <h6 class="rating star1">상품평</h6>
+                        <h6 class="rating star1" style="width:${product.score}px">상품평</h6>
                     </td>
                     </tr>
 					</c:forEach>
@@ -49,21 +50,17 @@
 
                 <!-- 상품목록 페이지번호 -->
                 <div class="paging">
-                    <span class="prev">
-                    <a href="#"><&nbsp;이전</a>
-                    </span>
+                	<c:if test="${pageGroupStart > 1}">
+                    <span class="prev"><a href="/Kmarket/product/list.do?cate1=${cate1}&cate2=${cate2}&sort=${sort}&pg=${pageGroupStart-1}"><&nbsp;이전</a></span>
+                    </c:if>
                     <span class="num">
-                    <a href="#" class="on">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">7</a>
+                    <c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}">
+                    <a href="/Kmarket/product/list.do?cate1=${cate1}&cate2=${cate2}&sort=${sort}&pg=${i}" class="${currentPage == i ? 'on':'off'}">${i}</a>
+					</c:forEach>
                     </span>
-                    <span class="next">
-                    <a href="#">다음&nbsp;></a>
-                    </span>
+                    <c:if test="${pageGroupEnd < lastPageNum}">
+                    <span class="next"><a href="/Kmarket/product/list.do?cate1=${cate1}&cate2=${cate2}&sort=${sort}&pg=${pageGroupEnd+1}">다음&nbsp;></a></span>
+                    </c:if>
                 </div>
 
                 </section>

@@ -18,8 +18,28 @@ public enum MainService {
 		dao = new MainDao();
 	}
 
-	public List<ProductVo> mainProduct() {
-		return dao.mainProduct();
+	public List<ProductVo> mainDiscountProduct() {
+		return dao.mainDiscountProduct();
+	}
+
+	public List<ProductVo> mainHitProduct() {
+		return dao.mainHitProduct();
+	}
+
+	public List<ProductVo> mainScoreProduct() {
+		return dao.mainScoreProduct();
+	}
+
+	public List<ProductVo> mainNewProduct() {
+		return dao.mainNewProduct();
+	}
+
+	public ProductVo best1() {
+		return dao.best1();
+	}
+
+	public List<ProductVo> mainBestProduct() {
+		return dao.mainBestProduct();
 	}
 
 }

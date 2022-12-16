@@ -8,8 +8,8 @@ $(document).on('click', '.remove', function(e){
 	let isDeleteOk = confirm("정말 삭제하시겠습니까?");
 			
 		if (isDeleteOk){
-			let product = $(this).closest('product');
-			let no = $(this).attr('data-prodNo');
+			let prodNo = $(this).closest('product.prodNo');
+			let no = $(this).attr('prodNo');
 		}
 		
 		let jsonData = {"prodNo" : prodNo};

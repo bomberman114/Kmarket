@@ -22,8 +22,8 @@ public enum ProductService {
 		return dao.selectCountTotal(cate1, cate2);
 	}
 	
-	public List<ProductVo> selectProducts(int cate1, int cate2, String sort) {
-		return dao.selectProducts(cate1, cate2, sort);
+	public List<ProductVo> selectProducts(int cate1, int cate2, String sort, int start) {
+		return dao.selectProducts(cate1, cate2, sort, start);
 	}
 	
 	public String[] getCateName(int cate1, int cate2) {
@@ -59,9 +59,9 @@ public enum ProductService {
 	
 	public int[] getPageGroupNum(int currentPage, int lastPageNum) {
 		
-		int pageGroupCurrent = (int)Math.ceil(currentPage / 7.0);
-		int pageGroupStart = (pageGroupCurrent -1) * 7 + 1;
-		int pageGroupEnd = pageGroupCurrent * 7;
+		int pageGroupCurrent = (int)Math.ceil(currentPage / 10.0);
+		int pageGroupStart = (pageGroupCurrent -1) * 10 + 1;
+		int pageGroupEnd = pageGroupCurrent * 10;
 		
 		if(pageGroupEnd > lastPageNum) {
 			pageGroupEnd = lastPageNum;
@@ -76,7 +76,14 @@ public enum ProductService {
 	public int getStartNum(int currentPage) {
 		
 		return (currentPage -1) * 10;
+	}
+
+	
+	// 현길
+
+	
+	public List<ProductVo> cart(String uid) {
+		return dao.cart(uid);
 	}	
 	
-
 }
