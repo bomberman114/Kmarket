@@ -8,27 +8,27 @@ public class ProductSql {
 	
 	public static final String SELECT_PRODUCTS_SOLD = "SELECT a.*, FLOOR(`price` * (1 - `discount` / 100)) AS `disPrice` "
 														+ "FROM `km_product` AS a WHERE `prodCate1`=? AND `prodCate2`=? "
-														+ "ORDER BY ? ASC LIMIT ?, 10 ";
+														+ "ORDER BY `sold` DESC LIMIT ?, 10 ";
 	
 	public static final String SELECT_PRODUCTS_LOWPRICE = "SELECT a.*, FLOOR(`price` * (1 - `discount` / 100)) AS `disPrice` "
 														+ "FROM `km_product` AS a WHERE `prodCate1`=? AND `prodCate2`=? "
-														+ "ORDER BY ? ASC LIMIT ?, 10 ";
+														+ "ORDER BY `price` ASC LIMIT ?, 10 ";
 	
 	public static final String SELECT_PRODUCTS_HIGHPRICE = "SELECT a.*, FLOOR(`price` * (1 - `discount` / 100)) AS `disPrice` "
 														+ "FROM `km_product` AS a WHERE `prodCate1`=? AND `prodCate2`=? "
-														+ "ORDER BY ? ASC LIMIT ?, 10 ";
+														+ "ORDER BY `price` DESC LIMIT ?, 10 ";
 	
 	public static final String SELECT_PRODUCTS_SCORE = "SELECT a.*, FLOOR(`price` * (1 - `discount` / 100)) AS `disPrice` "
 														+ "FROM `km_product` AS a WHERE `prodCate1`=? AND `prodCate2`=? "
-														+ "ORDER BY ? ASC LIMIT ?, 10 ";
+														+ "ORDER BY `score` DESC LIMIT ?, 10 ";
 	
 	public static final String SELECT_PRODUCTS_REVIEW = "SELECT a.*, FLOOR(`price` * (1 - `discount` / 100)) AS `disPrice` "
 														+ "FROM `km_product` AS a WHERE `prodCate1`=? AND `prodCate2`=? "
-														+ "ORDER BY ? ASC LIMIT ?, 10 ";
+														+ "ORDER BY `review` DESC LIMIT ?, 10 ";
 	
 	public static final String SELECT_PRODUCTS_RDATE = "SELECT a.*, FLOOR(`price` * (1 - `discount` / 100)) AS `disPrice` "
 														+ "FROM `km_product` AS a WHERE `prodCate1`=? AND `prodCate2`=? "
-														+ "ORDER BY ? ASC LIMIT ?, 10 ";
+														+ "ORDER BY `rdate` DESC LIMIT ?, 10 ";
 	
 	
 	
