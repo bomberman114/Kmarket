@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.Kmarket.service.cs.CsService;
+
 @WebServlet("/cs/qna/view.do")
 public class ViewController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private CsService service = CsService.INSTANCE;
 	
 	@Override
 	public void init() throws ServletException {}
@@ -20,6 +23,11 @@ public class ViewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		String no = req.getParameter("no");
+		
+		service.selectArtlcle(no);
+		
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/qna/view.jsp");
 		dispatcher.forward(req, resp);
 	}

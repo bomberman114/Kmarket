@@ -17,6 +17,13 @@ public enum CsService {
 	}
 	
 	// 진우
+	public int insertQnaArticle(QnaArticleVo vo) {
+		return dao.insertQnaArticle(vo);
+	}
+	
+	public void selectArtlcle(String no) {
+		dao.selectArtlcle(no);
+	}
 	
 	
 	
@@ -29,11 +36,6 @@ public enum CsService {
 	public int selectCountTotal(int cate1) {
 		return dao.selectCountTotal(cate1);
 	}
-	
-	public void insertQnaArticle(QnaArticleVo vo) {
-		dao.insertQnaArticle(vo);
-	}
-	
 	
 	public int getCurrentPage(String pg) {
 		

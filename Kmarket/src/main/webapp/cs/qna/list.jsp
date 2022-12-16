@@ -30,7 +30,7 @@
                         <table style="table-layout: fixed">
                         	<c:forEach var="article" items="${articles}">
                             <tr>
-                                <td><a href="/Kmarket/cs/qna/view.do">[${article.c2Name}] ${article.title}</a></td>
+                                <td><a href="/Kmarket/cs/qna/view.do?&no=${article.no}">[${article.c2Name}] ${article.title}</a></td>
                                 <c:choose>
                                 	<c:when test="${article.comment eq 0}">
                                 		<td width="130px" style="color:#A0A0A0; font-size:16px">검토중</td>

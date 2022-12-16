@@ -58,7 +58,6 @@ public class QnaArticleVo {
 	public void setCate1(String cate1) {
 		this.cate1 = Integer.parseInt(cate1);
 	}
-	
 	public int getCate2() {
 		return cate2;
 	}
