@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../_header.jsp"></jsp:include>
+
 <script>
 $(document).on('click', '.remove', function(e){
 	e.preventDefault();
@@ -35,6 +36,7 @@ $(document).on('click', '.remove', function(e){
 	}
 });
 </script>
+
 
             <section id="admin-product-list">
                 <nav>
@@ -90,8 +92,10 @@ $(document).on('click', '.remove', function(e){
 	                            <td>${product.seller}</td>
 	                            <td>${product.hit}</td>
 	                            <td>
-	                               <!--   <a href="#" class="remove" data-prodNo="${product.prodNo}">[삭제]</a>-->
-	                                <a href="#" class="remove" data-prodNo="${product.prodNo}">[삭제]</a>
+
+	                                <a href="/Kmarket/admin/product/delete.do" class="remove">[삭제]</a>
+
+	
 	                                <a href="#" class="modify">[수정]</a>
 	                            </td>
 	                        </tr>

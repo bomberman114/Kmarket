@@ -8,6 +8,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="/Kmarket/img/favicon.ico" />
     <link rel="stylesheet" href="/Kmarket/cs/css/style.css">
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
         $(function(){
             $('.more').click(function(e){
@@ -36,8 +37,8 @@
         <div class="top">
           <div>
             <p>
-            	<c:if test="${ sessUser.type == 2}">
-	            	<a href="/Kmarket/admin/index.do?${sessUser}">관리자</a>
+            	<c:if test="${sessUser.type == 2}">
+	            	<a href="/Kmarket/admin/index.do">관리자</a>
 	            	
 	            </c:if>
               	<c:choose>

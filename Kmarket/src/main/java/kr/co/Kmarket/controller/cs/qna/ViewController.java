@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.Kmarket.service.cs.CsService;
+import kr.co.Kmarket.vo.QnaArticleVo;
 
 @WebServlet("/cs/qna/view.do")
 public class ViewController extends HttpServlet {
@@ -24,9 +25,12 @@ public class ViewController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		String no = req.getParameter("no");
+		String cate1 = req.getParameter("cate1");
 		
-		service.selectArtlcle(no);
+		QnaArticleVo article = service.selectArtlcle(no);
 		
+		req.setAttribute("article", article);
+		req.setAttribute("cate1", cate1);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/qna/view.jsp");
 		dispatcher.forward(req, resp);
