@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="./_header.jsp"></jsp:include>
 <script>
 
@@ -129,7 +130,7 @@
              
               <c:forEach var="product" items="${best}">
               <li>
-           <a href="#">
+           <a href="/Kmarket/product/list.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                   <div class="thumb">
                   <c:set var="i" value="${i+1}"/>
                     <i>${i}</i>
@@ -138,11 +139,11 @@
                   <article>
                     <h2>${product.prodName}</h2>
                     <div class="org_price">
-                      <del>${product.price}</del>
+                      <del><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
                       <span>${product.discount}%</span>
                     </div>
                     <div class="dis_price">
-                      <ins>${product.disprice}</ins>
+                      <ins><fmt:formatNumber value="${product.disprice}" pattern="#,###"/></ins>
                     </div>
                   </article>
                 </a>
@@ -157,21 +158,21 @@
         <section>
           <!-- 슬라이더 영역 -->
           <section class="slider">
-            <ul>
+           <ul>
               <li>
-                <a href="#"><img src="https://via.placeholder.com/985x447" alt="item1" /></a>
+                <a href="#"><img src="./img/item5.jpg" alt="item1" /></a>
               </li>
               <li>
-                <a href="#" ><img src="https://via.placeholder.com/985x447" alt="item2"/></a>
+                <a href="#" ><img src="./img/item1.jpg" alt="item2"/></a>
               </li>
               <li>
-                <a href="#" ><img src="https://via.placeholder.com/985x447" alt="item3" /></a>
+                <a href="#" ><img src="./img/item2.jpg" alt="item3" /></a>
               </li>
               <li>
-                <a href="#"><img src="https://via.placeholder.com/985x447" alt="item4" /></a>
+                <a href="#"><img src="./img/item3.jpg" alt="item4" /></a>
               </li>
               <li>
-                <a href="#"><img src="https://via.placeholder.com/985x447" alt="item5" /></a>
+                <a href="#"><img src="./img/item4.jpg"alt="item5" /></a>
               </li>
             </ul>
           </section>
@@ -180,7 +181,7 @@
             <h3><span>히트상품</span></h3>
              <c:forEach var="product" items="${hitproducts}">
             <article>
-              <a href="#">
+              <a href="/Kmarket/product/list.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                 <div class="thumb">
                   <img src="<c:url value='${product.thumb2}'/>"  alt="t1" />
                 </div>
@@ -188,16 +189,16 @@
                 <h2>${product.prodName}</h2>
                 <p>${product.descript}</p>
                 <div class="org_price">
-                  <del>${product.price}</del>
+                  <del><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
                   <span>${product.discount}</span>
                 </div>
                 <div class="dis_price">
-                  <ins>${product.disprice}</ins>
+                  <ins><fmt:formatNumber value="${product.disprice}" pattern="#,###"/></ins>
                   <c:if test="${ product.delivery eq 0}">
                   <span class="free">${product.delivery}</span>
                   </c:if>
                   <c:if test="${product.delivery ne 0}">
-                  	<span>배송비 ${product.delivery}</span>
+                  	<span>배송비 <fmt:formatNumber value="${product.delivery}" pattern="#,###"/>원</span>
                   </c:if>
                 </div>
               </a>
@@ -209,7 +210,7 @@
             <h3><span>추천상품</span></h3>
           <c:forEach var="product" items="${scoreproducts}">
             <article>
-              <a href="#">
+              <a href="/Kmarket/product/list.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                 <div class="thumb">
                   <img src="<c:url value='${product.thumb3}'/>"  alt="t1" />
                 </div>
@@ -217,16 +218,16 @@
                 <h2>${product.prodName}</h2>
                 <p>${product.descript}</p>
                 <div class="org_price">
-                  <del>${product.price}</del>
+                  <del><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
                   <span>${product.discount}</span>
                 </div>
                 <div class="dis_price">
-                  <ins>${product.disprice}</ins>
+                  <ins><fmt:formatNumber value="${product.disprice}" pattern="#,###"/></ins>
                  <c:if test="${ product.delivery eq 0}">
                   <span class="free">${product.delivery}</span>
                   </c:if>
                   <c:if test="${product.delivery ne 0}">
-                  	<span>배송비 ${product.delivery}</span>
+                  	<span>배송비 <fmt:formatNumber value="${product.delivery}" pattern="#,###"/></span>
                   </c:if>
                 </div>
               </a>
@@ -238,7 +239,7 @@
             <h3><span>최신상품</span></h3>
            <c:forEach var="product" items="${newproducts}">
             <article>
-              <a href="#">
+              <a href="/Kmarket/product/list.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                 <div class="thumb">
                   <img src="<c:url value='${product.thumb1}'/>"  alt="t1" />
                 </div>
@@ -246,16 +247,16 @@
                 <h2>${product.prodName}</h2>
                 <p>${product.descript}</p>
                 <div class="org_price">
-                  <del>${product.price}</del>
+                  <del><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
                   <span>${product.discount}</span>
                 </div>
                 <div class="dis_price">
-                  <ins>${product.disprice}</ins>
+                  <ins><fmt:formatNumber value="${product.disprice}" pattern="#,###"/></ins>
                  <c:if test="${ product.delivery eq 0}">
                   <span class="free">${product.delivery}</span>
                   </c:if>
                   <c:if test="${product.delivery ne 0}">
-                  	<span>배송비 ${product.delivery}</span>
+                  	<span>배송비 <fmt:formatNumber value="${product.delivery}" pattern="#,###"/></span>
                   </c:if>
                 </div>
               </a>
@@ -267,7 +268,7 @@
             <h3><span>할인상품</span></h3>
                    <c:forEach var="product" items="${disproducts}">
             <article>
-              <a href="#">
+              <a href="/Kmarket/product/list.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                 <div class="thumb">
                   <img src="<c:url value='${product.thumb1}'/>"  alt="t1" />
                 </div>
@@ -275,16 +276,16 @@
                 <h2>${product.prodName}</h2>
                 <p>${product.descript}</p>
                 <div class="org_price">
-                  <del>${product.price}</del>
+                  <del><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
                   <span>${product.discount}</span>
                 </div>
                 <div class="dis_price">
-                  <ins>${product.disprice}</ins>
+                  <ins><fmt:formatNumber value="${product.disprice}" pattern="#,###"/></ins>
                  <c:if test="${ product.delivery eq 0}">
                   <span class="free">${product.delivery}</span>
                   </c:if>
                   <c:if test="${product.delivery ne 0}">
-                  	<span>배송비 ${product.delivery}</span>
+                  	<span>배송비 <fmt:formatNumber value="${product.delivery}" pattern="#,###"/></span>
                   </c:if>
                 </div>
               </a>

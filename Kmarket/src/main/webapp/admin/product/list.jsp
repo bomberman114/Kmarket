@@ -7,12 +7,18 @@ $(document).on('click', '.remove', function(e){
 	
 	let isDeleteOk = confirm("정말 삭제하시겠습니까?");
 			
-		if (isDeleteOk){
-			let prodNo = $(this).closest('product.prodNo');
-			let no = $(this).attr('prodNo');
-		}
+	if (isDeleteOk){
+		let prodNo = $(this).attr('data-prodNo');
+		//let no = $(this).attr(prodNo);
+		//let prodNo1 = $( '<td>${product.prodNo}</td>').val();
+	
+		//console.log('no : ' + no);
+		console.log('prodNo : ' + prodNo);
+		//console.log('prodNo1 : ' + prodNo1);
+		
 		
 		let jsonData = {"prodNo" : prodNo};
+		//let jsonData1 = {"prodNo1" : prodNo1};
 		
 		$.ajax ({
 			url: '/Kmarket/admin/product/list.do',
@@ -26,6 +32,7 @@ $(document).on('click', '.remove', function(e){
 				}
 			}
 		});
+	}
 });
 </script>
 
@@ -83,6 +90,7 @@ $(document).on('click', '.remove', function(e){
 	                            <td>${product.seller}</td>
 	                            <td>${product.hit}</td>
 	                            <td>
+	                               <!--   <a href="#" class="remove" data-prodNo="${product.prodNo}">[삭제]</a>-->
 	                                <a href="#" class="remove" data-prodNo="${product.prodNo}">[삭제]</a>
 	                                <a href="#" class="modify">[수정]</a>
 	                            </td>
