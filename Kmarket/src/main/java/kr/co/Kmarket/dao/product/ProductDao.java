@@ -298,4 +298,25 @@ public class ProductDao extends DBHelper {
 		return cart;
 	}
 	
+	// 진우
+	public void selectProductOrder(String uid) {
+		
+		
+		
+		try {
+			logger.info("selectProductOrder...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(ProductSql.SELECT_PRODUCT_ORDER);
+			psmt.setString(1, uid);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+			}
+		} catch (Exception e) {
+			
+		}
+	}
+	
+	
 }

@@ -90,4 +90,9 @@ public enum ProductService {
 		return dao.cart(uid);
 	}	
 	
+	// 진우
+	public void selectProductOrder(String uid) {
+		dao.selectProductOrder(uid);
+	}
+	
 }
