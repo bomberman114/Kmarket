@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import kr.co.Kmarket.db.DBHelper;
 import kr.co.Kmarket.db.ProductSql;
+import kr.co.Kmarket.vo.ProductCartVo;
 import kr.co.Kmarket.vo.ProductVo;
 
 public class ProductDao extends DBHelper {
@@ -226,7 +227,54 @@ public class ProductDao extends DBHelper {
 		return cateName;
 	}
 
+	
+	public void updateProductHit(int prodNo) {
+		
+		try {
+			
+			logger.info("updateProductHit...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(ProductSql.UPDATE_PRODUCT_HIT);
+			psmt.setInt(1, prodNo);
+			psmt.executeUpdate();
 
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+	
+		
+	}
+	
+	public void insertCart(ProductCartVo cart) {
+		
+		int result = 0;
+		
+		try {
+		
+			logger.info("insertCart...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(ProductSql.INSERT_CART);
+			psmt.setString(1, cart.getUid());
+			psmt.setInt(2, cart.getProdNo());
+			psmt.setInt(3, cart.getCount());
+			psmt.setInt(4, cart.getPrice());
+			psmt.setInt(5, cart.getDiscount());
+			psmt.setInt(6, cart.getPoint());
+			psmt.setInt(7, cart.getDelivery());
+			psmt.setInt(8, cart.getTotal());
+			
+			result = psmt.executeUpdate();
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+	}
+	
 	
 	
 	// 현길

@@ -209,7 +209,7 @@
             <article>
               <a href="/Kmarket/product/view.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                 <div class="thumb">
-                  <img src="<c:url value='${product.thumb3}'/>"  alt="t1" />
+                  <img src="<c:url value='${product.thumb2}'/>"  alt="t1" />
                 </div>
 	                        
                 <h2>${product.prodName}</h2>
@@ -238,7 +238,7 @@
             <article>
               <a href="/Kmarket/product/view.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                 <div class="thumb">
-                  <img src="<c:url value='${product.thumb1}'/>"  alt="t1" />
+                  <img src="<c:url value='${product.thumb2}'/>"  alt="t1" />
                 </div>
 	                        
                 <h2>${product.prodName}</h2>
@@ -267,7 +267,7 @@
             <article>
               <a href="/Kmarket/product/view.do?cate1=${product.prodCate1}&cate2=${product.prodCate2}&prodNo=${product.prodNo}">
                 <div class="thumb">
-                  <img src="<c:url value='${product.thumb1}'/>"  alt="t1" />
+                  <img src="<c:url value='${product.thumb2}'/>"  alt="t1" />
                 </div>
 	                        
                 <h2>${product.prodName}</h2>

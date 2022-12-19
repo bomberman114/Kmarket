@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.Kmarket.service.product.ProductService;
+import kr.co.Kmarket.vo.ProductCartVo;
 import kr.co.Kmarket.vo.ProductVo;
 
 @WebServlet("/product/view.do")
@@ -39,12 +40,38 @@ public class ViewController extends HttpServlet {
 		req.setAttribute("product", product);
 		
 		
+		// 조회수 +1;
+		service.updateProductHit(prodNo);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/view.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		// 장바구니 담기
+		String uid = req.getParameter("uid");
+		int prodNo = Integer.parseInt(req.getParameter("prodNo"));
+		int count = Integer.parseInt(req.getParameter("count"));
+		int price = Integer.parseInt(req.getParameter("price"));
+		int discount = Integer.parseInt(req.getParameter("discount"));
+		int point = Integer.parseInt(req.getParameter("point"));
+		int delivery = Integer.parseInt(req.getParameter("delivery"));
+		int total = count * price * (1- discount/100);
+
+		
+		ProductCartVo cart = new ProductCartVo();
+		cart.setProdNo(prodNo);
+		cart.setPrice(price);
+		cart.setDiscount(discount);
+		cart.setPoint(point);
+		cart.setDelivery(delivery);
+		cart.setTotal(total);
+		
+		service.insertCart(cart);
+	
+	
 	}
 	
 }
