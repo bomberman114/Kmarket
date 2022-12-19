@@ -38,8 +38,18 @@ public class ProductSql {
 	
 	//-----------현길
 	
+
 	public static final String SELECT_CART_PRODUCTS =" SELECT *  FROM km_product_cart  "
 													+"	LEFT JOIN km_product ON km_product_cart.cartNo=  km_product.prodNo WHERE uid = '?'";
 
+
+	//-----------진우
+	public static final String SELECT_PRODUCT_ORDER = "select a.*, b.*, c.* "
+														+ "from `km_product` as a "
+														+ "join `km_product_cart` as b "
+														+ "on a.prodNo = b.prodNo "
+														+ "join `km_member` as c "
+														+ "on b.uid = c.uid "
+														+ "where `uid` = ?";
 
 }

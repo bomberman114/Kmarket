@@ -46,8 +46,12 @@
           <div>
                <c:if test="${ sessUser.type == 2}">
 	            	<a href="/Kmarket/admin/index.do">관리자</a>
-	           </c:if>
-            <a href="./member/login.html">로그인</a>
+	             </c:if>
+            <a href="/Kmarket/member/login.do">로그인</a>
+
+             
+         
+
             <a href="#">회원가입</a>
             <a href="#">마이페이지</a>
             <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="./_header.jsp"></jsp:include>
         
             <!-- 주문 페이지 시작-->
@@ -28,6 +29,7 @@
                     <tr class="empty">
                         <td colspan="7">장바구니에 상품이 없습니다.</td>
                     </tr>
+                    
                     <tr>
                         <td>
                         <article>
@@ -43,36 +45,6 @@
                         <td>무료배송</td>
                         <td>27,000</td>
                     </tr>
-                    <tr>
-                        <td>
-                        <article>
-                            <a href="#"><img src="https://via.placeholder.com/80x80" alt=""></a>
-                            <div>
-                                <h2><a href="#">상품명</a></h2>
-                                <p>상품설명</p>
-                            </div>
-                        </article>
-                        </td>
-                        <td>1</td>
-                        <td>27,000</td>
-                        <td>무료배송</td>
-                        <td>27,000</td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <article>
-                            <a href="#"><img src="https://via.placeholder.com/80x80" alt=""></a>
-                            <div>
-                                <h2><a href="#">상품명</a></h2>
-                                <p>상품설명</p>
-                            </div>
-                        </article>
-                        </td>
-                        <td>1</td>
-                        <td>27,000</td>
-                        <td>무료배송</td>
-                        <td>27,000</td>
-                    </tr>                    
                     </tbody>
                 </table>                 
                 
