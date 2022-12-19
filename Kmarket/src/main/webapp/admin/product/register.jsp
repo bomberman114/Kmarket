@@ -6,7 +6,6 @@
 
 	
 $(function(){
-	
 	$('select[name=prodCate1]').change(function(){
 		
 		

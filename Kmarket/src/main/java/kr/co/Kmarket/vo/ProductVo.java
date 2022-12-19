@@ -31,6 +31,7 @@ public class ProductVo {
 	private String rdate;
 	private int disprice;
 	private int count;
+	private int total;
 
 	public ProductVo() {
 	}
@@ -38,7 +39,8 @@ public class ProductVo {
 	public ProductVo(int prodNo, int prodCate1, int prodCate2, String prodName, String descript, String company,
 			String seller, int price, int discount, int point, int stock, int sold, int delivery, int hit, int score,
 			int review, String thumb1, String thumb2, String thumb3, String detail, String status, String duty,
-			String receipt, String bizType, String origin, String ip, String rdate, int disprice, int count) {
+			String receipt, String bizType, String origin, String ip, String rdate, int disprice, int count,
+			int total) {
 		super();
 		this.prodNo = prodNo;
 		this.prodCate1 = prodCate1;
@@ -69,6 +71,7 @@ public class ProductVo {
 		this.rdate = rdate;
 		this.disprice = disprice;
 		this.count = count;
+		this.total = total;
 	}
 
 	public int getProdNo() {
@@ -315,6 +318,14 @@ public class ProductVo {
 		this.count = count;
 	}
 
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductVo [prodNo=" + prodNo + ", prodCate1=" + prodCate1 + ", prodCate2=" + prodCate2 + ", prodName="
@@ -323,7 +334,7 @@ public class ProductVo {
 				+ ", delivery=" + delivery + ", hit=" + hit + ", score=" + score + ", review=" + review + ", thumb1="
 				+ thumb1 + ", thumb2=" + thumb2 + ", thumb3=" + thumb3 + ", detail=" + detail + ", status=" + status
 				+ ", duty=" + duty + ", receipt=" + receipt + ", bizType=" + bizType + ", origin=" + origin + ", ip="
-				+ ip + ", rdate=" + rdate + ", disprice=" + disprice + ", count=" + count + "]";
+				+ ip + ", rdate=" + rdate + ", disprice=" + disprice + ", count=" + count + ", total=" + total + "]";
 	}
 
 }

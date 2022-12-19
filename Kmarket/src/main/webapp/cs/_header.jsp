@@ -39,7 +39,6 @@
             <p>
             	<c:if test="${sessUser.type == 2}">
 	            	<a href="/Kmarket/admin/index.do">관리자</a>
-	            	
 	            </c:if>
               	<c:choose>
 	          		<c:when test="${sessUser eq null}">

@@ -54,7 +54,7 @@ public class AutoLoginFilter implements Filter {
 				
 				for(Cookie cookie : cookies) {
 					
-					if(cookie.getName().equals("SESSID")) {
+					if(cookie.getName().equals("sessid")) {
 						
 						String sessId = cookie.getValue();					
 						MemberVo vo = service.selectMemberBySessId(sessId);
