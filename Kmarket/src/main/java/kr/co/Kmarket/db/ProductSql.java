@@ -40,8 +40,7 @@ public class ProductSql {
 	
 	
 	public static final String INSERT_CART = "INSERT INTO `km_product_cart` (`uid`, `prodNo`, `count`, `price`, `discount`, `point`, `delivery`, `total`, `rdate`) "
-											+ "VALUES ?, ?, ?, ?, ?, ?, ?, ?, NOW()";
-	
+											+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW()) ";
 	
 	
 	//-----------현길
