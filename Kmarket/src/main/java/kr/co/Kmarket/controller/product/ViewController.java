@@ -62,7 +62,9 @@ public class ViewController extends HttpServlet {
 
 		
 		ProductCartVo cart = new ProductCartVo();
+		cart.setUid(uid);
 		cart.setProdNo(prodNo);
+		cart.setCount(count);
 		cart.setPrice(price);
 		cart.setDiscount(discount);
 		cart.setPoint(point);
@@ -70,7 +72,6 @@ public class ViewController extends HttpServlet {
 		cart.setTotal(total);
 		
 		service.insertCart(cart);
-	
 	
 	}
 	

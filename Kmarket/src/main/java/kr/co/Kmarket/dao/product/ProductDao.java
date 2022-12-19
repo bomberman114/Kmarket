@@ -249,8 +249,6 @@ public class ProductDao extends DBHelper {
 	
 	public void insertCart(ProductCartVo cart) {
 		
-		int result = 0;
-		
 		try {
 		
 			logger.info("insertCart...");
@@ -265,7 +263,7 @@ public class ProductDao extends DBHelper {
 			psmt.setInt(7, cart.getDelivery());
 			psmt.setInt(8, cart.getTotal());
 			
-			result = psmt.executeUpdate();
+			psmt.executeUpdate();
 			
 			close();
 			
