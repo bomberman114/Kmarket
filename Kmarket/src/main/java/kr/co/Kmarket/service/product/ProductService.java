@@ -3,6 +3,7 @@ package kr.co.Kmarket.service.product;
 import java.util.List;
 
 import kr.co.Kmarket.dao.product.ProductDao;
+import kr.co.Kmarket.vo.ProductCartVo;
 import kr.co.Kmarket.vo.ProductVo;
 
 public enum ProductService {
@@ -32,6 +33,14 @@ public enum ProductService {
 	
 	public String[] getCateName(int cate1, int cate2) {
 		return dao.getCateName(cate1, cate2);
+	}
+	
+	public void updateProductHit(int prodNo) {
+		dao.updateProductHit(prodNo);
+	}
+	
+	public void insertCart(ProductCartVo cart) {
+		dao.insertCart(cart);
 	}
 	
 	
