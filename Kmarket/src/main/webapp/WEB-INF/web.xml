@@ -27,8 +27,8 @@
   
   
 
-  <!-- 필터 설정 
-   
+  <!-- 필터 설정 -->
+  
   <filter>
   	<filter-name>AutoLoginFilter</filter-name>
   	<filter-class>kr.co.Kmarket.filter.AutoLoginFilter</filter-class>
@@ -37,7 +37,6 @@
   	<filter-name>AutoLoginFilter</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
-  
   <filter>
   	<filter-name>LoginCheckFilter</filter-name>
   	<filter-class>kr.co.Kmarket.filter.LoginCheckFilter</filter-class>
@@ -46,7 +45,7 @@
   	<filter-name>LoginCheckFilter</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
--->
+
 
   <filter>
   	<filter-name>SetCharacterEncodingFilter</filter-name>

@@ -1,5 +1,52 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../_header.jsp"></jsp:include>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="../_header.jsp"></jsp:include>\
+<script>
+$(function(){
+	
+	$('.btnOrder1').click(function(){
+		let prodNo = $(this).val();
+		$('section1').show();
+	});
+	
+	$('.btnClose1').click(function(){
+		$('.section1').hide();
+	});
+		});
+		
+$(function(){
+	
+	$('.btnOrder2').click(function(){
+		let prodNo = $(this).val();
+		$('section2').show();
+	});
+	
+	$('.btnClose2').click(function(){
+		$('.section2').hide();
+	});
+		});
+$(function(){
+	
+	$('.btnOrder3').click(function(){
+		let prodNo = $(this).val();
+		$('section3').show();
+	
+	$('.btnClose3').click(function(){
+		$('.section3').hide();
+	});
+		});
+$(function(){
+	
+	$('.btnOrder4').click(function(){
+		let prodNo = $(this).val();
+		$('section4').show();
+	
+	$('.btnClose4').click(function(){
+		$('.section4').hide();
+	});
+		});
+
+</script>
     <section id="cs">
         <div class="faq">
         <nav>
@@ -34,7 +81,13 @@
                 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
                 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
                 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-                <li class="more"><a href="#">더보기</a></li>
+                 <li class="more"><a href="#" class="btnOrder1" >더보기</a></li>
+                	<section class="section1" style="display: none;">
+                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                	 <a href="#" class="btnClose1">닫기</a>  
+                	</section>
                 </ul>
             </div>
             <div>
@@ -45,7 +98,13 @@
                 <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
                 <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
                 <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-                <li class="more"><a href="#">더보기</a></li>
+               <li class="more"><a href="#" class="btnOrder2" >더보기</a></li>
+                	<section class="section2" style="display: none;">
+                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                	 <a href="#" class="btnClose2">닫기</a>  
+                	</section>
                 </ul>
             </div>
             <div>
@@ -56,7 +115,13 @@
                 <li><a href="#"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
                 <li><a href="#"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
                 <li><a href="#"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
-                <li class="more"><a href="#">더보기</a></li>
+                 <li class="more"><a href="#" class="btnOrder3" >더보기</a></li>
+                	<section class="section3" style="display: none;">
+                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                	 <a href="#" class="btnClose3">닫기</a>  
+                	</section>
                 </ul>
             </div>
             <div>
@@ -67,7 +132,13 @@
                 <li><a href="#"><span>Q.</span>로그인에 문제가 있어요.</a></li>
                 <li><a href="#"><span>Q.</span>로그인에 문제가 있어요.</a></li>
                 <li><a href="#"><span>Q.</span>로그인에 문제가 있어요.</a></li>
-                <li class="more"><a href="#">더보기</a></li>
+                <li class="more"><a href="#" class="btnOrder4" >더보기</a></li>
+                	<section class="section4" style="display: none;">
+                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                	 <a href="#" class="btnClose4">닫기</a>  
+                	</section>
                 </ul>
             </div>
 

@@ -28,7 +28,7 @@ public class LoginCheckFilter implements Filter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// 필터를 동작할 요청주소 리스트 구성
-		/*
+
 		uriList = new ArrayList<>();
 		uriList.add("/Kmarket/admin/index.do");
 		uriList.add("/Kmarket/admin/product/list.do");
@@ -37,7 +37,7 @@ public class LoginCheckFilter implements Filter {
 		uriList.add("/Kmarket/product/order.do");
 		uriList.add("/Kmarket/product/complete.do");
 		uriList.add("/Kmarket/cs/qna/write.do");
-		*/
+
 	}
 
 	@Override
@@ -49,7 +49,10 @@ public class LoginCheckFilter implements Filter {
 		String uri = req.getRequestURI();
 
 		HttpSession sess = req.getSession();
+		System.out.println("로그인 체크1:"+sess);
+		System.out.println("로그인 체크1-2:"+sess.getAttribute("sessUser"));
 		MemberVo sessUser = (MemberVo) sess.getAttribute("sessUser");
+		System.out.println("로그인 체크2:"+sessUser);
 
 		logger.debug("here1");
 
@@ -63,15 +66,14 @@ public class LoginCheckFilter implements Filter {
 				return;
 			}
 
-		} else  if(uri.contains("/Kmarket/member/login.do")) {
+		} else if (uri.contains("/Kmarket/member/login.do")) {
 			// 로그인을 했을 경우
 			logger.debug("here4");
-		}
-			
 			if (sessUser != null) {
-			logger.debug("here5");
-			((HttpServletResponse) response).sendRedirect("/Kamrket/index.do");
-			return;
+				logger.debug("here5");
+				((HttpServletResponse) response).sendRedirect("/Kmarket/index.do");
+				return;
+			}
 		}
 
 		logger.debug("here6");

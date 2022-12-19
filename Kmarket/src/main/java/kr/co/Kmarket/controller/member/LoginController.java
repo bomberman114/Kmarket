@@ -54,7 +54,7 @@ public class LoginController extends HttpServlet {
 				String sessId = sess.getId();
 
 				// 쿠키 생성
-				Cookie cookie = new Cookie("SESSID", sessId);
+				Cookie cookie = new Cookie("sessid", sessId);
 				cookie.setPath("/");
 				cookie.setMaxAge(60 * 60 * 24 * 3);
 				resp.addCookie(cookie);
