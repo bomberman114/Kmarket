@@ -348,25 +348,46 @@ public class ProductDao extends DBHelper {
 		return cart;
 	}
 	
-	// 진우
-	public void selectProductOrder(String uid) {
+	// 진우 
+	/*
+	public List<ProductCartVo> selectOrderProduct(String uid) {
 		
-		
+		List<ProductCartVo> product = new ArrayList<>();
 		
 		try {
-			logger.info("selectProductOrder...");
+			logger.info("selectOrderProduct...");
 			conn = getConnection();
-			psmt = conn.prepareStatement(ProductSql.SELECT_PRODUCT_ORDER);
+			psmt = conn.prepareStatement(ProductSql.SELECT_ORDER_PRODUCT);
 			psmt.setString(1, uid);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
+				ProductCartVo vo = new ProductCartVo();
+				String prodCate1 = rs.getString("prodCate1");
+				String prodCate2 = rs.getString("prodCate2");
+				String path = "/thumb/" + prodCate1 + "/" + prodCate2 + "/";
 				
+				vo.setThumb1(path + rs.getString("thumb1"));
+				vo.setProdCate1(prodCate1);
+				vo.setProdCate2(prodCate2);
+				vo.setProdNo(rs.getInt("prodNo"));
+				vo.setProdName(rs.getString("prodName"));
+				vo.setDescript(rs.getString("descript"));
+				vo.setAddPoint(rs.getString("addPoint"));
+				vo.setUid(rs.getString("uid"));
+				vo.setCount(rs.getInt("count"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setDiscount(rs.getInt("discount"));
+				vo.setDelivery(rs.getInt("delivery"));
+				vo.setTotal(rs.getInt("total"));
+				vo.setPoint(rs.getInt("point"));
 			}
+			close();
 		} catch (Exception e) {
-			
+			logger.error(e.getMessage());
 		}
-	}
+		return product;
+	}*/
 	
 	
 }

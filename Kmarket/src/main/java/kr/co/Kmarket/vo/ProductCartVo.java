@@ -12,12 +12,51 @@ public class ProductCartVo {
 	private int delivery;
 	private int total;
 	private int rdate;
+	
+	// 추가 필드
+	private String prodName;
+	private String descript;
+	private String addPoint;
+	private String thumb1;
+	private int prodCate1;
+	private int prodCate2;
+	
+	public int getProdCate1() {
+		return prodCate1;
+	}
+	public void setProdCate1(int prodCate1) {
+		this.prodCate1 = prodCate1;
+	}
+	
+	public void setProdCate1(String prodCate1) {
+		this.prodCate1 = Integer.parseInt(prodCate1);
+	}
+
+	public int getProdCate2() {
+		return prodCate2;
+	}
+
+	public void setProdCate2(int prodCate2) {
+		this.prodCate2 = prodCate2;
+	}
+	
+	public void setProdCate2(String prodCate2) {
+		this.prodCate2 = Integer.parseInt(prodCate2);
+	}
+
+	public String getThumb1() {
+		return thumb1;
+	}
+
+	public void setThumb1(String thumb1) {
+		this.thumb1 = thumb1;
+	}
 
 	public ProductCartVo() {
 	}
 
 	public ProductCartVo(int cartNo, String uid, int prodNo, int count, int price, int discount, int point,
-			int delivery, int total, int rdate) {
+			int delivery, int total, int rdate, String prodName, String descript, String addPoint, String thumb1, int prodCate1, int prodCate2) {
 		super();
 		this.cartNo = cartNo;
 		this.uid = uid;
@@ -29,6 +68,37 @@ public class ProductCartVo {
 		this.delivery = delivery;
 		this.total = total;
 		this.rdate = rdate;
+		// 추가 필드
+		this.prodName = prodName;
+		this.descript = descript;
+		this.addPoint = addPoint;
+		this.thumb1 = thumb1;
+		this.prodCate1 = prodCate1;
+		this.prodCate2 = prodCate2;
+	}
+
+	public String getProdName() {
+		return prodName;
+	}
+
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+
+	public String getDescript() {
+		return descript;
+	}
+
+	public void setDescript(String descript) {
+		this.descript = descript;
+	}
+
+	public String getAddPoint() {
+		return addPoint;
+	}
+
+	public void setAddPoint(String addPoint) {
+		this.addPoint = addPoint;
 	}
 
 	public int getCartNo() {
@@ -115,7 +185,8 @@ public class ProductCartVo {
 	public String toString() {
 		return "ProductCartVo [cartNo=" + cartNo + ", uid=" + uid + ", prodNo=" + prodNo + ", count=" + count
 				+ ", price=" + price + ", discount=" + discount + ", point=" + point + ", delivery=" + delivery
-				+ ", total=" + total + ", rdate=" + rdate + "]";
+				+ ", total=" + total + ", rdate=" + rdate + ", prodName=" + prodName + ", descript=" + descript 
+				+ ", addPoint=" + addPoint + ", thumb1=" + thumb1 + ", prodCate1=" + prodCate1 + ", prodCate2=" + prodCate2 + "]";
 	}
 
 }

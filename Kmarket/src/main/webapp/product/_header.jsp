@@ -45,6 +45,7 @@
       <header>
         <div class="top">
           <div>
+
               <c:if test="${ sessUser.type eq 2}">
 	            	<a href="/Kmarket/admin/index.do">관리자</a>
 	            </c:if>
@@ -57,6 +58,7 @@
 	            	<a href="/Kmarket/member/logout.do">로그아웃</a>
 	            </c:otherwise>
             </c:choose>
+
             <a href="#">마이페이지</a>
             <a href="/Kmarket/product/cart.do"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
           </div>
