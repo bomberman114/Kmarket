@@ -33,6 +33,8 @@ public class IndexController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 관리자메인
+		String uid = req.getParameter("uid");
+		System.out.println("어드민 아이디:"+uid);
 		int orderCount = service.orderCount();//총 주문건수
 		int orderCountY = service.orderCountY();//총 주문건수 어제
 		int orderCountW = service.orderCountW();//총 주문건수 주간 

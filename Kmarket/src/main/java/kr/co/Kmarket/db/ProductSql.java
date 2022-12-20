@@ -40,15 +40,14 @@ public class ProductSql {
 	
 	
 	public static final String INSERT_CART = "INSERT INTO `km_product_cart` (`uid`, `prodNo`, `count`, `price`, `discount`, `point`, `delivery`, `total`, `rdate`) "
-											+ "VALUES ?, ?, ?, ?, ?, ?, ?, ?, NOW()";
-	
+											+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW()) ";
 	
 	
 	//-----------현길
 	
 
-	public static final String SELECT_CART_PRODUCTS =" SELECT *  FROM km_product_cart  "
-													+"	LEFT JOIN km_product ON km_product_cart.cartNo=  km_product.prodNo WHERE uid = '?'";
+	public static final String SELECT_CART_PRODUCTS =" SELECT * FROM km_product_cart LEFT JOIN km_product ON km_product_cart.prodNo "
+													+ " = km_product.prodNo WHERE `uid` =? ";
 
 
 	//-----------진우
