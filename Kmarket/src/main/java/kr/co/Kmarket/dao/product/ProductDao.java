@@ -284,9 +284,11 @@ public class ProductDao extends DBHelper {
 
 			logger.info("cartProducts...");
 			conn = getConnection();
-
+			logger.info("하이1");
 			psmt = conn.prepareStatement(ProductSql.SELECT_CART_PRODUCTS);
+			logger.info("하이2");
 			 psmt.setString(1, uid);
+			 logger.info("하이3");
 			// psmt.setInt(2, limitStart);
 
 			rs = psmt.executeQuery();
@@ -333,6 +335,8 @@ public class ProductDao extends DBHelper {
 				double f = Math.round(price * z); // 소수점 반올림
 				int disprice = (int) f; // 타입변환
 				vo.setDisprice(disprice);
+				vo.setTotal(rs.getInt("total"));
+				vo.setCount(rs.getInt("count"));
 				cart.add(vo);
 
 			}

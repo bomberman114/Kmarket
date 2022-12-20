@@ -9,11 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.Kmarket.service.product.ProductService;
+import kr.co.Kmarket.vo.MemberVo;
 import kr.co.Kmarket.vo.ProductVo;
 
 @WebServlet("/product/cart.do")
@@ -30,19 +32,24 @@ public class CartController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		HttpSession sess = req.getSession();
+		MemberVo sessUser = (MemberVo)sess.getAttribute("sessUser");
+		String uid = sessUser.getUid();
+		//String uid = "jboard2";
+		System.out.println("uid:"+uid);
+		List<ProductVo> cart = service.cart(uid);
+		System.out.println("카트 컨트롤러:"+cart);
+		
+		req.setAttribute("cart", cart);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/cart.jsp");
 		dispatcher.forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String uid = req.getParameter("uid");
-		List<ProductVo> cart = service.cart(uid);
+	
+		req.getParameterValues(getServletName());
 		
-		req.setAttribute("cart", cart);
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/cart.jsp");
-		dispatcher.forward(req, resp);
 	}
 
 }
