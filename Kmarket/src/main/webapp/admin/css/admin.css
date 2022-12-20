@@ -479,3 +479,104 @@ button[type=submit] {
     font-weight: bold;
 }
 
+
+
+/* admin-cs notice */
+
+#admincs > .notice nav {
+	position: relative;
+	bottom: -10px;
+}
+
+#admincs > .notice nav > h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+#admincs > .notice nav > p {
+	float: right;
+    position: relative;
+    bottom: 17px;
+}
+#admincs > .notice nav > p > strong {
+    font-weight: bold;
+}
+
+#admincs > .notice > .write h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+#admincs > .notice > .write > article table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid #111;
+}
+#admincs > .notice > .write > article table tr {
+  width: 100%;
+  height: 26px;
+}
+
+#admincs > .notice > .write > article table td {
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;        
+}
+
+#admincs > .notice > .write > article table td:first-child {
+  background-color: #ffffff;
+  width: 100px;
+}
+
+#admincs > .notice > .write > article table input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-indent: 10px;
+}
+
+#admincs > .notice > .write > article table select {
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#admincs > .notice > .write > article table select * {
+  font-size: inherit;
+}
+
+#admincs > .notice > .write > article table textarea {
+  width: 100%;
+  height: 360px;
+  resize: none;
+  font-size: 16px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+#admincs > .notice > .write > article div {
+	float: right;
+	margin-top: 20px;
+	
+}
+
+.btn {
+	width: 100px;
+}
+
+.btnCancle {
+	display: inline-block;
+    padding: 6px;
+    border: 1px solid #959595;
+    font-size: 13px;
+    background-color: #fefefe;
+    color: #333;
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+	
+}
+
+
