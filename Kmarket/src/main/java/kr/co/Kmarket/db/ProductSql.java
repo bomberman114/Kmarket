@@ -48,17 +48,15 @@ public class ProductSql {
 	//-----------현길
 	
 
-	public static final String SELECT_CART_PRODUCTS =" SELECT *  FROM km_product_cart  "
-													+"	LEFT JOIN km_product ON km_product_cart.cartNo=  km_product.prodNo WHERE uid = '?'";
+	public static final String SELECT_CART_PRODUCTS =" SELECT * FROM km_product_cart LEFT JOIN km_product ON km_product_cart.prodNo "
+													+ " = km_product.prodNo WHERE `uid` =? ";
 
 
 	//-----------진우
-	public static final String SELECT_PRODUCT_ORDER = "select a.*, b.*, c.* "
-														+ "from `km_product` as a "
-														+ "join `km_product_cart` as b "
+	/* public static final String SELECT_ORDER_PRODUCT = "select a.`thumb1`, a.`prodNo`, a.`prodName`, a.`descript`, a.`point` as `addPoint`, a.`prodCate1`, a.`prodCate2`, "
+														+ "b.`uid`, b.`count`, b.`price`, b.`discount`, b.`delivery`, b.`total`, b.`point` "
+														+ "from `km_product` as a join `km_product_cart` as b "
 														+ "on a.prodNo = b.prodNo "
-														+ "join `km_member` as c "
-														+ "on b.uid = c.uid "
-														+ "where `uid` = ?";
+														+ "where uid = ?"; */
 
 }

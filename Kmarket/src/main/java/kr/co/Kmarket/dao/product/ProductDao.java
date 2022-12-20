@@ -337,9 +337,11 @@ public class ProductDao extends DBHelper {
 
 			logger.info("cartProducts...");
 			conn = getConnection();
-
+			logger.info("하이1");
 			psmt = conn.prepareStatement(ProductSql.SELECT_CART_PRODUCTS);
+			logger.info("하이2");
 			 psmt.setString(1, uid);
+			 logger.info("하이3");
 			// psmt.setInt(2, limitStart);
 
 			rs = psmt.executeQuery();
@@ -386,6 +388,8 @@ public class ProductDao extends DBHelper {
 				double f = Math.round(price * z); // 소수점 반올림
 				int disprice = (int) f; // 타입변환
 				vo.setDisprice(disprice);
+				vo.setTotal(rs.getInt("total"));
+				vo.setCount(rs.getInt("count"));
 				cart.add(vo);
 
 			}
@@ -397,24 +401,45 @@ public class ProductDao extends DBHelper {
 		return cart;
 	}
 	
-	// 진우
-	public void selectProductOrder(String uid) {
+	// 진우 
+	/*
+	public List<ProductCartVo> selectOrderProduct(String uid) {
 		
-		
+		List<ProductCartVo> product = new ArrayList<>();
 		
 		try {
-			logger.info("selectProductOrder...");
+			logger.info("selectOrderProduct...");
 			conn = getConnection();
-			psmt = conn.prepareStatement(ProductSql.SELECT_PRODUCT_ORDER);
+			psmt = conn.prepareStatement(ProductSql.SELECT_ORDER_PRODUCT);
 			psmt.setString(1, uid);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
+				ProductCartVo vo = new ProductCartVo();
+				String prodCate1 = rs.getString("prodCate1");
+				String prodCate2 = rs.getString("prodCate2");
+				String path = "/thumb/" + prodCate1 + "/" + prodCate2 + "/";
 				
+				vo.setThumb1(path + rs.getString("thumb1"));
+				vo.setProdCate1(prodCate1);
+				vo.setProdCate2(prodCate2);
+				vo.setProdNo(rs.getInt("prodNo"));
+				vo.setProdName(rs.getString("prodName"));
+				vo.setDescript(rs.getString("descript"));
+				vo.setAddPoint(rs.getString("addPoint"));
+				vo.setUid(rs.getString("uid"));
+				vo.setCount(rs.getInt("count"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setDiscount(rs.getInt("discount"));
+				vo.setDelivery(rs.getInt("delivery"));
+				vo.setTotal(rs.getInt("total"));
+				vo.setPoint(rs.getInt("point"));
 			}
+			close();
 		} catch (Exception e) {
-			
+			logger.error(e.getMessage());
 		}
-	}
+		return product;
+	}*/
 	
 }
