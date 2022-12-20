@@ -29,7 +29,6 @@
                     <tr class="empty">
                         <td colspan="7">장바구니에 상품이 없습니다.</td>
                     </tr>
-                    
                     <tr>
                         <td>
                         <article>

@@ -1,6 +1,9 @@
 package kr.co.Kmarket.controller.product;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,9 +11,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.gson.JsonObject;
 
 import kr.co.Kmarket.service.product.ProductService;
-import kr.co.Kmarket.vo.ProductCartVo;
 import kr.co.Kmarket.vo.ProductVo;
 
 @WebServlet("/product/view.do")
@@ -18,6 +26,8 @@ public class ViewController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private ProductService service = ProductService.INSTANCE;
+	
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Override
 	public void init() throws ServletException {}
@@ -39,7 +49,6 @@ public class ViewController extends HttpServlet {
 		req.setAttribute("c2Name", cateName[1]);
 		req.setAttribute("product", product);
 		
-		
 		// 조회수 +1;
 		service.updateProductHit(prodNo);
 		
@@ -50,28 +59,22 @@ public class ViewController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		// 장바구니 담기
-		String uid = req.getParameter("uid");
+		// 주문하기
 		int prodNo = Integer.parseInt(req.getParameter("prodNo"));
 		int count = Integer.parseInt(req.getParameter("count"));
-		int price = Integer.parseInt(req.getParameter("price"));
-		int discount = Integer.parseInt(req.getParameter("discount"));
-		int point = Integer.parseInt(req.getParameter("point"));
-		int delivery = Integer.parseInt(req.getParameter("delivery"));
-		int total = count * price * (1- discount/100);
 
+		List<ProductVo> orders = service.selectOrder(prodNo, count);
 		
-		ProductCartVo cart = new ProductCartVo();
-		cart.setUid(uid);
-		cart.setProdNo(prodNo);
-		cart.setCount(count);
-		cart.setPrice(price);
-		cart.setDiscount(discount);
-		cart.setPoint(point);
-		cart.setDelivery(delivery);
-		cart.setTotal(total);
 		
-		service.insertCart(cart);
+		// 세션에 값을 저장
+		HttpSession sess = req.getSession();
+		sess.setAttribute("sessOrder", orders);
+		
+		JsonObject json = new JsonObject();
+		json.addProperty("result", orders.size());
+		
+		PrintWriter writer = resp.getWriter();
+		writer.print(json.toString());
 	
 	}
 	

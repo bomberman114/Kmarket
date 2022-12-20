@@ -12,9 +12,7 @@
 		let arrival = $('.arrival');
 		
 		let day = delivery.getDay();
-		
-		console.log(day);
-		
+				
 		if(day == 5){ // 금요일일 때
 		
 			delivery.setDate(delivery.getDate()+4);
@@ -45,7 +43,8 @@
 			$('input[name=num]').attr('value', count);
 			
 			// 총 주문금액 
-			let total = ${product.disprice} * count;
+			let disprice = "${product.disprice}";
+			let total = disprice * count;
 			total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 정규식을 사용하여 세 자릿수마다 , 를 넣기
 			
 			
@@ -65,7 +64,8 @@
 				$('input[name=num]').attr('value', count);
 				
 				// 총 주문금액
-				let total = ${product.disprice} * count;
+				let disprice = "${product.disprice}";
+				let total = disprice * count;
 				total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 				
 				$('.total > span').text(total);
@@ -76,7 +76,7 @@
 		
 		// 장바구니
 		$('.cart').click(function(){
-			
+				
 			let uid = "${sessUser.uid}";
 			let prodNo = "${product.prodNo}";
 			let count = $('input[name=num]').val();
@@ -96,36 +96,72 @@
 				"delivery":delivery
 			}
 			
+			if(uid == "") {
+				alert('로그인 후 물건을 장바구니에 담아주세요.');
+				return;
+			}
+
+			
 			$.ajax({
-				url: '/Kmarket/product/view.do',
+				url: '/Kmarket/product/addcart.do',
 				method: 'POST',
 				data: jsonData,
 				dataType: 'json',
 				success:function(data){
 					
-					let goCart = confirm('물건이 장바구니에 담겼습니다.\n장바구니로 이동하시겠습니까?'); 
-					
-					if(goCart){
-						alert('ㅇㅇ 이동');
-					}else{
-						alert('ㄴㄴ 안감')
-					}		
-					
+					if(data.result > 0) {
+						
+						let goCart = confirm('물건이 장바구니에 담겼습니다.\n장바구니로 이동하시겠습니까?'); 
+						
+						if(goCart){
+							location.href = "/Kmarket/product/cart.do";
+						}
+						
+					}else {
+						
+						alert('장바구니에 물건이 담기지 않았습니다.\n잠시 후 다시 시도해주세요. ');
+					}
 				}
 			});
 					
 		});
 		
 		// 주문하기
-		
-		
-		
-		
+		$('.order').click(function(){
+			
+			let uid = "${sessUser.uid}";
+			let prodNo = "${product.prodNo}";
+			let count = $('input[name=num]').val();
+			
+			let jsonData = {					
+				"prodNo":prodNo,
+				"count":count
+			}
+			
+			if(uid == "") {
+				alert('로그인 후 주문이 가능합니다.');
+				return;
+			}
+			
+			$.ajax({
+				url: '/Kmarket/product/view.do',
+				method: 'POST',
+				data: jsonData,
+				dataType:'json',
+				success: function(data){
+				
+					if(data.result > 0) {
+						location.href = "/Kmarket/product/order.do"
+					}else{
+						alert('주문하기를 실패하였습니다.\n잠시 후 다시 시도해주세요. ');
+					}
+				}
+				
+			});
+					
+		});
 
-		
 	});
-	
-	
 </script>
             <!-- 상품 상세페이지 시작 -->
             <section class="view">
