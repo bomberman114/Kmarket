@@ -100,8 +100,9 @@ public enum ProductService {
 	}	
 	
 	// 진우
-	public void selectProductOrder(String uid) {
-		dao.selectProductOrder(uid);
+	/*
+	public List<ProductCartVo> selectOrderProduct(String uid) {
+		return dao.selectOrderProduct(uid);
 	}
-	
+	*/
 }

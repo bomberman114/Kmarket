@@ -52,12 +52,10 @@ public class ProductSql {
 
 
 	//-----------진우
-	public static final String SELECT_PRODUCT_ORDER = "select a.*, b.*, c.* "
-														+ "from `km_product` as a "
-														+ "join `km_product_cart` as b "
+	/* public static final String SELECT_ORDER_PRODUCT = "select a.`thumb1`, a.`prodNo`, a.`prodName`, a.`descript`, a.`point` as `addPoint`, a.`prodCate1`, a.`prodCate2`, "
+														+ "b.`uid`, b.`count`, b.`price`, b.`discount`, b.`delivery`, b.`total`, b.`point` "
+														+ "from `km_product` as a join `km_product_cart` as b "
 														+ "on a.prodNo = b.prodNo "
-														+ "join `km_member` as c "
-														+ "on b.uid = c.uid "
-														+ "where `uid` = ?";
+														+ "where uid = ?"; */
 
 }

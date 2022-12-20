@@ -14,7 +14,8 @@
             </nav>
 
             <form action="#">
-                <!-- 주문 상품 목록 -->                  
+                <!-- 주문 상품 목록 -->        
+                <input type="text" name="uid" value="${sessUser.uid}"/>   
                 <table>
                     <thead>
                     <tr>
@@ -29,22 +30,23 @@
                     <tr class="empty">
                         <td colspan="7">장바구니에 상품이 없습니다.</td>
                     </tr>
+                   
+	                    <tr>
+	                        <td>
+	                        <article>
+	                            <a href="#"><img src="https://via.placeholder.com/80x80" alt=""></a>
+	                            <div>
+	                                <h2><a href="#">상품명</a></h2>
+	                                <p>상품설명</p>
+	                            </div>
+	                        </article>
+	                        </td>
+	                        <td>1</td>
+	                        <td>27,000</td>
+	                        <td>무료배송</td>
+	                        <td>27,000</td>
+	                    </tr>
                     
-                    <tr>
-                        <td>
-                        <article>
-                            <a href="#"><img src="https://via.placeholder.com/80x80" alt=""></a>
-                            <div>
-                                <h2><a href="#">상품명</a></h2>
-                                <p>상품설명</p>
-                            </div>
-                        </article>
-                        </td>
-                        <td>1</td>
-                        <td>27,000</td>
-                        <td>무료배송</td>
-                        <td>27,000</td>
-                    </tr>
                     </tbody>
                 </table>                 
                 
@@ -85,33 +87,33 @@
                     <h1>배송정보</h1>                          
                     <table>
                     <tr>
-                        <td>주문자</td>
-                        <td><input type="text" name="orderer" /></td>
+                        <td>수령자</td>
+                        <td><input type="text" name="orderer" value="${sessUser.name}"/></td>
                     </tr>
                     <tr>
                         <td>휴대폰</td>
                         <td>
-                            <input type="text" name="hp" />
+                            <input type="text" name="hp" value="${sessUser.hp}" />
                             <span>- 포함 입력</span>
                         </td>
                     </tr>
                     <tr>
                         <td>우편번호</td>
                         <td>
-                            <input type="text" name="zip"/>
+                            <input type="text" name="zip" value="${sessUser.zip}"/>
                             <input type="button" value="검색"/>
                         </td>
                     </tr>
                     <tr>
                         <td>기본주소</td>
                         <td>
-                            <input type="text" name="addr1"/>
+                            <input type="text" name="addr1" value="${sessUser.addr1}"/>
                         </td>
                     </tr>
                     <tr>
                         <td>상세주소</td>
                         <td>
-                            <input type="text" name="addr2"/>
+                            <input type="text" name="addr2" value="${sessUser.addr2}"/>
                         </td>
                     </tr>
                     </table>
@@ -122,7 +124,7 @@
                     <h1>할인정보</h1>
 
                     <div>
-                        <p>현재 포인트 : <span>7200</span>점</p>
+                        <p>현재 포인트 : <span>${sessUser.point}</span>점</p>
                         <label>
                             <input type="text" name="point" />점
                             <input type="button" value="적용"/>
