@@ -197,6 +197,55 @@ public class ProductDao extends DBHelper {
 	}
 	
 	
+	public List<ProductVo> selectOrder(int prodNo, int count) {
+		
+		List<ProductVo> order = new ArrayList<>();
+		
+		try {
+			
+			logger.info("selectOrder...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(ProductSql.SELECT_ORDER);
+			psmt.setInt(1, prodNo);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				ProductVo vo = new ProductVo();
+	
+				int prodCate1 = rs.getInt("prodCate1");
+				int prodCate2 = rs.getInt("prodCate2");
+				String path = "/thumb/" + prodCate1 + "/" + prodCate2 + "/";
+				
+				vo.setProdNo(rs.getInt("prodNo"));
+				vo.setProdCate1(prodCate1);
+				vo.setProdCate2(prodCate2);
+				vo.setProdName(rs.getString("prodName"));
+				vo.setDescript(rs.getString("descript"));
+				vo.setCompany(rs.getString("company"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setDiscount(rs.getInt("discount"));
+				vo.setDelivery(rs.getInt("delivery"));
+				vo.setThumb1(path + rs.getString("thumb1"));
+				vo.setThumb2(path + rs.getString("thumb2"));
+				vo.setThumb3(path + rs.getString("thumb3"));
+				vo.setDisprice(rs.getInt("disPrice"));
+				vo.setTotal(count*(rs.getInt("disPrice")));
+				vo.setCount(count);
+				
+				order.add(vo);
+		
+			}
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+
+		return order;
+	}
+
 	
 	public String[] getCateName(int cate1, int cate2) {
 		
@@ -247,7 +296,9 @@ public class ProductDao extends DBHelper {
 		
 	}
 	
-	public void insertCart(ProductCartVo cart) {
+	public int insertCart(ProductCartVo cart) {
+		
+		int result = 0;
 		
 		try {
 		
@@ -263,13 +314,15 @@ public class ProductDao extends DBHelper {
 			psmt.setInt(7, cart.getDelivery());
 			psmt.setInt(8, cart.getTotal());
 			
-			psmt.executeUpdate();
+			result = psmt.executeUpdate();
 			
 			close();
 			
 		}catch(Exception e) {
 			logger.error(e.getMessage());
 		}
+		
+		return result;
 		
 	}
 	
@@ -388,6 +441,5 @@ public class ProductDao extends DBHelper {
 		}
 		return product;
 	}*/
-	
 	
 }

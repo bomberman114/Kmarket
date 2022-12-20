@@ -43,6 +43,8 @@ public class ProductSql {
 											+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW()) ";
 	
 	
+	public static final String SELECT_ORDER = "SELECT *, FLOOR(`price` * (1 - `discount` / 100)) AS `disPrice` FROM `km_product` WHERE `prodNo`= ?";
+	
 	//-----------현길
 	
 

@@ -31,6 +31,11 @@ public enum ProductService {
 		return dao.selectProducts(cate1, cate2, sort, start);
 	}
 	
+	public List<ProductVo> selectOrder(int prodNo, int count) {
+		return dao.selectOrder(prodNo, count);
+	}
+	
+	
 	public String[] getCateName(int cate1, int cate2) {
 		return dao.getCateName(cate1, cate2);
 	}
@@ -39,8 +44,8 @@ public enum ProductService {
 		dao.updateProductHit(prodNo);
 	}
 	
-	public void insertCart(ProductCartVo cart) {
-		dao.insertCart(cart);
+	public int insertCart(ProductCartVo cart) {
+		return dao.insertCart(cart);
 	}
 	
 	

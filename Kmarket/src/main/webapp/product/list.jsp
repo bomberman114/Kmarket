@@ -31,7 +31,7 @@
                     </td>
                     <td>
                         <ul>
-                        <li><ins class="dis-price"><fmt:formatNumber value="${product.price}" pattern="#,###"/></ins></li>
+                        <li><ins class="dis-price"><fmt:formatNumber value="${product.disprice}" pattern="#,###"/></ins></li>
                         <li>
                             <del class="org-price"><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
                             <span class="discount">${product.discount}%</span>
