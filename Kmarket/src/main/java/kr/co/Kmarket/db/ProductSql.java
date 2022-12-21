@@ -43,7 +43,7 @@ public class ProductSql {
 											+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW()) ";
 	
 	
-	public static final String SELECT_ORDER = "SELECT *, FLOOR(`price` * (1 - `discount` / 100)) AS `disPrice` FROM `km_product` WHERE `prodNo`= ?";
+	public static final String SELECT_ORDER = "SELECT *, FLOOR(`price` * (`discount` / 100)) AS `disprice` FROM `km_product` WHERE `prodNo`= ?";
 	
 	//-----------현길
 	
@@ -56,10 +56,23 @@ public class ProductSql {
 
 
 	//-----------진우
-	/* public static final String SELECT_ORDER_PRODUCT = "select a.`thumb1`, a.`prodNo`, a.`prodName`, a.`descript`, a.`point` as `addPoint`, a.`prodCate1`, a.`prodCate2`, "
-														+ "b.`uid`, b.`count`, b.`price`, b.`discount`, b.`delivery`, b.`total`, b.`point` "
-														+ "from `km_product` as a join `km_product_cart` as b "
-														+ "on a.prodNo = b.prodNo "
-														+ "where uid = ?"; */
+	public static final String INSERT_PRODUCT_ORDER = "insert into `km_product_order` set "
+													+ "`ordUid` = ?, "
+													+ "`ordCount` = ?, "
+													+ "`ordPrice` = ?, "
+													+ "`ordDiscount` = ?, "
+													+ "`ordDelivery` = ?, "
+													+ "`savePoint` = ?, "
+													+ "`usedPoint` = ?, "
+													+ "`ordTotPrice` = ?, "
+													+ "`recipName` = ?, "
+													+ "`recipHp` = ?, "
+													+ "`recipZip` = ?, "
+													+ "`recipAddr1` = ?, "
+													+ "`recipAddr2` = ?, "
+													+ "`ordPayment` = ?, "
+													+ "`ordComplete` = 1, "
+													+ "`ordDate` = NOW()";
+													
 
 }

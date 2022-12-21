@@ -58,13 +58,12 @@ public class ViewController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		
 		// 주문하기
 		int prodNo = Integer.parseInt(req.getParameter("prodNo"));
 		int count = Integer.parseInt(req.getParameter("count"));
 
 		List<ProductVo> orders = service.selectOrder(prodNo, count);
-		
 		
 		// 세션에 값을 저장
 		HttpSession sess = req.getSession();

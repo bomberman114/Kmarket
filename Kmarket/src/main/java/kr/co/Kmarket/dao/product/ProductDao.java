@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import kr.co.Kmarket.db.DBHelper;
 import kr.co.Kmarket.db.ProductSql;
 import kr.co.Kmarket.vo.ProductCartVo;
+import kr.co.Kmarket.vo.ProductOrderVo;
 import kr.co.Kmarket.vo.ProductVo;
 
 public class ProductDao extends DBHelper {
@@ -226,8 +227,10 @@ public class ProductDao extends DBHelper {
 				vo.setThumb1(path + rs.getString("thumb1"));
 				vo.setThumb2(path + rs.getString("thumb2"));
 				vo.setThumb3(path + rs.getString("thumb3"));
-				vo.setDisprice(rs.getInt("disPrice"));
-				vo.setTotal(count * (rs.getInt("disPrice")));
+
+				vo.setDisprice(rs.getInt("disprice"));
+				vo.setTotal(count*(rs.getInt("price") - rs.getInt("disprice")));
+
 				vo.setCount(count);
 
 				order.add(vo);
@@ -389,8 +392,8 @@ public class ProductDao extends DBHelper {
 		}
 		return cart;
 	}
-
-// 카트에서 주문보내기
+  
+  // 카트에서 주문보내기
 	public List<ProductVo> cartNo(HashMap<Integer, Integer> map) {
 
 		List<ProductVo> cartNo = new ArrayList<>();
@@ -453,29 +456,58 @@ public class ProductDao extends DBHelper {
 		return cartNo;
 	}
 
-	// 진우
+	
+	// 진우 
 	/*
-	 * public List<ProductCartVo> selectOrderProduct(String uid) {
-	 * 
-	 * List<ProductCartVo> product = new ArrayList<>();
-	 * 
-	 * try { logger.info("selectOrderProduct..."); conn = getConnection(); psmt =
-	 * conn.prepareStatement(ProductSql.SELECT_ORDER_PRODUCT); psmt.setString(1,
-	 * uid); rs = psmt.executeQuery();
-	 * 
-	 * while(rs.next()) { ProductCartVo vo = new ProductCartVo(); String prodCate1 =
-	 * rs.getString("prodCate1"); String prodCate2 = rs.getString("prodCate2");
-	 * String path = "/thumb/" + prodCate1 + "/" + prodCate2 + "/";
-	 * 
-	 * vo.setThumb1(path + rs.getString("thumb1")); vo.setProdCate1(prodCate1);
-	 * vo.setProdCate2(prodCate2); vo.setProdNo(rs.getInt("prodNo"));
-	 * vo.setProdName(rs.getString("prodName"));
-	 * vo.setDescript(rs.getString("descript"));
-	 * vo.setAddPoint(rs.getString("addPoint")); vo.setUid(rs.getString("uid"));
-	 * vo.setCount(rs.getInt("count")); vo.setPrice(rs.getInt("price"));
-	 * vo.setDiscount(rs.getInt("discount")); vo.setDelivery(rs.getInt("delivery"));
-	 * vo.setTotal(rs.getInt("total")); vo.setPoint(rs.getInt("point")); } close();
-	 * } catch (Exception e) { logger.error(e.getMessage()); } return product; }
-	 */
+	public void insertOrderProduct(List<ProductOrderVo> orderProduct) {
+		
+		try {
+			logger.info("insertOrderProduct...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(ProductSql.INSERT_PRODUCT_ORDER);
+			psmt.setString(1, );
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	*/
+	public int insertOrderProduct(ProductOrderVo vo) {
+		
+		int result = 0;
+		
+		try {
+			logger.info("insertOrderProduct...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(ProductSql.INSERT_PRODUCT_ORDER);
+			psmt.setString(1, vo.getOrdUid());
+			psmt.setInt(2, vo.getOrdCount());
+			psmt.setInt(3, vo.getOrdPrice());
+			psmt.setInt(4, vo.getOrdDiscount());
+			psmt.setInt(5, vo.getOrdDelivery());
+			psmt.setInt(6, vo.getSavePoint());
+			psmt.setInt(7, vo.getUsedPoint());
+			psmt.setInt(8, vo.getOrdTotPrice());
+			psmt.setString(9, vo.getRecipName());
+			psmt.setString(10, vo.getRecipHp());
+			psmt.setString(11, vo.getRecipZip());
+			psmt.setString(12, vo.getRecipAddr1());
+			psmt.setString(13, vo.getRecipAddr2());
+			psmt.setInt(14, vo.getOrdPayment());
+			
+			logger.debug("psmt : " + psmt);
+			
+			result = psmt.executeUpdate();
+			
+			close();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+	}
+	
+	
+	
+
 
 }
