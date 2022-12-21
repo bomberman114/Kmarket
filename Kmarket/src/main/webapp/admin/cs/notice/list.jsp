@@ -9,7 +9,7 @@
 			let cate = $(this).val();
 			
 			$.ajax({
-				url: '/Kmarket/admin/cs/notice/list.do',
+				url: '/Kmarket/admin/cs/notice/list.do',                                                                                                                                                                                                                                                                                               
 				method: 'POST',
 				data: {"cate":cate},
 				dataType:'json',
@@ -65,7 +65,7 @@
 		});
 	});
 	</script>
-            <section id="admin-product-list">
+            <section id="admin-notice-list">
                 <nav>
                     <h3>공지사항 목록</h3>
 	                    
