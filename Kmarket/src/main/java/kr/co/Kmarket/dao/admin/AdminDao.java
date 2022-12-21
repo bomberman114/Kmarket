@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import kr.co.Kmarket.db.DBHelper;
 import kr.co.Kmarket.db.Sql;
+import kr.co.Kmarket.vo.NoticeArticleVo;
 import kr.co.Kmarket.vo.ProductCate1Vo;
 import kr.co.Kmarket.vo.ProductCate2Vo;
 import kr.co.Kmarket.vo.ProductVo;
@@ -682,5 +683,130 @@ public class AdminDao extends DBHelper {
 		return productM;
 	}
 
+	// admin notice list용
+	public int selectCountTotal(int cate) {
+		int total = 0;
+		try {
+			logger.info("selectCountNoticeTotal...");
+			conn = getConnection();
+			
+			if(cate == 0) {
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(Sql.SELECT_COUNT_NOTICE_TOTAL);
+			}else {
+				psmt = conn.prepareStatement(Sql.SELECT_COUNT_NOTICE_TOTAL_FOR_CATE);
+				psmt.setInt(1, cate);
+				rs = psmt.executeQuery();
+			}
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			
+			close();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return total;
+	}
+
+	
+	
+	public void insertNotice(NoticeArticleVo vo) {
+		
+		try {
+			logger.info("insertNotice...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.INSERT_NOTICE);
+			psmt.setInt(1, vo.getCate());
+			psmt.setString(2, vo.getTitle());
+			psmt.setString(3, vo.getContent());
+			psmt.setString(4, vo.getUid());
+			psmt.setString(5, vo.getRegip());
+			psmt.setString(6, vo.getCateName());
+			
+			psmt.executeUpdate();
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+	
+	}
+	
+	
+	public List<NoticeArticleVo> selectNotices(int start){
+		
+		List<NoticeArticleVo> notices = new ArrayList<>();
+		
+		try {
+			logger.info("selectNotices...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_NOTICES);
+			psmt.setInt(1, start);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				NoticeArticleVo vo = new NoticeArticleVo();
+				vo.setNo(rs.getInt(1));
+				vo.setCate(rs.getInt(2));
+				vo.setCateName(rs.getString(3));
+				vo.setTitle(rs.getString(4));
+				vo.setContent(rs.getString(5));
+				vo.setUid(rs.getString(6));
+				vo.setHit(rs.getInt(7));
+				vo.setRegip(rs.getString(8));
+				vo.setRdate(rs.getString(9));
+				
+				notices.add(vo);
+				
+			}
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return notices;
+	}
+	
+	public List<NoticeArticleVo> selectNoticesByCate(int cate, int start){
+		
+		List<NoticeArticleVo> notices = new ArrayList<>();
+		
+		try {
+			logger.info("selectNoticesByCate...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_NOTICES_BY_CATE);
+			psmt.setInt(1, cate);
+			psmt.setInt(2, start);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				NoticeArticleVo vo = new NoticeArticleVo();
+				vo.setNo(rs.getInt(1));
+				vo.setCate(rs.getInt(2));
+				vo.setCateName(rs.getString(3));
+				vo.setTitle(rs.getString(4));
+				vo.setContent(rs.getString(5));
+				vo.setUid(rs.getString(6));
+				vo.setHit(rs.getInt(7));
+				vo.setRegip(rs.getString(8));
+				vo.setRdate(rs.getString(9));
+				
+				notices.add(vo);
+				
+			}
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return notices;
+		
+	}
 
 }

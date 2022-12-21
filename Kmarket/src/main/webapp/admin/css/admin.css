@@ -479,3 +479,109 @@ button[type=submit] {
     font-weight: bold;
 }
 
+
+/* 추가 스타일 */
+
+/* admin-cs notice */
+
+#admin-cs > .notice nav {
+	position: relative;
+	bottom: -10px;
+}
+
+#admin-cs > .notice nav > h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+#admin-cs > .notice nav > p {
+	float: right;
+    position: relative;
+    bottom: 17px;
+}
+#admin-cs > .notice nav > p > strong {
+    font-weight: bold;
+}
+
+#admin-cs > .notice > .write h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+#admin-cs > .notice > .write > article table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid #111;
+}
+#admin-cs > .notice > .write > article table tr {
+  width: 100%;
+  height: 26px;
+}
+
+#admin-cs > .notice > .write > article table td {
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;        
+}
+
+#admin-cs > .notice > .write > article table td:first-child {
+  background-color: #ffffff;
+  width: 100px;
+}
+
+#admin-cs > .notice > .write > article table input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-indent: 10px;
+}
+
+#admin-cs > .notice > .write > article table select {
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#admin-cs > .notice > .write > article table select * {
+  font-size: inherit;
+}
+
+#admin-cs > .notice > .write > article table textarea {
+  width: 100%;
+  height: 360px;
+  resize: none;
+  font-size: 16px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+#admin-cs > .notice > .write > article div {
+	float: right;
+	margin-top: 20px;
+	
+}
+
+/* 버튼공통 */
+.btn {
+	width: 100px;
+	display: inline-block;
+    padding: 6px;
+    border: 1px solid #959595;
+    font-size: 13px;
+    background-color: #fefefe;
+    color: #333;
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+/* admin-notice list */
+
+.btnSubmit {
+	float: right;
+	margin-top: 10px;
+}
+
+
