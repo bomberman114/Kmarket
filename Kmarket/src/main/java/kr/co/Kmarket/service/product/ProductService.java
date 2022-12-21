@@ -1,5 +1,6 @@
 package kr.co.Kmarket.service.product;
 
+import java.util.HashMap;
 import java.util.List;
 
 import kr.co.Kmarket.dao.product.ProductDao;
@@ -103,6 +104,11 @@ public enum ProductService {
 	
 	public List<ProductVo> cart(String uid) {
 		return dao.cart(uid);
+	}
+
+
+	public List<ProductVo> cartNo(HashMap<Integer, Integer> map) {
+		return dao.cartNo(map);
 	}	
 	
 	// 진우
