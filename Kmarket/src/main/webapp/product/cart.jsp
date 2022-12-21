@@ -6,74 +6,62 @@
  -->
 <script>
 
-	$(function(){
+$(function(){
+	
+	
+	$('input[type=submit]').click(function(e){
+		e.preventDefault();
+	    var obj_length = document.getElementsByName("chkProdNo").length;
+		//alert("하이1");
+		//let trs = $('input[name=chkProdNo]').is(':checked'); //.parents('tr');
+		//alert("하이2");
+		console.log(obj_length);
+		let carts = new Array();
+		   for (var i=0; i<obj_length; i++) {
+	            if (document.getElementsByName("chkProdNo")[i].checked == true) {
+	                //alert(document.getElementsByName("chkProdNo")[i].value);
+	    		var cartNo = document.getElementsByName("chkProdNo")[i].value
+	            carts.push(cartNo);
+	            }
+		   }
+			console.log(carts);
 		
 		
+				
+			//console.log(carts);
+			console.log("카트 리스트");
+		//carts.forEach(element => { document.write(element + '<br>');
+			
+		//alert("하이5");
 		
-		$('input[type=submit]').click(function(e){
-			e.preventDefault();
-			
-			let trs = $('input[name=chkProdNo]').is(':checked').parents('tr');
-			
-			
-			let carts = new Array();
-			
-			for(let tr of trs){
+		$.ajax({
+			url: '/Kmarket/product/cart.do',
+			method: 'POST',
+			traditional: true,
+			data: {"carts" : carts},
+			dateType: 'json',
+			success: function(data){
 				
-				let prodNo = tr.find('input[name=prodNo]').val();
-				let prodName = tr.find('input[name=prodName]').val();
-				let prodCate1 = tr.find('input[name=prodCate1]').val();
-				let prodCate2 = tr.find('input[name=prodCate2]').val();
-				let prodNo = tr.find('input[name=detail]').val();
-				let prodNo = tr.find('input[name=prodNo]').val();
-				let prodNo = tr.find('input[name=prodNo]').val();
-				let prodNo = tr.find('input[name=prodNo]').val();
-				let prodNo = tr.find('input[name=prodNo]').val();
-				let prodNo = tr.find('input[name=prodNo]').val();
-				let prodNo = tr.find('input[name=prodNo]').val();
-				let prodNo = tr.find('input[name=prodNo]').val();
-				let prodNo = tr.find('input[name=prodNo]').val();
-				let prodNo = tr.find('input[name=prodNo]').val();
-				let prodNo = tr.find('input[name=prodNo]').val();
-				let prodNo = tr.find('input[name=prodNo]').val();
+				if(data.result > 0) {
+					alert('주문하기로 이동합니다.');
+					location.href = "/Kmarket/product/order.do";
 				
-				
-				carts.push({prodNo, prodName, ...});
-				
-			}
-			
-			$.ajax({
-				url: '/Kmarket/product/cart.do',
-				method:'POST',
-				data: {"carts" : carts},
-				dateType: 'json'
-				success: function(data){
-					
-					if(){
-						location.href = "/Kmarket/product/order.do";
-						
-					}
+				}else {
+					alert('주문하기를 실패하였습니다. ');
 				}
 				
-			});
-			
-			
-			
-			
-			
-			
-			
-			
+			}
 			
 		});
 		
 		
 		
 		
-		
-		
 	});
-
+	
+	
+	
+});
 
 </script>
 
@@ -88,7 +76,7 @@
                 </p>
             </nav>
                             
-            <form action="#">
+            <form action="#" >
                 <!-- 장바구니 목록 -->
                 <table>
                     <thead>
@@ -116,12 +104,14 @@
                     <c:set var="count" value="0" />
                     <c:forEach var="cart" items="${cart}">
                  
-                    <tr>
-                        <td><input type="checkbox" name="chkProdNo" value="${cart.prodNo}"></td>
+                    <tr >
+                        <td><input type="checkbox" name="chkProdNo" value="${cart.cartNo}"></td>
                         <td>
-                        <input type="hidden" class="prodNo" value="${cart.prodNo}" name="prodNo"/>
                         <input type="hidden" class="prodCate1" value="${cart.prodCate1}" name="prodCate1"/>
                         <input type="hidden" class="prodCate2" value="${cart.prodCate2}" name="prodCate2"/>
+                        <input type="hidden" class="thumb1" value="${cart.thumb1}" name="thumb1"/>
+                        <input type="hidden" class="thumb2" value="${cart.thumb2}" name="thumb2"/>
+                        <input type="hidden" class="thumb3" value="${cart.thumb3}" name="thumb3"/>
                             <article>
                                 <a href="/Kmarket/product/view.do?cate1=${cart.prodCate1}&cate2=${cart.prodCate2}&prodNo=${cart.prodNo}">
                               <img src="<c:url value='${cart.detail}'/>" alt="item1"></a>

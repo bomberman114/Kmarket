@@ -1,6 +1,10 @@
 package kr.co.Kmarket.controller.product;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,8 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.eclipse.jdt.internal.compiler.codegen.Opcodes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import kr.co.Kmarket.service.product.ProductService;
 import kr.co.Kmarket.vo.MemberVo;
@@ -36,9 +44,7 @@ public class CartController extends HttpServlet {
 		MemberVo sessUser = (MemberVo)sess.getAttribute("sessUser");
 		String uid = sessUser.getUid();
 		//String uid = "jboard2";
-		System.out.println("uid:"+uid);
 		List<ProductVo> cart = service.cart(uid);
-		System.out.println("카트 컨트롤러:"+cart);
 		
 		req.setAttribute("cart", cart);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/cart.jsp");
@@ -47,8 +53,34 @@ public class CartController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json;charset=UTF-8");
+		
 	
-		req.getParameterValues(getServletName());
+		String carts [] = req.getParameterValues("carts");
+		System.out.println("카트 번호2:"+Arrays.toString(carts));
+		//System.out.println(carts[1]);
+		//List<Integer> nember = new ArrayList<>();
+		HashMap<Integer, Integer> map = new HashMap<>();
+		for(int i=1; i< carts.length+1 ;i++) {
+			//nember.add(Integer.parseInt(carts[i]));
+			map.put(i, Integer.parseInt(carts[i-1]));
+		}
+		System.out.println("카트 포스트:"+map);
+		List<ProductVo> cartsNo = service.cartNo(map);
+		System.out.println("카트 포스트컨트롤러:"+cartsNo);
+		System.out.println("카트:"+cartsNo.size());
+
+		
+		// 세션에 값을 저장
+		HttpSession sess = req.getSession();
+		sess.setAttribute("sessOrder", cartsNo);
+		
+		JsonObject json = new JsonObject();
+		json.addProperty("result", cartsNo.size());
+		
+		PrintWriter writer = resp.getWriter();
+		writer.print(json.toString());
 		
 	}
 

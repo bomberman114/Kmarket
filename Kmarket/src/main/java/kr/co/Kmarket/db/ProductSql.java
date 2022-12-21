@@ -51,6 +51,9 @@ public class ProductSql {
 	public static final String SELECT_CART_PRODUCTS =" SELECT * FROM km_product_cart LEFT JOIN km_product ON km_product_cart.prodNo "
 													+ " = km_product.prodNo WHERE `uid` =? ";
 
+	public static final String SELECT_CARTS =" SELECT * FROM km_product_cart LEFT JOIN km_product ON km_product_cart.prodNo "
+											+ " = km_product.prodNo WHERE `cartNo` =? ";
+
 
 	//-----------진우
 	/* public static final String SELECT_ORDER_PRODUCT = "select a.`thumb1`, a.`prodNo`, a.`prodName`, a.`descript`, a.`point` as `addPoint`, a.`prodCate1`, a.`prodCate2`, "

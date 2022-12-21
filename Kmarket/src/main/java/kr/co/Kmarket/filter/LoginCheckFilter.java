@@ -33,7 +33,7 @@ public class LoginCheckFilter implements Filter {
 		uriList.add("/Kmarket/admin/index.do");
 		uriList.add("/Kmarket/admin/product/list.do");
 		uriList.add("/Kmarket/admin/product/register.do");
-		uriList.add("/Kmarket/product/cart.do");
+		//uriList.add("/Kmarket/product/cart.do");
 		uriList.add("/Kmarket/product/order.do");
 		uriList.add("/Kmarket/product/complete.do");
 		uriList.add("/Kmarket/cs/qna/write.do");
