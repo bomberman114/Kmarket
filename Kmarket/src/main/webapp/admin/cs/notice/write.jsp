@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../_header.jsp"></jsp:include>
-        <section id="admincs">
+        <section id="admin-cs">
             <div class="notice">
                 <section class="write">
                 	<nav>
@@ -10,13 +10,13 @@
 	                    </p>
 	                </nav>
                     <article>
-                        <form action="#" method="post">
+                        <form action="/Kmarket/admin/cs/notice/write.do" method="post">
                         <input type="hidden" name="uid" value="${sessUser.uid}"/>
                             <table>
                                 <tr>
                                     <td>문의유형</td>
                                     <td>
-                                        <select name="cate2">
+                                        <select name="cate">
                                             <option value="0">선택</option>
                                             <option value="1">고객서비스</option>
                                             <option value="2">안전거래</option>
@@ -39,7 +39,7 @@
                                 </tr>
                             </table>
                             <div>
-                                <a href="/Kmarket/cs/qna/list.do?cate1=${cate1}" class="btn btnCancle">취소하기</a>
+                                <a href="/Kmarket/admin/cs/notice/list.do?cate=${cate}" class="btn btnCancle">취소하기</a>
                                 <input type="submit" class="btn btnComplete" value="등록하기">
                             </div>
                         </form>

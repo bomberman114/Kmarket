@@ -174,10 +174,14 @@ public class Sql {
 	public static final String SELECT_MAIN_BEST1_PRODUCT = " SELECT * FROM km_product ORDER BY sold  DESC LIMIT 1 ";
 
 
+	// admin - notice
 	
+	public static final String INSERT_NOTICE = "INSERT INTO `km_cs_notice_board` (`cate`, `title`, `content`, `uid`, `regip`, `rdate`, `cateName`) VALUES( ?, ?, ?, ?, ?, NOW(), ?)";
 
+	public static final String SELECT_COUNT_NOTICE_TOTAL = "SELECT COUNT(`no`) FROM `km_cs_notice_board`";
+	public static final String SELECT_COUNT_NOTICE_TOTAL_FOR_CATE = "SELECT COUNT(`no`) FROM `km_cs_notice_board` WHERE `cate`=?";
 
-
-	
+	public static final String SELECT_NOTICES = "SELECT * FROM `km_cs_notice_board` ORDER BY `no` DESC LIMIT ?,10;";
+	public static final String SELECT_NOTICES_BY_CATE = "SELECT * FROM `km_cs_notice_board` WHERE `cate`=? ORDER BY `no` DESC LIMIT ?,10;";
 	
 }

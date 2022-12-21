@@ -19,6 +19,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.Kmarket.dao.admin.AdminDao;
+import kr.co.Kmarket.vo.NoticeArticleVo;
 import kr.co.Kmarket.vo.ProductCartVo;
 import kr.co.Kmarket.vo.ProductCate1Vo;
 import kr.co.Kmarket.vo.ProductCate2Vo;
@@ -50,6 +51,19 @@ public enum AdminService {
 	public List<ProductVo> selectAdminProductsByKeyword(String uid, String category, String keyword, int limitStart) {
 		return dao.selectAdminProductsByKeyword(uid, category, keyword, limitStart);
 	}
+	
+	public void insertNotice(NoticeArticleVo vo) {
+		dao.insertNotice(vo);
+	}
+	
+	public List<NoticeArticleVo> selectNotices(int start){
+		return dao.selectNotices(start);
+	}
+	
+	public List<NoticeArticleVo> selectNoticesByCate(int cate, int start){
+		return dao.selectNoticesByCate(cate, start);
+	}
+	
 
 	// paging
 
@@ -67,6 +81,11 @@ public enum AdminService {
 	// 전체 게시물 갯수
 	public int selectCountTotal() {
 		return dao.selectCountTotal();
+	}
+	
+	// admin-cs-notice용 전체 게시물 갯수
+	public int selectCountTotal(int cate) {
+		return dao.selectCountTotal(cate);
 	}
 
 	// 마지막 페이지 번호
