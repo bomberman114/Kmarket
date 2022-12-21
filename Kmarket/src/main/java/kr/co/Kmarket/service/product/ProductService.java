@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.Kmarket.dao.product.ProductDao;
 import kr.co.Kmarket.vo.ProductCartVo;
+import kr.co.Kmarket.vo.ProductOrderVo;
 import kr.co.Kmarket.vo.ProductVo;
 
 public enum ProductService {
@@ -106,8 +107,11 @@ public enum ProductService {
 	
 	// 진우
 	/*
-	public List<ProductCartVo> selectOrderProduct(String uid) {
-		return dao.selectOrderProduct(uid);
+	public void insertOrderProduct(List<ProductOrderVo> orderProduct) {
+		dao.insertOrderProduct(orderProduct);
+	}*/
+	 
+	public int insertOrderProduct(ProductOrderVo vo) {
+		return dao.insertOrderProduct(vo);
 	}
-	*/
 }
