@@ -2,49 +2,46 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../_header.jsp"></jsp:include>\
 <script>
+
+
 $(function(){
 	
 	$('.btnOrder1').click(function(){
-		let prodNo = $(this).val();
-		$('section1').show();
+		$('section[class=section1]').show();
 	});
 	
 	$('.btnClose1').click(function(){
-		$('.section1').hide();
+		$('section[class=section1]').hide();
 	});
-		});
-		
-$(function(){
+});
 	
+	/*
 	$('.btnOrder2').click(function(){
-		let prodNo = $(this).val();
-		$('section2').show();
+		$('section[class=section2]').show();
 	});
 	
 	$('.btnClose2').click(function(){
-		$('.section2').hide();
+		$('section[class=section2]').hide();
 	});
-		});
-$(function(){
+
 	
 	$('.btnOrder3').click(function(){
-		let prodNo = $(this).val();
-		$('section3').show();
+		$('section[class=section3]').show();
 	
 	$('.btnClose3').click(function(){
-		$('.section3').hide();
+		$('section[class=section3]').hide();
 	});
-		});
-$(function(){
+
 	
 	$('.btnOrder4').click(function(){
-		let prodNo = $(this).val();
-		$('section4').show();
+		$('section[class=section4]').show();
 	
 	$('.btnClose4').click(function(){
-		$('.section4').hide();
+		$('section[class=section4]').hide();
 	});
 		});
+	*/
+	
 
 </script>
     <section id="cs">
@@ -58,7 +55,7 @@ $(function(){
             <aside>
             <h2>자주묻는 질문</h2>
             <ul>
-                <li class="on"><a href="#">회원</a></li>
+                <li class="on"><a href="/Kmarket/admin/cs/faq/list.do">회원</a></li>
                 <li><a href="#">쿠폰/이벤트</a></li>
                 <li><a href="#">주문/결제</a></li>
                 <li><a href="#">배송</a></li>
@@ -76,7 +73,7 @@ $(function(){
             <div>
                 <h3>가입</h3>
                 <ul>
-                <li><a href="./view.html"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+                <li><a href="/Kmarket/admin/cs/faq/view.do"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
                 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
                 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
                 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>

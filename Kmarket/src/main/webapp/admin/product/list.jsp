@@ -7,19 +7,21 @@ $(document).on('click', '.remove', function(e){
 	e.preventDefault();
 	
 	let isDeleteOk = confirm("정말 삭제하시겠습니까?");
-			
+		
 	if (isDeleteOk){
-		let prodNo = $(this).attr('data-prodNo');
+		//let prodNo = $(this).attr('data-prodNo');
+	
+		var prodNoEl = document.getElementById('prodNo');
+		var prodNo = prodNoEl.value
+	
 		//let no = $(this).attr(prodNo);
-		//let prodNo1 = $( '<td>${product.prodNo}</td>').val();
 	
 		//console.log('no : ' + no);
 		console.log('prodNo : ' + prodNo);
 		//console.log('prodNo1 : ' + prodNo1);
 		
-		
 		let jsonData = {"prodNo" : prodNo};
-		//let jsonData1 = {"prodNo1" : prodNo1};
+		
 		
 		$.ajax ({
 			url: '/Kmarket/admin/product/list.do',
@@ -29,12 +31,62 @@ $(document).on('click', '.remove', function(e){
 			success: function(data){
 				if(data.result == 1){
 					alert('상품이 삭제되었습니다.');
-					product.hide();
+					location.href="/Kmarket/admin/product/list.do";
 				}
 			}
 		});
 	}
 });
+
+
+
+$(document).on('click', '.listremove', function(e){
+	e.preventDefault();
+    var obj_length = document.getElementsByName("chckProdNo").length;
+	let isDeleteOk = confirm("정말 상품들을 삭제하시겠습니까?");
+	
+	if (isDeleteOk){
+	//alert("하이2");
+	console.log(obj_length);
+	let adminlist = new Array();
+	   for (var i=0; i<obj_length; i++) {
+            if (document.getElementsByName("chckProdNo")[i].checked == true) {
+                //alert(document.getElementsByName("chkProdNo")[i].value);
+    		var prodNo = document.getElementsByName("chckProdNo")[i].value
+    		adminlist.push(prodNo);
+            }
+	   }
+		console.log(adminlist);
+			
+		//console.log(carts);
+		console.log("카트 리스트");
+		
+	//alert("하이5");
+	
+	$.ajax({
+		url: '/Kmarket/admin/product/delete.do',
+		method: 'POST',
+		traditional: true,
+		data: {"adminlist" : adminlist},
+		dataType: 'json',
+		success: function(data){
+			console.log(data.result);
+			if(data.result == 1){
+				alert(data.result);
+				alert('상품들이 삭제되었습니다.');
+				location.href="/Kmarket/admin/product/list.do";
+			}else if(data.result == null ){
+				alert(data.result);
+				alert('result값이 없습니다.');
+				location.href="/Kmarket/admin/product/list.do";
+			}
+		}
+		
+	});
+	}
+});
+
+
 </script>
 
 
@@ -76,13 +128,13 @@ $(document).on('click', '.remove', function(e){
                         
                         <!-- 상품 목록 나열 -->
 						<c:forEach var="product" items="${products}">
+									<input  type="hidden"  id="prodNo" value="${product.prodNo}" />
 	                        <tr>
-	                            <td><input type="checkbox" name="상품코드"/></td>
+	                            <td><input type="checkbox" name="chckProdNo" value="${product.prodNo}" /></td>
 
 	                            <td>
 	                            	<img src="<c:url value='${product.thumb1}'/>" class="thumb">
 	                            </td>
-
 	                            <td>${product.prodNo}</td>
 	                            <td>${product.prodName}</td>
 	                            <td>${product.price}</td>
@@ -103,7 +155,7 @@ $(document).on('click', '.remove', function(e){
                     </table>
                     
                     <!-- 선택한 상품 삭제 -->
-                    <input type="button" value="선택삭제" />
+                    <input type="button" value="선택삭제" class="listremove" />
                                   
 					<!-- 페이징 -->         
                     <div class="paging">

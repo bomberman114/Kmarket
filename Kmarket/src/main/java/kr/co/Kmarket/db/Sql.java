@@ -161,7 +161,9 @@ public class Sql {
 													
 
 
-	public static final String DELETE_PRODUCT = "DELETE * FROM `km_product` WHERE prodNo = ? ";
+	public static final String DELETE_PRODUCT = "DELETE  FROM km_product WHERE `prodNo` = ? ";
+	
+	public static final String DELETE_PRODUCT_LIST = "DELETE  FROM km_product WHERE `prodNo` = ? ";
 
 	public static final String SELECT_MAIN_HIT_PRODUCTS = " SELECT * FROM km_product ORDER BY HIT  DESC LIMIT 8 ";
 
@@ -183,5 +185,7 @@ public class Sql {
 
 	public static final String SELECT_NOTICES = "SELECT * FROM `km_cs_notice_board` ORDER BY `no` DESC LIMIT ?,10;";
 	public static final String SELECT_NOTICES_BY_CATE = "SELECT * FROM `km_cs_notice_board` WHERE `cate`=? ORDER BY `no` DESC LIMIT ?,10;";
+
+
 	
 }

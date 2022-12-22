@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -141,7 +142,7 @@ public enum AdminService {
 	public void updateAdminProduct() {
 	}
 
-	public int deleteAdminProduct(String prodNo) {
+	public int deleteAdminProduct(int prodNo) {
 		int result = dao.deleteAdminProduct(prodNo);
 		return result;
 	}
@@ -416,6 +417,11 @@ public enum AdminService {
 
 	public int productM() {
 		return dao.productM();
+	}
+
+	public int deleteAdminProductlist(HashMap<Integer, Integer> map) {
+		int result = dao.deleteAdminProductlist(map);
+		return result;
 	}
 
 }

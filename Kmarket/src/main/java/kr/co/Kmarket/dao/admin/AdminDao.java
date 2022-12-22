@@ -1,6 +1,7 @@
 package kr.co.Kmarket.dao.admin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -311,15 +312,14 @@ public class AdminDao extends DBHelper {
 		return products;
 	}
 
-	
-	public int deleteAdminProduct(String prodNo) {
-		
+	public int deleteAdminProduct(int prodNo) {
+
 		int result = 0;
 		try {
 			logger.info("deleteAdminProduct...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.DELETE_PRODUCT);
-			psmt.setString(1, prodNo);
+			psmt.setInt(1, prodNo);
 			result = psmt.executeUpdate();
 			close();
 		} catch (Exception e) {
@@ -327,11 +327,29 @@ public class AdminDao extends DBHelper {
 		}
 		return result;
 	}
-	
 
+	public int deleteAdminProductlist(HashMap<Integer, Integer> map) {
+
+		int result = 0;
+		try {
+			logger.info("deleteAdminProductlist...");
+			for (int i = 1; i < map.size() + 1; i++) {
+				conn = getConnection();
+				psmt = conn.prepareStatement(Sql.DELETE_PRODUCT_LIST);
+				psmt.setInt(1, map.get(i));
+				result = psmt.executeUpdate();
+				// psmt.executeQuery();
+			}
+			close();
+			// result=1;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+
+	}
 
 	// 일반 판매자일 때
-
 
 	// 전체 게시물 갯수
 	public int selectCountTotal() {
@@ -610,7 +628,6 @@ public class AdminDao extends DBHelper {
 		return memberCount;
 	}
 
-	
 	public int productCount() {
 		int productCount = 0;
 		try {
@@ -628,6 +645,7 @@ public class AdminDao extends DBHelper {
 		}
 		return productCount;
 	}
+
 	public int productY() {
 		int productY = 0;
 		try {
@@ -664,7 +682,6 @@ public class AdminDao extends DBHelper {
 		return productW;
 	}
 
-
 	public int productM() {
 		int productM = 0;
 		try {
@@ -689,32 +706,30 @@ public class AdminDao extends DBHelper {
 		try {
 			logger.info("selectCountNoticeTotal...");
 			conn = getConnection();
-			
-			if(cate == 0) {
+
+			if (cate == 0) {
 				stmt = conn.createStatement();
 				rs = stmt.executeQuery(Sql.SELECT_COUNT_NOTICE_TOTAL);
-			}else {
+			} else {
 				psmt = conn.prepareStatement(Sql.SELECT_COUNT_NOTICE_TOTAL_FOR_CATE);
 				psmt.setInt(1, cate);
 				rs = psmt.executeQuery();
 			}
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				total = rs.getInt(1);
 			}
-			
+
 			close();
-			
+
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 		return total;
 	}
 
-	
-	
 	public void insertNotice(NoticeArticleVo vo) {
-		
+
 		try {
 			logger.info("insertNotice...");
 			conn = getConnection();
@@ -725,31 +740,30 @@ public class AdminDao extends DBHelper {
 			psmt.setString(4, vo.getUid());
 			psmt.setString(5, vo.getRegip());
 			psmt.setString(6, vo.getCateName());
-			
+
 			psmt.executeUpdate();
-			
+
 			close();
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-	
+
 	}
-	
-	
-	public List<NoticeArticleVo> selectNotices(int start){
-		
+
+	public List<NoticeArticleVo> selectNotices(int start) {
+
 		List<NoticeArticleVo> notices = new ArrayList<>();
-		
+
 		try {
 			logger.info("selectNotices...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.SELECT_NOTICES);
 			psmt.setInt(1, start);
 			rs = psmt.executeQuery();
-			
-			while(rs.next()) {
-				
+
+			while (rs.next()) {
+
 				NoticeArticleVo vo = new NoticeArticleVo();
 				vo.setNo(rs.getInt(1));
 				vo.setCate(rs.getInt(2));
@@ -760,22 +774,22 @@ public class AdminDao extends DBHelper {
 				vo.setHit(rs.getInt(7));
 				vo.setRegip(rs.getString(8));
 				vo.setRdate(rs.getString(9));
-				
+
 				notices.add(vo);
-				
+
 			}
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-		
+
 		return notices;
 	}
-	
-	public List<NoticeArticleVo> selectNoticesByCate(int cate, int start){
-		
+
+	public List<NoticeArticleVo> selectNoticesByCate(int cate, int start) {
+
 		List<NoticeArticleVo> notices = new ArrayList<>();
-		
+
 		try {
 			logger.info("selectNoticesByCate...");
 			conn = getConnection();
@@ -783,9 +797,9 @@ public class AdminDao extends DBHelper {
 			psmt.setInt(1, cate);
 			psmt.setInt(2, start);
 			rs = psmt.executeQuery();
-			
-			while(rs.next()) {
-				
+
+			while (rs.next()) {
+
 				NoticeArticleVo vo = new NoticeArticleVo();
 				vo.setNo(rs.getInt(1));
 				vo.setCate(rs.getInt(2));
@@ -796,17 +810,17 @@ public class AdminDao extends DBHelper {
 				vo.setHit(rs.getInt(7));
 				vo.setRegip(rs.getString(8));
 				vo.setRdate(rs.getString(9));
-				
+
 				notices.add(vo);
-				
+
 			}
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-		
+
 		return notices;
-		
+
 	}
 
 }
