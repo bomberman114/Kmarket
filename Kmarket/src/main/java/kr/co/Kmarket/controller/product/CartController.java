@@ -68,7 +68,7 @@ public class CartController extends HttpServlet {
 		}
 		System.out.println("카트 포스트:"+map);
 		List<ProductVo> cartsNo = service.cartNo(map);
-		System.out.println("카트 포스트컨트롤러:"+cartsNo);
+		//System.out.println("카트 포스트컨트롤러:"+cartsNo);
 		System.out.println("카트:"+cartsNo.size());
 
 		

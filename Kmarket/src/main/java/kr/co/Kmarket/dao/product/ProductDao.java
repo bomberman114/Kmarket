@@ -229,7 +229,7 @@ public class ProductDao extends DBHelper {
 				vo.setThumb3(path + rs.getString("thumb3"));
 
 				vo.setDisprice(rs.getInt("disprice"));
-				vo.setTotal(count*(rs.getInt("price") - rs.getInt("disprice")));
+				vo.setTotal(count * (rs.getInt("price") - rs.getInt("disprice")));
 
 				vo.setCount(count);
 
@@ -392,8 +392,8 @@ public class ProductDao extends DBHelper {
 		}
 		return cart;
 	}
-  
-  // 카트에서 주문보내기
+
+	// 카트에서 주문보내기
 	public List<ProductVo> cartNo(HashMap<Integer, Integer> map) {
 
 		List<ProductVo> cartNo = new ArrayList<>();
@@ -402,7 +402,7 @@ public class ProductDao extends DBHelper {
 				logger.info("selectOrder2...");
 				conn = getConnection();
 				psmt = conn.prepareStatement(ProductSql.SELECT_CARTS);
-				psmt.setInt(i, map.get(i));
+				psmt.setInt(1, map.get(i));
 
 				rs = psmt.executeQuery();
 
@@ -436,11 +436,11 @@ public class ProductDao extends DBHelper {
 					vo.setCount(rs.getInt("count"));
 					int count = vo.getCount();
 					int total = count * disprice;
-					System.out.println("카트 다오:" + total);
+					//System.out.println("카트 다오:" + total);
 					vo.setTotal(total);
 					vo.setCartNo(rs.getInt("cartNo"));
 
-					System.out.println("카트번호vo:" + vo);
+					//System.out.println("카트번호vo:" + vo);
 					cartNo.add(vo);
 				}
 
@@ -456,25 +456,12 @@ public class ProductDao extends DBHelper {
 		return cartNo;
 	}
 
-	
-	// 진우 
-	/*
-	public void insertOrderProduct(List<ProductOrderVo> orderProduct) {
-		
-		try {
-			logger.info("insertOrderProduct...");
-			conn = getConnection();
-			psmt = conn.prepareStatement(ProductSql.INSERT_PRODUCT_ORDER);
-			psmt.setString(1, );
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
-	*/
+	// 진우
+
 	public int insertOrderProduct(ProductOrderVo vo) {
-		
+
 		int result = 0;
-		
+
 		try {
 			logger.info("insertOrderProduct...");
 			conn = getConnection();
@@ -493,21 +480,17 @@ public class ProductDao extends DBHelper {
 			psmt.setString(12, vo.getRecipAddr1());
 			psmt.setString(13, vo.getRecipAddr2());
 			psmt.setInt(14, vo.getOrdPayment());
-			
+
 			logger.debug("psmt : " + psmt);
-			
+
 			result = psmt.executeUpdate();
-			
+
 			close();
-			
+
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 		return result;
 	}
-	
-	
-	
-
 
 }
