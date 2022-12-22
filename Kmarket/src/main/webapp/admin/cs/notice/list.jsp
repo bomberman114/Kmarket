@@ -4,15 +4,9 @@
 <script>
 	$(document).ready(function(){
 		
-		
-		
 		$(document).on('change', 'select[name=category]', function(e){
 			
-			console.log('here1');
-			
 			let cate = $(this).val();
-			
-			console.log('here2');
 			
 			$.ajax({
 				url: '/Kmarket/admin/cs/notice/list.do',                                                                                                                                                                                                                                                                                               
@@ -21,14 +15,13 @@
 				dataType:'json',
 				success: function(data){
 					console.log('here3');
-										
+					$('.row').remove();
 					$('.paging').empty();
+					$('input:checkbox[name=all]').prop("checked", false);
 					
 					for(let vo of data.notices){
-						//let pageStartNum = vo.pageStartNum;
-						console.log('pageStartNum : ' + data.pageStartNum);
-						
-						let tags = "<tr clss='row'><input type='hidden' value='"+vo.no+"'>";
+											
+						let tags = "<tr class='row'><input type='hidden' value='"+vo.no+"'>";
 							tags += "<td><input type='checkbox' name='chkbox'/></td>";
 							tags += "<td>"+(data.pageStartNum--)+"</td>";
 							tags += "<td>"+vo.cateName+"</td>";
@@ -63,10 +56,11 @@
 			
 		});
 		
+
 		// 체크박스
-		let chkList = $('input[name=chkbox]');
-		
 		$(document).on('click', 'input[name=all]', function(e){
+			
+			let chkList = $('input[name=chkbox]');		
 			
 			if($(this).is(":checked")){
 				chkList.prop("checked", true);
@@ -75,11 +69,8 @@
 			}
 		});
 		
-		
-		
-		
-		
 	});
+	
 	
 	// 체크박스 선택후 삭제
 	function deleteNotices(){
@@ -92,12 +83,14 @@
 			checkboxArr.push(no);
 			
 			
+			let isDelte('삭제하시겠습니까?')
+			
 		})
 		
 		console.log(checkboxArr);
 		
 	}
-
+	
 	</script>
             <section id="admin-notice-list">
                 <nav>

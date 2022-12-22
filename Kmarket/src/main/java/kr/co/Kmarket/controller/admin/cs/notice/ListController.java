@@ -60,7 +60,11 @@ public class ListController extends HttpServlet {
 		// 현재 페이지 게시물 가져오기
 		List<NoticeArticleVo> notices = null;
 		
-		notices = service.selectNotices(start);		
+		if(cate == 0) {
+			notices = service.selectNotices(start);
+		}else {
+			notices = service.selectNoticesByCate(cate, start);
+		}
 		
 		req.setAttribute("notices", notices);
 		req.setAttribute("cate", cate);
