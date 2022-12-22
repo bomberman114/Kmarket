@@ -6,6 +6,8 @@
 <script>
 
 	$(function(){	
+		
+		// product_order 데이터 보내기
 		$('input[name=btnPayment]').click(function(e){
 			e.preventDefault();
 			// 데이터 가져오기
@@ -23,7 +25,6 @@
 			let recipAddr1 = $('input[name=recipAddr1]').val();
 			let recipAddr2 = $('input[name=recipAddr2]').val();
 			let ordPayment = $('input[name=ordPayment]:checked').val();
-		
 			
 			// JSON 데이터 생성
 			let jsonData = {
@@ -62,11 +63,32 @@
 					}
 				}
 			});	
+		}); // btnPayment 종료
+		
+		// 포인트 사용
+		$('input[name=btnUsedPoint]').click(function(e){
+			e.preventDefault();
+			alert('포인트 사용');
+			const usedPointEl = document.getElementById('usedPoint');
+			const usedPoint1 = usedPointEl.value;
+			if(usedPoint1==0) {
+				const usedPoint2 = 0;
+				$('input[name=usedPoint1]').attr('value', usedPoint2);
+			}else {
+				$('input[name=usedPoint1]').attr('value',usedPoint1);
+			}
+ 			
+ 			
 		});
 		
-		$('')
-		
 	});
+	
+	window.onload = function(){
+		   const usedPoint2 = 0;
+			$('input[name=usedPoint1]').attr('value', usedPoint2);
+	}
+	
+	
 </script>
         
             <!-- 주문 페이지 시작-->
@@ -90,8 +112,10 @@
                         <th>상품명</th>
                         <th>총수량</th>
                         <th>판매가</th>
+                        <th>할인</th>
+                        <th>포인트</th>
                         <th>배송비</th>
-                        <th>소계</th>
+                        <th>총합</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -99,7 +123,17 @@
                         <td colspan="7">장바구니에 상품이 없습니다.</td>
                     </tr>
 
+					<c:set var = "price" 			value = "0" />
+		            <c:set var = "savePoint" 		value = "0" />	
+		            <c:set var = "delivery" 		value = "0" />
+		            <c:set var = "total" 			value = "0" />
+		            <c:set var = "count" 			value = "0" />
+		            <c:set var = "discountedPrice" 	value = "0" />
+		            
+						
+					<!-- 상품 출력 -->
 					<c:forEach var="order" items="${sessOrder}">
+					
 					<input type="hidden" name="ordUid" value="${sessUser.uid}"/>   
 					<input type="hidden" name="ordCount" value="${order.count}">
 					<input type="hidden" name="ordPrice" value="${order.price}">
@@ -107,15 +141,7 @@
 					<input type="hidden" name="ordDelivery" value="${order.delivery}">
 					<input type="hidden" name="savePoint" value="${order.point}">
 					<input type="hidden" name="ordTotPrice" value="${order.total}">
-					
-					
-					<c:set var = "price" value = "0" />
-		            <c:set var = "discount" value = "0" />
-		            <c:set var = "savePoint" value = "0" />
-		            <c:set var = "delivery" value = "0" />
-		            <c:set var = "disprice" value = "0" />
-		            <c:set var="total" value="0" />
-		            <c:set var="count" value="0" />
+
 					<c:set var="subTotal" value="${order.price * order.count + order.delivery}"/>
 					
 	                    <tr>
@@ -131,6 +157,11 @@
 	                        <td>${order.count}</td>
 	                        <td><fmt:formatNumber value="${order.price}" pattern="#,###"/></td>
 	                        <td>
+	                        	${order.discount}% 
+	                        	<c:set var="discountedPrice" value="${order.price * (order.discount / 100)}"/>
+	                        </td>
+	                        <td>${order.point}</td>
+	                        <td>
 		                        <c:choose>
 			                        <c:when test="${order.delivery eq 0}">
 				                        무료배송
@@ -142,13 +173,12 @@
 		                    </td>
 	                        <td><fmt:formatNumber value="${subTotal}" pattern="#,###"/></td>
 	                    </tr>
-	                    <c:set var= "price" value="${price + order.price}"/>
-	                    <c:set var= "savePoint" value="${point + order.point}"/>
-	                    <c:set var= "delivery" value="${delivery + order.delivery}"/>
-	                    <c:set var= "total" value="${total + order.total}"/>
-	                    <c:set var= "count" value="${count + order.count}"/>
-	                    <c:set var= "disprice" value="${order.disprice}"/>
-	                    
+	                    <c:set var= "price" 				value="${price + order.price}"/>
+	                    <c:set var= "savePoint" 			value="${point + order.point}"/>
+	                    <c:set var= "delivery" 				value="${delivery + order.delivery}"/>
+	                    <c:set var= "total" 				value="${total + order.total}"/>
+	                    <c:set var= "count" 				value="${count + order.count}"/>
+	                    <c:set var= "totalDiscountedPrice" 	value="${totalDiscountedPrice + discountedPrice}"/>
                     </c:forEach>
 
                     </tbody>
@@ -160,7 +190,7 @@
                     <table border="0">
                     <tr>
                         <td>총</td>
-                        <td>${count}</td>
+                        <td><c:out value="${count}"/></td>
                     </tr>
                     <tr>
                         <td>상품금액</td>
@@ -170,11 +200,11 @@
                         <td>할인</td>
                         <td>
                         	<c:choose>
-		                        <c:when test="${disprice eq 0}">
+		                        <c:when test="${totalDiscountedPrice eq 0}">
 			                        0
 			                    </c:when>
 			                    <c:otherwise>
-			                       -<fmt:formatNumber value="${count * disprice}" pattern="#,###"/>
+			                       -<fmt:formatNumber value="${totalDiscountedPrice}" pattern="#,###"/>
 			                    </c:otherwise>
 	                    </c:choose>
                        </td>
@@ -186,15 +216,9 @@
                     <tr>
                         <td>포인트 할인</td>
                         <td>
-                        	<c:choose>
-		                        <c:when test="${point eq 0}">
-			                        0
-			                    </c:when>
-			                    <c:otherwise>
-			                        -${point}
-			                    </c:otherwise>
-		                    </c:choose>
-		                </td>
+                        	<input type="text" name="usedPoint1" value="" readonly
+                        	style="border:none; font-size:14px; color:#555; float:right; text-align:right"/>
+                        </td>
                     </tr>
                     <tr>
                         <td>전체주문금액</td>
@@ -242,17 +266,31 @@
                 </article>
 
                 <!-- 할인정보 -->
+                
                 <article class="discount">
                     <h1>할인정보</h1>
-
+					
                     <div>
                         <p>현재 포인트 : <span><fmt:formatNumber value="${sessUser.point}" pattern="#,###"/></span>점</p>
                         <label>
-                            <input type="text" name="usedPoint" value="0"/>점
-                            <input type="button" name="btnPoint" value="적용"/>
+                       
+                        <c:set var = "min" value = "0"/>
+                        <c:set var = "max" value = "${total}"/>
+                        
+                        	<c:choose>
+		                        <c:when test="${sessUser.point ge 5000}">
+			                        <input type="text" name="usedPoint" id="usedPoint" value="0" min="${min}" max="${max}" />점
+			                    </c:when>
+			                    <c:otherwise>
+			                        <input type="text" name="usedPoint" value="0" readonly/>점
+			                    </c:otherwise>
+		                    </c:choose>
+		                    <input type="button" name="btnUsedPoint" value="적용"/>
+		                
                         </label>
                         <span>포인트 5,000점 이상이면 현금처럼 사용 가능합니다.</span>
                     </div>
+                    
                 </article>
 
                 <!-- 결제방법 -->

@@ -3,7 +3,10 @@ package kr.co.Kmarket.controller.product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +22,7 @@ import com.google.gson.JsonObject;
 
 import kr.co.Kmarket.service.product.ProductService;
 import kr.co.Kmarket.vo.ProductOrderVo;
+import kr.co.Kmarket.vo.ProductVo;
 
 @WebServlet("/product/order.do")
 public class OrderController extends HttpServlet {
@@ -32,6 +37,8 @@ public class OrderController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/order.jsp");
 		dispatcher.forward(req, resp);
@@ -87,6 +94,7 @@ public class OrderController extends HttpServlet {
 		vo.setRecipAddr2(recipAddr2);
 		vo.setOrdPayment(ordPayment);
 		
+		// 바로 결제하기 눌렸을 때
 		int result = service.insertOrderProduct(vo);
 		
 		JsonObject json = new JsonObject();
@@ -95,12 +103,6 @@ public class OrderController extends HttpServlet {
 		PrintWriter writer = resp.getWriter();
 		writer.print(json.toString());
 		
-		
-		
-		//List<ProductOrderVo> orderProduct = new ArrayList<>();
-				//orderProduct.add(vo);
-				
-				//service.insertOrderProduct(orderProduct);
 		
 		
 	}
