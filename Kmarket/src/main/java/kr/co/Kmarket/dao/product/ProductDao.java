@@ -493,4 +493,8 @@ public class ProductDao extends DBHelper {
 		return result;
 	}
 
+	public void insertOrderProducts(HashMap<String, Object> map) {
+		
+	}
+	
 }

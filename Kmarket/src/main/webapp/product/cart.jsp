@@ -17,19 +17,19 @@ $(function(){
 		//alert("하이2");
 		console.log(obj_length);
 		let carts = new Array();
-		   for (var i=0; i<obj_length; i++) {
-	            if (document.getElementsByName("chkProdNo")[i].checked == true) {
-	                //alert(document.getElementsByName("chkProdNo")[i].value);
-	    		var cartNo = document.getElementsByName("chkProdNo")[i].value
-	            carts.push(cartNo);
-	            }
-		   }
-			console.log(carts);
+		for (var i=0; i<obj_length; i++) {
+            if (document.getElementsByName("chkProdNo")[i].checked == true) {
+                //alert(document.getElementsByName("chkProdNo")[i].value);
+    			var cartNo = document.getElementsByName("chkProdNo")[i].value
+            	carts.push(cartNo);
+            }
+		}
+		console.log(carts);
 		
 		
 				
 			//console.log(carts);
-			console.log("카트 리스트");
+		console.log("카트 리스트");
 		//carts.forEach(element => { document.write(element + '<br>');
 			
 		//alert("하이5");
@@ -98,6 +98,7 @@ $(function(){
                     <c:set var = "disprice" value = "0" />
                     <c:set var="total" value="0" />
                     <c:set var="count" value="0" />
+                    
                     <c:forEach var="cart" items="${cart}">
                  
                     <tr >
@@ -110,7 +111,7 @@ $(function(){
                         <input type="hidden" class="thumb3" value="${cart.thumb3}" name="thumb3"/>
                             <article>
                                 <a href="/Kmarket/product/view.do?cate1=${cart.prodCate1}&cate2=${cart.prodCate2}&prodNo=${cart.prodNo}">
-                              <img src="<c:url value='${cart.detail}'/>" alt="item1"></a>
+                              <img src="<c:url value='${cart.detail}'/>" alt="item1" width="80px" height="80px"></a>
                               <input type="hidden" name="detail" class="detail" value="${cart.detail}" />
                                 <div>
                                     <h2><a href="#"><input type="hidden" name="prodName" class="prodName" value="${cart.prodName}" />

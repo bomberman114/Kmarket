@@ -112,10 +112,9 @@ public enum ProductService {
 	}	
 	
 	// 진우
-	/*
-	public void insertOrderProduct(List<ProductOrderVo> orderProduct) {
-		dao.insertOrderProduct(orderProduct);
-	}*/
+	public void insertOrderProducts(HashMap<String, Object> map) {
+		dao.insertOrderProducts(map);
+	}
 	 
 	public int insertOrderProduct(ProductOrderVo vo) {
 		return dao.insertOrderProduct(vo);
