@@ -4,9 +4,15 @@
 <script>
 	$(document).ready(function(){
 		
+		
+		
 		$(document).on('change', 'select[name=category]', function(e){
 			
+			console.log('here1');
+			
 			let cate = $(this).val();
+			
+			console.log('here2');
 			
 			$.ajax({
 				url: '/Kmarket/admin/cs/notice/list.do',                                                                                                                                                                                                                                                                                               
@@ -14,38 +20,31 @@
 				data: {"cate":cate},
 				dataType:'json',
 				success: function(data){
-					$('table').empty();
+					console.log('here3');
+										
 					$('.paging').empty();
 					
-					let tags = "<tr><th><input type='checkbox' name='all'/></th>"
-							+"<th>번호</th>"
-							+"<th>유형</th>"
-							+"<th>제목</th>"
-							+"<th>조회</th>"
-							+"<th>날짜</th>"
-							+"<th>관리</th></tr>";
-							
-					$('table').append(tags);
-					
 					for(let vo of data.notices){
+						//let pageStartNum = vo.pageStartNum;
+						console.log('pageStartNum : ' + data.pageStartNum);
 						
-						tags = "<tr><td><input type='checkbox' name='상품코드'/></td>"
-							+"<td>"+vo.no+"</td>"
-							+"<td>"+vo.cateName+"</td>"
-							+"<td><a href='./view.do?no="+vo.no+"&pg=1'>"+vo.title+"</a></td>"
-							+"<td>"+vo.hit+"</td>"
-							+"<td>"+vo.rdate+"</td>"
-							+"<td><a href='#' class='remove'>[삭제]</a>"
-							+"<a href='#' class='modify'>[수정]</a></td></tr>";
+						let tags = "<tr clss='row'><input type='hidden' value='"+vo.no+"'>";
+							tags += "<td><input type='checkbox' name='chkbox'/></td>";
+							tags += "<td>"+(data.pageStartNum--)+"</td>";
+							tags += "<td>"+vo.cateName+"</td>";
+							tags += "<td><a href='./view.do?no="+vo.no+"&pg=1'>"+vo.title+"</a></td>";
+							tags += "<td>"+vo.hit+"</td>";
+							tags += "<td>"+vo.rdate+"</td>";
+							tags += "<td><a href='#' class='remove'>[삭제]</a>";
+							tags += "<a href='#' class='modify'>[수정]</a></td></tr>";
 							
 						$('table').append(tags);
 						
 					}
 					
 					// 페이징 관련
-					
 					for(var i = data.pageGroupStart; i <= data.pageGroupEnd; i++){
-						tags = "<span class='num'>"
+						let tags = "<span class='num'>"
 							  + "<a href='/Kmarket/admin/cs/notice/list.do?cate="+data.cate+"&pg="+i+"'>"+i+"</a></span>";
 							  
 						$('.paging').append(tags);
@@ -63,7 +62,42 @@
 			});			
 			
 		});
+		
+		// 체크박스
+		let chkList = $('input[name=chkbox]');
+		
+		$(document).on('click', 'input[name=all]', function(e){
+			
+			if($(this).is(":checked")){
+				chkList.prop("checked", true);
+			}else{
+				chkList.prop("checked", false);
+			}
+		});
+		
+		
+		
+		
+		
 	});
+	
+	// 체크박스 선택후 삭제
+	function deleteNotices(){
+		
+		let checkboxArr = [];
+		$('input[name=chkbox]:checked').each(function(){
+			
+			let no = $(this).parent().prev().val();
+			
+			checkboxArr.push(no);
+			
+			
+		})
+		
+		console.log(checkboxArr);
+		
+	}
+
 	</script>
             <section id="admin-notice-list">
                 <nav>
@@ -97,9 +131,10 @@
                         
                         <!-- 게시글 목록 나열 -->
                         <c:forEach var="notice" items="${notices}">
-	                        <tr>
-	                            <td><input type="checkbox" name="상품코드"/></td>
-	                            <td>${notice.no}</td>
+	                        <tr class="row">
+	                        	<input type="hidden" value="${notice.no}">
+	                            <td><input type="checkbox" name="chkbox"/></td>
+	                            <td>${pageStartNum = pageStartNum-1}</td>
 	                            <td>${notice.cateName}</td>
 	                            <td><a href="./view.do?no=${notice.no}&pg=${currentPage}">${notice.title}</a></td>
 	                            <td>${notice.hit}</td>
@@ -113,7 +148,7 @@
                     </table>
                     
                     <!-- 선택한 게시글 삭제 -->
-                    <input type="button" value="선택삭제" />
+                    <input type="button" onclick="deleteNotices()" value="선택삭제" />
                     <!-- 공지사항 글 등록 -->
                     <a href="/Kmarket/admin/cs/notice/write.do" class="btn btnSubmit">등록하기</a>
                                   
