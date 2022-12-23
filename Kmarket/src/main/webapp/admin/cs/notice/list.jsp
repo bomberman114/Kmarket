@@ -4,6 +4,7 @@
 <script>
 	$(document).ready(function(){
 		
+		
 		$(document).on('change', 'select[name=category]', function(e){
 			
 			let cate = $(this).val();
@@ -82,8 +83,7 @@
 			
 			checkboxArr.push(no);
 			
-			
-			let isDelte('삭제하시겠습니까?')
+			let isDeleteOk = confirm('삭제하시겠습니까?');
 			
 		})
 		
