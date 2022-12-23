@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import kr.co.Kmarket.db.DBHelper;
 import kr.co.Kmarket.db.Sql;
+import kr.co.Kmarket.vo.AdminCsFaqCate2Vo;
 import kr.co.Kmarket.vo.NoticeArticleVo;
 import kr.co.Kmarket.vo.ProductCate1Vo;
 import kr.co.Kmarket.vo.ProductCate2Vo;
@@ -821,6 +822,55 @@ public class AdminDao extends DBHelper {
 
 		return notices;
 
+	}
+// admin Faq
+	public int selectFaqTotal(int cate) {
+		int total = 0;
+		try {
+			logger.info("selectCountFaqTotal...");
+			conn = getConnection();
+
+			if (cate == 0) {
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(Sql.SELECT_COUNT_FAQ_TOTAL);
+			} else {
+				psmt = conn.prepareStatement(Sql.SELECT_COUNT_FAQ_TOTAL_FOR_CATE);
+				psmt.setInt(1, cate);
+				rs = psmt.executeQuery();
+			}
+
+			if (rs.next()) {
+				total = rs.getInt(1);
+			}
+
+			close();
+
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return total;
+	}
+
+	public List<AdminCsFaqCate2Vo> selectFaqcate2(String cate1) {
+		List<AdminCsFaqCate2Vo> vos = new ArrayList<>();
+		try {
+			logger.info("selectFaqcate2... 카테고리2 불러오기");
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_ADMIN_FAQ_CATE2);
+			psmt.setString(1, cate1);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				AdminCsFaqCate2Vo vo = new AdminCsFaqCate2Vo();
+				vo.setCate1(rs.getInt(1));
+				vo.setCate2(rs.getInt(2));
+				vo.setC2Name(rs.getString(3));
+				vos.add(vo);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return vos;
 	}
 
 }

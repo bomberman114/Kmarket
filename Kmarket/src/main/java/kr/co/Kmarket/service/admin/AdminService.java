@@ -20,6 +20,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.Kmarket.dao.admin.AdminDao;
+import kr.co.Kmarket.vo.AdminCsFaqCate2Vo;
 import kr.co.Kmarket.vo.NoticeArticleVo;
 import kr.co.Kmarket.vo.ProductCartVo;
 import kr.co.Kmarket.vo.ProductCate1Vo;
@@ -88,6 +89,11 @@ public enum AdminService {
 	public int selectCountTotal(int cate) {
 		return dao.selectCountTotal(cate);
 	}
+	
+	//faq total
+		public int selectFaqTotal(int cate) {
+			return dao.selectFaqTotal(cate);
+		}
 
 	// 마지막 페이지 번호
 	public int getLastPageNum(int total) {
@@ -423,5 +429,10 @@ public enum AdminService {
 		int result = dao.deleteAdminProductlist(map);
 		return result;
 	}
+
+	public List<AdminCsFaqCate2Vo> selectFaqcate2(String cate1) {
+		return dao.selectFaqcate2(cate1);
+	}
+
 
 }

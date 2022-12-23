@@ -3,9 +3,8 @@
 <jsp:include page="../_header.jsp"></jsp:include>\
 <script>
 
-
+/*
 $(function(){
-	
 	$('.btnOrder1').click(function(){
 		$('section[class=section1]').show();
 	});
@@ -14,33 +13,51 @@ $(function(){
 		$('section[class=section1]').hide();
 	});
 });
+*/
+	$(function(){
+		
+	$('a[class=btnOrder1]').click(function(){
+		$('section[class=section1]').show();
+	});
+	$('a[class=btnClose1]').click(function(){
+		$('section[class=section1]').hide();
+	});
+		});
 	
-	/*
-	$('.btnOrder2').click(function(){
+
+$(function(){
+	
+	$('a[class=btnOrder2]').click(function(){
 		$('section[class=section2]').show();
 	});
 	
-	$('.btnClose2').click(function(){
+	$('a[class=btnClose2]').click(function(){
 		$('section[class=section2]').hide();
 	});
+});
 
+$(function(){
 	
-	$('.btnOrder3').click(function(){
+	$('a[class=btnOrder3]').click(function(){
 		$('section[class=section3]').show();
 	
-	$('.btnClose3').click(function(){
+	});
+	$('a[class=btnClose3]').click(function(){
 		$('section[class=section3]').hide();
 	});
+	});
+	$(function(){
 
 	
-	$('.btnOrder4').click(function(){
+	$('a[class=btnOrder4]').click(function(){
 		$('section[class=section4]').show();
+	});
 	
-	$('.btnClose4').click(function(){
+	$('a[class=btnClose4]').click(function(){
 		$('section[class=section4]').hide();
 	});
 		});
-	*/
+	
 	
 
 </script>
@@ -83,7 +100,7 @@ $(function(){
                 	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
                 	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
                 	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-                	 <a href="#" class="btnClose1">닫기</a>  
+                	<div onclick="dis()"> <a href="#" class="btnClose1">닫기</a>  </div>
                 	</section>
                 </ul>
             </div>

@@ -51,7 +51,7 @@ public class IndexController extends HttpServlet {
 		int productY = service.productY(); //신규게시물 어제
 		int productW = service.productW(); //신규게시물 주간
 		int productM = service.productM(); //신규게시물 월간
-		int visitCount;
+		//int visitCount;
 		req.setAttribute("orderCOunt", orderCount);
 		req.setAttribute("orderCountY", orderCountY);
 		req.setAttribute("orderCountW", orderCountW);

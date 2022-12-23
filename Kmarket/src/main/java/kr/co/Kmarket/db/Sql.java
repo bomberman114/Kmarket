@@ -186,6 +186,13 @@ public class Sql {
 	public static final String SELECT_NOTICES = "SELECT * FROM `km_cs_notice_board` ORDER BY `no` DESC LIMIT ?,10;";
 	public static final String SELECT_NOTICES_BY_CATE = "SELECT * FROM `km_cs_notice_board` WHERE `cate`=? ORDER BY `no` DESC LIMIT ?,10;";
 
+	// admin - Faq
+	public static final String SELECT_COUNT_FAQ_TOTAL = "SELECT COUNT(`no`) FROM `km_cs_faq_board`";
+
+	public static final String SELECT_COUNT_FAQ_TOTAL_FOR_CATE =  "SELECT COUNT(`no`) FROM `km_cs_faq_board` WHERE `cate`=?";
+
+	public static final String SELECT_ADMIN_FAQ_CATE2 =  "SELECT * FROM `km_ca_faq_cate2` WHERE `cate1`=?";
+
 
 	
 }
