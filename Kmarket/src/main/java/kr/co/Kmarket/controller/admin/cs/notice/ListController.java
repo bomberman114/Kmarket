@@ -54,10 +54,17 @@ public class ListController extends HttpServlet {
 		// 시작 인덱스
 		int start = service.getStartNum(currentPage);
 		
+		// 페이지 시작 번호
+		int pageStartNum = total - start;
+		
 		// 현재 페이지 게시물 가져오기
 		List<NoticeArticleVo> notices = null;
 		
-		notices = service.selectNotices(start);		
+		if(cate == 0) {
+			notices = service.selectNotices(start);
+		}else {
+			notices = service.selectNoticesByCate(cate, start);
+		}
 		
 		req.setAttribute("notices", notices);
 		req.setAttribute("cate", cate);
@@ -66,6 +73,7 @@ public class ListController extends HttpServlet {
 		req.setAttribute("lastPageNum", lastPageNum);
 		req.setAttribute("pageGroupStart", pageGroup[0]);
 		req.setAttribute("pageGroupEnd", pageGroup[1]);
+		req.setAttribute("pageStartNum", pageStartNum+1);
 		req.setAttribute("total", total);
 
 		
@@ -94,6 +102,9 @@ public class ListController extends HttpServlet {
 		// 시작 인덱스
 		int start = service.getStartNum(currentPage);
 		
+		// 페이지 시작 번호
+		int pageStartNum = total - start;
+		
 		// 현재 페이지 게시물 가져오기
 		List<NoticeArticleVo> notices = null;
 		
@@ -110,6 +121,7 @@ public class ListController extends HttpServlet {
 		vo.setLastPageNum(lastPageNum);
 		vo.setPageGroupStart(pageGroup[0]);
 		vo.setPageGroupEnd(pageGroup[1]);
+		vo.setPageStartNum(pageStartNum+1);
 		vo.setNotices(notices);
 		
 		Gson gson = new Gson();

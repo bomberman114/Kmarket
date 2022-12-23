@@ -39,7 +39,7 @@
                                 </tr>
                             </table>
                             <div>
-                                <a href="/Kmarket/admin/cs/notice/list.do?cate=${cate}" class="btn btnCancle">취소하기</a>
+                                <a href="/Kmarket/admin/cs/notice/list.do?cate=0" class="btn btnCancle">취소하기</a>
                                 <input type="submit" class="btn btnComplete" value="등록하기">
                             </div>
                         </form>

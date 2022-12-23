@@ -10,8 +10,17 @@ public class AdminCsNoticeVo {
 	private int pageGroupStart;
 	private int pageGroupEnd;
 	private int total;
+	private int pageStartNum;
 	private List<NoticeArticleVo> notices;
 	
+
+	
+	public int getPageStartNum() {
+		return pageStartNum;
+	}
+	public void setPageStartNum(int pageStartNum) {
+		this.pageStartNum = pageStartNum;
+	}
 	public int getCate() {
 		return cate;
 	}
