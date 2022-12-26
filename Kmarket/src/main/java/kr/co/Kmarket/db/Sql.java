@@ -183,13 +183,22 @@ public class Sql {
 	public static final String SELECT_COUNT_NOTICE_TOTAL = "SELECT COUNT(`no`) FROM `km_cs_notice_board`";
 	public static final String SELECT_COUNT_NOTICE_TOTAL_FOR_CATE = "SELECT COUNT(`no`) FROM `km_cs_notice_board` WHERE `cate`=?";
 
+	
+	public static final String SELECT_NOTICE = "SELECT * FROM `km_cs_notice_board` WHERE `no` = ?";
 	public static final String SELECT_NOTICES = "SELECT * FROM `km_cs_notice_board` ORDER BY `no` DESC LIMIT ?,10;";
 	public static final String SELECT_NOTICES_BY_CATE = "SELECT * FROM `km_cs_notice_board` WHERE `cate`=? ORDER BY `no` DESC LIMIT ?,10;";
 
+	public static final String DELETE_NOTICE = "DELETE FROM `km_cs_notice_board` WHERE `no`=?";
+	
+	public static final String UPDATE_NOTICE_HIT = "UPDATE `km_cs_notice_board` SET `hit`= `hit`+1  WHERE `no` = ?";
+	
+	public static final String UPDATE_NOTICE = "UPDATE `km_cs_notice_board` SET `cate`=?, `cateName`=?, `title`=?, `content`=? WHERE `no`=?";
+	
+	
 	// admin - Faq
 	public static final String SELECT_COUNT_FAQ_TOTAL = "SELECT COUNT(`no`) FROM `km_cs_faq_board`";
 
-	public static final String SELECT_COUNT_FAQ_TOTAL_FOR_CATE =  "SELECT COUNT(`no`) FROM `km_cs_faq_board` WHERE `cate`=?";
+	public static final String SELECT_COUNT_FAQ_TOTAL_FOR_CATE =  "SELECT COUNT(`no`) FROM `km_cs_faq_board` WHERE `cate1`=?";
 
 	public static final String SELECT_ADMIN_FAQ_CATE2 =  "SELECT * FROM `km_ca_faq_cate2` WHERE `cate1`=?";
 

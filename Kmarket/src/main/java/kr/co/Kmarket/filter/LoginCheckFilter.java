@@ -43,41 +43,36 @@ public class LoginCheckFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		logger.info("LoginCheckFilter...");
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		String uri = req.getRequestURI();
 
 		HttpSession sess = req.getSession();
-		System.out.println("로그인 체크1:"+sess);
-		System.out.println("로그인 체크1-2:"+sess.getAttribute("sessUser"));
 		MemberVo sessUser = (MemberVo) sess.getAttribute("sessUser");
-		System.out.println("로그인 체크2:"+sessUser);
 
-		logger.debug("here1");
 
 		if (uriList.contains(uri)) {
 			// 로그인을 하지 않았을 경우
-			logger.debug("here2");
+			//logger.debug("here2");
 
 			if (sessUser == null) {
-				logger.debug("here3");
+				//logger.debug("here3");
 				((HttpServletResponse) response).sendRedirect("/Kmarket/member/login.do");
 				return;
 			}
 
 		} else if (uri.contains("/Kmarket/member/login.do")) {
 			// 로그인을 했을 경우
-			logger.debug("here4");
+			//logger.debug("here4");
 			if (sessUser != null) {
-				logger.debug("here5");
+				//logger.debug("here5");
 				((HttpServletResponse) response).sendRedirect("/Kmarket/index.do");
 				//((HttpServletResponse) response).sendRedirect("/Kmarket/..");
 				return;
 			}
 		}
 
-		logger.debug("here6");
+		//logger.debug("here6");
 		chain.doFilter(request, response);
 
 	}

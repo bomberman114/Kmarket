@@ -1,19 +1,23 @@
 package kr.co.Kmarket.controller.admin.cs.notice;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.Kmarket.service.admin.AdminService;
-import kr.co.Kmarket.vo.NoticeArticleVo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@WebServlet("/admin/cs/notice/view.do")
-public class ViewController extends HttpServlet {
+import com.google.gson.JsonObject;
+
+import kr.co.Kmarket.service.admin.AdminService;
+
+@WebServlet("/admin/cs/notice/delete.do")
+public class DeleteController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private AdminService service = AdminService.INSTANCE;
@@ -23,31 +27,31 @@ public class ViewController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+
+		String no = req. getParameter("no");
 		
-		String cate = req.getParameter("cate");
-		String no = req.getParameter("no");
-		String pg = req.getParameter("pg");
+		int result = service.deleteNotice(no);
 		
-		NoticeArticleVo vo = service.selectNotice(no);
+		JsonObject json = new JsonObject();
+		json.addProperty("result", result);
 		
-		req.setAttribute("cate", cate);
-		req.setAttribute("pg", pg);
-		req.setAttribute("vo", vo);
+		PrintWriter writer = resp.getWriter();
+		writer.print(json.toString());
 		
-		// 조회 수
-		service.updateNoticeHit(no);
-		
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/notice/view.jsp");
-		dispatcher.forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String[] checkboxArr = req.getParameterValues("checkboxArr");
+		
+		int result = service.deleteNotices(checkboxArr);
+		
+		JsonObject json = new JsonObject();
+		json.addProperty("result", result);
+		
+		PrintWriter writer = resp.getWriter();
+		writer.print(json.toString());
+	
 	}
-	
-	
-	
-	
 }

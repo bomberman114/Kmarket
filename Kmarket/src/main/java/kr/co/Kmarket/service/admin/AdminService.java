@@ -21,6 +21,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.Kmarket.dao.admin.AdminDao;
 import kr.co.Kmarket.vo.AdminCsFaqCate2Vo;
+import kr.co.Kmarket.vo.AdminCsFaqVo;
 import kr.co.Kmarket.vo.NoticeArticleVo;
 import kr.co.Kmarket.vo.ProductCartVo;
 import kr.co.Kmarket.vo.ProductCate1Vo;
@@ -54,18 +55,6 @@ public enum AdminService {
 		return dao.selectAdminProductsByKeyword(uid, category, keyword, limitStart);
 	}
 	
-	public void insertNotice(NoticeArticleVo vo) {
-		dao.insertNotice(vo);
-	}
-	
-	public List<NoticeArticleVo> selectNotices(int start){
-		return dao.selectNotices(start);
-	}
-	
-	public List<NoticeArticleVo> selectNoticesByCate(int cate, int start){
-		return dao.selectNoticesByCate(cate, start);
-	}
-	
 
 	// paging
 
@@ -91,8 +80,8 @@ public enum AdminService {
 	}
 	
 	//faq total
-		public int selectFaqTotal(int cate) {
-			return dao.selectFaqTotal(cate);
+		public int selectFaqTotal(int cate1) {
+			return dao.selectFaqTotal(cate1);
 		}
 
 	// 마지막 페이지 번호
@@ -214,13 +203,11 @@ public enum AdminService {
 		product.setReceipt(req.getParameter("receipt"));
 		product.setBizType(req.getParameter("bizType"));
 		product.setOrigin(req.getParameter("origin"));
-		System.out.println("컨트롤러 서비스:" + product);
 		return product;
 	}
 
 	public ProductVo uploadFile2(HttpServletRequest req, String path, ProductVo product) {
 		try {
-			logger.info("AdminService uploadFile2...");
 
 			// 이미지 파일 불러오기
 			Part thumb1 = req.getPart("thumb1");
@@ -257,7 +244,6 @@ public enum AdminService {
 
 	public void fileOutPut(String fileName, Part filePart, String path) {
 		try {
-			logger.info("adminService fileoutput....");
 			// 파일 이름 및 경로 설정
 			File file = new File(path + fileName);
 			// 해당 이미지의 내용을 inputStream으로 가져옴
@@ -319,7 +305,6 @@ public enum AdminService {
 	public ProductVo uploadFile2(HttpServletRequest req, String saveDirectory, ProductVo product, String path) {
 
 		try {
-			logger.info("AdminService uploadFile2...");
 
 			// 이미지 파일 불러오기
 			Part thumb1 = req.getPart("thumb1");
@@ -434,5 +419,47 @@ public enum AdminService {
 		return dao.selectFaqcate2(cate1);
 	}
 
+	public List<AdminCsFaqVo> selectFaq(int start) {
+		return dao.selectFaq(start);
+	}
 
+	public List<AdminCsFaqVo> selectFaqCate(int cate1, int start) {
+		return dao.selectFaqcate(cate1, start);
+	}
+
+
+	// notice
+	
+	public void insertNotice(NoticeArticleVo vo) {
+		dao.insertNotice(vo);
+	}
+	
+	public NoticeArticleVo selectNotice(String no) {
+		return dao.selectNotice(no);
+	}
+	
+	public List<NoticeArticleVo> selectNotices(int start){
+		return dao.selectNotices(start);
+	}
+	
+	public List<NoticeArticleVo> selectNoticesByCate(int cate, int start){
+		return dao.selectNoticesByCate(cate, start);
+	}
+	
+	public int deleteNotice(String no) {
+		return dao.deleteNotice(no);
+	}
+	
+	public void updateNoticeHit(String no) {
+		dao.updateNoticeHit(no);
+	}
+	
+	public void updateNotice(NoticeArticleVo vo) {
+		dao.updateNotice(vo);
+	}
+	
+	public int deleteNotices(String[] checkboxArr) {
+		return dao.deleteNotices(checkboxArr);
+	}
+	
 }

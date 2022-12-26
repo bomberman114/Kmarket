@@ -24,5 +24,9 @@ public class CsSql {
 												+ "join `km_cs_qna_cate` as b "
 												+ "on a.cate1 = b.cate1 and a.cate2 = b.cate2 "
 												+ "where `no` = ?";
+
+	public static final String SELECT_CS_FAQ1 = "SELECT * From  km_cs_faq_board WHERE `cate1`=? AND `cate2` =?  ORDER BY faqNo LIMIT ?";
+
+	public static final String SELECT_CS_FAQ2 = "SELECT * From  km_cs_faq_board WHERE `cate1`=? AND `cate2` =?  ORDER BY faqNo LIMIT ? , ? ";
 	
 }

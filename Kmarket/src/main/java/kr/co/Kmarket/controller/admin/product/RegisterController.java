@@ -67,9 +67,9 @@ public class RegisterController extends HttpServlet {
 
 		// 이동
 		if (result == 0) {
-			logger.debug("실패"); // 실패시
+			//logger.debug("실패"); // 실패시
 		} else {
-			logger.debug("성공");
+			//logger.debug("성공");
 
 		} // 성공시
 		System.out.println("성공?");

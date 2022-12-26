@@ -11,6 +11,8 @@ public class NoticeArticleVo {
 	private String rdate;
 	private String cateName;
 	private int hit;
+
+	
 	
 	public int getHit() {
 		return hit;

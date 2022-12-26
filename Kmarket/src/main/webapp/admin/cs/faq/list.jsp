@@ -52,7 +52,7 @@ $(function(){
 	                        </select>
 	                        
 	                        <select name="cate2">
-	                            <option value="1">가입</option>
+	                            <option value="cate0">2차 선택</option>
 	                        </select>
 	                        
 	                      </form>

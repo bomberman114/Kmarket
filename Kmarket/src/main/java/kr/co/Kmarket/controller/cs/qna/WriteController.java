@@ -40,7 +40,6 @@ public class WriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		logger.info("WriteControllerDoPost...");
 		
 		String cate1 	= req.getParameter("cate1");
 		String cate2 	= req.getParameter("cate2");
