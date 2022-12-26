@@ -34,7 +34,6 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		logger.info("ListController...");
 		
 		String pg = req.getParameter("pg");
 		String keyword = req.getParameter("keyword");
@@ -100,11 +99,9 @@ public class ListController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("도착!");
 		String prodNo1 = req.getParameter("prodNo");
 		
 		int prodNo = Integer.parseInt(prodNo1);
-		logger.debug("prodNo: " + prodNo);
 		
 		int result = service.deleteAdminProduct(prodNo);
 		

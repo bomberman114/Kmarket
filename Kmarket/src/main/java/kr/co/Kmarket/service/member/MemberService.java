@@ -107,7 +107,6 @@ public enum MemberService {
 		int status = 0;
 		
 		try {
-			logger.debug("메일 전송 시작...");
 			message.setFrom(new InternetAddress(sender, "관리자", "UTF-8"));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
 			message.setSubject(MimeUtility.encodeText(title, "UTF-8", "B"));
@@ -122,7 +121,6 @@ public enum MemberService {
 			logger.error("메일 전송 실패...");
 		}
 		
-		logger.debug("메일 전송 성공...");
 	
 		int result[] = {status, code};
 		

@@ -19,7 +19,6 @@ public class MainDao extends DBHelper {
 
 		try {
 
-			logger.info("MainProducts...");
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.SELECT_MAIN_DISCOUNT_PRODUCTS);
@@ -85,7 +84,6 @@ public class MainDao extends DBHelper {
 
 		try {
 
-			logger.info("HitProducts...");
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.SELECT_MAIN_HIT_PRODUCTS);
@@ -151,7 +149,6 @@ public class MainDao extends DBHelper {
 
 		try {
 
-			logger.info("MainProducts...");
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.SELECT_MAIN_SCORE_PRODUCTS);
@@ -217,7 +214,6 @@ public class MainDao extends DBHelper {
 
 		try {
 
-			logger.info("MainProducts...");
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.SELECT_MAIN_NEW_PRODUCTS);
@@ -283,7 +279,6 @@ public class MainDao extends DBHelper {
 
 		try {
 
-			logger.info("MainProducts...");
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.SELECT_MAIN_BEST1_PRODUCT);
@@ -344,7 +339,6 @@ public class MainDao extends DBHelper {
 
 		try {
 
-			logger.info("MainProducts...");
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.SELECT_MAIN_BEST_PRODUCTS);

@@ -58,7 +58,7 @@ public class CartController extends HttpServlet {
 		
 	
 		String carts [] = req.getParameterValues("carts");
-		System.out.println("카트 번호2:"+Arrays.toString(carts));
+		//System.out.println("카트 번호2:"+Arrays.toString(carts));
 		//System.out.println(carts[1]);
 		//List<Integer> nember = new ArrayList<>();
 		HashMap<Integer, Integer> map = new HashMap<>();

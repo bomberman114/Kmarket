@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import kr.co.Kmarket.db.DBHelper;
 import kr.co.Kmarket.db.Sql;
 import kr.co.Kmarket.vo.AdminCsFaqCate2Vo;
+import kr.co.Kmarket.vo.AdminCsFaqVo;
 import kr.co.Kmarket.vo.NoticeArticleVo;
 import kr.co.Kmarket.vo.ProductCate1Vo;
 import kr.co.Kmarket.vo.ProductCate2Vo;
@@ -25,7 +26,6 @@ public class AdminDao extends DBHelper {
 
 		try {
 			// 트랜젝션 시작
-			logger.info("insertProduct... 상품 등록");
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.INSERT_ADMIN_PRODUCT);
@@ -70,7 +70,6 @@ public class AdminDao extends DBHelper {
 
 		try {
 
-			logger.info("selectAdminProducts...");
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCTS);
@@ -129,7 +128,6 @@ public class AdminDao extends DBHelper {
 		List<ProductVo> products = new ArrayList<>();
 
 		try {
-			logger.info("selectAdminProductsByKeyword...");
 			conn = getConnection();
 
 			if (category.equals("prodName")) {
@@ -196,7 +194,6 @@ public class AdminDao extends DBHelper {
 
 		try {
 
-			logger.info("selectAdminProducts7...");
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCTS7);
@@ -254,7 +251,6 @@ public class AdminDao extends DBHelper {
 		List<ProductVo> products = new ArrayList<>();
 
 		try {
-			logger.info("selectAdminProductsByKeyword7...");
 			conn = getConnection();
 
 			if (category.equals("prodName")) {
@@ -317,7 +313,6 @@ public class AdminDao extends DBHelper {
 
 		int result = 0;
 		try {
-			logger.info("deleteAdminProduct...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.DELETE_PRODUCT);
 			psmt.setInt(1, prodNo);
@@ -333,7 +328,6 @@ public class AdminDao extends DBHelper {
 
 		int result = 0;
 		try {
-			logger.info("deleteAdminProductlist...");
 			for (int i = 1; i < map.size() + 1; i++) {
 				conn = getConnection();
 				psmt = conn.prepareStatement(Sql.DELETE_PRODUCT_LIST);
@@ -356,7 +350,6 @@ public class AdminDao extends DBHelper {
 	public int selectCountTotal() {
 		int total = 0;
 		try {
-			logger.info("selectCountTotal...");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_COUNT_TOTAL);
@@ -374,7 +367,6 @@ public class AdminDao extends DBHelper {
 	public List<ProductCate1Vo> selectcate1() {
 		List<ProductCate1Vo> vos = new ArrayList<>();
 		try {
-			logger.info("selectcate1... 카테고리1 불러오기");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_ADMIN_PRODUCT_CATE1);
@@ -394,7 +386,6 @@ public class AdminDao extends DBHelper {
 	public List<ProductCate2Vo> selectcate2(String cate1) {
 		List<ProductCate2Vo> vos = new ArrayList<>();
 		try {
-			logger.info("selectcate2... 카테고리2 불러오기");
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.SELECT_ADMIN_PRODUCT_CATE2);
 			psmt.setString(1, cate1);
@@ -416,7 +407,6 @@ public class AdminDao extends DBHelper {
 	public int orderCount() {
 		int orderCount = 0;
 		try {
-			logger.info("orderCount..");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_ORDER_COUNT);
@@ -434,7 +424,6 @@ public class AdminDao extends DBHelper {
 	public int orderCountY() {
 		int orderCountY = 0;
 		try {
-			logger.info("orderCount..");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_ORDER_COUNT_Y);
@@ -452,7 +441,6 @@ public class AdminDao extends DBHelper {
 	public int orderCountW() {
 		int orderCountW = 0;
 		try {
-			logger.info("orderCount..");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_ORDER_COUNT_W);
@@ -470,7 +458,6 @@ public class AdminDao extends DBHelper {
 	public int orderCountM() {
 		int orderCountM = 0;
 		try {
-			logger.info("orderCount..");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_ORDER_COUNT_M);
@@ -488,7 +475,6 @@ public class AdminDao extends DBHelper {
 	public int orderPrice() {
 		int orderPrice = 0;
 		try {
-			logger.info("orderPrice..");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_ORDER_PRICE);
@@ -506,7 +492,6 @@ public class AdminDao extends DBHelper {
 	public int orderPriceY() {
 		int orderPriceY = 0;
 		try {
-			logger.info("orderPrice..");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_ORDER_PRICE_Y);
@@ -524,7 +509,6 @@ public class AdminDao extends DBHelper {
 	public int orderPriceW() {
 		int orderPriceW = 0;
 		try {
-			logger.info("orderPrice..");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_ORDER_PRICE_W);
@@ -542,7 +526,6 @@ public class AdminDao extends DBHelper {
 	public int orderPriceM() {
 		int orderPriceM = 0;
 		try {
-			logger.info("orderPrice..");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_ORDER_PRICE_M);
@@ -560,7 +543,6 @@ public class AdminDao extends DBHelper {
 	public int memberCount() {
 		int memberCount = 0;
 		try {
-			logger.info("MemberCount..");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_MEMBER_COUNT);
@@ -578,7 +560,6 @@ public class AdminDao extends DBHelper {
 	public int memberCountY() {
 		int memberCount = 0;
 		try {
-			logger.info("MemberCount..");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_MEMBER_COUNT_Y);
@@ -596,7 +577,6 @@ public class AdminDao extends DBHelper {
 	public int memberCountW() {
 		int memberCount = 0;
 		try {
-			logger.info("MemberCount..");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_MEMBER_COUNT_W);
@@ -614,7 +594,6 @@ public class AdminDao extends DBHelper {
 	public int memberCountM() {
 		int memberCount = 0;
 		try {
-			logger.info("MemberCount..");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(Sql.SELECT_MEMBER_COUNT_M);
@@ -757,7 +736,6 @@ public class AdminDao extends DBHelper {
 		List<NoticeArticleVo> notices = new ArrayList<>();
 
 		try {
-			logger.info("selectNotices...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.SELECT_NOTICES);
 			psmt.setInt(1, start);
@@ -792,7 +770,6 @@ public class AdminDao extends DBHelper {
 		List<NoticeArticleVo> notices = new ArrayList<>();
 
 		try {
-			logger.info("selectNoticesByCate...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.SELECT_NOTICES_BY_CATE);
 			psmt.setInt(1, cate);
@@ -824,18 +801,17 @@ public class AdminDao extends DBHelper {
 
 	}
 // admin Faq
-	public int selectFaqTotal(int cate) {
+	public int selectFaqTotal(int cate1) {
 		int total = 0;
 		try {
-			logger.info("selectCountFaqTotal...");
 			conn = getConnection();
 
-			if (cate == 0) {
+			if (cate1 == 0) {
 				stmt = conn.createStatement();
 				rs = stmt.executeQuery(Sql.SELECT_COUNT_FAQ_TOTAL);
 			} else {
 				psmt = conn.prepareStatement(Sql.SELECT_COUNT_FAQ_TOTAL_FOR_CATE);
-				psmt.setInt(1, cate);
+				psmt.setInt(1, cate1);
 				rs = psmt.executeQuery();
 			}
 
@@ -854,7 +830,6 @@ public class AdminDao extends DBHelper {
 	public List<AdminCsFaqCate2Vo> selectFaqcate2(String cate1) {
 		List<AdminCsFaqCate2Vo> vos = new ArrayList<>();
 		try {
-			logger.info("selectFaqcate2... 카테고리2 불러오기");
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.SELECT_ADMIN_FAQ_CATE2);
 			psmt.setString(1, cate1);
@@ -871,6 +846,44 @@ public class AdminDao extends DBHelper {
 			logger.error(e.getMessage());
 		}
 		return vos;
+	}
+
+	
+
+	public List<AdminCsFaqVo> selectFaq(int start) {
+		List<AdminCsFaqVo> faq = new ArrayList<>();
+
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_NOTICES);
+			psmt.setInt(1, start);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				AdminCsFaqVo	 vo = new AdminCsFaqVo();
+				vo.setFaqNo(rs.getInt(1));
+				vo.setCate1(rs.getInt(2));
+				vo.setCate2(rs.getInt(2));
+				vo.setTitle(rs.getString(4));
+				vo.setContent(rs.getString(5));
+				vo.setUid(rs.getString(6));
+				vo.setRegip(rs.getString(8));
+				vo.setRdate(rs.getString(9));
+
+				faq.add(vo);
+
+			}
+
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+
+		return faq;
+	}
+	public List<AdminCsFaqVo> selectFaqcate(int cate1, int start) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

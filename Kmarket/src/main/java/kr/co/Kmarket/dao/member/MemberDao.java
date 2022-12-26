@@ -16,7 +16,6 @@ public class MemberDao extends DBHelper {
 	public void insertMember(MemberVo member) {
 		
 		try {
-			logger.info("insertMember...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(MemberSql.INSERT_MEMBER);
 			psmt.setString(1, member.getUid());
@@ -43,7 +42,6 @@ public class MemberDao extends DBHelper {
 	public void insertSeller(MemberVo member) {
 		
 		try {
-			logger.info("insertSeller...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(MemberSql.INSERT_SELLER);
 			psmt.setString(1, member.getUid());
@@ -75,7 +73,6 @@ public class MemberDao extends DBHelper {
 		MemberVo vo = null;
 		
 		try {
-			logger.info("selectMember...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.SELECT_MEMBER);
 			psmt.setString(1, uid);
@@ -120,7 +117,6 @@ public class MemberDao extends DBHelper {
 		TermsVo vo = null;
 		
 		try {
-			logger.info("selectTerms...");
 			conn = getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(MemberSql.SELECT_TERMS);
@@ -147,7 +143,6 @@ public class MemberDao extends DBHelper {
 		int result = 0;
 		
 		try {
-			logger.info("selectCountUid...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(MemberSql.SELECT_COUNT_UID);
 			psmt.setString(1, uid);
@@ -169,7 +164,6 @@ public class MemberDao extends DBHelper {
 		MemberVo vo = null;
 
 		try {
-			logger.info("selectUserBySessId...");
 
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.SELECT_MEMBER_BY_SESSID);
@@ -214,7 +208,6 @@ public class MemberDao extends DBHelper {
 
 	public void updateMemberForSessLimitDate(String sessId) {
 		try {
-			logger.info("updateUserForSessLimitDate...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.UPDATE_MEMBER_FOR_SESS_LIMIT_DATE);
 			psmt.setString(1, sessId);
@@ -244,7 +237,6 @@ public class MemberDao extends DBHelper {
 
 	public void updateMemberForSessionOut(String uid) {
 		try {
-			logger.info("updateUserForSessionOut...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.UPDATE_MEMBER_FOR_SESSION_OUT);
 			psmt.setString(1, uid);

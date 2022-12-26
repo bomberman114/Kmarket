@@ -45,7 +45,6 @@ public class IndexController extends HttpServlet {
 		req.setAttribute("scoreproducts", scoreproducts);
 		req.setAttribute("newproducts", newproducts);
 		req.setAttribute("disproducts", disproducts);
-		logger.error("값넣는데 성공");
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(req, resp);
 	}

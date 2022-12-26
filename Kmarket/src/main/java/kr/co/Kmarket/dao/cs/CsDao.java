@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import kr.co.Kmarket.db.CsSql;
 import kr.co.Kmarket.db.DBHelper;
 import kr.co.Kmarket.vo.QnaArticleVo;
+import kr.co.Kmarket.vo.csFaqVo;
 
 public class CsDao extends DBHelper {
 	Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -20,7 +21,6 @@ public class CsDao extends DBHelper {
 		int result = 0;
 		
 		try {
-			logger.info("insertQnaArticle...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(CsSql.INSERT_QNA_ARTICLE);
 			stmt = conn.createStatement();
@@ -51,7 +51,6 @@ public class CsDao extends DBHelper {
 		QnaArticleVo vo = null;
 		
 		try {
-			logger.info("selectArticle...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(CsSql.SELECT_ARTITCLE);
 			psmt.setString(1, no);
@@ -87,7 +86,6 @@ public class CsDao extends DBHelper {
 		List<QnaArticleVo> articles = new ArrayList<>();
 		
 		try {
-			logger.info("selectArticles");
 			
 			conn = getConnection();
 			psmt = conn.prepareStatement(CsSql.SELECT_ARTICLES);
@@ -125,7 +123,6 @@ public class CsDao extends DBHelper {
 		int total = 0;
 		
 		try {
-			logger.info("selectCountTotal");
 			conn = getConnection();
 			psmt = conn.prepareStatement(CsSql.SELECT_COUNT_TOTAL);
 			psmt.setInt(1, cate1);
@@ -142,5 +139,84 @@ public class CsDao extends DBHelper {
 		}
 		return total;
 	}
-	
+
+	//현길
+	public List<csFaqVo> selectFaq1(int cate1, int cate2) {
+	List<csFaqVo> csFaq1 = new ArrayList<>();
+	int start = 5;
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(CsSql.SELECT_CS_FAQ1);
+			psmt.setInt(1, cate1);
+			psmt.setInt(2, cate2);
+			psmt.setInt(3, start);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				csFaqVo article = new csFaqVo();
+				article.setFaqNo(rs.getInt(1));
+				article.setCate1(rs.getInt(2));
+				article.setCate2(rs.getInt(3));
+				//article.setC1Name(rs.getString(4));
+				//article.setC2Name(rs.getString(5));
+				article.setTitle(rs.getString(4));
+				article.setContent(rs.getString(5));
+				article.setRegip(rs.getString(6));
+				article.setRdate(rs.getString(7));
+				article.setUid(rs.getString(8));
+				//System.out.println("cs다오:"+article);
+				csFaq1.add(article);
+			}
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return csFaq1;
+	}
+
+	public List<csFaqVo> selectFaq2(int cate1, int cate2) {
+		List<csFaqVo> csFaq2 = new ArrayList<>();
+		int start = 5;
+		int end = 5;
+			
+			try {
+				
+				conn = getConnection();
+				psmt = conn.prepareStatement(CsSql.SELECT_CS_FAQ2);
+				psmt.setInt(1, cate1);
+				psmt.setInt(2, cate2);
+				psmt.setInt(3, start);
+				psmt.setInt(4, end);
+				rs = psmt.executeQuery();
+				
+				while(rs.next()) {
+					csFaqVo article = new csFaqVo();
+					article.setFaqNo(rs.getInt(1));
+					article.setCate1(rs.getInt(2));
+					article.setCate2(rs.getInt(3));
+					//article.setC1Name(rs.getString(4));
+					//article.setC2Name(rs.getString(5));
+					article.setTitle(rs.getString(4));
+					article.setContent(rs.getString(5));
+					article.setRegip(rs.getString(6));
+					article.setRdate(rs.getString(7));
+					article.setUid(rs.getString(8));
+					//System.out.println("cs다오:"+article);
+					csFaq2.add(article);
+				}
+				
+				close();
+				
+			}catch(Exception e) {
+				logger.error(e.getMessage());
+			}
+			
+			return csFaq2;
+		}
+
 }

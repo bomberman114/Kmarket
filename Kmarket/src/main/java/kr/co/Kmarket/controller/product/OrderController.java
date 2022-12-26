@@ -47,7 +47,6 @@ public class OrderController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		logger.info("orderController... doPost");
 		
 		String ordUid = req.getParameter("ordUid");
 		String ordCount = req.getParameter("ordCount");
@@ -64,18 +63,6 @@ public class OrderController extends HttpServlet {
 		String recipAddr2 = req.getParameter("recipAddr2");
 		String ordPayment = req.getParameter("ordPayment");
 		
-		logger.debug("ordUid : " + ordUid);
-		logger.debug("ordCount : " + ordCount);
-		logger.debug("ordPrice : " + ordPrice);
-		logger.debug("ordDiscount : " + ordDiscount);
-		logger.debug("savePoint : " + savePoint);
-		logger.debug("usedPoint : " + usedPoint);
-		logger.debug("recipName : " + recipName);
-		logger.debug("recipHp : " + recipHp);
-		logger.debug("recipZip : " + recipZip);
-		logger.debug("recipAddr1 : " + recipAddr1);
-		logger.debug("recipAddr2 : " + recipAddr2);
-		logger.debug("ordPayment : " + ordPayment);
 		
 		ProductOrderVo vo = new ProductOrderVo();
 		

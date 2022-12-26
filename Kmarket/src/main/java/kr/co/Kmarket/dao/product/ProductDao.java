@@ -24,7 +24,6 @@ public class ProductDao extends DBHelper {
 		int total = 0;
 
 		try {
-			logger.info("selectCountTotal");
 			conn = getConnection();
 			psmt = conn.prepareStatement(ProductSql.SELECT_COUNT_TOTAL);
 			psmt.setInt(1, cate1);
@@ -48,7 +47,6 @@ public class ProductDao extends DBHelper {
 		ProductVo product = null;
 
 		try {
-			logger.info("selectProduct");
 			conn = getConnection();
 			psmt = conn.prepareStatement(ProductSql.SELECT_PRODUCT);
 			psmt.setInt(1, prodNo);
@@ -106,7 +104,6 @@ public class ProductDao extends DBHelper {
 		List<ProductVo> products = new ArrayList<>();
 
 		try {
-			logger.info("selectProducts...");
 			conn = getConnection();
 
 			switch (sort) {
@@ -201,7 +198,6 @@ public class ProductDao extends DBHelper {
 
 		try {
 
-			logger.info("selectOrder...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(ProductSql.SELECT_ORDER);
 			psmt.setInt(1, prodNo);
@@ -251,7 +247,6 @@ public class ProductDao extends DBHelper {
 		String cateName[] = new String[2];
 
 		try {
-			logger.info("getCateName...");
 			conn = getConnection();
 
 			psmt = conn.prepareStatement(ProductSql.SELECT_CATE_NAME);
@@ -279,7 +274,6 @@ public class ProductDao extends DBHelper {
 
 		try {
 
-			logger.info("updateProductHit...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(ProductSql.UPDATE_PRODUCT_HIT);
 			psmt.setInt(1, prodNo);
@@ -299,7 +293,6 @@ public class ProductDao extends DBHelper {
 
 		try {
 
-			logger.info("insertCart...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(ProductSql.INSERT_CART);
 			psmt.setString(1, cart.getUid());
@@ -330,7 +323,6 @@ public class ProductDao extends DBHelper {
 
 		try {
 
-			logger.info("cartProducts...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(ProductSql.SELECT_CART_PRODUCTS);
 			psmt.setString(1, uid);
@@ -399,7 +391,6 @@ public class ProductDao extends DBHelper {
 		List<ProductVo> cartNo = new ArrayList<>();
 		try {
 			for (int i = 1; i < map.size() + 1; i++) {
-				logger.info("selectOrder2...");
 				conn = getConnection();
 				psmt = conn.prepareStatement(ProductSql.SELECT_CARTS);
 				psmt.setInt(1, map.get(i));
@@ -463,7 +454,6 @@ public class ProductDao extends DBHelper {
 		int result = 0;
 
 		try {
-			logger.info("insertOrderProduct...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(ProductSql.INSERT_PRODUCT_ORDER);
 			psmt.setString(1, vo.getOrdUid());

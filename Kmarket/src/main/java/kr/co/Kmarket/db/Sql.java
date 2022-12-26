@@ -189,7 +189,7 @@ public class Sql {
 	// admin - Faq
 	public static final String SELECT_COUNT_FAQ_TOTAL = "SELECT COUNT(`no`) FROM `km_cs_faq_board`";
 
-	public static final String SELECT_COUNT_FAQ_TOTAL_FOR_CATE =  "SELECT COUNT(`no`) FROM `km_cs_faq_board` WHERE `cate`=?";
+	public static final String SELECT_COUNT_FAQ_TOTAL_FOR_CATE =  "SELECT COUNT(`no`) FROM `km_cs_faq_board` WHERE `cate1`=?";
 
 	public static final String SELECT_ADMIN_FAQ_CATE2 =  "SELECT * FROM `km_ca_faq_cate2` WHERE `cate1`=?";
 

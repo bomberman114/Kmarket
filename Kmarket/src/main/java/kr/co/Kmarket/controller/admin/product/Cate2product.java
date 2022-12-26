@@ -27,14 +27,11 @@ public class Cate2product extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 출력 인코딩 설정
-		logger.debug("here1");
 		resp.setContentType("application/json;charset=UTF-8");
 		// 카테고리2 불러오기
 		String cate1 = req.getParameter("cate1");
-		logger.debug("here2 : " + cate1);
 		
 		List<ProductCate2Vo> vos = service.selectcate2(cate1);
-		logger.debug("here3 : " + vos);
 		
 		// 출력
 		resp.getWriter().print(new Gson().toJson(vos));

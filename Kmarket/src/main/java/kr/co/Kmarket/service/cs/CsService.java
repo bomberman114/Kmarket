@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.Kmarket.dao.cs.CsDao;
 import kr.co.Kmarket.vo.QnaArticleVo;
+import kr.co.Kmarket.vo.csFaqVo;
 
 public enum CsService {
 	
@@ -118,5 +119,15 @@ public enum CsService {
 		}
 		
 		return c1name;
+	}
+	
+	//현길
+
+	public List<csFaqVo> selectFaq1(int cate1, int cate2) {
+		return dao.selectFaq1(cate1, cate2);
+	}
+
+	public List<csFaqVo> selectFaq2(int cate1, int cate2) {
+		return dao.selectFaq2(cate1, cate2);
 	}
 }

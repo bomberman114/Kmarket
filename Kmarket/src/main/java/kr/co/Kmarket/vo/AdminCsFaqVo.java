@@ -3,6 +3,8 @@ package kr.co.Kmarket.vo;
 public class AdminCsFaqVo {
 	private int cate1;
 	private int cate2;
+	private int c1Name;
+	private int c2Name;
 	private int currentPage;
 	private int lastPageNum;
 	private int pageGroupStart;
@@ -13,15 +15,19 @@ public class AdminCsFaqVo {
 	private String content;
 	private String regip;
 	private String rdate;
+	private String uid;
 
 	public AdminCsFaqVo() {
 	}
 
-	public AdminCsFaqVo(int cate1, int cate2, int currentPage, int lastPageNum, int pageGroupStart, int pageGroupEnd,
-			int total, int faqNo, String title, String content, String regip, String rdate) {
+	public AdminCsFaqVo(int cate1, int cate2, int c1Name, int c2Name, int currentPage, int lastPageNum,
+			int pageGroupStart, int pageGroupEnd, int total, int faqNo, String title, String content, String regip,
+			String rdate, String uid) {
 		super();
 		this.cate1 = cate1;
 		this.cate2 = cate2;
+		this.c1Name = c1Name;
+		this.c2Name = c2Name;
 		this.currentPage = currentPage;
 		this.lastPageNum = lastPageNum;
 		this.pageGroupStart = pageGroupStart;
@@ -32,6 +38,7 @@ public class AdminCsFaqVo {
 		this.content = content;
 		this.regip = regip;
 		this.rdate = rdate;
+		this.uid = uid;
 	}
 
 	public int getCate1() {
@@ -48,6 +55,22 @@ public class AdminCsFaqVo {
 
 	public void setCate2(int cate2) {
 		this.cate2 = cate2;
+	}
+
+	public int getC1Name() {
+		return c1Name;
+	}
+
+	public void setC1Name(int c1Name) {
+		this.c1Name = c1Name;
+	}
+
+	public int getC2Name() {
+		return c2Name;
+	}
+
+	public void setC2Name(int c2Name) {
+		this.c2Name = c2Name;
 	}
 
 	public int getCurrentPage() {
@@ -130,12 +153,20 @@ public class AdminCsFaqVo {
 		this.rdate = rdate;
 	}
 
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+
 	@Override
 	public String toString() {
-		return "AdminCsFaqVo [cate1=" + cate1 + ", cate2=" + cate2 + ", currentPage=" + currentPage + ", lastPageNum="
-				+ lastPageNum + ", pageGroupStart=" + pageGroupStart + ", pageGroupEnd=" + pageGroupEnd + ", total="
-				+ total + ", faqNo=" + faqNo + ", title=" + title + ", content=" + content + ", regip=" + regip
-				+ ", rdate=" + rdate + "]";
+		return "AdminCsFaqVo [cate1=" + cate1 + ", cate2=" + cate2 + ", c1Name=" + c1Name + ", c2Name=" + c2Name
+				+ ", currentPage=" + currentPage + ", lastPageNum=" + lastPageNum + ", pageGroupStart=" + pageGroupStart
+				+ ", pageGroupEnd=" + pageGroupEnd + ", total=" + total + ", faqNo=" + faqNo + ", title=" + title
+				+ ", content=" + content + ", regip=" + regip + ", rdate=" + rdate + ", uid=" + uid + "]";
 	}
 
 }
