@@ -458,13 +458,15 @@ public class ProductDao extends DBHelper {
 
 	// 진우
 
-	public int insertOrderProduct(ProductOrderVo vo) {
+	public String insertOrderProduct(ProductOrderVo vo) {
 
-		int result = 0;
-
+		String ordNo = null;
+		
 		try {
 			logger.info("insertOrderProduct...");
 			conn = getConnection();
+			// 트렌젝션 처리
+			conn.setAutoCommit(false);
 			psmt = conn.prepareStatement(ProductSql.INSERT_PRODUCT_ORDER);
 			psmt.setString(1, vo.getOrdUid());
 			psmt.setInt(2, vo.getOrdCount());
@@ -473,7 +475,13 @@ public class ProductDao extends DBHelper {
 			psmt.setInt(5, vo.getOrdDelivery());
 			psmt.setInt(6, vo.getSavePoint());
 			psmt.setInt(7, vo.getUsedPoint());
-			psmt.setInt(8, vo.getOrdTotPrice());
+			
+			int usedPoint = vo.getUsedPoint();
+			int ordTotPrice = vo.getOrdTotPrice();
+			
+			ordTotPrice = ordTotPrice - usedPoint;
+			
+			psmt.setInt(8, ordTotPrice);
 			psmt.setString(9, vo.getRecipName());
 			psmt.setString(10, vo.getRecipHp());
 			psmt.setString(11, vo.getRecipZip());
@@ -483,18 +491,42 @@ public class ProductDao extends DBHelper {
 
 			logger.debug("psmt : " + psmt);
 
-			result = psmt.executeUpdate();
-
+			psmt.executeUpdate();
+			
+			// select ordNo
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(ProductSql.SELECT_ORD_NO);
+			if(rs.next()) {
+				ordNo = rs.getString(1);
+			}
+			
+			//트렌젝션 종료
+			conn.commit();
 			close();
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-		return result;
+		return ordNo;
 	}
 
-	public void insertOrderProducts(HashMap<String, Object> map) {
+	public int selectComplete(String ordNo) {
 		
+		int ordTotPrice = 0;
+		
+		try {
+			logger.info("selectComplete...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(ProductSql.SELECT_COMPLETE);
+			psmt.setString(1, ordNo);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				ordTotPrice = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return ordTotPrice;
 	}
 	
 }

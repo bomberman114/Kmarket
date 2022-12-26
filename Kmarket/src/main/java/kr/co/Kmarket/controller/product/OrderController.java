@@ -68,8 +68,10 @@ public class OrderController extends HttpServlet {
 		logger.debug("ordCount : " + ordCount);
 		logger.debug("ordPrice : " + ordPrice);
 		logger.debug("ordDiscount : " + ordDiscount);
+		logger.debug("ordDelivery : " + ordDelivery);
 		logger.debug("savePoint : " + savePoint);
 		logger.debug("usedPoint : " + usedPoint);
+		logger.debug("ordTotPrice : " + ordTotPrice);
 		logger.debug("recipName : " + recipName);
 		logger.debug("recipHp : " + recipHp);
 		logger.debug("recipZip : " + recipZip);
@@ -95,15 +97,15 @@ public class OrderController extends HttpServlet {
 		vo.setOrdPayment(ordPayment);
 		
 		// 바로 결제하기 눌렸을 때
-		int result = service.insertOrderProduct(vo);
+		String ordNo = service.insertOrderProduct(vo);
+		
+		logger.debug("ordNo : " + ordNo);
 		
 		JsonObject json = new JsonObject();
-		json.addProperty("result", result);
+		json.addProperty("ordNo", ordNo);
 		
 		PrintWriter writer = resp.getWriter();
 		writer.print(json.toString());
-		
-		
 		
 	}
 	

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="./_header.jsp"></jsp:include>
         
             <!-- 결제완료 페이지 시작 -->
@@ -31,51 +33,52 @@
                     <th>수량</th>
                     <th>주문금액</th>
                 </tr>
+                <c:set var="totPrice" value="0"/>
+                <c:set var="totDiscountedPrice" value="0"/>
+                <c:set var="totDelivery" value="0"/>
+                <c:set var="totPayment" value="0"/>
+                
+                <c:forEach var="order" items="${sessOrder}">
+                
+                <c:set var="discountedPrice" value="${order.price * (order.discount / 100)}"/>
+                <c:set var="subTotalPrice" value="${order.price * order.count - discountedPrice + order.delivery}"/>
+                
                 <tr>
                 <td>
                     <article>
-                    <img src="https://via.placeholder.com/80x80" alt="">
+                    <a href="/Kmarket/product/view.do?cate1=${order.prodCate1}&cate2=${order.prodCate2}&prodNo=${order.prodNo}">
+                    	<img src="<c:url value='${order.thumb1}'/>" width="80px" height="80px" alt="">
+                    </a>
                     <div>
-                        <h2><a href="#">상품명</a></h2>
-                        <p>상품설명</p>
+                        <h2><a href="/Kmarket/product/view.do?cate1=${order.prodCate1}&cate2=${order.prodCate2}&prodNo=${order.prodNo}">${order.prodName}</a></h2>
+                        <p>${order.descript}</p>
                     </div>
                     </article>
                 </td>
-                <td>17,000원</td>
-                <td>1,000원</td>
-                <td>1</td>
-                <td>16,000원</td>
-                </tr>
-                <tr>
+                <td><fmt:formatNumber value="${order.price}" pattern="#,###"/>원</td>
                 <td>
-                    <article>
-                    <img src="https://via.placeholder.com/80x80" alt="">
-                    <div>
-                        <h2><a href="#">상품명</a></h2>
-                        <p>상품설명</p>
-                    </div>
-                    </article>
-                </td>
-                <td>17,000원</td>
-                <td>1,000원</td>
-                <td>1</td>
-                <td>16,000원</td>
+                <c:choose>
+                    <c:when test="${discountedPrice eq 0}">
+                        0원
+                    </c:when>
+                    <c:otherwise>
+                        <fmt:formatNumber value="${discountedPrice}" pattern="-#,###"/>원
+                    </c:otherwise>
+                </c:choose>
+			    </td>
+                <td>${order.count}</td>
+                <td><fmt:formatNumber value="${subTotalPrice}" pattern="#,###"/>원</td>
                 </tr>
-                <tr>
-                <td>
-                    <article>
-                    <img src="https://via.placeholder.com/80x80" alt="">
-                    <div>
-                        <h2><a href="#">상품명</a></h2>
-                        <p>상품설명</p>
-                    </div>
-                    </article>
-                </td>
-                <td>17,000원</td>
-                <td>1,000원</td>
-                <td>1</td>
-                <td>16,000원</td>
-                </tr>
+                
+                <c:set var="totPrice" value="${totPrice + order.price}"/>
+                <c:set var="totDiscountedPrice" value="${totDiscountedPrice + discountedPrice}"/>
+                <c:set var="totDelivery" value="${totDelivery + order.delivery}"/>
+                <c:set var="totPayment" value="${totPayment + subTotalPrice}"/>
+                
+                
+                
+                </c:forEach>
+                
                 
                 <tr class="total">
                 <td colspan="4"></td>
@@ -83,19 +86,31 @@
                     <table border="0">
                     <tr>
                         <td>총 상품금액</td>
-                        <td><span>34,000</span>원</td>
+                        <td><span><fmt:formatNumber value="${totPrice}" pattern="#,###"/></span>원</td>
                     </tr>
                     <tr>
                         <td>총 할인금액</td>
-                        <td><span>-2,000</span>원</td>
+                        <td>
+                        	<span>
+		                        <c:choose>
+				                    <c:when test="${totDiscountedPrice eq 0}">
+				                        0원
+				                    </c:when>
+				                    <c:otherwise>
+				                        <fmt:formatNumber value="${totDiscountedPrice}" pattern="-#,###"/>원
+				                    </c:otherwise>
+		                		</c:choose>
+                        	</span>
+                        </td>
+                        
                     </tr>
                     <tr>
                         <td>배송비</td>
-                        <td><span>3,000</span>원</td>
+                        <td><span><fmt:formatNumber value="${totDelivery}" pattern="#,###"/></span>원</td>
                     </tr>
                     <tr>
                         <td>총 결제금액</td>
-                        <td><span>35,000</span>원</td>
+                        <td><span><fmt:formatNumber value="${ordTotPrice}" pattern="#,###"/></span>원</td>
                     </tr>
                     </table>                      
                 </td>
@@ -111,7 +126,7 @@
                 <td>주문번호</td>
                 <td>2008101324568</td>
                 <td rowspan="3">총 결제금액</td>
-                <td rowspan="3"><span>35,000</span>원</td>
+                <td rowspan="3"><span><fmt:formatNumber value="${ordTotPrice}" pattern="#,###"/></span>원</td>
                 </tr>
                 <tr>
                 <td>결제방법</td>
@@ -119,7 +134,7 @@
                 </tr>
                 <tr>
                 <td>주문자/연락처</td>
-                <td>홍길동/010-1234-1234</td>
+                <td>${sessUser.name}/${sessUser.hp}</td>
                 </tr>
             </table>
             </article>
@@ -130,20 +145,20 @@
             <table border="0">
                 <tr>
                 <td>수취인</td>
-                <td>홍길동</td>                    
+                <td>${sessUser.name}</td>                    
                 <td>주문자 정보</td>
                 </tr>
                 <tr>
                 <td>연락처</td>
-                <td>010-1234-1234</td>
+                <td>${sessUser.hp}</td>
                 <td rowspan="2">
-                    홍길동<br/>
-                    010-1234-1234
+                    ${sessUser.name}<br/>
+                    ${sessUser.hp}
                 </td>
                 </tr>
                 <tr>
                 <td>배송지 주소</td>
-                <td>부산광역시 강남구 대연동 123 10층</td>
+                <td>${sessUser.addr1}</td>
                 </tr>
             </table>
             </article>

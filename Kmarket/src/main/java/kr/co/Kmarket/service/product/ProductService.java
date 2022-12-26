@@ -112,11 +112,12 @@ public enum ProductService {
 	}	
 	
 	// 진우
-	public void insertOrderProducts(HashMap<String, Object> map) {
-		dao.insertOrderProducts(map);
-	}
-	 
-	public int insertOrderProduct(ProductOrderVo vo) {
+	public String insertOrderProduct(ProductOrderVo vo) {
 		return dao.insertOrderProduct(vo);
 	}
+	
+	public int selectComplete(String ordNo) {
+		return dao.selectComplete(ordNo);
+	}
+	
 }
