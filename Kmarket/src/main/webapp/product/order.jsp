@@ -54,9 +54,9 @@
 				dataType : 'json',
 				success:function(data){
 					
-					if (data.result > 0) {
+					if (data.ordNo > 0) {
 						alert('결제가 완료되었습니다.');
-						location.href = "/Kmarket/product/complete.do";
+						location.href = "/Kmarket/product/complete.do?ordNo="+data.ordNo;
 					}else {
 						alert('주문이 실패하였습니다/n잠시후 다시 시도하십시오.');
 						return;
@@ -68,22 +68,28 @@
 		// 포인트 사용
 		$('input[name=btnUsedPoint]').click(function(e){
 			e.preventDefault();
-			const usedPointEl = document.getElementById('usedPoint');
-			const usedPoint1 = usedPointEl.value;
+			const usedPoint1 = document.getElementById('usedPoint').value;
+			const total = $('input[name=ordTotPrice]').val();
+			let ordTotPrice = total - usedPoint1;
+			
 			if(usedPoint1==0) {
 				const usedPoint2 = 0;
 				$('input[name=usedPoint1]').attr('value', usedPoint2);
 			}else {
-				$('input[name=usedPoint1]').attr('value',usedPoint1);
+				$('input[name=usedPoint1]').attr('value', usedPoint1);
+				$('.ordTotPrice').text(ordTotPrice.toLocaleString());
 			}
+			
+			$('input[name=usedPoint]').attr('readonly', true);
+			
 		});
+		
 	});
 	
 	window.onload = function(){
 		   const usedPoint2 = 0;
 			$('input[name=usedPoint1]').attr('value', usedPoint2);
 	}
-	
 	
 </script>
         
@@ -118,27 +124,29 @@
                     <tr class="empty">
                         <td colspan="7">장바구니에 상품이 없습니다.</td>
                     </tr>
-
-					<c:set var = "price" 			value = "0" />
-		            <c:set var = "savePoint" 		value = "0" />	
-		            <c:set var = "delivery" 		value = "0" />
-		            <c:set var = "total" 			value = "0" />
-		            <c:set var = "count" 			value = "0" />
-		            <c:set var = "discountedPrice" 	value = "0" />
+                    
+					<c:set var = "totCount" 			value = "0" />
+					<c:set var = "totPrice" 			value = "0" />
+		            <c:set var = "totSavePoint" 		value = "0" />	
+		            <c:set var = "totDiscountedPrice" 	value = "0" />
+		            <c:set var = "totDelivery" 			value = "0" />
+		            <c:set var = "totOrderPrice" 		value = "0" />
 		            
-						
 					<!-- 상품 출력 -->
 					<c:forEach var="order" items="${sessOrder}">
 					
 					<input type="hidden" name="ordUid" value="${sessUser.uid}"/>   
 					<input type="hidden" name="savePoint" value="${order.point}">
 
-					<c:set var="subTotal" value="${order.price * order.count + order.delivery}"/>
+					<c:set var="discountedPrice" value="${order.count * (order.price * (order.discount / 100))}"/>
+					<c:set var="subTotalPrice" value="${order.price * order.count + order.delivery - discountedPrice}"/>
 					
 	                    <tr>
 	                        <td>
 	                        <article>
-	                            <a href="/Kmarket/product/view.do?cate1=${order.prodCate1}&cate2=${order.prodCate2}&prodNo=${order.prodNo}"><img src="<c:url value='${order.thumb1}'/>" width="80px" height="80px" alt=""></a>
+	                            <a href="/Kmarket/product/view.do?cate1=${order.prodCate1}&cate2=${order.prodCate2}&prodNo=${order.prodNo}">
+	                            	<img src="<c:url value='${order.thumb1}'/>" width="80px" height="80px" alt="">
+	                            </a>
 	                            <div>
 	                                <h2><a href="/Kmarket/product/view.do?cate1=${order.prodCate1}&cate2=${order.prodCate2}&prodNo=${order.prodNo}">${order.prodName}</a></h2>
 	                                <p>${order.descript}</p>
@@ -149,7 +157,6 @@
 	                        <td><fmt:formatNumber value="${order.price}" pattern="#,###"/></td>
 	                        <td>
 	                        	${order.discount}% 
-	                        	<c:set var="discountedPrice" value="${order.price * (order.discount / 100)}"/>
 	                        </td>
 	                        <td>${order.point}</td>
 	                        <td>
@@ -162,14 +169,15 @@
 				                    </c:otherwise>
 			                    </c:choose>
 		                    </td>
-	                        <td><fmt:formatNumber value="${subTotal}" pattern="#,###"/></td>
+	                        <td><fmt:formatNumber value="${subTotalPrice}" pattern="#,###"/></td>
 	                    </tr>
-	                    <c:set var= "price" 				value="${price + order.price}"/>
-	                    <c:set var= "savePoint" 			value="${point + order.point}"/>
-	                    <c:set var= "delivery" 				value="${delivery + order.delivery}"/>
-	                    <c:set var= "total" 				value="${total + order.total}"/>
-	                    <c:set var= "count" 				value="${count + order.count}"/>
-	                    <c:set var= "totalDiscountedPrice" 	value="${totalDiscountedPrice + discountedPrice}"/>
+	                    <c:set var= "totCount" 				value="${totCount + order.count}"/>
+	                    <c:set var= "totPrice" 				value="${totPrice + order.price}"/>
+	                    <c:set var= "totDiscountedPrice" 	value="${totDiscountedPrice + discountedPrice}"/>
+	                    <c:set var= "totSavePoint" 			value="${totSavepoint + order.point}"/>
+	                    <c:set var= "totDelivery" 			value="${totDelivery + order.delivery}"/>
+	                    <c:set var= "totOrderPrice" 		value="${totOrderPrice + subTotalPrice}"/>
+	                    
                     </c:forEach>
 
                     </tbody>
@@ -181,28 +189,28 @@
                     <table border="0">
                     <tr>
                         <td>총</td>
-                        <td><c:out value="${count}"/></td>
+                        <td><c:out value="${totCount}"/></td>
                     </tr>
                     <tr>
                         <td>상품금액</td>
-                        <td><fmt:formatNumber value="${price}" pattern="#,###"/></td>
+                        <td><fmt:formatNumber value="${totPrice}" pattern="#,###"/></td>
                     </tr>
                     <tr>
                         <td>할인</td>
                         <td>
                         	<c:choose>
-		                        <c:when test="${totalDiscountedPrice eq 0}">
+		                        <c:when test="${totDiscountedPrice eq 0}">
 			                        0
 			                    </c:when>
 			                    <c:otherwise>
-			                       -<fmt:formatNumber value="${totalDiscountedPrice}" pattern="#,###"/>
+			                       <fmt:formatNumber value="${totDiscountedPrice}" pattern="-#,###"/>
 			                    </c:otherwise>
 	                    </c:choose>
                        </td>
                     </tr>
                     <tr>
                         <td>배송비</td>
-                        <td><fmt:formatNumber value="${delivery}" pattern="#,###"/></td>
+                        <td><fmt:formatNumber value="${totDelivery}" pattern="#,###"/></td>
                     </tr>
                     <tr>
                         <td>포인트 할인</td>
@@ -212,18 +220,18 @@
                         </td>
                     </tr>
                     <tr>
-                    <c:set var="ordTotPrice" value="${total + delivery - point}"/>
+                    	<c:set var="ordTotPrice" value="${totOrderPrice}"/>
                         <td>전체주문금액</td>
-                        <td><fmt:formatNumber value="${totPrice}" pattern="#,###"/></td>
-                    </tr>                            
+                        <td class="ordTotPrice"><fmt:formatNumber value="${ordTotPrice}" pattern="#,###"/></td>
+                    </tr>
                     </table>
                     <input type="button" name="btnPayment" value="결제하기">          
                     
-                   	<input type="text" name="ordCount" value="${count}">
-                   	<input type="text" name="ordPrice" value="${price}">
-                   	<input type="text" name="ordDiscount" value="${totalDiscountedPrice}">
-                   	<input type="text" name="ordDelivery" value="${delivery}">
-                   	<input type="text" name="ordTotPrice" value="${totPrice}">
+                   	<input type="hidden" name="ordCount" value="${totCount}">
+                   	<input type="hidden" name="ordPrice" value="${totPrice}">
+                   	<input type="hidden" name="ordDiscount" value="<fmt:formatNumber value="${totDiscountedPrice}" pattern="#"/>">
+                   	<input type="hidden" name="ordDelivery" value="${totDelivery}">
+                   	<input type="text" name="ordTotPrice" value="<fmt:formatNumber value="${ordTotPrice}" pattern="#"/>">
                         
                 </div>
                 
@@ -246,7 +254,7 @@
                         <td>우편번호</td>
                         <td>
                             <input type="text" name="recipZip" value="${sessUser.zip}"/>
-                            <input type="button" value="검색"/>
+                            <input type="button" class="btnCommon zip" value="검색"/>
                         </td>
                     </tr>
                     <tr>

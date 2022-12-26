@@ -63,6 +63,7 @@ public class OrderController extends HttpServlet {
 		String recipAddr2 = req.getParameter("recipAddr2");
 		String ordPayment = req.getParameter("ordPayment");
 		
+
 		
 		ProductOrderVo vo = new ProductOrderVo();
 		
@@ -82,15 +83,15 @@ public class OrderController extends HttpServlet {
 		vo.setOrdPayment(ordPayment);
 		
 		// 바로 결제하기 눌렸을 때
-		int result = service.insertOrderProduct(vo);
+		String ordNo = service.insertOrderProduct(vo);
+		
+		logger.debug("ordNo : " + ordNo);
 		
 		JsonObject json = new JsonObject();
-		json.addProperty("result", result);
+		json.addProperty("ordNo", ordNo);
 		
 		PrintWriter writer = resp.getWriter();
 		writer.print(json.toString());
-		
-		
 		
 	}
 	

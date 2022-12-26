@@ -73,6 +73,9 @@ public class ProductSql {
 													+ "`ordPayment` = ?, "
 													+ "`ordComplete` = 1, "
 													+ "`ordDate` = NOW()";
+	
+	public static final String SELECT_ORD_NO = "select max(`ordNo`) from `km_product_order`";
+	
+	public static final String SELECT_COMPLETE = "select `ordTotPrice` from `km_product_order` where `ordNo` = ?";
 													
-
 }
