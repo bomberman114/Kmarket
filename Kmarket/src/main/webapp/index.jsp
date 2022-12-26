@@ -187,7 +187,7 @@
                 <p>${product.descript}</p>
                 <div class="org_price">
                   <del><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
-                  <span>${product.discount}</span>
+                  <span>${product.discount}%</span>
                 </div>
                 <div class="dis_price">
                   <ins><fmt:formatNumber value="${product.disprice}" pattern="#,###"/></ins>

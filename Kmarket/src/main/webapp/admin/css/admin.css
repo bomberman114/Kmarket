@@ -485,8 +485,12 @@ button[type=submit] {
 /* admin-cs notice */
 
 #admin-cs > .notice nav {
-	position: relative;
-	bottom: -10px;
+position: relative;
+    bottom: -10px;
+    height: 36px;
+    margin-bottom: 55px;
+    border-bottom: 1px solid #c0c0c0;
+    box-sizing: border-box;
 }
 
 #admin-cs > .notice nav > h3 {
@@ -502,33 +506,33 @@ button[type=submit] {
     font-weight: bold;
 }
 
-#admin-cs > .notice > .write h1 {
+#admin-cs > .notice h1 {
   font-size: 26px;
   font-weight: bold;
 }
 
-#admin-cs > .notice > .write > article table {
+#admin-cs > .notice article table {
   width: 100%;
   border-collapse: collapse;
   border-top: 2px solid #111;
 }
-#admin-cs > .notice > .write > article table tr {
+#admin-cs > .notice article table tr {
   width: 100%;
   height: 26px;
 }
 
-#admin-cs > .notice > .write > article table td {
+#admin-cs > .notice article table td {
   padding: 16px;
   border-bottom: 1px solid #ccc;
   font-size: 16px;        
 }
 
-#admin-cs > .notice > .write > article table td:first-child {
+#admin-cs > .notice article table td:first-child {
   background-color: #ffffff;
   width: 100px;
 }
 
-#admin-cs > .notice > .write > article table input {
+#admin-cs > .notice article table input {
   width: 100%;
   height: 40px;
   font-size: 16px;
@@ -536,18 +540,18 @@ button[type=submit] {
   text-indent: 10px;
 }
 
-#admin-cs > .notice > .write > article table select {
+#admin-cs > .notice article table select {
   width: 100px;
   height: 40px;
   font-size: 16px;
   box-sizing: border-box;
 }
 
-#admin-cs > .notice > .write > article table select * {
+#admin-cs > .notice article table select * {
   font-size: inherit;
 }
 
-#admin-cs > .notice > .write > article table textarea {
+#admin-cs > .notice article table textarea {
   width: 100%;
   height: 360px;
   resize: none;
@@ -557,7 +561,7 @@ button[type=submit] {
   background-color: #ffffff;
 }
 
-#admin-cs > .notice > .write > article div {
+#admin-cs > .notice article div {
 	float: right;
 	margin-top: 20px;
 	
@@ -582,14 +586,14 @@ button[type=submit] {
     text-align: center;
     box-sizing: border-box;
 }
+
 #admin-notice-list > section > table  tr > td:nth-child(1) {width: 20px;}
-#admin-notice-list > section > table  tr > td:nth-child(2) {width: 20px;}
+#admin-notice-list > section > table  tr > td:nth-child(2) {width: 80px;}
 #admin-notice-list > section > table  tr > td:nth-child(3) {width: 80px;}
-#admin-notice-list > section > table  tr > td:nth-child(4) {width: 80px;}
-#admin-notice-list > section > table  tr > td:nth-child(5) {width: auto; text-align: left;}
-#admin-notice-list > section > table  tr > td:nth-child(6) {width: 80px;}
+#admin-notice-list > section > table  tr > td:nth-child(4) {width: auto; text-align: left;}
+#admin-notice-list > section > table  tr > td:nth-child(5) {width: 80px;}
+#admin-notice-list > section > table  tr > td:nth-child(6) {width: 90px;}
 #admin-notice-list > section > table  tr > td:nth-child(7) {width: 90px;}
-#admin-notice-list > section > table  tr > td:nth-child(8) {width: 90px;}
 
 
 #admin-notice-list > section > table img.thumb {width: 60px;}
@@ -665,3 +669,10 @@ button[type=submit] {
 }
 
 
+#admin-cs > .notice > .view > article table input {
+	border: 0px;
+}
+
+#admin-cs > .notice > .view > article table textarea {
+	border: 0px;
+}
