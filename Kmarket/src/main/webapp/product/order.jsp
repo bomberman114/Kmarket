@@ -17,7 +17,7 @@
 			let ordDiscount = $('input[name=ordDiscount]').val();
 			let ordDelivery = $('input[name=ordDelivery]').val();
 			let savePoint = $('input[name=savePoint]').val();
-			let usedPoint = $('input[name=usedPoint]').val();
+			let usedPoint = $('input[name=usedPoint1]').val();
 			let ordTotPrice = $('input[name=ordTotPrice]').val();
 			let recipName = $('input[name=recipName]').val();
 			let recipHp = $('input[name=recipHp]').val();
@@ -68,7 +68,6 @@
 		// 포인트 사용
 		$('input[name=btnUsedPoint]').click(function(e){
 			e.preventDefault();
-			alert('포인트 사용');
 			const usedPointEl = document.getElementById('usedPoint');
 			const usedPoint1 = usedPointEl.value;
 			if(usedPoint1==0) {
@@ -77,10 +76,7 @@
 			}else {
 				$('input[name=usedPoint1]').attr('value',usedPoint1);
 			}
- 			
- 			
 		});
-		
 	});
 	
 	window.onload = function(){
@@ -135,12 +131,7 @@
 					<c:forEach var="order" items="${sessOrder}">
 					
 					<input type="hidden" name="ordUid" value="${sessUser.uid}"/>   
-					<input type="hidden" name="ordCount" value="${order.count}">
-					<input type="hidden" name="ordPrice" value="${order.price}">
-					<input type="hidden" name="ordDiscount" value="${order.disprice}">
-					<input type="hidden" name="ordDelivery" value="${order.delivery}">
 					<input type="hidden" name="savePoint" value="${order.point}">
-					<input type="hidden" name="ordTotPrice" value="${order.total}">
 
 					<c:set var="subTotal" value="${order.price * order.count + order.delivery}"/>
 					
@@ -221,11 +212,19 @@
                         </td>
                     </tr>
                     <tr>
+                    <c:set var="ordTotPrice" value="${total + delivery - point}"/>
                         <td>전체주문금액</td>
-                        <td><fmt:formatNumber value="${total + delivery - point}" pattern="#,###"/></td>
+                        <td><fmt:formatNumber value="${totPrice}" pattern="#,###"/></td>
                     </tr>                            
                     </table>
-                    <input type="button" name="btnPayment" value="결제하기">              
+                    <input type="button" name="btnPayment" value="결제하기">          
+                    
+                   	<input type="text" name="ordCount" value="${count}">
+                   	<input type="text" name="ordPrice" value="${price}">
+                   	<input type="text" name="ordDiscount" value="${totalDiscountedPrice}">
+                   	<input type="text" name="ordDelivery" value="${delivery}">
+                   	<input type="text" name="ordTotPrice" value="${totPrice}">
+                        
                 </div>
                 
                 <!-- 배송정보 -->
