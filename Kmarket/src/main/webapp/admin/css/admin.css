@@ -586,14 +586,14 @@ position: relative;
     text-align: center;
     box-sizing: border-box;
 }
+
 #admin-notice-list > section > table  tr > td:nth-child(1) {width: 20px;}
-#admin-notice-list > section > table  tr > td:nth-child(2) {width: 20px;}
+#admin-notice-list > section > table  tr > td:nth-child(2) {width: 80px;}
 #admin-notice-list > section > table  tr > td:nth-child(3) {width: 80px;}
-#admin-notice-list > section > table  tr > td:nth-child(4) {width: 80px;}
-#admin-notice-list > section > table  tr > td:nth-child(5) {width: auto; text-align: left;}
-#admin-notice-list > section > table  tr > td:nth-child(6) {width: 80px;}
+#admin-notice-list > section > table  tr > td:nth-child(4) {width: auto; text-align: left;}
+#admin-notice-list > section > table  tr > td:nth-child(5) {width: 80px;}
+#admin-notice-list > section > table  tr > td:nth-child(6) {width: 90px;}
 #admin-notice-list > section > table  tr > td:nth-child(7) {width: 90px;}
-#admin-notice-list > section > table  tr > td:nth-child(8) {width: 90px;}
 
 
 #admin-notice-list > section > table img.thumb {width: 60px;}

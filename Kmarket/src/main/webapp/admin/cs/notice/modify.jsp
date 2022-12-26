@@ -1,5 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../_header.jsp"></jsp:include>
+<script>
+	$(document).on('click','.btnComplete', function(e){
+
+		let cate = $('select[name=cate]').val();
+		
+		if(cate == 0) {
+			alert('공지사항 유형을 선택해주세요.');
+			return false;
+		}else{
+			return true;
+		}
+		
+	});
+</script>
         <section id="admin-cs">
             <div class="notice">
                 <section class="modify">
@@ -10,8 +25,11 @@
 	                    </p>
 	                </nav>
                     <article>
-                        <form action="/Kmarket/admin/notice/modify.do" method="POST">
+                        <form action="/Kmarket/admin/cs/notice/modify.do" method="POST">
                         <input type="hidden" name="uid" value="${sessUser.uid}"/>
+                        <input type="hidden" name="no" value="${vo.no}">
+                        <input type="hidden" name="cateforp" value="${cate}">
+                        <input type="hidden" name="pg" value="${pg}">
                             <table>
                                 <tr>
                                     <td>유형</td>
@@ -39,7 +57,12 @@
                                 </tr>
                             </table>
                             <div>
-                                <a href="/Kmarket/admin/cs/notice/list.do?cate=0" class="btn btnCancle">취소하기</a>
+                                <c:if test="${from eq 'list'}">
+                                <a href="/Kmarket/admin/cs/notice/list.do?cate=${cate}&pg=${pg}" class="btn btnCancle">취소하기</a>
+                                </c:if>
+                                <c:if test="${from eq 'view'}">
+                                <a href="/Kmarket/admin/cs/notice/view.do?cate=${cate}&no=${no}&pg=${pg}" class="btn btnCancle">취소하기</a>
+                                </c:if>
                                 <input type="submit" class="btn btnComplete" value="수정하기">
                             </div>
                         </form>

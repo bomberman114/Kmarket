@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../_header.jsp"></jsp:include>
 <script>
+	
 	$(document).on('click','.remove', function(e){
 		
 		let isDeleteOk = confirm('정말 삭제하시겠습니까?');
@@ -11,7 +12,7 @@
 			
 			$.ajax({
 				url:'/Kmarket/admin/cs/notice/delete.do',
-				method:'POST',
+				method:'GET',
 				data: {"no": no},
 				dataType: 'json',
 				success: function(data){
@@ -42,7 +43,7 @@
 	                    </p>
 	                </nav>
                     <article>
-                        <input type="hidden" name="no" value="${vo.no}"></span>
+                        <input type="hidden" name="no" value="${vo.no}">
                             <table>
                                 <tr>
                                     <td>문의유형</td>
@@ -63,8 +64,8 @@
                             </table>
                             <div>
                             	<a href="#" class="btn remove">삭제하기</a>
-                            	<a href="/Kmarket/admin/cs/notice/modify.do?no=${vo.no}" class="btn modify">수정하기</a>
-                                <a href="/Kmarket/admin/cs/notice/list.do?cate=0" class="btn btnCancle">목록이동</a>
+                            	<a href="/Kmarket/admin/cs/notice/modify.do?cate=${cate}&no=${vo.no}&pg=${pg}&from=view" class="btn modify">수정하기</a>
+                                <a href="/Kmarket/admin/cs/notice/list.do?cate=${cate}&pg=${pg}" class="btn btnCancle">목록이동</a>
                             </div>
                     </article>
                 </section>

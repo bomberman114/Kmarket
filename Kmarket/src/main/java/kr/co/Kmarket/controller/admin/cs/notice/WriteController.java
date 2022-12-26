@@ -24,6 +24,10 @@ public class WriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		String cate = req.getParameter("cate");
+		
+		req.setAttribute("cate", cate);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/notice/write.jsp");
 		dispatcher.forward(req, resp);
 	}
@@ -60,7 +64,7 @@ public class WriteController extends HttpServlet {
 		
 		service.insertNotice(vo);
 		
-		resp.sendRedirect("/Kmarket/admin/cs/notice/list.do?cate="+cate);
+		resp.sendRedirect("/Kmarket/admin/cs/notice/list.do?cate=0");
 		
 	}
 	

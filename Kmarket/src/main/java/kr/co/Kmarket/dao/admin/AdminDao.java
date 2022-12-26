@@ -882,6 +882,35 @@ public class AdminDao extends DBHelper {
 		return result;
 	}
 	
+	public int deleteNotices(String[] checkboxArr) {
+		
+		int result = 0;
+		
+		try {
+			logger.info("deleteNotices...");
+			conn = getConnection();
+			
+			String Sql ="DELETE FROM `km_cs_notice_board` WHERE ";
+				   Sql += "`no`="+checkboxArr[0];
+				for(int i=1; i < checkboxArr.length; i++) {
+					Sql += " or `no`="+checkboxArr[i];
+				}
+				
+			logger.debug(Sql);
+				
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(Sql);
+			
+			close();
+	
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return result;
+	}
+	
 	public void updateNoticeHit(String no) {
 		
 		try {

@@ -452,4 +452,9 @@ public enum AdminService {
 	public void updateNotice(NoticeArticleVo vo) {
 		dao.updateNotice(vo);
 	}
+	
+	public int deleteNotices(String[] checkboxArr) {
+		return dao.deleteNotices(checkboxArr);
+	}
+	
 }

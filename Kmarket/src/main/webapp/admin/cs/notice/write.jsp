@@ -1,5 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../_header.jsp"></jsp:include>
+<script>
+	$(document).on('click','.btnComplete', function(e){
+
+		let cate = $('select[name=cate]').val();
+		
+		if(cate == 0) {
+			alert('공지사항 유형을 선택해주세요.');
+			return false;
+		}else{
+			return true;
+		}
+		
+	});
+</script>
         <section id="admin-cs">
             <div class="notice">
                 <section class="write">
@@ -12,6 +26,7 @@
                     <article>
                         <form action="/Kmarket/admin/cs/notice/write.do" method="post">
                         <input type="hidden" name="uid" value="${sessUser.uid}"/>
+                        <input type="hidden" name="cateforp" value="${cate}"/>
                             <table>
                                 <tr>
                                     <td>유형</td>
@@ -39,7 +54,7 @@
                                 </tr>
                             </table>
                             <div>
-                                <a href="/Kmarket/admin/cs/notice/list.do?cate=0" class="btn btnCancle">취소하기</a>
+                                <a href="/Kmarket/admin/cs/notice/list.do?cate=${cate}" class="btn btnCancle">취소하기</a>
                                 <input type="submit" class="btn btnComplete" value="등록하기">
                             </div>
                         </form>

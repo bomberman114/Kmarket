@@ -18,13 +18,12 @@
 							
 				$.ajax({
 					url:'/Kmarket/admin/cs/notice/delete.do',
-					method:'POST',
+					method:'GET',
 					data: {"no": no},
 					dataType: 'json',
 					success: function(data){
 						
 						if(data.result > 0) {
-							
 							alert('공지사항이 삭제되었습니다.');
 							row.hide();
 							
@@ -37,7 +36,6 @@
 		});
 		
 		
-		
 		$(document).on('change', 'select[name=category]', function(e){
 			
 			let cate = $(this).val();
@@ -48,26 +46,35 @@
 				data: {"cate":cate},
 				dataType:'json',
 				success: function(data){
-					console.log('here3');
 					$('.row').remove();
+					$('#deleteSelected').remove();
+					$('.btnSubmit').remove();
 					$('.paging').empty();
 					$('input:checkbox[name=all]').prop("checked", false);
 					
 					for(let vo of data.notices){
-											
-						let tags = "<tr class='row'><input type='hidden' value='"+vo.no+"'>";
-							tags += "<td><input type='checkbox' name='chkbox'/></td>";
-							tags += "<td>"+(data.pageStartNum--)+"</td>";
+						
+						let tags = "<tr class='row'>";
+							tags += "<td><input type='checkbox' id='no' name='chkbox' value='"+vo.no+"'/></td>";
+							tags += "<td>"+(data.pageStartNum -= 1)+"</td>";
 							tags += "<td>"+vo.cateName+"</td>";
-							tags += "<td><a href='./view.do?no="+vo.no+"&pg=1'>"+vo.title+"</a></td>";
+							tags += "<td><a href='./view.do?cate="+cate+"&no="+vo.no+"&pg=1'>"+vo.title+"</a></td>";
 							tags += "<td>"+vo.hit+"</td>";
 							tags += "<td>"+vo.rdate+"</td>";
 							tags += "<td><a href='#' class='remove'>[삭제]</a>";
-							tags += "<a href='#' class='modify'>[수정]</a></td></tr>";
+							tags += "<a href='/Kmarket/admin/cs/notice/modify.do?cate="+cate+"&no="+vo.no+"&pg="+data.currentPage+"&from=list' class='modify'>[수정]</a></td></tr>";
 							
 						$('table').append(tags);
 						
 					}
+					
+					// 선택삭제 버튼 추가
+					let tag1 = "<input type='button' onclick='deleteNotices()' id='deleteSelected' value='선택삭제' data-cate='"+cate+"'/>";
+					$('.paging').before(tag1);
+					
+					// 등록하기 버튼 추가
+					let tag2 = "<a href='/Kmarket/admin/cs/notice/write.do?cate="+cate+"' class='btn btnSubmit'>등록하기</a>";
+					$('.paging').before(tag2);
 					
 					// 페이징 관련
 					for(var i = data.pageGroupStart; i <= data.pageGroupEnd; i++){
@@ -78,9 +85,6 @@
 					}
 					
 					$('.num').eq(data.currentPage - 1).find('> a').addClass('on');
-					
-					console.log('pageGroupEnd : ' + data.pageGroupEnd);
-					console.log('lastPageNum : ' + data.lastPageNum);
 					
 					if(data.pageGroupEnd < data.lastPageNum) {
 						$('.paging').append("<span class='next'><a href='/Kmarket/admin/cs/notice/list.do?cate="+data.cate+"&pg="+(data.pageGroupEnd + 1)+"'>다음&nbsp;</a></span>");
@@ -109,18 +113,41 @@
 	// 체크박스 선택후 삭제
 	function deleteNotices(){
 		
+		let cate = $('#deleteSelected').attr('data-cate');
+		
 		let checkboxArr = [];
 		$('input[name=chkbox]:checked').each(function(){
 			
-			let no = $(this).parent().prev().val();
+			let no = $(this).val();
 			
 			checkboxArr.push(no);
-			
-			let isDeleteOk = confirm('삭제하시겠습니까?');
-			
-		})
+		
+		});
+		
+		let isDeleteOk = confirm('삭제하시겠습니까?');
 		
 		console.log(checkboxArr);
+		
+		if(isDeleteOk){
+			
+			$.ajax({
+				url:'/Kmarket/admin/cs/notice/delete.do',
+				method:'POST',
+				traditional: true,
+				data: {"checkboxArr": checkboxArr},
+				dataType: 'json',
+				success: function(data){
+					
+					if(data.result > 0){
+						alert('성공적으로 삭제되었습니다.');
+						location.href="/Kmarket/admin/cs/notice/list.do?cate="+cate;
+					}
+				}
+			});
+			
+			
+		}
+		
 		
 	}
 	
@@ -158,25 +185,23 @@
                         <!-- 게시글 목록 나열 -->
                         <c:forEach var="notice" items="${notices}">
 	                        <tr class="row">
-	                        	<input type="hidden" id="no" value="${notice.no}">
-	                            <td><input type="checkbox" name="chkbox"/></td>
+	                            <td><input type="checkbox" id="no" name="chkbox" value="${notice.no}"/></td>
 	                            <td>${pageStartNum = pageStartNum-1}</td>
 	                            <td>${notice.cateName}</td>
-	                            <td><a href="./view.do?no=${notice.no}&pg=${currentPage}">${notice.title}</a></td>
+	                            <td><a href="./view.do?cate=${cate}&no=${notice.no}&pg=${currentPage}">${notice.title}</a></td>
 	                            <td>${notice.hit}</td>
 	                            <td>${notice.rdate}</td>
 	                            <td>
 	                                <a href="#" class="remove">[삭제]</a>
-	                                <a href="/Kmarket/admin/cs/notice/modify.do?no=${notice.no}" class="modify">[수정]</a>
+	                                <a href="/Kmarket/admin/cs/notice/modify.do?cate=${cate}&no=${notice.no}&pg=${currentPage}&from=list" class="modify">[수정]</a>
 	                            </td>
 	                        </tr>
 	                   </c:forEach>
                     </table>
                     
-                    <!-- 선택한 게시글 삭제 -->
-                    <input type="button" onclick="deleteNotices()" value="선택삭제" />
-                    <!-- 공지사항 글 등록 -->
-                    <a href="/Kmarket/admin/cs/notice/write.do" class="btn btnSubmit">등록하기</a>
+              
+                    <input type="button" onclick="deleteNotices()" id="deleteSelected" value="선택삭제" data-cate="${cate}"/>
+                    <a href="/Kmarket/admin/cs/notice/write.do?cate=${cate}" class="btn btnSubmit">등록하기</a>
                                   
 					<!-- 페이징 -->         
                     <div class="paging">

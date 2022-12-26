@@ -25,10 +25,17 @@ public class ModifyController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		String no = req.getParameter("no");
+		String cate = req.getParameter("cate");
+		String pg = req.getParameter("pg");
+		String from = req.getParameter("from");
 		
 		NoticeArticleVo vo = service.selectNotice(no);
 		
 		req.setAttribute("vo", vo);
+		req.setAttribute("cate", cate);
+		req.setAttribute("no", no);
+		req.setAttribute("pg", pg);
+		req.setAttribute("from", from);
 				
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/notice/modify.jsp");
 		dispatcher.forward(req, resp);
@@ -37,7 +44,9 @@ public class ModifyController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		String pg = req.getParameter("pg");
 		int no = Integer.parseInt(req.getParameter("no"));
+		int cateforp = Integer.parseInt(req.getParameter("cateforp")); // 주소 파라미터용 카테
 		int cate = Integer.parseInt(req.getParameter("cate"));
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
@@ -68,7 +77,7 @@ public class ModifyController extends HttpServlet {
 		
 		service.updateNotice(vo);
 		
-		resp.sendRedirect("/Kmarket/admin/cs/notice/view.do?no="+no);
+		resp.sendRedirect("/Kmarket/admin/cs/notice/view.do?cate="+cateforp+"&no="+no+"&pg="+pg);
 	
 	}
 

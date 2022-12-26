@@ -25,9 +25,14 @@ public class ViewController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		
+		String cate = req.getParameter("cate");
 		String no = req.getParameter("no");
+		String pg = req.getParameter("pg");
 		
 		NoticeArticleVo vo = service.selectNotice(no);
+		
+		req.setAttribute("cate", cate);
+		req.setAttribute("pg", pg);
 		req.setAttribute("vo", vo);
 		
 		// 조회 수

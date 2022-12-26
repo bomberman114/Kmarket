@@ -4,7 +4,8 @@ import java.util.List;
 
 public class AdminCsNoticeVo {
 	
-	private int cate;	
+	private int cate;
+	private int pg;
 	private int currentPage;
 	private int lastPageNum;
 	private int pageGroupStart;
@@ -13,8 +14,13 @@ public class AdminCsNoticeVo {
 	private int pageStartNum;
 	private List<NoticeArticleVo> notices;
 	
-
 	
+	public int getPg() {
+		return pg;
+	}
+	public void setPg(int pg) {
+		this.pg = pg;
+	}
 	public int getPageStartNum() {
 		return pageStartNum;
 	}
