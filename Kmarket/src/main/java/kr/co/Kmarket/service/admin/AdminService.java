@@ -54,18 +54,6 @@ public enum AdminService {
 		return dao.selectAdminProductsByKeyword(uid, category, keyword, limitStart);
 	}
 	
-	public void insertNotice(NoticeArticleVo vo) {
-		dao.insertNotice(vo);
-	}
-	
-	public List<NoticeArticleVo> selectNotices(int start){
-		return dao.selectNotices(start);
-	}
-	
-	public List<NoticeArticleVo> selectNoticesByCate(int cate, int start){
-		return dao.selectNoticesByCate(cate, start);
-	}
-	
 
 	// paging
 
@@ -435,4 +423,33 @@ public enum AdminService {
 	}
 
 
+	// notice
+	
+	public void insertNotice(NoticeArticleVo vo) {
+		dao.insertNotice(vo);
+	}
+	
+	public NoticeArticleVo selectNotice(String no) {
+		return dao.selectNotice(no);
+	}
+	
+	public List<NoticeArticleVo> selectNotices(int start){
+		return dao.selectNotices(start);
+	}
+	
+	public List<NoticeArticleVo> selectNoticesByCate(int cate, int start){
+		return dao.selectNoticesByCate(cate, start);
+	}
+	
+	public int deleteNotice(String no) {
+		return dao.deleteNotice(no);
+	}
+	
+	public void updateNoticeHit(String no) {
+		dao.updateNoticeHit(no);
+	}
+	
+	public void updateNotice(NoticeArticleVo vo) {
+		dao.updateNotice(vo);
+	}
 }

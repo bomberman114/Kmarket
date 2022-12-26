@@ -4,6 +4,39 @@
 <script>
 	$(document).ready(function(){
 		
+		// 게시글 삭제
+		$(document).on('click', '.remove', function(e){
+			
+			e.preventDefault();
+			
+			let isDeleteOk = confirm('정말 삭제하시겠습니까?');
+			
+			if(isDeleteOk){
+				
+				let row = $(this).closest('.row');
+				let no = document.getElementById('no').value;
+							
+				$.ajax({
+					url:'/Kmarket/admin/cs/notice/delete.do',
+					method:'POST',
+					data: {"no": no},
+					dataType: 'json',
+					success: function(data){
+						
+						if(data.result > 0) {
+							
+							alert('공지사항이 삭제되었습니다.');
+							row.hide();
+							
+						}else{
+							alert('삭제를 실패하였습니다.\n잠시 후 다시 시도해주세요.')
+						}
+					}
+				});	
+			}
+		});
+		
+		
 		
 		$(document).on('change', 'select[name=category]', function(e){
 			
@@ -91,7 +124,7 @@
 		
 	}
 	
-	</script>
+</script>
             <section id="admin-notice-list">
                 <nav>
                     <h3>공지사항 목록</h3>
@@ -125,7 +158,7 @@
                         <!-- 게시글 목록 나열 -->
                         <c:forEach var="notice" items="${notices}">
 	                        <tr class="row">
-	                        	<input type="hidden" value="${notice.no}">
+	                        	<input type="hidden" id="no" value="${notice.no}">
 	                            <td><input type="checkbox" name="chkbox"/></td>
 	                            <td>${pageStartNum = pageStartNum-1}</td>
 	                            <td>${notice.cateName}</td>
@@ -134,7 +167,7 @@
 	                            <td>${notice.rdate}</td>
 	                            <td>
 	                                <a href="#" class="remove">[삭제]</a>
-	                                <a href="#" class="modify">[수정]</a>
+	                                <a href="/Kmarket/admin/cs/notice/modify.do?no=${notice.no}" class="modify">[수정]</a>
 	                            </td>
 	                        </tr>
 	                   </c:forEach>

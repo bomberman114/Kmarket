@@ -751,6 +751,44 @@ public class AdminDao extends DBHelper {
 		}
 
 	}
+	
+	public NoticeArticleVo selectNotice(String no) {
+		
+		NoticeArticleVo vo = null;
+		
+		try {
+			
+			logger.info("selectNotice...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_NOTICE);
+			psmt.setString(1, no);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				vo = new NoticeArticleVo();
+				
+				vo.setNo(rs.getInt(1));
+				vo.setCate(rs.getInt(2));
+				vo.setCateName(rs.getString(3));
+				vo.setTitle(rs.getString(4));
+				vo.setContent(rs.getString(5));
+				vo.setUid(rs.getString(6));
+				vo.setHit(rs.getInt(7));
+				vo.setRegip(rs.getString(8));
+				vo.setRdate(rs.getString(9));
+				
+			}
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return vo;
+	}
+	
 
 	public List<NoticeArticleVo> selectNotices(int start) {
 
@@ -823,6 +861,68 @@ public class AdminDao extends DBHelper {
 		return notices;
 
 	}
+	
+	public int deleteNotice(String no) {
+		
+		int result = 0;
+		
+		try {
+			logger.info("deleteNotice...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.DELETE_NOTICE);
+			psmt.setString(1, no);
+			
+			result = psmt.executeUpdate();
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+	}
+	
+	public void updateNoticeHit(String no) {
+		
+		try {
+			logger.info("updateNoticeHit...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.UPDATE_NOTICE_HIT);
+			psmt.setString(1, no);
+			
+			psmt.executeUpdate();
+			
+			close();
+			
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+	}
+	
+	public void updateNotice(NoticeArticleVo vo){
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.UPDATE_NOTICE);
+			psmt.setInt(1, vo.getCate());
+			psmt.setString(2, vo.getCateName());
+			psmt.setString(3, vo.getTitle());
+			psmt.setString(4, vo.getContent());
+			psmt.setInt(5, vo.getNo());
+			
+			psmt.executeUpdate();
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+	
+	}
+	
 // admin Faq
 	public int selectFaqTotal(int cate) {
 		int total = 0;

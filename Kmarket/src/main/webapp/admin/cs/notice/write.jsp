@@ -14,7 +14,7 @@
                         <input type="hidden" name="uid" value="${sessUser.uid}"/>
                             <table>
                                 <tr>
-                                    <td>문의유형</td>
+                                    <td>유형</td>
                                     <td>
                                         <select name="cate">
                                             <option value="0">선택</option>
@@ -26,13 +26,13 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>문의제목</td>
+                                    <td>제목</td>
                                     <td>
                                         <input type="text" name="title" placeholder="제목을 입력하세요." required/>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>문의내용</td>
+                                    <td>내용</td>
                                     <td>
                                         <textarea name="content" placeholder="내용을 입력하세요." required></textarea>
                                     </td>
