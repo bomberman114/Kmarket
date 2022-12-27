@@ -1,13 +1,19 @@
 package kr.co.Kmarket.dao.cs;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 import kr.co.Kmarket.db.CsSql;
 import kr.co.Kmarket.db.DBHelper;
+import kr.co.Kmarket.vo.NoticeArticleVo;
 import kr.co.Kmarket.vo.QnaArticleVo;
 import kr.co.Kmarket.vo.csFaqVo;
 
@@ -138,6 +144,63 @@ public class CsDao extends DBHelper {
 			logger.error(e.getMessage());
 		}
 		return total;
+	}
+	
+	public List<NoticeArticleVo> selectLatestNotices(){
+		
+		List<NoticeArticleVo> notices = new ArrayList<>();
+		
+		try {
+			
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(CsSql.SELECT_LATEST_NOTICES);
+			
+			while(rs.next()) {
+				NoticeArticleVo notice = new NoticeArticleVo();
+				
+				notice.setTitle(rs.getString("title"));
+				notice.setRdate(rs.getString("rdate"));
+				
+				notices.add(notice);		
+			}
+			
+			close();
+			
+		}catch(Exception e){
+			logger.error(e.getMessage());
+		}
+		return notices;
+	}
+	
+	public List<QnaArticleVo> selectLatestQnas(){
+		
+		List<QnaArticleVo> qnas = new ArrayList<>();
+		
+		try {
+			
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(CsSql.SELECT_LATEST_QNAS);
+			
+			while(rs.next()) {
+				
+				QnaArticleVo qna = new QnaArticleVo();
+				
+				qna.setTitle(rs.getString("title"));
+				qna.setRdate(rs.getString("rdate"));
+				qna.setC1Name(rs.getString("c1Name"));
+				qna.setUid(rs.getString("uid"));
+				
+				qnas.add(qna);		
+			}
+			
+			close();
+
+		}catch(Exception e){
+			logger.error(e.getMessage());
+		}
+		return qnas;
 	}
 
 	//현길

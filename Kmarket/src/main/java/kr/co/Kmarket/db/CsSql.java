@@ -29,4 +29,9 @@ public class CsSql {
 
 	public static final String SELECT_CS_FAQ2 = "SELECT * From  km_cs_faq_board WHERE `cate1`=? AND `cate2` =?  ORDER BY faqNo LIMIT ? , ? ";
 	
+	public static final String SELECT_LATEST_NOTICES = "SELECT `title`,`rdate` FROM `km_cs_notice_board` ORDER BY `no` DESC LIMIT 5";
+	public static final String SELECT_LATEST_QNAS = "SELECT a.title, a.uid, a.rdate, b.c1Name  FROM `km_cs_qna_board` AS a "
+													+"JOIN `km_cs_qna_cate` AS b "
+													+"ON a.cate1 = b.cate1 AND a.cate2 = b.cate2 "
+													+"WHERE `parent`= 0 ORDER BY `no` DESC LIMIT 5;";
 }

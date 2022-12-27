@@ -15,6 +15,7 @@ import kr.co.Kmarket.vo.NoticeArticleVo;
 import kr.co.Kmarket.vo.ProductCate1Vo;
 import kr.co.Kmarket.vo.ProductCate2Vo;
 import kr.co.Kmarket.vo.ProductVo;
+import kr.co.Kmarket.vo.QnaArticleVo;
 
 public class AdminDao extends DBHelper {
 
@@ -791,7 +792,9 @@ public class AdminDao extends DBHelper {
 				vo.setHit(rs.getInt(7));
 				vo.setRegip(rs.getString(8));
 				vo.setRdate(rs.getString(9));
-
+				
+				System.out.println(rs.getString(9));
+				
 				notices.add(vo);
 
 			}
@@ -928,6 +931,189 @@ public class AdminDao extends DBHelper {
 		}
 	
 	}
+	
+// admin Qna
+	public int selectCountTotalForQna(int cate1) {
+		
+		int total = 0;
+		try {
+			logger.info("selectCountQnaTotal...");
+			conn = getConnection();
+
+			if (cate1 == 0) {
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(Sql.SELECT_COUNT_QNA_TOTAL);
+			} else {
+				psmt = conn.prepareStatement(Sql.SELECT_COUNT_QNA_TOTAL_FOR_CATE);
+				psmt.setInt(1, cate1);
+				rs = psmt.executeQuery();
+			}
+
+			if (rs.next()) {
+				total = rs.getInt(1);
+			}
+
+			close();
+
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return total;
+		
+	}
+	
+	public int selectCountTotalForQna(int cate1, int cate2) {
+		
+		int total = 0;
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_COUNT_QNA_TOTAL_FOR_CATE2);
+			
+			psmt.setInt(1, cate1);
+			psmt.setInt(2, cate2);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return total;
+	}
+	
+	public List<QnaArticleVo> selectQnas(int start) {
+		
+		List<QnaArticleVo> qnas = new ArrayList<>();
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_QNAS);
+			psmt.setInt(1, start);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				QnaArticleVo qna = new QnaArticleVo();
+				qna.setNo(rs.getInt(1));
+				qna.setParent(rs.getInt(2));
+				qna.setComment(rs.getInt(3));
+				qna.setCate1(rs.getInt(4));
+				qna.setCate2(rs.getInt(5));
+				qna.setTitle(rs.getString(6));
+				qna.setContent(rs.getString(7));
+				qna.setUid(rs.getString(8));
+				qna.setRegip(rs.getString(9));
+				qna.setRdate(rs.getString(10));
+				qna.setC1Name(rs.getString(11));
+				qna.setC2Name(rs.getString(12));
+				
+				qnas.add(qna);
+				
+			}
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return qnas;
+	}
+	
+	public List<QnaArticleVo> selectQnasByCate(int cate1, int start) {
+		
+		List<QnaArticleVo> qnas = new ArrayList<>();
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_QNAS_BY_CATE1);
+			psmt.setInt(1, cate1);
+			psmt.setInt(2, start);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				QnaArticleVo qna = new QnaArticleVo();
+				qna.setNo(rs.getInt(1));
+				qna.setParent(rs.getInt(2));
+				qna.setComment(rs.getInt(3));
+				qna.setCate1(rs.getInt(4));
+				qna.setCate2(rs.getInt(5));
+				qna.setTitle(rs.getString(6));
+				qna.setContent(rs.getString(7));
+				qna.setUid(rs.getString(8));
+				qna.setRegip(rs.getString(9));
+				qna.setRdate(rs.getString(10));
+				qna.setC1Name(rs.getString(11));
+				qna.setC2Name(rs.getString(12));
+				
+				qnas.add(qna);
+				
+			}
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return qnas;
+		
+	}
+	
+	public List<QnaArticleVo> selectQnasByCate(int cate1, int cate2, int start) {
+		
+		List<QnaArticleVo> qnas = new ArrayList<>();
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_QNAS_BY_CATE2);
+			psmt.setInt(1, cate1);
+			psmt.setInt(2, cate2);
+			psmt.setInt(3, start);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				QnaArticleVo qna = new QnaArticleVo();
+				qna.setNo(rs.getInt(1));
+				qna.setParent(rs.getInt(2));
+				qna.setComment(rs.getInt(3));
+				qna.setCate1(rs.getInt(4));
+				qna.setCate2(rs.getInt(5));
+				qna.setTitle(rs.getString(6));
+				qna.setContent(rs.getString(7));
+				qna.setUid(rs.getString(8));
+				qna.setRegip(rs.getString(9));
+				qna.setRdate(rs.getString(10));
+				qna.setC1Name(rs.getString(11));
+				qna.setC2Name(rs.getString(12));
+				
+				qnas.add(qna);
+				
+			}
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return qnas;
+		
+	}
+	
 	
 // admin Faq
 	public int selectFaqTotal(int cate1) {
