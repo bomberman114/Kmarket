@@ -97,7 +97,7 @@ $(function(){
             <h2>자주묻는 질문</h2>
             <ul>
                 <li class="on"><a href="/Kmarket/admin/cs/faq/list.do?cate1=1">회원</a></li>
-                <li><a href="#">쿠폰/이벤트</a></li>
+                <li><a href="">쿠폰/이벤트</a></li>
                 <li><a href="#">주문/결제</a></li>
                 <li><a href="#">배송</a></li>
                 <li><a href="#">취소/반품/교환</a></li>
@@ -115,14 +115,14 @@ $(function(){
                 <h3>가입</h3>
                 <ul>
                 <c:forEach items="${csFaq1}" var="faq">
-                <li><a href="/Kmarket/admin/cs/faq/view.do"><span>Q.</span>${faq.title}</a></li>
+                <li><a href="/Kmarket/admin/cs/faq/view.do?faqNo=${faq.faqNo}"><span>Q.</span>${faq.title}</a></li>
                 
                 </c:forEach>
                 
                  <li class="more"><a href="#" class="btnOrder1" >더보기</a></li>
                 	<section class="section1" style="display: none;">
                    <c:forEach items="${csFaq2}" var="faq" varStatus="status" >
-                   <li><a href="/Kmarket/admin/cs/faq/view.do"><span>Q.</span>${faq.title}</a></li>
+                   <li><a href="/Kmarket/admin/cs/faq/view.do?faqNo=${faq.faqNo}"><span>Q.</span>${faq.title}</a></li>
                    </c:forEach>
                 	<div onclick="dis()"> <a href="#" class="btnClose1">닫기</a>  </div>
                    </section>

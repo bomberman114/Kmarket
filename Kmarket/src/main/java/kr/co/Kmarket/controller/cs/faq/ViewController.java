@@ -20,6 +20,10 @@ public class ViewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		int cate1;
+		int cate2;
+		int faqNo = Integer.parseInt(String.valueOf(req.getAttribute("faqNo")));
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/faq/view.jsp");
 		dispatcher.forward(req, resp);
 	}
