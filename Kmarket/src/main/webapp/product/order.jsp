@@ -231,7 +231,7 @@
                    	<input type="hidden" name="ordPrice" value="${totPrice}">
                    	<input type="hidden" name="ordDiscount" value="<fmt:formatNumber value="${totDiscountedPrice}" pattern="#"/>">
                    	<input type="hidden" name="ordDelivery" value="${totDelivery}">
-                   	<input type="text" name="ordTotPrice" value="<fmt:formatNumber value="${ordTotPrice}" pattern="#"/>">
+                   	<input type="hidden" name="ordTotPrice" value="<fmt:formatNumber value="${ordTotPrice}" pattern="#"/>">
                         
                 </div>
                 
@@ -254,7 +254,7 @@
                         <td>우편번호</td>
                         <td>
                             <input type="text" name="recipZip" value="${sessUser.zip}"/>
-                            <input type="button" class="btnCommon zip" value="검색"/>
+                            <input type="button" class="btnCommon zip" onclick="zipcode()" value="검색"/>
                         </td>
                     </tr>
                     <tr>

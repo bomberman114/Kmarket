@@ -3,6 +3,7 @@ package kr.co.Kmarket.service.cs;
 import java.util.List;
 
 import kr.co.Kmarket.dao.cs.CsDao;
+import kr.co.Kmarket.vo.NoticeArticleVo;
 import kr.co.Kmarket.vo.QnaArticleVo;
 import kr.co.Kmarket.vo.csFaqVo;
 
@@ -26,6 +27,12 @@ public enum CsService {
 		return dao.selectArtlcle(no);
 	}
 	
+	public NoticeArticleVo selectArticleNotice(int no) {
+		return dao.selectArticleNotice(no);
+	}
+	public csFaqVo selectCateName(int cate1) {
+		return dao.selectCateName(cate1);
+	}
 	
 	
 	// 해빈
@@ -85,7 +92,7 @@ public enum CsService {
 	}	
 	
 	
-	
+
 	
 	
 	
@@ -130,4 +137,85 @@ public enum CsService {
 	public List<csFaqVo> selectFaq2(int cate1, int cate2) {
 		return dao.selectFaq2(cate1, cate2);
 	}
+
+	// 진우
+	public String getCateName(int cate) {
+		
+		String cateName = null;
+		
+		switch(cate) {
+		case 1:
+			cateName = "고객서비스";
+			break;
+		case 2:
+			cateName = "안전거래";
+			break;
+		case 3:
+			cateName = "위해상품";
+			break;
+		case 4:
+			cateName = "이벤트당첨";
+			break;
+		}
+		
+		return cateName;
+	}
+
+	public List<NoticeArticleVo> selectNoticeArticles(int cate, int start) {
+	return dao.selectNoticeArticles(cate, start);
+	}
+	
+	// 페이징 처리
+	
+	public int selectCountTotalNotice(int cate) {
+		return dao.selectCountTotalNotice(cate);
+	}
+	
+	public int getCurrentPageNotice(String pg) {
+		
+		int currentPage = 1;
+		
+		if(pg != null) {
+			currentPage = Integer.parseInt(pg);
+		}
+		
+		return currentPage;
+		
+	}
+	
+	public int getLastPageNumNotice(int total) {
+		
+		int lastPageNum = 0;
+		
+		if(total % 10 == 0) {
+			lastPageNum = (total / 10);
+		}else {
+			lastPageNum = (total / 10) + 1;
+		}
+		
+		return lastPageNum;
+	}
+	
+	public int[] getPageGroupNumNotice(int currentPage, int lastPageNum) {
+		
+		int pageGroupCurrent = (int)Math.ceil(currentPage / 5.0);
+		int pageGroupStart = (pageGroupCurrent -1) * 5 + 1;
+		int pageGroupEnd = pageGroupCurrent * 5;
+		
+		if(pageGroupEnd > lastPageNum) {
+			pageGroupEnd = lastPageNum;
+		}
+		
+		int[] pageGroup = {pageGroupStart, pageGroupEnd};
+		
+		return pageGroup;
+		
+	}
+	
+	public int getStartNumNotice(int currentPage) {
+		
+		return (currentPage -1) * 10;
+	}	
+	
 }
+
