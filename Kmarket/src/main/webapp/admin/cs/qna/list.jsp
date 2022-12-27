@@ -46,7 +46,7 @@
 	                            <td>${qna.c1Name}</td>
 	                            <td>${qna.c2Name}</td>
 	                            <td><a href="./view.do?cate1=${cate1}&cate2=${cate2}&no=${notice.no}&pg=${currentPage}">${qna.title}</a></td>
-	                            <td>${qna.uid}</td>
+	                            <td>${(qna.uid).substring(0,3)}**</td>
 	                            <td>${qna.rdate}</td>
 	                            <td>검토중</td>
 	                        </tr>

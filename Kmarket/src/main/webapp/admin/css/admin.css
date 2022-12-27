@@ -678,3 +678,12 @@ position: relative;
 }
 
 /* admin-qna list*/
+
+#admin-qna-list > section > table  tr > td:nth-child(1) {width: 20px;}
+#admin-qna-list > section > table  tr > td:nth-child(2) {width: 60px;}
+#admin-qna-list > section > table  tr > td:nth-child(3) {width: 120px;}
+#admin-qna-list > section > table  tr > td:nth-child(4) {width: 122px;text-align: center;}
+#admin-qna-list > section > table  tr > td:nth-child(5) {width: auto; text-align: left;}
+#admin-qna-list > section > table  tr > td:nth-child(6) {width: 90px;}
+#admin-qna-list > section > table  tr > td:nth-child(7) {width: 90px;}
+#admin-qna-list > section > table  tr > td:nth-child(8) {width: 80px;}
