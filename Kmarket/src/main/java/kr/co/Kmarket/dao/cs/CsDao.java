@@ -1,13 +1,19 @@
 package kr.co.Kmarket.dao.cs;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 import kr.co.Kmarket.db.CsSql;
 import kr.co.Kmarket.db.DBHelper;
+import kr.co.Kmarket.vo.NoticeArticleVo;
 import kr.co.Kmarket.vo.QnaArticleVo;
 import kr.co.Kmarket.vo.csFaqVo;
 
@@ -78,6 +84,54 @@ public class CsDao extends DBHelper {
 		return vo;
 	}
 	
+	public NoticeArticleVo selectArticleNotice(int no) {
+		NoticeArticleVo vo = null;
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(CsSql.SELECT_ARTITCLE_NOTICE);
+			psmt.setInt(1, no);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new NoticeArticleVo();
+				vo.setNo(rs.getInt("no"));
+				vo.setCate(rs.getInt("cate"));
+				vo.setCateName(rs.getString("cateName"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setUid(rs.getString("uid"));
+				vo.setRegip(rs.getString("regip"));
+				vo.setRdate(rs.getString("rdate"));
+			}
+			close();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return vo;
+	}
+	
+	public csFaqVo selectCateName(int cate1) {
+		csFaqVo vo = null;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(CsSql.SELECT_CATENAME);
+			psmt.setInt(1, cate1);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				vo = new csFaqVo();
+				vo.setC1Name(rs.getString("c1Name"));
+				vo.setCate2(rs.getInt("cate2"));
+				vo.setC2Name(rs.getString("c2Name"));
+			}
+			close();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return vo;
+	}
 	
 	// 해빈
 	
@@ -138,6 +192,63 @@ public class CsDao extends DBHelper {
 			logger.error(e.getMessage());
 		}
 		return total;
+	}
+	
+	public List<NoticeArticleVo> selectLatestNotices(){
+		
+		List<NoticeArticleVo> notices = new ArrayList<>();
+		
+		try {
+			
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(CsSql.SELECT_LATEST_NOTICES);
+			
+			while(rs.next()) {
+				NoticeArticleVo notice = new NoticeArticleVo();
+				
+				notice.setTitle(rs.getString("title"));
+				notice.setRdate(rs.getString("rdate"));
+				
+				notices.add(notice);		
+			}
+			
+			close();
+			
+		}catch(Exception e){
+			logger.error(e.getMessage());
+		}
+		return notices;
+	}
+	
+	public List<QnaArticleVo> selectLatestQnas(){
+		
+		List<QnaArticleVo> qnas = new ArrayList<>();
+		
+		try {
+			
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(CsSql.SELECT_LATEST_QNAS);
+			
+			while(rs.next()) {
+				
+				QnaArticleVo qna = new QnaArticleVo();
+				
+				qna.setTitle(rs.getString("title"));
+				qna.setRdate(rs.getString("rdate"));
+				qna.setC1Name(rs.getString("c1Name"));
+				qna.setUid(rs.getString("uid"));
+				
+				qnas.add(qna);		
+			}
+			
+			close();
+
+		}catch(Exception e){
+			logger.error(e.getMessage());
+		}
+		return qnas;
 	}
 
 	//현길
@@ -218,5 +329,59 @@ public class CsDao extends DBHelper {
 			
 			return csFaq2;
 		}
-
+	
+	// 진우
+	public List<NoticeArticleVo> selectNoticeArticles(int cate, int start) {
+		
+		List<NoticeArticleVo> articles = new ArrayList<>();
+		try {
+			logger.info("selectNoticeArticles");
+			conn = getConnection();
+			psmt = conn.prepareStatement(CsSql.SELECT_NOTICE_ARTICLES);
+			psmt.setInt(1, cate);
+			psmt.setInt(2, start);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+			NoticeArticleVo vo = new NoticeArticleVo();
+			vo.setNo(rs.getInt("no"));
+			vo.setCate(rs.getInt("cate"));
+			vo.setCateName(rs.getString("cateName"));
+			vo.setTitle(rs.getString("title"));
+			vo.setContent(rs.getString("content"));
+			vo.setUid(rs.getString("uid"));
+			vo.setRegip(rs.getString("regip"));
+			vo.setRdate(rs.getString("rdate"));
+			
+			articles.add(vo);
+			}
+			close();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return articles;
+	}
+	
+	public int selectCountTotalNotice(int cate) {
+		int total = 0;
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(CsSql.SELECT_COUNT_TOTAL_NOTICE);
+			psmt.setInt(1, cate);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return total;
+	}
+	
 }

@@ -30,12 +30,18 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		
+		int cate1 = Integer.parseInt(req.getParameter("cate1"));
+		//int cate2 = Integer.parseInt(req.getParameter("cate2"));
+		
+		csFaqVo cateName = service.selectCateName(cate1);
+		
+		
+		req.setAttribute("cate1", cate1);
+		req.setAttribute("cateName", cateName);
+		/*
 		List<csFaqVo> csFaq1 = null;
 		List<csFaqVo> csFaq2 = null;
-		//int cate1 = Integer.parseInt(String.valueOf(req.getAttribute("cate1")));
-		// int cate2 =Integer.parseInt( (String) req.getAttribute("cate2"));
-		 int cate1 =1;
-		int cate2 = 1;
 		csFaq1 = service.selectFaq1(cate1, cate2);
 		csFaq2 = service.selectFaq2(cate1, cate2);
 		System.out.println("faq 리스트1:" + csFaq1);
@@ -43,6 +49,8 @@ public class ListController extends HttpServlet {
 
 		req.setAttribute("csFaq1", csFaq1);
 		req.setAttribute("csFaq2", csFaq2);
+		*/
+	
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/faq/list.jsp");
 		dispatcher.forward(req, resp);

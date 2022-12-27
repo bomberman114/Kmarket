@@ -27,6 +27,7 @@ import kr.co.Kmarket.vo.ProductCartVo;
 import kr.co.Kmarket.vo.ProductCate1Vo;
 import kr.co.Kmarket.vo.ProductCate2Vo;
 import kr.co.Kmarket.vo.ProductVo;
+import kr.co.Kmarket.vo.QnaArticleVo;
 
 public enum AdminService {
 
@@ -78,6 +79,16 @@ public enum AdminService {
 	public int selectCountTotal(int cate) {
 		return dao.selectCountTotal(cate);
 	}
+	
+	// admin-cs-qna용 전체 게시물 갯수
+	public int selectCountTotalForQna(int cate1) {
+		return dao.selectCountTotalForQna(cate1);
+	}
+	
+	public int selectCountTotalForQna(int cate1, int cate2) {
+		return dao.selectCountTotalForQna(cate1, cate2);
+	}
+	
 	
 	//faq total
 		public int selectFaqTotal(int cate1) {
@@ -461,5 +472,21 @@ public enum AdminService {
 	public int deleteNotices(String[] checkboxArr) {
 		return dao.deleteNotices(checkboxArr);
 	}
+	
+	// qna
+	
+	public List<QnaArticleVo> selectQnas(int start){
+		return dao.selectQnas(start);
+	}
+	
+	public List<QnaArticleVo> selectQnasByCate(int cate1, int start){
+		return dao.selectQnasByCate(cate1,start);
+	}
+	
+	public List<QnaArticleVo> selectQnasByCate(int cate1, int cate2, int start){
+		return dao.selectQnasByCate(cate1,cate2,start);
+	}
+	
+	
 	
 }
