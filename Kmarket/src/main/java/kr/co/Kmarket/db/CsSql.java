@@ -28,10 +28,26 @@ public class CsSql {
 	public static final String SELECT_CS_FAQ1 = "SELECT * From  km_cs_faq_board WHERE `cate1`=? AND `cate2` =?  ORDER BY faqNo LIMIT ?";
 
 	public static final String SELECT_CS_FAQ2 = "SELECT * From  km_cs_faq_board WHERE `cate1`=? AND `cate2` =?  ORDER BY faqNo LIMIT ? , ? ";
+
+	// 진우
+	public static final String SELECT_NOTICE_ARTICLES = "select * from `km_cs_notice_board` "
+														+ "where `cate` = ? order by `no` desc limit ?, 10";
 	
+	public static final String SELECT_COUNT_TOTAL_NOTICE = "SELECT COUNT(`no`) FROM `km_cs_notice_board` WHERE `cate`=?";
+	
+
 	public static final String SELECT_LATEST_NOTICES = "SELECT `title`,`rdate` FROM `km_cs_notice_board` ORDER BY `no` DESC LIMIT 5";
 	public static final String SELECT_LATEST_QNAS = "SELECT a.title, a.uid, a.rdate, b.c1Name  FROM `km_cs_qna_board` AS a "
 													+"JOIN `km_cs_qna_cate` AS b "
 													+"ON a.cate1 = b.cate1 AND a.cate2 = b.cate2 "
 													+"WHERE `parent`= 0 ORDER BY `no` DESC LIMIT 5;";
+
+	public static final String SELECT_ARTITCLE_NOTICE = "select * from `km_cs_notice_board` where `no` = ?";
+	
+	public static final String SELECT_CATENAME = "select a.cate1, a.c1Name, b.cate2, b.c2Name from `km_cs_faq_cate1` as a "
+												+ "join `km_cs_faq_cate2` as b "
+												+ "on a.cate1 = b.cate1 "
+												+ "where cate1 = ?";
+
 }
+
