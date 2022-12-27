@@ -190,6 +190,9 @@ header > .logo a {
   position: relative;
   top: 100px;
   font-size: 14px;
+  width: 100px;
+  left: -6px;
+  display: inline-block;
 }
 
 #cs > .main > .faq > ol > li:nth-child(1) > a {

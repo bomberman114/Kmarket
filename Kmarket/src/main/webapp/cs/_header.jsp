@@ -57,7 +57,7 @@
         <div class="logo">
           <div>
 
-            <a href="/Kmarket/"><img src="/Kmarket/cs/images/logo.png" alt="로고" />고객센터</a>
+            <a href="/Kmarket/cs/index.do"><img src="/Kmarket/cs/images/logo.png" alt="로고" />고객센터</a>
 
           </div>
         </div>

@@ -1,6 +1,7 @@
 package kr.co.Kmarket.service.cs;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.Kmarket.dao.cs.CsDao;
 import kr.co.Kmarket.vo.NoticeArticleVo;
@@ -44,6 +45,15 @@ public enum CsService {
 	public int selectCountTotal(int cate1) {
 		return dao.selectCountTotal(cate1);
 	}
+	
+	public List<NoticeArticleVo> selectLatestNotices(){
+		return dao.selectLatestNotices();
+	}
+	
+	public List<QnaArticleVo> selectLatestQnas(){
+		return dao.selectLatestQnas();
+	}
+
 	
 	public int getCurrentPage(String pg) {
 		
@@ -91,11 +101,7 @@ public enum CsService {
 		return (currentPage -1) * 10;
 	}	
 	
-	
 
-	
-	
-	
 	
 	public String getC1name(int cate1) {
 		
@@ -127,6 +133,8 @@ public enum CsService {
 		
 		return c1name;
 	}
+	
+	
 	
 	//현길
 

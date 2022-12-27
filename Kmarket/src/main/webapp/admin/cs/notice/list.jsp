@@ -152,7 +152,7 @@
 	}
 	
 </script>
-            <section id="admin-notice-list">
+            <section class="admin-list">
                 <nav>
                     <h3>공지사항 목록</h3>
 	                    
