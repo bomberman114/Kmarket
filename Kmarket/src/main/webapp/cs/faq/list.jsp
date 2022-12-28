@@ -4,50 +4,26 @@
 <script>
 
 	$(function(){
-		
-	$('a[class=btnOrder1]').click(function(){
-		$('section[class=section1]').show();
-	});
-	$('a[class=btnClose1]').click(function(){
-		$('section[class=section1]').hide();
-	});
-		});
-	
+        $('.more').click(function(e){
+          e.preventDefault();
+          
+          let item = $(this).parent().find('> li:nth-child(n+4)');
+          let isVisible = item.is(':visible');
 
-$(function(){
-	
-	$('a[class=btnOrder2]').click(function(){
-		$('section[class=section2]').show();
-	});
-	
-	$('a[class=btnClose2]').click(function(){
-		$('section[class=section2]').hide();
-	});
-});
+          console.log('isVisible : ' + isVisible);
 
-$(function(){
-	
-	$('a[class=btnOrder3]').click(function(){
-		$('section[class=section3]').show();
-	
-	});
-	$('a[class=btnClose3]').click(function(){
-		$('section[class=section3]').hide();
-	});
-	});
-	$(function(){
-
-	
-	$('a[class=btnOrder4]').click(function(){
-		$('section[class=section4]').show();
-	});
-	
-	$('a[class=btnClose4]').click(function(){
-		$('section[class=section4]').hide();
-	});
-		});
-
-	
+          if(isVisible && item.css('display') == 'none'){
+        	  item.slideDown(300);
+        	  $(this.find('> a').text('간단히보기'));
+        	  
+          }else if(isVisible && item.css('display') == 'list-item'){
+        	  item.slideUp(300);
+        	  $(this).find('> a').text('더보기');
+              
+          }
+          
+        });
+      });
 
 </script>
     <section id="cs">
@@ -70,50 +46,168 @@ $(function(){
                 <li class="${cate1 eq '7'?'on':'off'}"><a href="/Kmarket/cs/faq/list.do?cate1=7">안전거래</a></li>
             </ul>
             </aside>
-            <article>              
-            <nav>
-                <h1>회원</h1>
-                <h2>가장 자주 묻는 질문입니다.</h2>
-            </nav>
-			<c:if test="${cate1 eq 1}">
-			 	<!-- <div>
-	                <h3>가입</h3>
-	                <ul>
-		                <c:forEach items="${csFaq1}" var="faq">
-		                	<li><a href="/Kmarket/admin/cs/faq/view.do"><span>Q.</span>${faq.title}</a></li>
-		                </c:forEach>
-	                 	<li class="more"><a href="#" class="btnOrder" >더보기</a></li>
-	                	<section class="section" style="display: none;">
-		                   <c:forEach items="${csFaq2}" var="faq" varStatus="status" >
-		                   		<li><a href="/Kmarket/admin/cs/faq/view.do"><span>Q.</span>${faq.title}</a></li>
-		                   </c:forEach>
-	                	   <a href="#" class="btnClose">닫기</a> 
-	                   </section>
-	                </ul>
-	            </div>
-	             -->
-	            <c:forEach var="cate1" items="${cateName}">
-				<div>
-	                <h3>탈퇴</h3>
-	                <ul>
-	                <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-	                <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-	                <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-	                <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-	                <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-	               <li class="more"><a href="#" class="btnOrder${i}" >더보기</a></li>
-	                	<section class="section${i}" style="display: none;">
-	                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-	                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-	                	 <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-	                	 <a href="#" class="btnClose${i}">닫기</a>  
-	                	</section>
-	                </ul>
-	            </div>
-	            </c:forEach>
+            <article>  
+            
+			 <c:if test="${cate1 eq 1}">
+					<nav>
+		                <h1>회원</h1>
+		                <h2>가장 자주 묻는 질문입니다.</h2>
+		            </nav>      
+				 	
+		            <c:forEach var="cate" items="${cateNames}">
+						<div>
+			                <h3>${cate.c2Name}</h3>
+			                <ul>
+			                	
+				                <c:forEach var="article" items="${articles}">
+					                <c:if test="${cate.cate2 eq article.cate2}">
+						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						            </c:if>
+				                </c:forEach>
+				                
+				                <li class="more"><a href="#">더보기</a></li>
+			                </ul>
+			            </div>
+		            </c:forEach>
+	           </c:if>
 	            
+	           <c:if test="${cate1 eq 2}">
+					<nav>
+		                <h1>쿠폰/이벤트</h1>
+		                <h2>가장 자주 묻는 질문입니다.</h2>
+		            </nav>      
+				 	
+		            <c:forEach var="cate" items="${cateNames}">
+						<div>
+			                <h3>${cate.c2Name}</h3>
+			                <ul>
+			                	
+				                <c:forEach var="article" items="${articles}">
+					                <c:if test="${cate.cate2 eq article.cate2}">
+						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						            </c:if>
+				                </c:forEach>
+				                
+				                <li class="more"><a href="#">더보기</a></li>
+			                </ul>
+			            </div>
+		            </c:forEach>
+	           </c:if>
 	           
-			</c:if>
+	           <c:if test="${cate1 eq 3}">
+					<nav>
+		                <h1>주문/결제</h1>
+		                <h2>가장 자주 묻는 질문입니다.</h2>
+		            </nav>      
+				 	
+		            <c:forEach var="cate" items="${cateNames}">
+						<div>
+			                <h3>${cate.c2Name}</h3>
+			                <ul>
+			                	
+				                <c:forEach var="article" items="${articles}">
+					                <c:if test="${cate.cate2 eq article.cate2}">
+						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						            </c:if>
+				                </c:forEach>
+				                
+				                <li class="more"><a href="#">더보기</a></li>
+			                </ul>
+			            </div>
+		            </c:forEach>
+	           </c:if>
+	           
+	           <c:if test="${cate1 eq 4}">
+					<nav>
+		                <h1>배송</h1>
+		                <h2>가장 자주 묻는 질문입니다.</h2>
+		            </nav>      
+				 	
+		            <c:forEach var="cate" items="${cateNames}">
+						<div>
+			                <h3>${cate.c2Name}</h3>
+			                <ul>
+			                	
+				                <c:forEach var="article" items="${articles}">
+					                <c:if test="${cate.cate2 eq article.cate2}">
+						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						            </c:if>
+				                </c:forEach>
+				                
+				                <li class="more"><a href="#">더보기</a></li>
+			                </ul>
+			            </div>
+		            </c:forEach>
+	           </c:if>
+	           
+	           <c:if test="${cate1 eq 5}">
+					<nav>
+		                <h1>취소/반품/교환</h1>
+		                <h2>가장 자주 묻는 질문입니다.</h2>
+		            </nav>      
+				 	
+		            <c:forEach var="cate" items="${cateNames}">
+						<div>
+			                <h3>${cate.c2Name}</h3>
+			                <ul>
+			                	
+				                <c:forEach var="article" items="${articles}">
+					                <c:if test="${cate.cate2 eq article.cate2}">
+						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						            </c:if>
+				                </c:forEach>
+				                
+				                <li class="more"><a href="#">더보기</a></li>
+			                </ul>
+			            </div>
+		            </c:forEach>
+	           </c:if>
+	           
+	           <c:if test="${cate1 eq 6}">
+					<nav>
+		                <h1>여행/숙박/항공</h1>
+		                <h2>가장 자주 묻는 질문입니다.</h2>
+		            </nav>      
+				 	
+		            <c:forEach var="cate" items="${cateNames}">
+						<div>
+			                <h3>${cate.c2Name}</h3>
+			                <ul>
+			                	
+				                <c:forEach var="article" items="${articles}">
+					                <c:if test="${cate.cate2 eq article.cate2}">
+						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						            </c:if>
+				                </c:forEach>
+				                
+				                <li class="more"><a href="#">더보기</a></li>
+			                </ul>
+			            </div>
+		            </c:forEach>
+	           </c:if>
+	           
+	           <c:if test="${cate1 eq 7}">
+					<nav>
+		                <h1>안전거래</h1>
+		                <h2>가장 자주 묻는 질문입니다.</h2>
+		            </nav>      
+				 	
+		            <c:forEach var="cate" items="${cateNames}">
+						<div>
+			                <h3>${cate.c2Name}</h3>
+			                <ul>
+			                	
+				                <c:forEach var="article" items="${articles}">
+					                <c:if test="${cate.cate2 eq article.cate2}">
+						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						            </c:if>
+				                </c:forEach>
+				                
+				                <li class="more"><a href="#">더보기</a></li>
+			                </ul>
+			            </div>
+		            </c:forEach>
+	           </c:if>
 			
             </article>
         </section>

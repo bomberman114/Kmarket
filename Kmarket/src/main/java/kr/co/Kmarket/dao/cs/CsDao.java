@@ -112,12 +112,43 @@ public class CsDao extends DBHelper {
 		return vo;
 	}
 	
-	public List<csFaqVo> selectCateName(int cate1) {
+	public List<csFaqVo> selectFaq(int cate1) {
 		
+		List<csFaqVo> articles = new ArrayList<>();
+		try {
+			logger.info("selectFaq...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(CsSql.SELECT_FAQ);
+			psmt.setInt(1, cate1);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				csFaqVo vo = new csFaqVo();
+				vo.setFaqNo(rs.getInt("faqNo"));
+				vo.setCate1(rs.getInt("cate1"));
+				vo.setCate2(rs.getInt("cate2"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setUid(rs.getString("Uid"));
+				vo.setRegip(rs.getString("regip"));
+				vo.setRdate(rs.getString("rdate"));
+				vo.setC1Name(rs.getString("c1Name"));
+				vo.setC2Name(rs.getString("c2Name"));
+				articles.add(vo);
+			}
+			close();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return articles;
+	}
+	
+	public List<csFaqVo> selectCateName(int cate1) {
 		List<csFaqVo> cateName = new ArrayList<>();
 		try {
+			logger.info("selectCateName...");
 			conn = getConnection();
-			psmt = conn.prepareStatement(CsSql.SELECT_CATENAME);
+			psmt = conn.prepareStatement(CsSql.SELECT_CATE_NAME);
 			psmt.setInt(1, cate1);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
@@ -129,13 +160,11 @@ public class CsDao extends DBHelper {
 				cateName.add(vo);
 			}
 			close();
-			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 		return cateName;
 	}
-	
 	// 해빈
 	
 	public List<QnaArticleVo> selectArticles(int cate1, int start) {

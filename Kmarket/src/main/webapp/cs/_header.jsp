@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/Kmarket/cs/css/style.css">
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(function(){
             $('.more').click(function(e){
