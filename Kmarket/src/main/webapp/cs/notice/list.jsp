@@ -13,7 +13,7 @@
                         <aside>
                             <h2>공지사항</h2>
                             <ul>
-                                <li class="${cate eq '1'?'on':'off'}"><a href="/Kmarket/cs/notice/list.do?cate=1">고객서바스</a></li>
+                                <li class="${cate eq '1'?'on':'off'}"><a href="/Kmarket/cs/notice/list.do?cate=1">고객서비스</a></li>
                                 <li class="${cate eq '2'?'on':'off'}"><a href="/Kmarket/cs/notice/list.do?cate=2">안전거래</a></li>
                                 <li class="${cate eq '3'?'on':'off'}"><a href="/Kmarket/cs/notice/list.do?cate=3">위해상품</a></li>
                                 <li class="${cate eq '4'?'on':'off'}"><a href="/Kmarket/cs/notice/list.do?cate=4">이벤트당첨</a></li>

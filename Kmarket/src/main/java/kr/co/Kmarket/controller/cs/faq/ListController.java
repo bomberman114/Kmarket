@@ -32,7 +32,7 @@ public class ListController extends HttpServlet {
 		int cate1 = Integer.parseInt(req.getParameter("cate1"));
 		//int cate2 = Integer.parseInt(req.getParameter("cate2"));
 		
-		csFaqVo cateName = service.selectCateName(cate1);
+		List<csFaqVo> cateName = service.selectCateName(cate1);
 		
 		
 		req.setAttribute("cate1", cate1);

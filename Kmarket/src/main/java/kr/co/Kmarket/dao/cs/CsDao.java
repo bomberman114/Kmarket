@@ -107,25 +107,28 @@ public class CsDao extends DBHelper {
 		return vo;
 	}
 	
-	public csFaqVo selectCateName(int cate1) {
-		csFaqVo vo = null;
+	public List<csFaqVo> selectCateName(int cate1) {
+		
+		List<csFaqVo> cateName = new ArrayList<>();
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(CsSql.SELECT_CATENAME);
 			psmt.setInt(1, cate1);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-				vo = new csFaqVo();
+				csFaqVo vo = new csFaqVo();
+				vo.setCate1(rs.getInt("cate1"));
 				vo.setC1Name(rs.getString("c1Name"));
 				vo.setCate2(rs.getInt("cate2"));
 				vo.setC2Name(rs.getString("c2Name"));
+				cateName.add(vo);
 			}
 			close();
 			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-		return vo;
+		return cateName;
 	}
 	
 	// 해빈
