@@ -585,6 +585,7 @@ position: relative;
     background: #fff;
     text-align: center;
     box-sizing: border-box;
+    height: 55px;
 }
 
 .admin-list > section > table  tr > td:nth-child(1) {width: 20px;}
@@ -678,3 +679,103 @@ position: relative;
 }
 
 /* admin-qna list*/
+
+#admin-qna-list > section > table  tr > td:nth-child(1) {width: 20px;}
+#admin-qna-list > section > table  tr > td:nth-child(2) {width: 60px;}
+#admin-qna-list > section > table  tr > td:nth-child(3) {width: 120px;}
+#admin-qna-list > section > table  tr > td:nth-child(4) {width: 122px;text-align: center;}
+#admin-qna-list > section > table  tr > td:nth-child(5) {width: auto; text-align: left;}
+#admin-qna-list > section > table  tr > td:nth-child(6) {width: 90px;}
+#admin-qna-list > section > table  tr > td:nth-child(7) {width: 90px;}
+#admin-qna-list > section > table  tr > td:nth-child(8) {width: 80px;}
+
+/* admin-qna view, reply */
+
+#admin-cs > .qna nav {
+position: relative;
+    bottom: -10px;
+    height: 36px;
+    margin-bottom: 55px;
+    border-bottom: 1px solid #c0c0c0;
+    box-sizing: border-box;
+}
+
+#admin-cs > .qna nav > h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+#admin-cs > .qna nav > p {
+	float: right;
+    position: relative;
+    bottom: 17px;
+}
+#admin-cs > .qna nav > p > strong {
+    font-weight: bold;
+}
+
+#admin-cs > .qna h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+#admin-cs > .qna article table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid #111;
+}
+#admin-cs > .qna article table tr {
+  width: 100%;
+  height: 26px;
+}
+
+#admin-cs > .qna article table td {
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;        
+}
+
+#admin-cs > .qna article table td:first-child {
+  background-color: #ffffff;
+  width: 100px;
+}
+
+#admin-cs > .qna article table input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-indent: 10px;
+}
+
+#admin-cs > .qna article table select {
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#admin-cs > .qna article table select * {
+  font-size: inherit;
+}
+
+#admin-cs > .qna article table textarea {
+  width: 100%;
+  height: 150px;
+  resize: none;
+  font-size: 16px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+#admin-cs > .qna article div {
+	float: right;
+	margin-top: 20px;
+	
+}
+
+#admin-cs > .qna > .view > article table input {border: 0px;}
+#admin-cs > .qna > .view > article table textarea {border: 0px;}
+#admin-cs > .qna > .reply > article table input {border: 0px;}
+#admin-cs > .qna > .reply > article table textarea {border: 0px;}
+#admin-cs > .qna > .reply > article table #reply {border: 1px solid #959595;}

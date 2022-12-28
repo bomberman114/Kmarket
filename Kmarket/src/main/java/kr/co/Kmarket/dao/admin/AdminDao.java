@@ -1,8 +1,10 @@
 package kr.co.Kmarket.dao.admin;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +13,7 @@ import kr.co.Kmarket.db.DBHelper;
 import kr.co.Kmarket.db.Sql;
 import kr.co.Kmarket.vo.AdminCsFaqCate2Vo;
 import kr.co.Kmarket.vo.AdminCsFaqVo;
+import kr.co.Kmarket.vo.AdminCsQnaCateVo;
 import kr.co.Kmarket.vo.NoticeArticleVo;
 import kr.co.Kmarket.vo.ProductCate1Vo;
 import kr.co.Kmarket.vo.ProductCate2Vo;
@@ -791,7 +794,7 @@ public class AdminDao extends DBHelper {
 				vo.setUid(rs.getString(6));
 				vo.setHit(rs.getInt(7));
 				vo.setRegip(rs.getString(8));
-				vo.setRdate(rs.getString(9));
+				vo.setRdate(rs.getString(9).substring(2,10));
 				
 				System.out.println(rs.getString(9));
 				
@@ -828,7 +831,7 @@ public class AdminDao extends DBHelper {
 				vo.setUid(rs.getString(6));
 				vo.setHit(rs.getInt(7));
 				vo.setRegip(rs.getString(8));
-				vo.setRdate(rs.getString(9));
+				vo.setRdate(rs.getString(9).substring(2,10));
 
 				notices.add(vo);
 
@@ -1011,7 +1014,7 @@ public class AdminDao extends DBHelper {
 				qna.setContent(rs.getString(7));
 				qna.setUid(rs.getString(8));
 				qna.setRegip(rs.getString(9));
-				qna.setRdate(rs.getString(10));
+				qna.setRdate(rs.getString(10).substring(2,10));
 				qna.setC1Name(rs.getString(11));
 				qna.setC2Name(rs.getString(12));
 				
@@ -1052,7 +1055,7 @@ public class AdminDao extends DBHelper {
 				qna.setContent(rs.getString(7));
 				qna.setUid(rs.getString(8));
 				qna.setRegip(rs.getString(9));
-				qna.setRdate(rs.getString(10));
+				qna.setRdate(rs.getString(10).substring(2,10));
 				qna.setC1Name(rs.getString(11));
 				qna.setC2Name(rs.getString(12));
 				
@@ -1096,7 +1099,7 @@ public class AdminDao extends DBHelper {
 				qna.setContent(rs.getString(7));
 				qna.setUid(rs.getString(8));
 				qna.setRegip(rs.getString(9));
-				qna.setRdate(rs.getString(10));
+				qna.setRdate(rs.getString(10).substring(2,10));
 				qna.setC1Name(rs.getString(11));
 				qna.setC2Name(rs.getString(12));
 				
@@ -1112,6 +1115,185 @@ public class AdminDao extends DBHelper {
 		
 		return qnas;
 		
+	}
+	
+	public List<AdminCsQnaCateVo> getQnaCate(int cate1) {
+		
+		List<AdminCsQnaCateVo> cates = new ArrayList<>();
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.GET_QNA_CATE);
+			psmt.setInt(1, cate1);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				AdminCsQnaCateVo cate = new AdminCsQnaCateVo();
+				
+				cate.setCate1(rs.getInt(1));
+				cate.setC1Name(rs.getString(2));
+				cate.setCate2(rs.getInt(3));
+				cate.setC2Name(rs.getString(4));
+				
+				cates.add(cate);
+				
+			}
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return cates;
+	}
+	
+	public int deleteQna(String no) {
+		
+		int result = 0;
+		
+		try {
+			logger.info("deleteQna...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.DELETE_QNA);
+			psmt.setString(1, no);
+			psmt.setString(2, no);
+			
+			result = psmt.executeUpdate();
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+		
+	}
+	
+	
+	public int deleteQnas(String[] checkboxArr) {
+		
+		int result = 0;
+		
+		try {
+			logger.info("deleteQnas...");
+			conn = getConnection();
+			
+			String Sql ="DELETE FROM `km_cs_qna_board` WHERE ";
+				   Sql += "`no`="+checkboxArr[0];
+				   Sql += " or `parent`="+checkboxArr[0];
+				for(int i=1; i < checkboxArr.length; i++) {
+					Sql += " or `no`="+checkboxArr[i];
+					Sql += " or `parent`="+checkboxArr[i];
+				}
+				
+			logger.debug(Sql);
+				
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(Sql);
+			
+			close();
+	
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return result;
+	}
+	
+	public Map<String, Object> selectQna(String no) {
+		
+		Map<String, Object> map = null;
+		QnaArticleVo qna = null;
+		QnaArticleVo reply = null;
+		
+		try {
+			logger.info("selectQna...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_QNA);
+			psmt.setString(1, no);
+			psmt.setString(2, no);
+			
+			rs = psmt.executeQuery();
+			
+			map = new HashMap<>();
+			qna = new QnaArticleVo();
+			reply = new QnaArticleVo();
+			
+			while(rs.next()) {
+				
+				int parent = rs.getInt("parent");
+				
+				if(parent == 0) {
+					
+					qna.setNo(rs.getInt(1));
+					qna.setParent(rs.getInt(2));
+					qna.setComment(rs.getInt(3));
+					qna.setCate1(rs.getInt(4));
+					qna.setCate2(rs.getInt(5));
+					qna.setTitle(rs.getString(6));
+					qna.setContent(rs.getString(7));
+					qna.setUid(rs.getString(8));
+					qna.setRegip(rs.getString(9));
+					qna.setRdate(rs.getString(10).substring(2,10));
+					qna.setC1Name(rs.getString(11));
+					qna.setC2Name(rs.getString(12));
+					
+					map.put("qna", qna);
+					
+				}else {
+					
+					reply.setContent(rs.getString(7));
+					map.put("reply", reply);
+					
+				}
+			}
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return map;
+	}
+	
+	public void insertQnaReply(QnaArticleVo vo) {
+		
+		try {
+			logger.info("insertQnaReply...");
+			conn = getConnection();
+			
+			conn.setAutoCommit(false);
+			
+			PreparedStatement psmt1= conn.prepareStatement(Sql.INSERT_QNA_REPLY);
+			PreparedStatement psmt2= conn.prepareStatement(Sql.UPDATE_QNA_COMMENT_PLUS);
+			
+			psmt1.setInt(1, vo.getParent());
+			psmt1.setInt(2, vo.getCate1());
+			psmt1.setInt(3, vo.getCate2());
+			psmt1.setString(4, vo.getContent());
+			psmt1.setString(5, vo.getUid());
+			psmt1.setString(6, vo.getRegip());
+			
+			psmt2.setInt(1, vo.getParent());
+			
+			psmt1.executeUpdate();
+			psmt2.executeUpdate();
+			
+			conn.commit();
+			
+			psmt1.close();
+			psmt2.close();
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+
 	}
 	
 	
