@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="./_header.jsp"></jsp:include>
       <section id="cs">
         <div class="main">
@@ -6,26 +8,15 @@
           <section class="notice">
             <h1>공지사항<a href="/Kmarket/cs/notice/list.do?cate=1">전체보기</a></h1>
             <ul>
+              <c:forEach var="notice" items="${notices}">
               <li>
-                <a href="#" class="title">[안내] 해외결제 사칭 문자 주의</a>
-                <span class="date">22.10.31</span>
+                <a href="#" class="title">${notice.title}</a>
+                <span class="date">
+				  <fmt:parseDate value="${notice.rdate}" var="rdate" pattern="yyyy-MM-dd HH:mm:ss"/>
+                  <fmt:formatDate value="${rdate}" pattern="yy.MM.dd"/> 
+				</span>
               </li>
-              <li>
-                <a href="#" class="title">[안내] 해외결제 사칭 문자 주의</a>
-                <span class="date">22.10.31</span>
-              </li>
-              <li>
-                <a href="#" class="title">[안내] 해외결제 사칭 문자 주의</a>
-                <span class="date">22.10.31</span>
-              </li>
-              <li>
-                <a href="#" class="title">[안내] 해외결제 사칭 문자 주의</a>
-                <span class="date">22.10.31</span>
-              </li>
-              <li>
-                <a href="#" class="title">[안내] 해외결제 사칭 문자 주의</a>
-                <span class="date">22.10.31</span>
-              </li>
+              </c:forEach>
             </ul>
           </section>
         
@@ -63,41 +54,18 @@
               <a href="/Kmarket/cs/qna/list.do?cate1=1">전체보기</a>
             </h1>
             <ul>
+              <c:forEach var="qna" items="${qnas}">
               <li>
-                <a href="#" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
+                <a href="#" class="title">[${qna.c1Name}] ${qna.title}</a>
                 <p>
-                  <span class="uid">hi0</span>
-                  <span class="date">22.10.31</span>
+                  <span class="uid">${(qna.uid).substring(0,3)}**</span>
+                  <span class="date">
+                  	<fmt:parseDate value="${qna.rdate}" var="rdate" pattern="yyyy-MM-dd HH:mm:ss"/>
+                  	<fmt:formatDate value="${rdate}" pattern="yy.MM.dd"/> 
+                  </span>
                 </p>
               </li>
-              <li>
-                <a href="#" class="title">[쿠폰/이벤트] 스마일포인트는 어디에 사용하나요?</a>
-                <p>
-                  <span class="uid">hi1</span>
-                  <span class="date">22.10.31</span>
-                </p>
-              </li>
-              <li>
-                <a href="#" class="title">[주문/결제] 신용카드 결제 중 오류가 난 경우 어떻게 하나요?</a>
-                <p>
-                  <span class="uid">hi2</span>
-                  <span class="date">22.10.31</span>
-                </p>
-              </li>
-              <li>
-                <a href="#" class="title">[배송] 주문한 상품은 언제 배송되나요?</a>
-                <p>
-                  <span class="uid">hi3</span>
-                  <span class="date">22.10.31</span>
-                </p>
-              </li>
-              <li>
-                <a href="#" class="title">[취소/반품/교환] 주문을 취소하고 싶어요.</a>
-                <p>
-                  <span class="uid">hi4</span>
-                  <span class="date">22.10.31</span>
-                </p>
-              </li>
+              </c:forEach>
             </ul>
             <a href="/Kmarket/cs/qna/write.do?cate1=1" class="ask">문의글 작성 ></a>
           </section>

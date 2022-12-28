@@ -36,22 +36,15 @@
 </script>
         <section id="admin-cs">
             <div class="qna">
-                <section class="reply">
+                <section class="view">
                 	<nav>
-	                    <h3>문의하기 답변</h3>
+	                    <h3>문의하기 보기</h3>
 	                    <p>
 	                        HOME > 고객센터 > <strong>문의하기</strong>
 	                    </p>
 	                </nav>
                     <article>
-                    	<form action="/Kmarket/admin/cs/qna/reply.do" method="post">
-                    		<input type="hidden" name="uid" value="${sessUser.uid}">
-                    		<input type="hidden" name="no" value="${map.qna.no}">
-                    		<input type="hidden" name="pg" value="${pg}">
-                    		<input type="hidden" name="cate1forp" value="${cate1}">
-                    		<input type="hidden" name="cate2forp" value="${cate2}">
-                    		<input type="hidden" name="cate1" value="${map.qna.cate1}">
-                    		<input type="hidden" name="cate2" value="${map.qna.cate2}">
+                        <input type="hidden" name="no" value="${map.qna.no}">
                             <table>
                                 <tr>
                                     <td>문의유형</td>
@@ -66,22 +59,26 @@
                                 <tr>
                                     <td>문의내용</td>
                                     <td>
-                                        <textarea name="qnacontent" readonly>${map.qna.content}</textarea>
+                                        <textarea name="content" readonly>${map.qna.content}</textarea>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>답변</td>
                                     <td>
-                                   		<textarea name="content" id="reply"></textarea>
+                                    	<c:if test="${map.qna.comment eq 0}">
+                                    		<textarea name="content" readonly>등록된 답변이 없습니다.</textarea>
+                                    	</c:if>
+                                    	<c:if test="${map.qna.comment ne 0}">
+                                    		<textarea name="content" readonly>${map.reply.content}</textarea>
+                                    	</c:if>
                                     </td>
                                 </tr>
                             </table>
                             <div>
                             	<a href="#" class="btn remove">삭제하기</a>
-                            	<input type="submit" class="btn btnComplete" value="답변등록">
+                            	<a href="/Kmarket/admin/cs/qna/reply.do?cate1=${cate1}&cate2=${cate2}&no=${map.qna.no}&pg=${pg}" class="btn reply">답변하기</a>
                                 <a href="/Kmarket/admin/cs/qna/list.do?cate1=${cate1}&cate2=${cate2}&pg=${pg}" class="btn btnCancle">목록이동</a>
                             </div>
-                    	</form>
                     </article>
                 </section>
             </div>

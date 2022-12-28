@@ -185,8 +185,8 @@ public class Sql {
 
 	
 	public static final String SELECT_NOTICE = "SELECT * FROM `km_cs_notice_board` WHERE `no` = ?";
-	public static final String SELECT_NOTICES = "SELECT * FROM `km_cs_notice_board` ORDER BY `no` DESC LIMIT ?,10;";
-	public static final String SELECT_NOTICES_BY_CATE = "SELECT * FROM `km_cs_notice_board` WHERE `cate`=? ORDER BY `no` DESC LIMIT ?,10;";
+	public static final String SELECT_NOTICES = "SELECT * FROM `km_cs_notice_board` ORDER BY `no` DESC LIMIT ?,10";
+	public static final String SELECT_NOTICES_BY_CATE = "SELECT * FROM `km_cs_notice_board` WHERE `cate`=? ORDER BY `no` DESC LIMIT ?,10";
 
 	public static final String DELETE_NOTICE = "DELETE FROM `km_cs_notice_board` WHERE `no`=?";
 	
@@ -194,6 +194,43 @@ public class Sql {
 	
 	public static final String UPDATE_NOTICE = "UPDATE `km_cs_notice_board` SET `cate`=?, `cateName`=?, `title`=?, `content`=? WHERE `no`=?";
 	
+	// admin - qna
+	public static final String SELECT_COUNT_QNA_TOTAL = "SELECT COUNT(`no`) FROM `km_cs_qna_board` WHERE `parent`=0";
+	public static final String SELECT_COUNT_QNA_TOTAL_FOR_CATE = "SELECT COUNT(`no`) FROM `km_cs_qna_board` WHERE `parent`=0 AND `cate1`=?;";
+	public static final String SELECT_COUNT_QNA_TOTAL_FOR_CATE2 ="SELECT COUNT(`no`) FROM `km_cs_qna_board` WHERE `parent`=0 AND `cate1`=? AND `cate2`=?";
+	
+	public static final String SELECT_QNAS = "SELECT a.*, b.c1Name, b.c2Name FROM `km_cs_qna_board` AS a "
+											+ "JOIN `km_cs_qna_cate` AS b "
+											+ "ON a.cate1 = b.cate1 AND a.cate2 = b.cate2 "
+											+ "WHERE `parent`= 0 ORDER BY `no` DESC LIMIT ?,10; ";
+	
+	public static final String SELECT_QNAS_BY_CATE1 = "SELECT a.*, b.c1Name, b.c2Name FROM `km_cs_qna_board` AS a "
+													+"JOIN `km_cs_qna_cate` AS b "
+													+"ON a.cate1 = b.cate1 AND a.cate2 = b.cate2 "
+													+"WHERE `parent`= 0 AND a.`cate1`=? ORDER BY `no` DESC LIMIT ?,10 ";
+	
+	public static final String SELECT_QNAS_BY_CATE2 = "SELECT a.*, b.c1Name, b.c2Name FROM `km_cs_qna_board` AS a "
+													+"JOIN `km_cs_qna_cate` AS b "
+													+"ON a.cate1 = b.cate1 AND a.cate2 = b.cate2 "
+													+"WHERE `parent`= 0 AND a.`cate1`=? AND a.`cate2`=? ORDER BY `no` DESC LIMIT ?,10";
+	
+	public static final String SELECT_QNA ="SELECT a.*, b.c1Name, b.c2Name FROM `km_cs_qna_board` AS a "
+										+"JOIN `km_cs_qna_cate` AS b "
+										+"ON a.cate1 = b.cate1 AND a.cate2 = b.cate2 "
+										+"WHERE a.`no`=? OR a.`parent`=?";
+	
+	public static final String DELETE_QNA ="DELETE FROM `km_cs_qna_board` WHERE `no`=? OR `parent`=?";
+	
+	public static final String INSERT_QNA_REPLY ="INSERT INTO `km_cs_qna_board` SET "
+												+"`parent`=?, "
+												+"`cate1`=?, "
+												+"`cate2`=?, "
+												+"`content`=?, "
+												+"`uid`=?, "
+												+"`regip`=?, "
+												+"`rdate`=NOW()";
+												
+	public static final String UPDATE_QNA_COMMENT_PLUS = "UPDATE `km_cs_qna_board` SET `comment` = `comment` + 1 WHERE `no`=?";
 	
 	// admin - Faq
 	public static final String SELECT_COUNT_FAQ_TOTAL = "SELECT COUNT(`no`) FROM `km_cs_faq_board`";
@@ -202,6 +239,6 @@ public class Sql {
 
 	public static final String SELECT_ADMIN_FAQ_CATE2 =  "SELECT * FROM `km_ca_faq_cate2` WHERE `cate1`=?";
 
-
+	public static final String GET_QNA_CATE ="SELECT * FROM `km_cs_qna_cate` WHERE `cate1` = ?";
 	
 }

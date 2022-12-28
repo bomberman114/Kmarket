@@ -569,63 +569,64 @@ position: relative;
 
 
 /* admin-cs notice list */
-#admin-notice-list {}
-#admin-notice-list > section > div  {
+.admin-list {}
+.admin-list > section > div  {
     margin-bottom: 10px;
 }
 
-#admin-notice-list > section > table  {
+.admin-list > section > table  {
     border-top: 2px solid #8798a3;
 }
-#admin-notice-list > section > table  tr > th{
+.admin-list > section > table  tr > th{
     padding: 10px 0;
     background: #f6f6f6;
 }
-#admin-notice-list > section > table  tr > td {
+.admin-list > section > table  tr > td {
     background: #fff;
     text-align: center;
     box-sizing: border-box;
+    height: 55px;
 }
 
-#admin-notice-list > section > table  tr > td:nth-child(1) {width: 20px;}
-#admin-notice-list > section > table  tr > td:nth-child(2) {width: 80px;}
-#admin-notice-list > section > table  tr > td:nth-child(3) {width: 80px;}
-#admin-notice-list > section > table  tr > td:nth-child(4) {width: auto; text-align: left;}
-#admin-notice-list > section > table  tr > td:nth-child(5) {width: 80px;}
-#admin-notice-list > section > table  tr > td:nth-child(6) {width: 90px;}
-#admin-notice-list > section > table  tr > td:nth-child(7) {width: 90px;}
+.admin-list > section > table  tr > td:nth-child(1) {width: 20px;}
+.admin-list > section > table  tr > td:nth-child(2) {width: 80px;}
+.admin-list > section > table  tr > td:nth-child(3) {width: 80px;}
+.admin-list > section > table  tr > td:nth-child(4) {width: auto; text-align: left;}
+.admin-list > section > table  tr > td:nth-child(5) {width: 80px;}
+.admin-list > section > table  tr > td:nth-child(6) {width: 90px;}
+.admin-list > section > table  tr > td:nth-child(7) {width: 90px;}
 
 
-#admin-notice-list > section > table img.thumb {width: 60px;}
+.admin-list > section > table img.thumb {width: 60px;}
 
-#admin-notice-list > section input[type=button] {
+.admin-list > section input[type=button] {
     float: left;
     width: 100px;
     margin-top: 10px;
 }
-#admin-notice-list > section input[type = submit] {
+.admin-list > section input[type = submit] {
 	width: 50px;
 	padding: 6px;
 }
 
-#admin-notice-list .paging {
+.admin-list .paging {
     width: 100%;
     padding: 30px 0;
     text-align: center;
 }
 
-#admin-notice-list .paging > span > a {
+.admin-list .paging > span > a {
     color: #777;
     font-family: "돋움", Dotum, Tahoma, sans-serif;
     font-size: 11px;
     letter-spacing: -1px;
 }
   
-#admin-notice-list .paging > span > a:hover {
+.admin-list .paging > span > a:hover {
     text-decoration: underline;
 }
   
-#admin-notice-list .paging > .num > a {
+.admin-list .paging > .num > a {
     display: inline-block;
     min-width: 14px;
     margin: 0 2px;
@@ -638,11 +639,11 @@ position: relative;
     text-align: center;
     text-decoration: none;
 }
-#admin-notice-list .paging > .num > a:hover {
+.admin-list .paging > .num > a:hover {
     border: 1px solid #454c5f;
     text-decoration: none;
 }
-#admin-notice-list .paging > .num > a.on {
+.admin-list .paging > .num > a.on {
     color: #fe434c;
     font-weight: bold;
 }
@@ -676,3 +677,105 @@ position: relative;
 #admin-cs > .notice > .view > article table textarea {
 	border: 0px;
 }
+
+/* admin-qna list*/
+
+#admin-qna-list > section > table  tr > td:nth-child(1) {width: 20px;}
+#admin-qna-list > section > table  tr > td:nth-child(2) {width: 60px;}
+#admin-qna-list > section > table  tr > td:nth-child(3) {width: 120px;}
+#admin-qna-list > section > table  tr > td:nth-child(4) {width: 122px;text-align: center;}
+#admin-qna-list > section > table  tr > td:nth-child(5) {width: auto; text-align: left;}
+#admin-qna-list > section > table  tr > td:nth-child(6) {width: 90px;}
+#admin-qna-list > section > table  tr > td:nth-child(7) {width: 90px;}
+#admin-qna-list > section > table  tr > td:nth-child(8) {width: 80px;}
+
+/* admin-qna view, reply */
+
+#admin-cs > .qna nav {
+position: relative;
+    bottom: -10px;
+    height: 36px;
+    margin-bottom: 55px;
+    border-bottom: 1px solid #c0c0c0;
+    box-sizing: border-box;
+}
+
+#admin-cs > .qna nav > h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+#admin-cs > .qna nav > p {
+	float: right;
+    position: relative;
+    bottom: 17px;
+}
+#admin-cs > .qna nav > p > strong {
+    font-weight: bold;
+}
+
+#admin-cs > .qna h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+#admin-cs > .qna article table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid #111;
+}
+#admin-cs > .qna article table tr {
+  width: 100%;
+  height: 26px;
+}
+
+#admin-cs > .qna article table td {
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;        
+}
+
+#admin-cs > .qna article table td:first-child {
+  background-color: #ffffff;
+  width: 100px;
+}
+
+#admin-cs > .qna article table input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-indent: 10px;
+}
+
+#admin-cs > .qna article table select {
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#admin-cs > .qna article table select * {
+  font-size: inherit;
+}
+
+#admin-cs > .qna article table textarea {
+  width: 100%;
+  height: 150px;
+  resize: none;
+  font-size: 16px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+#admin-cs > .qna article div {
+	float: right;
+	margin-top: 20px;
+	
+}
+
+#admin-cs > .qna > .view > article table input {border: 0px;}
+#admin-cs > .qna > .view > article table textarea {border: 0px;}
+#admin-cs > .qna > .reply > article table input {border: 0px;}
+#admin-cs > .qna > .reply > article table textarea {border: 0px;}
+#admin-cs > .qna > .reply > article table #reply {border: 1px solid #959595;}
