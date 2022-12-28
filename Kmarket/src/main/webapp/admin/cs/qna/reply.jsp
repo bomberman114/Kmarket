@@ -78,7 +78,7 @@
                             </table>
                             <div>
                             	<a href="#" class="btn remove">삭제하기</a>
-                            	<input type="submit" class="btn btnComplete" value="답변하기">
+                            	<input type="submit" class="btn btnComplete" value="답변등록">
                                 <a href="/Kmarket/admin/cs/qna/list.do?cate1=${cate1}&cate2=${cate2}&pg=${pg}" class="btn btnCancle">목록이동</a>
                             </div>
                     	</form>
