@@ -47,7 +47,8 @@ public class CsSql {
 	public static final String SELECT_CATENAME = "select a.cate1, a.c1Name, b.cate2, b.c2Name from `km_cs_faq_cate1` as a "
 												+ "join `km_cs_faq_cate2` as b "
 												+ "on a.cate1 = b.cate1 "
-												+ "where cate1 = ?";
+
+												+ "where a.cate1 = ?";
 
 }
 
