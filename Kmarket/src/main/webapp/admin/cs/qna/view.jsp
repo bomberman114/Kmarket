@@ -76,7 +76,7 @@
                             </table>
                             <div>
                             	<a href="#" class="btn remove">삭제하기</a>
-                            	<a href="/Kmarket/admin/cs/qna/reply.do?cate1=${cate}&cate1=${cate2}&no=${map.qna.no}&pg=${pg}" class="btn reply">답변하기</a>
+                            	<a href="/Kmarket/admin/cs/qna/reply.do?cate1=${cate1}&cate2=${cate2}&no=${map.qna.no}&pg=${pg}" class="btn reply">답변하기</a>
                                 <a href="/Kmarket/admin/cs/qna/list.do?cate1=${cate1}&cate2=${cate2}&pg=${pg}" class="btn btnCancle">목록이동</a>
                             </div>
                     </article>

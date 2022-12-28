@@ -1,5 +1,6 @@
 package kr.co.Kmarket.dao.admin;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -1258,6 +1259,41 @@ public class AdminDao extends DBHelper {
 		}
 		
 		return map;
+	}
+	
+	public void insertQnaReply(QnaArticleVo vo) {
+		
+		try {
+			logger.info("insertQnaReply...");
+			conn = getConnection();
+			
+			conn.setAutoCommit(false);
+			
+			PreparedStatement psmt1= conn.prepareStatement(Sql.INSERT_QNA_REPLY);
+			PreparedStatement psmt2= conn.prepareStatement(Sql.UPDATE_QNA_COMMENT_PLUS);
+			
+			psmt1.setInt(1, vo.getParent());
+			psmt1.setInt(2, vo.getCate1());
+			psmt1.setInt(3, vo.getCate2());
+			psmt1.setString(4, vo.getContent());
+			psmt1.setString(5, vo.getUid());
+			psmt1.setString(6, vo.getRegip());
+			
+			psmt2.setInt(1, vo.getParent());
+			
+			psmt1.executeUpdate();
+			psmt2.executeUpdate();
+			
+			conn.commit();
+			
+			psmt1.close();
+			psmt2.close();
+			close();
+			
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+
 	}
 	
 	

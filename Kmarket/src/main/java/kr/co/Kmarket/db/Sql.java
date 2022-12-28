@@ -221,6 +221,16 @@ public class Sql {
 	
 	public static final String DELETE_QNA ="DELETE FROM `km_cs_qna_board` WHERE `no`=? OR `parent`=?";
 	
+	public static final String INSERT_QNA_REPLY ="INSERT INTO `km_cs_qna_board` SET "
+												+"`parent`=?, "
+												+"`cate1`=?, "
+												+"`cate2`=?, "
+												+"`content`=?, "
+												+"`uid`=?, "
+												+"`regip`=?, "
+												+"`rdate`=NOW()";
+												
+	public static final String UPDATE_QNA_COMMENT_PLUS = "UPDATE `km_cs_qna_board` SET `comment` = `comment` + 1 WHERE `no`=?";
 	
 	// admin - Faq
 	public static final String SELECT_COUNT_FAQ_TOTAL = "SELECT COUNT(`no`) FROM `km_cs_faq_board`";

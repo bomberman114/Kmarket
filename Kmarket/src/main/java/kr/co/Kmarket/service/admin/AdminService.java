@@ -505,4 +505,8 @@ public enum AdminService {
 		return dao.selectQna(no);
 	}
 	
+	public void insertQnaReply(QnaArticleVo vo) {
+		dao.insertQnaReply(vo);
+	}
+	
 }

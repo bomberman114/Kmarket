@@ -776,3 +776,6 @@ position: relative;
 
 #admin-cs > .qna > .view > article table input {border: 0px;}
 #admin-cs > .qna > .view > article table textarea {border: 0px;}
+#admin-cs > .qna > .reply > article table input {border: 0px;}
+#admin-cs > .qna > .reply > article table textarea {border: 0px;}
+#admin-cs > .qna > .reply > article table #reply {border: 1px solid #959595;}
