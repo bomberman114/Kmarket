@@ -44,11 +44,16 @@ public class CsSql {
 
 	public static final String SELECT_ARTITCLE_NOTICE = "select * from `km_cs_notice_board` where `no` = ?";
 	
-	public static final String SELECT_CATENAME = "select a.cate1, a.c1Name, b.cate2, b.c2Name from `km_cs_faq_cate1` as a "
-												+ "join `km_cs_faq_cate2` as b "
-												+ "on a.cate1 = b.cate1 "
-
-												+ "where a.cate1 = ?";
+	public static final String SELECT_FAQ = "select a.*, b.c1Name, c.c2Name from `km_cs_faq_board` as a "
+											+ "join `km_cs_faq_cate1` as b "
+											+ "on a.cate1 = b.cate1 "
+											+ "join `km_cs_faq_cate2` as c "
+											+ "on a.cate1 = c.cate1 and a.cate2 = c.cate2 "
+											+ "where a.cate1 = ?";
+	
+	public static final String SELECT_CATE_NAME = "select a.cate1, a.c1Name, b.cate2, b.c2Name "
+												+ "from `km_cs_faq_cate1` as a join `km_cs_faq_cate2` as b "
+												+ "on a.cate1 = b.cate1 where a.cate1 = ?";
 
 }
 
