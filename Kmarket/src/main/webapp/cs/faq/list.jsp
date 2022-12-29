@@ -14,7 +14,7 @@
 
           if(isVisible && item.css('display') == 'none'){
         	  item.slideDown(300);
-        	  $(this.find('> a').text('간단히보기'));
+        	  $(this).find('> a').text('간단히보기');
         	  
           }else if(isVisible && item.css('display') == 'list-item'){
         	  item.slideUp(300);
