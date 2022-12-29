@@ -10,7 +10,7 @@
             <ul>
               <c:forEach var="notice" items="${notices}">
               <li>
-                <a href="#" class="title">${notice.title}</a>
+                <a href="/Kmarket/cs/notice/view.do?cate=${notice.cate}&no=${notice.no}" class="title">${notice.title}</a>
                 <span class="date">
 				  <fmt:parseDate value="${notice.rdate}" var="rdate" pattern="yyyy-MM-dd HH:mm:ss"/>
                   <fmt:formatDate value="${rdate}" pattern="yy.MM.dd"/> 
@@ -56,7 +56,7 @@
             <ul>
               <c:forEach var="qna" items="${qnas}">
               <li>
-                <a href="#" class="title">[${qna.c1Name}] ${qna.title}</a>
+                <a href="/Kmarket/cs/qna/view.do?cate1=${qna.cate1}&no=${qna.no}" class="title">[${qna.c1Name}] ${qna.title}</a>
                 <p>
                   <span class="uid">${(qna.uid).substring(0,3)}**</span>
                   <span class="date">

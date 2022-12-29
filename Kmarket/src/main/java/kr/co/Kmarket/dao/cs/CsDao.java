@@ -212,6 +212,8 @@ public class CsDao extends DBHelper {
 				
 				notice.setTitle(rs.getString("title"));
 				notice.setRdate(rs.getString("rdate"));
+				notice.setCate(rs.getInt("cate"));
+				notice.setNo(rs.getInt("no"));
 				
 				notices.add(notice);		
 			}
@@ -242,6 +244,8 @@ public class CsDao extends DBHelper {
 				qna.setRdate(rs.getString("rdate"));
 				qna.setC1Name(rs.getString("c1Name"));
 				qna.setUid(rs.getString("uid"));
+				qna.setNo(rs.getInt("no"));
+				qna.setCate1(rs.getString("cate1"));
 				
 				qnas.add(qna);		
 			}
