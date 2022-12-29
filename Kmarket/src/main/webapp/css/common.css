@@ -567,3 +567,10 @@
     font-size: 0;
     cursor: pointer;
   }
+  
+  
+ .bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto {
+    position: absolute;
+    bottom: -22px;
+    width: 100%;
+}
