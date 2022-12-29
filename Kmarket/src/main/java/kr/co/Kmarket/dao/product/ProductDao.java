@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import kr.co.Kmarket.db.DBHelper;
 import kr.co.Kmarket.db.ProductSql;
+import kr.co.Kmarket.db.Sql;
 import kr.co.Kmarket.vo.ProductCartVo;
 import kr.co.Kmarket.vo.ProductOrderVo;
 import kr.co.Kmarket.vo.ProductVo;
@@ -517,6 +518,25 @@ public class ProductDao extends DBHelper {
 			logger.error(e.getMessage());
 		}
 		return ordTotPrice;
+	}
+
+	public int deleteCartProductlist(HashMap<Integer, Integer> map) {
+		int result = 0;
+		try {
+			for (int i = 1; i < map.size() + 1; i++) {
+				conn = getConnection();
+				psmt = conn.prepareStatement(Sql.DELETE_CART_PRODUCT_LIST);
+				psmt.setInt(1, map.get(i));
+				result = psmt.executeUpdate();
+				// psmt.executeQuery();
+			}
+			close();
+			// result=1;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+
 	}
 	
 }

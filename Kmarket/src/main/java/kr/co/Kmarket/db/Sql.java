@@ -240,5 +240,7 @@ public class Sql {
 	public static final String SELECT_ADMIN_FAQ_CATE2 =  "SELECT * FROM `km_ca_faq_cate2` WHERE `cate1`=?";
 
 	public static final String GET_QNA_CATE ="SELECT * FROM `km_cs_qna_cate` WHERE `cate1` = ?";
+
+	public static final String DELETE_CART_PRODUCT_LIST = "DELETE  FROM km_product_cart WHERE `cartNo` = ? ";
 	
 }

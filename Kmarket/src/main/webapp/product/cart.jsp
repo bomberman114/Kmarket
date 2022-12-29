@@ -54,10 +54,64 @@ $(function(){
 		});
 		
 	});
-	
-	
-	
 });
+$(document).on('click', '.listremove', function(e){
+	e.preventDefault();
+    var obj_length = document.getElementsByName("chkProdNo").length;
+	let isDeleteOk = confirm("정말 상품들을 삭제하시겠습니까?");
+	
+	if (isDeleteOk){
+	//alert("하이2");
+	console.log(obj_length);
+	let cartlist = new Array();
+	   for (var i=0; i<obj_length; i++) {
+            if (document.getElementsByName("chkProdNo")[i].checked == true) {
+                //alert(document.getElementsByName("chkProdNo")[i].value);
+    		var cartNo = document.getElementsByName("chkProdNo")[i].value
+    		cartlist.push(cartNo);
+            }
+	   }
+		console.log(cartlist);
+			
+		//console.log(carts);
+		console.log("카트 리스트");
+		
+	//alert("하이5");
+	
+	$.ajax({
+		url: '/Kmarket/product/delete.do',
+		method: 'POST',
+		traditional: true,
+		data: {"cartlist" : cartlist},
+		dataType: 'json',
+		success: function(data){
+			console.log(data.result);
+			if(data.result == 1){
+				alert(data.result);
+				alert('상품들이 삭제되었습니다.');
+				location.href="/Kmarket/product/cart.do";
+			}else if(data.result == null ){
+				alert(data.result);
+				alert('result값이 없습니다.');
+				location.href="/Kmarket/product/cart.do";
+			}
+		}
+		
+	});
+	}
+});
+//체크박스
+$(document).on('click', 'input[name=all]', function(e){
+	
+	let chkList = $('input[name=chkProdNo]');		
+	
+	if($(this).is(":checked")){
+		chkList.prop("checked", true);
+	}else{
+		chkList.prop("checked", false);
+	}
+});
+
 
 </script>
 
@@ -145,7 +199,7 @@ $(function(){
                   
                 </tbody>
                 </table>
-                <input type="button" name="del" value="선택삭제">
+                 <input type="button" value="선택삭제" class="listremove" />
 
                 <!-- 장바구니 전체합계 -->
                 <div class="total">

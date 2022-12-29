@@ -119,5 +119,11 @@ public enum ProductService {
 	public int selectComplete(String ordNo) {
 		return dao.selectComplete(ordNo);
 	}
+
+
+	public int deleteCartProductlist(HashMap<Integer, Integer> map) {
+		int result = dao.deleteCartProductlist(map);
+		return result;
+	}
 	
 }
