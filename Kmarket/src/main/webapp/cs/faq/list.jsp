@@ -61,7 +61,7 @@
 			                	
 				                <c:forEach var="article" items="${articles}">
 					                <c:if test="${cate.cate2 eq article.cate2}">
-						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						                <li><a href="/Kmarket/cs/faq/view.do?cate1=1&faqNo=${article.faqNo}"><span>Q.</span>${article.title}</a></li>
 						            </c:if>
 				                </c:forEach>
 				                
@@ -84,7 +84,7 @@
 			                	
 				                <c:forEach var="article" items="${articles}">
 					                <c:if test="${cate.cate2 eq article.cate2}">
-						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						                <li><a href="/Kmarket/cs/faq/view.do?cate1=2&faqNo=${article.faqNo}"><span>Q.</span>${article.title}</a></li>
 						            </c:if>
 				                </c:forEach>
 				                
@@ -107,7 +107,7 @@
 			                	
 				                <c:forEach var="article" items="${articles}">
 					                <c:if test="${cate.cate2 eq article.cate2}">
-						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						                <li><a href="/Kmarket/cs/faq/view.do?cate1=3&faqNo=${article.faqNo}"><span>Q.</span>${article.title}</a></li>
 						            </c:if>
 				                </c:forEach>
 				                
@@ -130,7 +130,7 @@
 			                	
 				                <c:forEach var="article" items="${articles}">
 					                <c:if test="${cate.cate2 eq article.cate2}">
-						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						                <li><a href="/Kmarket/cs/faq/view.do?cate1=4&faqNo=${article.faqNo}"><span>Q.</span>${article.title}</a></li>
 						            </c:if>
 				                </c:forEach>
 				                
@@ -153,7 +153,7 @@
 			                	
 				                <c:forEach var="article" items="${articles}">
 					                <c:if test="${cate.cate2 eq article.cate2}">
-						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						                <li><a href="/Kmarket/cs/faq/view.do?cate1=5&faqNo=${article.faqNo}"><span>Q.</span>${article.title}</a></li>
 						            </c:if>
 				                </c:forEach>
 				                
@@ -176,7 +176,7 @@
 			                	
 				                <c:forEach var="article" items="${articles}">
 					                <c:if test="${cate.cate2 eq article.cate2}">
-						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						                <li><a href="/Kmarket/cs/faq/view.do?cate1=6&faqNo=${article.faqNo}"><span>Q.</span>${article.title}</a></li>
 						            </c:if>
 				                </c:forEach>
 				                
@@ -199,7 +199,7 @@
 			                	
 				                <c:forEach var="article" items="${articles}">
 					                <c:if test="${cate.cate2 eq article.cate2}">
-						                <li><a href="#"><span>Q.</span>${article.title}</a></li>
+						                <li><a href="/Kmarket/cs/faq/view.do?cate1=7&faqNo=${article.faqNo}"><span>Q.</span>${article.title}</a></li>
 						            </c:if>
 				                </c:forEach>
 				                

@@ -9,10 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import kr.co.Kmarket.service.cs.CsService;
+import kr.co.Kmarket.vo.csFaqVo;
+
 @WebServlet("/cs/faq/view.do")
 public class ViewController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private CsService service = CsService.INSTANCE;
+	Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Override
 	public void init() throws ServletException {}
@@ -20,9 +28,16 @@ public class ViewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		int cate1;
-		int cate2;
-		int faqNo = Integer.parseInt(String.valueOf(req.getAttribute("faqNo")));
+		logger.info("viewControllerDoGet...");
+		
+		int faqNo = Integer.parseInt(req.getParameter("faqNo"));
+		int cate1 = Integer.parseInt(req.getParameter("cate1"));
+		
+		csFaqVo article = service.selectArticleFaq(faqNo);
+		
+		req.setAttribute("article", article);
+		req.setAttribute("cate1", cate1);
+		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/faq/view.jsp");
 		dispatcher.forward(req, resp);

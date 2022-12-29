@@ -165,6 +165,34 @@ public class CsDao extends DBHelper {
 		}
 		return cateName;
 	}
+	
+	public csFaqVo selectFaqArticle(int faqNo) {
+		csFaqVo vo = null;
+		try {
+			logger.info("selectFaqArticle...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(CsSql.SELECT_FAQ_ARTICLE);
+			psmt.setInt(1, faqNo);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				vo = new csFaqVo();
+				vo.setFaqNo(rs.getInt("faqNo"));
+				vo.setCate1(rs.getInt("cate1"));
+				vo.setCate2(rs.getInt("cate2"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setUid(rs.getString("uid"));
+				vo.setRegip(rs.getString("regip"));
+				vo.setRdate(rs.getString("rdate"));
+			}
+			close();
+					
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return vo;
+	}
+	
 	// 해빈
 	
 	public List<QnaArticleVo> selectArticles(int cate1, int start) {

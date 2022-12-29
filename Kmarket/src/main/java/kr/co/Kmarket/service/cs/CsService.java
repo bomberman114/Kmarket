@@ -39,6 +39,10 @@ public enum CsService {
 		return dao.selectCateName(cate1);
 	}
 	
+	public csFaqVo selectArticleFaq(int faqNo) {
+		return dao.selectFaqArticle(faqNo);
+	}
+	
 	
 	// 해빈
 	
