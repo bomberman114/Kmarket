@@ -23,7 +23,7 @@
 					<a href="/Kmarket/index.do">메인페이지 |</a>
                     <a href="/Kmarket/admin/index.do">관리자 HOME |</a>
 		            <a href="/Kmarket/member/logout.do">로그아웃 |</a>
-                   	<a href="#">고객센터</a>
+                   	<a href="/Kmarket/cs/index.do">고객센터</a>
                 </p>
             </div>
         </header>

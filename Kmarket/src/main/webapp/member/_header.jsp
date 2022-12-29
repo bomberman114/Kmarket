@@ -16,6 +16,15 @@
     <link rel="stylesheet" href="/Kmarket/css/common.css"/>
     <link rel="stylesheet" href="/Kmarket/member/css/member.css"/>
 </head>
+<script>
+	$(function(){
+		$('.cart').click(function(e){
+			e.preventDefault();
+			alert('로그인을 하십시오.');
+			return;
+		});
+	});
+</script>
 <body>
     <div id="wrapper">
         <header>
@@ -31,7 +40,7 @@
 			            </c:otherwise>
             		</c:choose>
                     <a href="#">마이페이지</a>
-                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
+                    <a href="#" class="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
                 </div>
             </div>
             <div class="logo">
