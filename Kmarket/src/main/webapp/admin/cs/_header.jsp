@@ -23,7 +23,7 @@
 					<a href="/Kmarket/index.do">메인페이지 |</a>
                     <a href="/Kmarket/admin/index.do">관리자 HOME |</a>
 		            <a href="/Kmarket/member/logout.do">로그아웃 |</a>
-                   	<a href="#">고객센터</a>
+                   	<a href="/Kmarket/cs/index.do">고객센터</a>
                 </p>
             </div>
         </header>
@@ -75,7 +75,7 @@
                         <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>고객센터</a>
                         <ol>
                             <li><a href="/Kmarket/admin/cs/notice/list.do?cate=0">공지사항</a></li>
-                            <li><a href="/Kmarket/admin/cs/faq/list.do">자주묻는 질문</a></li>
+                            <li><a href="/Kmarket/admin/cs/faq/list.do?cate1=0">자주묻는 질문</a></li>
                             <li><a href="/Kmarket/admin/cs/qna/list.do?cate1=0&cate2=0">고객센터</a></li>
                         </ol>
                     </li>

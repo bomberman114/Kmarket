@@ -36,9 +36,6 @@ public class ListController extends HttpServlet {
 		List<csFaqVo> articles = service.selectFaq(cate1);
 		List<csFaqVo> cateNames = service.selectCateName(cate1);
 		
-		logger.debug("articles : " + articles);
-		logger.debug("cateNames : " + cateNames);
-		
 		req.setAttribute("cate1", cate1);
 		req.setAttribute("articles", articles);
 		req.setAttribute("cateNames", cateNames);
