@@ -67,7 +67,7 @@ public class LoginCheckFilter implements Filter {
 			if (sessUser != null) {
 				//logger.debug("here5");
 				((HttpServletResponse) response).sendRedirect("/Kmarket/index.do");
-				//((HttpServletResponse) response).sendRedirect("/Kmarket/..");
+				((HttpServletResponse) response).sendRedirect("/Kmarket/..");
 				return;
 			}
 		}

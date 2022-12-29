@@ -31,6 +31,10 @@ public enum CsService {
 	public NoticeArticleVo selectArticleNotice(int no) {
 		return dao.selectArticleNotice(no);
 	}
+	public List<csFaqVo> selectFaq(int cate1) {
+		return dao.selectFaq(cate1);
+	}
+	
 	public List<csFaqVo> selectCateName(int cate1) {
 		return dao.selectCateName(cate1);
 	}
