@@ -199,7 +199,7 @@ $(document).on('click', 'input[name=all]', function(e){
                   
                 </tbody>
                 </table>
-                 <input type="button" value="선택삭제" class="listremove" />
+                 <input type="button" value="선택삭제" class="listremove" name="del" />
 
                 <!-- 장바구니 전체합계 -->
                 <div class="total">

@@ -86,6 +86,17 @@ $(document).on('click', '.listremove', function(e){
 	}
 });
 
+//체크박스
+$(document).on('click', 'input[name=all]', function(e){
+	
+	let chkList = $('input[name=chckProdNo]');		
+	
+	if($(this).is(":checked")){
+		chkList.prop("checked", true);
+	}else{
+		chkList.prop("checked", false);
+	}
+});
 
 </script>
 
