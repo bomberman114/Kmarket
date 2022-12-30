@@ -29,14 +29,18 @@ public class DBHelper {
 
 	public void close() {
 		try {
-			if (rs != null)
+			if (rs != null) {
 				rs.close();
-			if (stmt != null)
+			}
+			if (stmt != null) {
 				stmt.close();
-			if (psmt != null)
+			}
+			if (psmt != null) {
 				psmt.close();
-			if (conn != null)
+			}
+			if (conn != null) {
 				conn.close();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

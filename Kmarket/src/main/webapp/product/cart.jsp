@@ -87,12 +87,12 @@ $(document).on('click', '.listremove', function(e){
 		success: function(data){
 			console.log(data.result);
 			if(data.result == 1){
-				alert(data.result);
+				//alert(data.result);
 				alert('상품들이 삭제되었습니다.');
 				location.href="/Kmarket/product/cart.do";
 			}else if(data.result == null ){
-				alert(data.result);
-				alert('result값이 없습니다.');
+				//alert(data.result);
+				//alert('result값이 없습니다.');
 				location.href="/Kmarket/product/cart.do";
 			}
 		}
@@ -132,7 +132,7 @@ $(document).on('click', 'input[name=all]', function(e){
                     <thead>
                     <tr>
                         <th><input type="checkbox" name="all"></th>
-                        <th>상품명</th>
+                        <th width="400px">상품명</th>
                         <th>총수량</th>
                         <th>판매가</th>
                         <th>할인</th>
@@ -165,7 +165,7 @@ $(document).on('click', 'input[name=all]', function(e){
                         <input type="hidden" class="thumb3" value="${cart.thumb3}" name="thumb3"/>
                             <article>
                                 <a href="/Kmarket/product/view.do?cate1=${cart.prodCate1}&cate2=${cart.prodCate2}&prodNo=${cart.prodNo}">
-                              <img src="<c:url value='${cart.detail}'/>" alt="item1" width="80px" height="80px"></a>
+                              <img src="<c:url value='${cart.thumb1}'/>" alt="item1" width="80px" height="80px"></a>
                               <input type="hidden" name="detail" class="detail" value="${cart.detail}" />
                                 <div>
                                     <h2><a href="#"><input type="hidden" name="prodName" class="prodName" value="${cart.prodName}" />
@@ -180,10 +180,10 @@ $(document).on('click', 'input[name=all]', function(e){
                        <td> <input type="hidden" name="discount" class="discount" value="${cart.discount}" />${cart.discount}</td>
                         <td><input type="hidden" name="point" class="point" value="${cart.point}" />${cart.point}</td>
                         <c:if test="${cart.delivery eq 0}">
-                        <td><input type="hidden" name="delivery" class="delivery" value="${cart.delivery}" />무료배송</td>
+                       <td><input type="hidden" name="delivery" class="delivery" value="${cart.delivery}" />무료배송</td>
                         </c:if>
                         <c:if test="${cart.delivery ne 0}">
-                        <td><input type="hidden" name="delivery" class="delivery" value="${cart.delivery}" />${cart.delivery}<td>
+                     <td><input type="hidden" name="delivery" class="delivery" value="${cart.delivery}" />${cart.delivery}</td>
                         </c:if>
                        <td><input type="hidden" name="total" class="total" value="${cart.total}" />${cart.total}</td>
                     </tr>

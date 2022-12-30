@@ -42,6 +42,12 @@ public class CartController extends HttpServlet {
 
 		HttpSession sess = req.getSession();
 		MemberVo sessUser = (MemberVo)sess.getAttribute("sessUser");
+		System.out.println("카트 컨트롤러:"+sessUser);
+		/*
+		if(sessUser == null) {
+			
+		}
+		*/
 		String uid = sessUser.getUid();
 		//String uid = "jboard2";
 		List<ProductVo> cart = service.cart(uid);

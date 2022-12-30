@@ -786,6 +786,7 @@ main > section {
 #product > .cart > form > table th:first-child {
     width: 60px;
 }
+
 #product > .cart > form > table th {
     padding: 12px 0;
     border-top: 2px solid #000;
@@ -796,7 +797,12 @@ main > section {
     text-align: center;
     letter-spacing: -0.1em;
 }
+
+
 /* 장바구니에 상품이 없을 때 */
+#product > .cart > form> table {
+	 table-layout: fixed;
+}
 #product > .cart > form > table .empty {
     display: none;
 }
